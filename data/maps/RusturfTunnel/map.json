@@ -12,14 +12,14 @@
   "allow_running": true,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": null,
+  "connections": 0,
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
-      "x": 23,
-      "y": 5,
+      "x": 8,
+      "y": 13,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_LEFT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -29,8 +29,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
-      "x": 24,
-      "y": 5,
+      "x": 18,
+      "y": 14,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -41,50 +41,11 @@
       "flag": "FLAG_HIDE_RUSTURF_TUNNEL_ROCK_1"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 3,
-      "y": 1,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "RusturfTunnel_EventScript_ItemPokeBall",
-      "flag": "FLAG_ITEM_RUSTURF_TUNNEL_POKE_BALL"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 30,
-      "y": 2,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "RusturfTunnel_EventScript_ItemMaxEther",
-      "flag": "FLAG_ITEM_RUSTURF_TUNNEL_MAX_ETHER"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_EXPERT_M",
-      "x": 5,
-      "y": 4,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "0x0",
-      "flag": "FLAG_HIDE_RUSTURF_TUNNEL_BRINEY"
-    },
-    {
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
-      "x": 14,
-      "y": 5,
+      "x": 27,
+      "y": 6,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -93,22 +54,9 @@
       "flag": "FLAG_HIDE_RUSTURF_TUNNEL_AQUA_GRUNT"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_WINGULL",
-      "x": 14,
-      "y": 4,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "RusturfTunnel_EventScript_Peeko",
-      "flag": "FLAG_HIDE_RUSTURF_TUNNEL_PEEKO"
-    },
-    {
       "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
-      "x": 24,
-      "y": 4,
+      "x": 11,
+      "y": 15,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
@@ -117,52 +65,26 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "EventScript_RockSmash",
       "flag": "FLAG_HIDE_RUSTURF_TUNNEL_ROCK_2"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_HIKER",
-      "x": 32,
-      "y": 13,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "3",
-      "script": "RusturfTunnel_EventScript_Mike",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
-      "x": 25,
-      "y": 4,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "RusturfTunnel_EventScript_Wanda",
-      "flag": "FLAG_HIDE_RUSTURF_TUNNEL_WANDA"
     }
   ],
   "warp_events": [
     {
-      "x": 4,
-      "y": 10,
+      "x": 3,
+      "y": 15,
       "elevation": 3,
       "dest_map": "MAP_ROUTE116",
       "dest_warp_id": "0"
     },
     {
-      "x": 29,
-      "y": 16,
+      "x": 30,
+      "y": 10,
       "elevation": 3,
       "dest_map": "MAP_VERDANTURF_TOWN",
       "dest_warp_id": "4"
     },
     {
-      "x": 18,
-      "y": 20,
+      "x": 21,
+      "y": 9,
       "elevation": 3,
       "dest_map": "MAP_ROUTE116",
       "dest_warp_id": "2"
@@ -171,7 +93,7 @@
   "coord_events": [
     {
       "type": "trigger",
-      "x": 23,
+      "x": 22,
       "y": 4,
       "elevation": 3,
       "var": "TRIGGER_RUN_IMMEDIATELY",
@@ -198,7 +120,7 @@
     },
     {
       "type": "trigger",
-      "x": 25,
+      "x": 21,
       "y": 4,
       "elevation": 3,
       "var": "TRIGGER_RUN_IMMEDIATELY",
@@ -207,13 +129,15 @@
     },
     {
       "type": "trigger",
-      "x": 25,
-      "y": 5,
+      "x": 23,
+      "y": 4,
       "elevation": 3,
       "var": "TRIGGER_RUN_IMMEDIATELY",
       "var_value": "0",
       "script": "RusturfTunnel_EventScript_TunnelBlockagePos3"
     }
   ],
-  "bg_events": []
+  "bg_events": [
+
+  ]
 }

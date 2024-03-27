@@ -29,11 +29,6 @@
       "direction": "right"
     },
     {
-      "map": "MAP_MOSSDEEP_CITY",
-      "offset": 40,
-      "direction": "right"
-    },
-    {
       "map": "MAP_UNDERWATER_ROUTE124",
       "offset": 0,
       "direction": "dive"
@@ -206,7 +201,9 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+
+  ],
   "bg_events": [
     {
       "type": "sign",

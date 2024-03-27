@@ -14,19 +14,14 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "map": "MAP_MAUVILLE_CITY",
-      "offset": 0,
-      "direction": "up"
-    },
-    {
-      "map": "MAP_SLATEPORT_CITY",
-      "offset": 0,
-      "direction": "down"
-    },
-    {
-      "map": "MAP_ROUTE103",
-      "offset": 60,
+      "map": "MAP_FALLARBOR_TOWN",
+      "offset": 12,
       "direction": "left"
+    },
+    {
+      "map": "MAP_LAVARIDGE_TOWN",
+      "offset": -2,
+      "direction": "right"
     }
   ],
   "object_events": [

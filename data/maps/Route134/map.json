@@ -14,13 +14,13 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "map": "MAP_SLATEPORT_CITY",
-      "offset": 0,
-      "direction": "left"
+      "map": "MAP_MAUVILLE_CITY",
+      "offset": -3,
+      "direction": "right"
     },
     {
-      "map": "MAP_ROUTE133",
-      "offset": 0,
+      "map": "MAP_MAUVILLE_CITY",
+      "offset": -3,
       "direction": "right"
     }
   ],
@@ -66,8 +66,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MAN_5",
-      "x": 24,
-      "y": 23,
+      "x": 14,
+      "y": 24,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WALK_DOWN_AND_UP",
       "movement_range_x": 0,
@@ -101,19 +101,6 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "2",
       "script": "Route134_EventScript_Marley",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_SAILOR",
-      "x": 24,
-      "y": 30,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WALK_UP_AND_DOWN",
-      "movement_range_x": 0,
-      "movement_range_y": 3,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "6",
-      "script": "Route134_EventScript_Kelvin",
       "flag": "0"
     },
     {
@@ -154,22 +141,15 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route134_EventScript_ItemCarbos",
       "flag": "FLAG_ITEM_ROUTE_134_CARBOS"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 22,
-      "y": 27,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route134_EventScript_ItemStarPiece",
-      "flag": "FLAG_ITEM_ROUTE_134_STAR_PIECE"
     }
   ],
-  "warp_events": [],
-  "coord_events": [],
-  "bg_events": []
+  "warp_events": [
+
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
 }
