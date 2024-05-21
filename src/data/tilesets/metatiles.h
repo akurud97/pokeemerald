@@ -210,3 +210,9 @@ const u16 gMetatileAttributes_UnionRoom[] = INCBIN_U16("data/tilesets/secondary/
 
 const u16 gMetatiles_Snow[] = INCBIN_U16("data/tilesets/primary/snow/metatiles.bin");
 const u16 gMetatileAttributes_Snow[] = INCBIN_U16("data/tilesets/primary/snow/metatile_attributes.bin");
+
+const u16 gMetatiles_test[] = INCBIN_U16("data/tilesets/primary/test/metatiles.bin");
+const u16 gMetatileAttributes_test[] = INCBIN_U16("data/tilesets/primary/test/metatile_attributes.bin");
+
+const u16 gMetatiles_test2[] = INCBIN_U16("data/tilesets/secondary/test_2/metatiles.bin");
+const u16 gMetatileAttributes_test2[] = INCBIN_U16("data/tilesets/secondary/test_2/metatile_attributes.bin");

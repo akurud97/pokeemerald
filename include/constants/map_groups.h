@@ -70,6 +70,7 @@
 #define MAP_LITTLEROOT_TOWN_MAYS_HOUSE_1F        (2 | (1 << 8))
 #define MAP_LITTLEROOT_TOWN_MAYS_HOUSE_2F        (3 | (1 << 8))
 #define MAP_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB (4 | (1 << 8))
+#define MAP_ALASIA_HOUSE3                        (5 | (1 << 8))
 
 // gMapGroup_IndoorOldale
 #define MAP_OLDALE_TOWN_HOUSE1            (0 | (2 << 8))
@@ -159,6 +160,9 @@
 #define MAP_MAUVILLE_CITY_POKEMON_CENTER_1F (5 | (10 << 8))
 #define MAP_MAUVILLE_CITY_POKEMON_CENTER_2F (6 | (10 << 8))
 #define MAP_MAUVILLE_CITY_MART              (7 | (10 << 8))
+#define MAP_INQULL_GARDEN                   (8 | (10 << 8))
+#define MAP_INQUILL_HOUSE2                  (9 | (10 << 8))
+#define MAP_INQUILL_HOUSE3                  (10 | (10 << 8))
 
 // gMapGroup_IndoorRustboro
 #define MAP_RUSTBORO_CITY_DEVON_CORP_1F     (0 | (11 << 8))

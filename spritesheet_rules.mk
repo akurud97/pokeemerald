@@ -402,6 +402,24 @@ $(OBJEVENTGFXDIR)/people/woman_5.4bpp: %.4bpp: %.png
 
 $(OBJEVENTGFXDIR)/people/youngster.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
+	
+$(OBJEVENTGFXDIR)/people/biker.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
+	
+$(OBJEVENTGFXDIR)/people/cowboy.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 4
+	
+$(OBJEVENTGFXDIR)/people/cowgirl.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 4
+	
+$(OBJEVENTGFXDIR)/people/ranger_m.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 4
+	
+$(OBJEVENTGFXDIR)/people/ranger_f.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 4
+	
+$(OBJEVENTGFXDIR)/people/worker.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 4
 
 
 
@@ -467,6 +485,21 @@ $(OBJEVENTGFXDIR)/pokemon/wingull.4bpp: %.4bpp: %.png
 
 $(OBJEVENTGFXDIR)/pokemon/zigzagoon.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 2
+	
+$(OBJEVENTGFXDIR)/pokemon/mareep.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
+	
+$(OBJEVENTGFXDIR)/pokemon/tauros.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
+	
+$(OBJEVENTGFXDIR)/pokemon/probopass.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
+	
+$(OBJEVENTGFXDIR)/pokemon/treecko.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
+	
+$(OBJEVENTGFXDIR)/pokemon/slowpoke.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
 
 
 

@@ -458,6 +458,18 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_TAG_LUGIA                   0x1121
 #define OBJ_EVENT_PAL_TAG_RS_BRENDAN              0x1122
 #define OBJ_EVENT_PAL_TAG_RS_MAY                  0x1123
+#define OBJ_EVENT_PALette_BIKER                   0x1124
+#define OBJ_EVENT_PAL_COWBOY                      0x1125
+#define OBJ_EVENT_PAL_COWGIRL                     0x1126
+#define OBJ_EVENT_PAL_RUIN                        0x1127
+#define OBJ_EVENT_PAL_MAREEP                      0x1128
+#define OBJ_EVENT_PAL_TAUROS                      0x1129
+#define OBJ_EVENT_PAL_RANGER_M                    0x1130
+#define OBJ_EVENT_PAL_RANGER_F                    0x1131
+#define OBJ_EVENT_PAL_WORKER                      0x1132
+#define OBJ_EVENT_PAL_PROBOPASS                   0x1133
+#define OBJ_EVENT_PAL_TREECKO                     0x1134
+#define OBJ_EVENT_PAL_SLOWPOKE                    0x1135
 #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
 
 #include "data/object_events/object_event_graphics_info_pointers.h"
@@ -504,6 +516,19 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Lugia,                 OBJ_EVENT_PAL_TAG_LUGIA},
     {gObjectEventPal_RubySapphireBrendan,   OBJ_EVENT_PAL_TAG_RS_BRENDAN},
     {gObjectEventPal_RubySapphireMay,       OBJ_EVENT_PAL_TAG_RS_MAY},
+    {gObjectEventPalette_Biker,             OBJ_EVENT_PAL_Biker},
+    {gObjectEventPalette_Cowboy,            OBJ_EVENT_PAL_COWBOY},
+    {gObjectEventPalette_Cowgirl,           OBJ_EVENT_PAL_COWGIRL},
+    {gObjectEventPalette_Ruin,              OBJ_EVENT_PAL_RUIN},
+    {gObjectEventPalette_Mareep,            OBJ_EVENT_PAL_MAREEP},
+    {gObjectEventPalette_Tauros,            OBJ_EVENT_PAL_TAUROS},
+    {gObjectEventPalette_Ranger_M,          OBJ_EVENT_PAL_RANGER_M},
+    {gObjectEventPalette_Ranger_F,          OBJ_EVENT_PAL_RANGER_F},
+    {gObjectEventPalette_Worker,            OBJ_EVENT_PAL_WORKER},
+    {gObjectEventPalette_Probopass,         OBJ_EVENT_PAL_PROBOPASS},
+    {gObjectEventPalette_Treecko,           OBJ_EVENT_PAL_TREECKO},
+    {gObjectEventPalette_Slowpoke,          OBJ_EVENT_PAL_SLOWPOKE},
+    
 
 #ifdef BUGFIX
     {NULL,                                  OBJ_EVENT_PAL_TAG_NONE},

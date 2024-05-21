@@ -99,7 +99,8 @@
     "LittlerootTown_BrendansHouse_2F",
     "LittlerootTown_MaysHouse_1F",
     "LittlerootTown_MaysHouse_2F",
-    "LittlerootTown_ProfessorBirchsLab"
+    "LittlerootTown_ProfessorBirchsLab",
+    "AlasiaHouse3"
   ],
   "gMapGroup_IndoorOldale": [
     "OldaleTown_House1",
@@ -188,7 +189,10 @@
     "MauvilleCity_House2",
     "MauvilleCity_PokemonCenter_1F",
     "MauvilleCity_PokemonCenter_2F",
-    "MauvilleCity_Mart"
+    "MauvilleCity_Mart",
+    "InqullGarden",
+    "InquillHouse2",
+    "InquillHouse3"
   ],
   "gMapGroup_IndoorRustboro": [
     "RustboroCity_DevonCorp_1F",

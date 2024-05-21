@@ -14,14 +14,9 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "map": "MAP_ROUTE134",
-      "offset": 0,
-      "direction": "left"
-    },
-    {
-      "map": "MAP_ROUTE132",
-      "offset": 0,
-      "direction": "right"
+      "map": "MAP_ROUTE110",
+      "offset": -26,
+      "direction": "down"
     }
   ],
   "object_events": [
@@ -40,8 +35,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_F",
-      "x": 13,
-      "y": 3,
+      "x": 12,
+      "y": 8,
       "elevation": 1,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
@@ -79,7 +74,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 8,
+      "x": 11,
       "y": 10,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -92,8 +87,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MAN_5",
-      "x": 7,
-      "y": 14,
+      "x": 8,
+      "y": 12,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_RIGHT",
       "movement_range_x": 1,
