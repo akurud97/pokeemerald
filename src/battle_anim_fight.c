@@ -565,12 +565,17 @@ static void AnimFistOrFootRandomPos(struct Sprite *sprite)
         y *= -1;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     if (GET_BATTLER_SIDE2(battler) == B_SIDE_PLAYER)
         y -= 16;
 =======
     if (GetBattlerSide(battler) == B_SIDE_PLAYER)
         y += 0xFFF0;
 >>>>>>> 6abd75b05543bdad9b3f9a17dd878b8ba50ae8f2
+=======
+    if (GetBattlerSide(battler) == B_SIDE_PLAYER)
+        y -= 16;
+>>>>>>> 7e43916e57ca98a077ac3ac46acde1ca0fb0d5b4
 
     sprite->x += x;
     sprite->y += y;
