@@ -248,21 +248,7 @@ const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Cowgirl;
 const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Ruin;
 const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Ranger_M;
 const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Ranger_F;
-const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Mareep;
-const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Tauros;
 const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Worker;
-const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Probopass;
-const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Treecko;
-const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Slowpoke;
-const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Poliwhirl;
-const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Meowth;
-const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Beautifly;
-const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Machop;
-const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Luxio;
-const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Torkoal;
-const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Archen;
-const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Vileplume;
-const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Bellossom;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedMauvilleOldMan1;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedMauvilleOldMan2;
 
@@ -513,21 +499,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_RUIN] =                     &gObjectEventGraphicsInfo_Ruin,
     [OBJ_EVENT_GFX_RANGER_M] =                 &gObjectEventGraphicsInfo_Ranger_M,
     [OBJ_EVENT_GFX_RANGER_F] =                 &gObjectEventGraphicsInfo_Ranger_F,
-    [OBJ_EVENT_GFX_MAREEP] =                   &gObjectEventGraphicsInfo_Mareep,
-    [OBJ_EVENT_GFX_TAUROS] =                   &gObjectEventGraphicsInfo_Tauros,
     [OBJ_EVENT_GFX_WORKER] =                   &gObjectEventGraphicsInfo_Worker,
-    [OBJ_EVENT_GFX_PROBOPASS] =                &gObjectEventGraphicsInfo_Probopass,
-    [OBJ_EVENT_GFX_TREECKO] =                  &gObjectEventGraphicsInfo_Treecko,
-    [OBJ_EVENT_GFX_SLOWPOKE] =                 &gObjectEventGraphicsInfo_Slowpoke,
-    [OBJ_EVENT_GFX_POLIWHIRL] =                &gObjectEventGraphicsInfo_Poliwhirl,
-    [OBJ_EVENT_GFX_MEOWTH] =                   &gObjectEventGraphicsInfo_Meowth,
-    [OBJ_EVENT_GFX_BEAUTIFLY] =                &gObjectEventGraphicsInfo_Beautifly,
-    [OBJ_EVENT_GFX_MACHOP] =                   &gObjectEventGraphicsInfo_Machop,
-    [OBJ_EVENT_GFX_LUXIO] =                    &gObjectEventGraphicsInfo_Luxio,
-    [OBJ_EVENT_GFX_TORKOAL] =                  &gObjectEventGraphicsInfo_Torkoal,
-    [OBJ_EVENT_GFX_ARCHEN] =                   &gObjectEventGraphicsInfo_Archen,
-    [OBJ_EVENT_GFX_VILEPLUME] =                &gObjectEventGraphicsInfo_Vileplume,
-    [OBJ_EVENT_GFX_BELLOSSOM] =                &gObjectEventGraphicsInfo_Bellossom,
 };
 
 const struct ObjectEventGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {
