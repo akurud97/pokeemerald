@@ -518,9 +518,13 @@ MossdeepCity_SpaceCenter_2F_EventScript_ChoosePartyForMultiBattle::
 
 # 260 "data/maps/MossdeepCity_SpaceCenter_2F/scripts.pory"
 MossdeepCity_SpaceCenter_2F_EventScript_DoStevenMultiBattle::
+<<<<<<< HEAD
 # 261 "data/maps/MossdeepCity_SpaceCenter_2F/scripts.pory"
 	multi_2_vs_2 TRAINER_MAXIE_MOSSDEEP, MossdeepCity_SpaceCenter_2F_Text_JustWantToExpandLand, TRAINER_TABITHA_MOSSDEEP, MossdeepCity_SpaceCenter_Text_TabithaDefeat, PARTNER_STEVEN, TRAINER_BACK_PIC_STEVEN
 # 262 "data/maps/MossdeepCity_SpaceCenter_2F/scripts.pory"
+=======
+	multi_2_vs_2 TRAINER_MAXIE_MOSSDEEP, MossdeepCity_SpaceCenter_2F_Text_JustWantToExpandLand, TRAINER_TABITHA_MOSSDEEP, MossdeepCity_SpaceCenter_Text_TabithaDefeat, PARTNER_STEVEN
+>>>>>>> a2685d0d087acd9e90fd9195b4bc398627dd4371
 	switch VAR_RESULT
 # 263 "data/maps/MossdeepCity_SpaceCenter_2F/scripts.pory"
 	case 1, MossdeepCity_SpaceCenter_2F_EventScript_DefeatedMaxieTabitha
@@ -630,7 +634,13 @@ MossdeepCity_SpaceCenter_2F_EventScript_DefeatedMaxieTabitha::
 	addobject LOCALID_SCIENTIST
 # 316 "data/maps/MossdeepCity_SpaceCenter_2F/scripts.pory"
 	fadescreen FADE_FROM_BLACK
+<<<<<<< HEAD
 # 317 "data/maps/MossdeepCity_SpaceCenter_2F/scripts.pory"
+=======
+#ifdef BUGFIX
+	releaseall
+#endif
+>>>>>>> a2685d0d087acd9e90fd9195b4bc398627dd4371
 	end
 # 318 "data/maps/MossdeepCity_SpaceCenter_2F/scripts.pory"
 

@@ -56,7 +56,11 @@ UnionRoom_OnResume:
 
 # 29 "data/maps/UnionRoom/scripts.pory"
 UnionRoom_OnTransition:
+<<<<<<< HEAD
 # 30 "data/maps/UnionRoom/scripts.pory"
+=======
+	setflag FLAG_TEMP_HIDE_FOLLOWER
+>>>>>>> a2685d0d087acd9e90fd9195b4bc398627dd4371
 	end
 # 31 "data/maps/UnionRoom/scripts.pory"
 

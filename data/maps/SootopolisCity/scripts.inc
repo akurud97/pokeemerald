@@ -994,7 +994,11 @@ SootopolisCity_EventScript_RayquazaSceneFromPokeCenter::
 	removeobject LOCALID_KYOGRE
 # 498 "data/maps/SootopolisCity/scripts.pory"
 	addobject LOCALID_RAYQUAZA
+<<<<<<< HEAD
 # 499 "data/maps/SootopolisCity/scripts.pory"
+=======
+	hideobjectat LOCALID_RAYQUAZA, MAP_SOOTOPOLIS_CITY
+>>>>>>> a2685d0d087acd9e90fd9195b4bc398627dd4371
 	setvar VAR_0x8004, TRUE
 # 500 "data/maps/SootopolisCity/scripts.pory"
 	special Script_DoRayquazaScene

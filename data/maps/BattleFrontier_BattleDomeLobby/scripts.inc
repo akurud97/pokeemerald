@@ -140,7 +140,11 @@ BattleFrontier_BattleDomeLobby_EventScript_GiveBattlePoints::
 	special LoadPlayerParty
 # 71 "data/maps/BattleFrontier_BattleDomeLobby/scripts.pory"
 	special HealPlayerParty
+<<<<<<< HEAD
 # 72 "data/maps/BattleFrontier_BattleDomeLobby/scripts.pory"
+=======
+	callnative UpdateFollowingPokemon
+>>>>>>> a2685d0d087acd9e90fd9195b4bc398627dd4371
 	goto BattleFrontier_BattleDomeLobby_EventScript_AskRecordBattle
 # 73 "data/maps/BattleFrontier_BattleDomeLobby/scripts.pory"
 
@@ -168,7 +172,11 @@ BattleFrontier_BattleDomeLobby_EventScript_LostChallenge::
 	special LoadPlayerParty
 # 85 "data/maps/BattleFrontier_BattleDomeLobby/scripts.pory"
 	special HealPlayerParty
+<<<<<<< HEAD
 # 86 "data/maps/BattleFrontier_BattleDomeLobby/scripts.pory"
+=======
+	callnative UpdateFollowingPokemon
+>>>>>>> a2685d0d087acd9e90fd9195b4bc398627dd4371
 BattleFrontier_BattleDomeLobby_EventScript_AskRecordBattle::
 # 87 "data/maps/BattleFrontier_BattleDomeLobby/scripts.pory"
 	dome_save 0
@@ -324,7 +332,11 @@ BattleFrontier_BattleDomeLobby_EventScript_TryEnterChallenge::
 	msgbox BattleFrontier_BattleDomeLobby_Text_SelectThreeMons, MSGBOX_DEFAULT
 # 163 "data/maps/BattleFrontier_BattleDomeLobby/scripts.pory"
 	fadescreen FADE_TO_BLACK
+<<<<<<< HEAD
 # 164 "data/maps/BattleFrontier_BattleDomeLobby/scripts.pory"
+=======
+	callnative RemoveFollowingPokemon
+>>>>>>> a2685d0d087acd9e90fd9195b4bc398627dd4371
 	call BattleFrontier_EventScript_GetLvlMode
 # 165 "data/maps/BattleFrontier_BattleDomeLobby/scripts.pory"
 	copyvar VAR_0x8004, VAR_RESULT
@@ -448,7 +460,11 @@ BattleFrontier_BattleDomeLobby_EventScript_CancelChallengeSaveFailed::
 BattleFrontier_BattleDomeLobby_EventScript_LoadPartyCancelChallenge::
 # 225 "data/maps/BattleFrontier_BattleDomeLobby/scripts.pory"
 	special LoadPlayerParty
+<<<<<<< HEAD
 # 226 "data/maps/BattleFrontier_BattleDomeLobby/scripts.pory"
+=======
+	callnative UpdateFollowingPokemon
+>>>>>>> a2685d0d087acd9e90fd9195b4bc398627dd4371
 BattleFrontier_BattleDomeLobby_EventScript_CancelChallenge::
 # 227 "data/maps/BattleFrontier_BattleDomeLobby/scripts.pory"
 	msgbox BattleFrontier_BattleDomeLobby_Text_HopeToSeeYouAgain, MSGBOX_DEFAULT

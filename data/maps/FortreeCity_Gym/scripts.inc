@@ -14,7 +14,11 @@ FortreeCity_Gym_MapScripts::
 FortreeCity_Gym_OnTransition:
 # 8 "data/maps/FortreeCity_Gym/scripts.pory"
 	special RotatingGate_InitPuzzle
+<<<<<<< HEAD
 # 9 "data/maps/FortreeCity_Gym/scripts.pory"
+=======
+	setflag FLAG_TEMP_HIDE_FOLLOWER @ Hide follower bc of rotating gates
+>>>>>>> a2685d0d087acd9e90fd9195b4bc398627dd4371
 	end
 # 10 "data/maps/FortreeCity_Gym/scripts.pory"
 
