@@ -63,6 +63,9 @@
 #define MAP_UNDERWATER_ROUTE129 (54 | (0 << 8))
 #define MAP_UNDERWATER_ROUTE105 (55 | (0 << 8))
 #define MAP_UNDERWATER_ROUTE125 (56 | (0 << 8))
+#define MAP_LIESMA_CITY         (57 | (0 << 8))
+#define MAP_NEW_MAP1            (58 | (0 << 8))
+#define MAP_WEST_CASTULA        (59 | (0 << 8))
 
 // gMapGroup_IndoorLittleroot
 #define MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F    (0 | (1 << 8))
@@ -71,6 +74,7 @@
 #define MAP_LITTLEROOT_TOWN_MAYS_HOUSE_2F        (3 | (1 << 8))
 #define MAP_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB (4 | (1 << 8))
 #define MAP_ALASIA_HOUSE3                        (5 | (1 << 8))
+#define MAP_ROUTE101_LAB                         (6 | (1 << 8))
 
 // gMapGroup_IndoorOldale
 #define MAP_OLDALE_TOWN_HOUSE1            (0 | (2 << 8))
@@ -150,6 +154,10 @@
 #define MAP_SLATEPORT_CITY_POKEMON_CENTER_1F       (11 | (9 << 8))
 #define MAP_SLATEPORT_CITY_POKEMON_CENTER_2F       (12 | (9 << 8))
 #define MAP_SLATEPORT_CITY_MART                    (13 | (9 << 8))
+#define MAP_MINTAKA_HOUSE1                         (14 | (9 << 8))
+#define MAP_MINTAKA_HOUSE2                         (15 | (9 << 8))
+#define MAP_MINTAKA_HOUSE3                         (16 | (9 << 8))
+#define MAP_MINTAKA_HOUSE4                         (17 | (9 << 8))
 
 // gMapGroup_IndoorMauville
 #define MAP_MAUVILLE_CITY_GYM               (0 | (10 << 8))
@@ -182,6 +190,14 @@
 #define MAP_RUSTBORO_CITY_FLAT2_2F          (14 | (11 << 8))
 #define MAP_RUSTBORO_CITY_FLAT2_3F          (15 | (11 << 8))
 #define MAP_RUSTBORO_CITY_HOUSE3            (16 | (11 << 8))
+#define MAP_CASTULA_HOUSE                   (17 | (11 << 8))
+#define MAP_CASTULA_HOUSE2                  (18 | (11 << 8))
+#define MAP_CASTULA_APT                     (19 | (11 << 8))
+#define MAP_CASTULA_APT2                    (20 | (11 << 8))
+#define MAP_CASTULA_APT3                    (21 | (11 << 8))
+#define MAP_CASTULA_APT4                    (22 | (11 << 8))
+#define MAP_CASTULA_HOUSE3                  (23 | (11 << 8))
+#define MAP_CASTULA_UNI                     (24 | (11 << 8))
 
 // gMapGroup_IndoorFortree
 #define MAP_FORTREE_CITY_HOUSE1            (0 | (12 << 8))
@@ -234,6 +250,10 @@
 #define MAP_MOSSDEEP_CITY_SPACE_CENTER_2F   (10 | (14 << 8))
 #define MAP_MOSSDEEP_CITY_GAME_CORNER_1F    (11 | (14 << 8))
 #define MAP_MOSSDEEP_CITY_GAME_CORNER_B1F   (12 | (14 << 8))
+#define MAP_UUBA_HOUSE1                     (13 | (14 << 8))
+#define MAP_UUBA_HOUSE2                     (14 | (14 << 8))
+#define MAP_UUBA_HOUSE3                     (15 | (14 << 8))
+#define MAP_UUBA_HOUSE4                     (16 | (14 << 8))
 
 // gMapGroup_IndoorSootopolis
 #define MAP_SOOTOPOLIS_CITY_GYM_1F                   (0 | (15 << 8))

@@ -1080,3 +1080,43 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/InquillHouse2/scripts.inc"
 
 	.include "data/maps/InquillHouse3/scripts.inc"
+
+	.include "data/maps/MintakaHouse1/scripts.inc"
+
+	.include "data/maps/MintakaHouse2/scripts.inc"
+
+	.include "data/maps/MintakaHouse3/scripts.inc"
+
+	.include "data/maps/MintakaHouse4/scripts.inc"
+
+	.include "data/maps/UubaHouse1/scripts.inc"
+
+	.include "data/maps/UubaHouse2/scripts.inc"
+
+	.include "data/maps/UubaHouse3/scripts.inc"
+
+	.include "data/maps/UubaHouse4/scripts.inc"
+
+	.include "data/maps/Route101_Lab/scripts.inc"
+
+	.include "data/maps/LiesmaCity/scripts.inc"
+
+	.include "data/maps/NewMap1/scripts.inc"
+
+	.include "data/maps/WestCastula/scripts.inc"
+
+	.include "data/maps/CastulaHouse/scripts.inc"
+
+	.include "data/maps/CastulaHouse2/scripts.inc"
+
+	.include "data/maps/CastulaApt/scripts.inc"
+
+	.include "data/maps/CastulaApt2/scripts.inc"
+
+	.include "data/maps/CastulaApt3/scripts.inc"
+
+	.include "data/maps/CastulaApt4/scripts.inc"
+
+	.include "data/maps/CastulaHouse3/scripts.inc"
+
+	.include "data/maps/CastulaUni/scripts.inc"

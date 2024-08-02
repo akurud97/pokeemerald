@@ -1,0 +1,2 @@
+WestCastula_MapScripts::
+	.byte 0

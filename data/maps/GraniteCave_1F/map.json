@@ -30,32 +30,18 @@
   ],
   "warp_events": [
     {
-      "x": 37,
-      "y": 12,
+      "x": 4,
+      "y": 4,
       "elevation": 3,
-      "dest_map": "MAP_ROUTE106",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_DESERT_RUINS",
+      "dest_warp_id": "2"
     },
     {
-      "x": 35,
-      "y": 3,
+      "x": 12,
+      "y": 8,
       "elevation": 3,
-      "dest_map": "MAP_GRANITE_CAVE_B1F",
-      "dest_warp_id": "0"
-    },
-    {
-      "x": 13,
-      "y": 17,
-      "elevation": 3,
-      "dest_map": "MAP_GRANITE_CAVE_B1F",
-      "dest_warp_id": "1"
-    },
-    {
-      "x": 5,
-      "y": 12,
-      "elevation": 3,
-      "dest_map": "MAP_GRANITE_CAVE_STEVENS_ROOM",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_ROUTE103",
+      "dest_warp_id": "2"
     }
   ],
   "coord_events": [

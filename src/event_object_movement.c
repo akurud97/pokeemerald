@@ -458,7 +458,7 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_TAG_LUGIA                   0x1121
 #define OBJ_EVENT_PAL_TAG_RS_BRENDAN              0x1122
 #define OBJ_EVENT_PAL_TAG_RS_MAY                  0x1123
-#define OBJ_EVENT_PALette_BIKER                   0x1124
+#define OBJ_EVENT_PAL_BIKER                       0x1124
 #define OBJ_EVENT_PAL_COWBOY                      0x1125
 #define OBJ_EVENT_PAL_COWGIRL                     0x1126
 #define OBJ_EVENT_PAL_RUIN                        0x1127
@@ -470,6 +470,15 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_PROBOPASS                   0x1133
 #define OBJ_EVENT_PAL_TREECKO                     0x1134
 #define OBJ_EVENT_PAL_SLOWPOKE                    0x1135
+#define OBJ_EVENT_PAL_POLIWHIRL                   0x1136
+#define OBJ_EVENT_PAL_MEOWTH                      0x1137
+#define OBJ_EVENT_PAL_BEAUTIFLY                   0x1138
+#define OBJ_EVENT_PAL_MACHOP                      0x1139
+#define OBJ_EVENT_PAL_LUXIO                       0x1140
+#define OBJ_EVENT_PAL_TORKOAL                     0x1141
+#define OBJ_EVENT_PAL_ARCHEN                      0x1142
+#define OBJ_EVENT_PAL_VILEPLUME                   0x1143
+#define OBJ_EVENT_PAL_BELLOSSOM                   0x1144
 #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
 
 #include "data/object_events/object_event_graphics_info_pointers.h"
@@ -516,7 +525,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Lugia,                 OBJ_EVENT_PAL_TAG_LUGIA},
     {gObjectEventPal_RubySapphireBrendan,   OBJ_EVENT_PAL_TAG_RS_BRENDAN},
     {gObjectEventPal_RubySapphireMay,       OBJ_EVENT_PAL_TAG_RS_MAY},
-    {gObjectEventPalette_Biker,             OBJ_EVENT_PAL_Biker},
+    {gObjectEventPalette_Biker,             OBJ_EVENT_PAL_BIKER},
     {gObjectEventPalette_Cowboy,            OBJ_EVENT_PAL_COWBOY},
     {gObjectEventPalette_Cowgirl,           OBJ_EVENT_PAL_COWGIRL},
     {gObjectEventPalette_Ruin,              OBJ_EVENT_PAL_RUIN},
@@ -528,6 +537,15 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPalette_Probopass,         OBJ_EVENT_PAL_PROBOPASS},
     {gObjectEventPalette_Treecko,           OBJ_EVENT_PAL_TREECKO},
     {gObjectEventPalette_Slowpoke,          OBJ_EVENT_PAL_SLOWPOKE},
+    {gObjectEventPalette_Poliwhirl,         OBJ_EVENT_PAL_POLIWHIRL},
+    {gObjectEventPalette_Meowth,            OBJ_EVENT_PAL_MEOWTH},
+    {gObjectEventPalette_Beautifly,         OBJ_EVENT_PAL_BEAUTIFLY},
+    {gObjectEventPalette_Machop,            OBJ_EVENT_PAL_MACHOP},
+    {gObjectEventPalette_Luxio,             OBJ_EVENT_PAL_LUXIO},
+    {gObjectEventPalette_Torkoal,           OBJ_EVENT_PAL_TORKOAL},
+    {gObjectEventPalette_Archen,            OBJ_EVENT_PAL_ARCHEN},
+    {gObjectEventPalette_Vileplume,         OBJ_EVENT_PAL_VILEPLUME},
+    {gObjectEventPalette_Bellossom,         OBJ_EVENT_PAL_BELLOSSOM},
     
 
 #ifdef BUGFIX

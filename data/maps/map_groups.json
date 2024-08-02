@@ -92,7 +92,10 @@
     "Underwater_Route128",
     "Underwater_Route129",
     "Underwater_Route105",
-    "Underwater_Route125"
+    "Underwater_Route125",
+    "LiesmaCity",
+    "NewMap1",
+    "WestCastula"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",
@@ -100,7 +103,8 @@
     "LittlerootTown_MaysHouse_1F",
     "LittlerootTown_MaysHouse_2F",
     "LittlerootTown_ProfessorBirchsLab",
-    "AlasiaHouse3"
+    "AlasiaHouse3",
+    "Route101_Lab"
   ],
   "gMapGroup_IndoorOldale": [
     "OldaleTown_House1",
@@ -179,7 +183,11 @@
     "SlateportCity_House",
     "SlateportCity_PokemonCenter_1F",
     "SlateportCity_PokemonCenter_2F",
-    "SlateportCity_Mart"
+    "SlateportCity_Mart",
+    "MintakaHouse1",
+    "MintakaHouse2",
+    "MintakaHouse3",
+    "MintakaHouse4"
   ],
   "gMapGroup_IndoorMauville": [
     "MauvilleCity_Gym",
@@ -211,7 +219,15 @@
     "RustboroCity_Flat2_1F",
     "RustboroCity_Flat2_2F",
     "RustboroCity_Flat2_3F",
-    "RustboroCity_House3"
+    "RustboroCity_House3",
+    "CastulaHouse",
+    "CastulaHouse2",
+    "CastulaApt",
+    "CastulaApt2",
+    "CastulaApt3",
+    "CastulaApt4",
+    "CastulaHouse3",
+    "CastulaUni"
   ],
   "gMapGroup_IndoorFortree": [
     "FortreeCity_House1",
@@ -263,7 +279,11 @@
     "MossdeepCity_SpaceCenter_1F",
     "MossdeepCity_SpaceCenter_2F",
     "MossdeepCity_GameCorner_1F",
-    "MossdeepCity_GameCorner_B1F"
+    "MossdeepCity_GameCorner_B1F",
+    "UubaHouse1",
+    "UubaHouse2",
+    "UubaHouse3",
+    "UubaHouse4"
   ],
   "gMapGroup_IndoorSootopolis": [
     "SootopolisCity_Gym_1F",

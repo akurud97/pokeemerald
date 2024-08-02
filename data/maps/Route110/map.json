@@ -20,12 +20,12 @@
     },
     {
       "map": "MAP_ROUTE132",
-      "offset": 0,
+      "offset": -19,
       "direction": "right"
     },
     {
       "map": "MAP_ROUTE133",
-      "offset": 26,
+      "offset": 18,
       "direction": "up"
     }
   ],
@@ -229,7 +229,7 @@
   "warp_events": [
     {
       "x": 77,
-      "y": 14,
+      "y": 12,
       "elevation": 3,
       "dest_map": "MAP_NEW_MAUVILLE_ENTRANCE",
       "dest_warp_id": "0"

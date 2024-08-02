@@ -254,6 +254,15 @@ const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Worker;
 const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Probopass;
 const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Treecko;
 const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Slowpoke;
+const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Poliwhirl;
+const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Meowth;
+const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Beautifly;
+const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Machop;
+const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Luxio;
+const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Torkoal;
+const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Archen;
+const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Vileplume;
+const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Bellossom;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedMauvilleOldMan1;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedMauvilleOldMan2;
 
@@ -510,6 +519,15 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_PROBOPASS] =                &gObjectEventGraphicsInfo_Probopass,
     [OBJ_EVENT_GFX_TREECKO] =                  &gObjectEventGraphicsInfo_Treecko,
     [OBJ_EVENT_GFX_SLOWPOKE] =                 &gObjectEventGraphicsInfo_Slowpoke,
+    [OBJ_EVENT_GFX_POLIWHIRL] =                &gObjectEventGraphicsInfo_Poliwhirl,
+    [OBJ_EVENT_GFX_MEOWTH] =                   &gObjectEventGraphicsInfo_Meowth,
+    [OBJ_EVENT_GFX_BEAUTIFLY] =                &gObjectEventGraphicsInfo_Beautifly,
+    [OBJ_EVENT_GFX_MACHOP] =                   &gObjectEventGraphicsInfo_Machop,
+    [OBJ_EVENT_GFX_LUXIO] =                    &gObjectEventGraphicsInfo_Luxio,
+    [OBJ_EVENT_GFX_TORKOAL] =                  &gObjectEventGraphicsInfo_Torkoal,
+    [OBJ_EVENT_GFX_ARCHEN] =                   &gObjectEventGraphicsInfo_Archen,
+    [OBJ_EVENT_GFX_VILEPLUME] =                &gObjectEventGraphicsInfo_Vileplume,
+    [OBJ_EVENT_GFX_BELLOSSOM] =                &gObjectEventGraphicsInfo_Bellossom,
 };
 
 const struct ObjectEventGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {
