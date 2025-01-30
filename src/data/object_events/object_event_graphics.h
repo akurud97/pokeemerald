@@ -378,7 +378,6 @@ const u32 gObjectEventPic_SudowoodoTree[] = INCBIN_U32("graphics/object_events/p
 const u32 gObjectEventPic_RayquazaCutscene[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/rayquaza_cutscene.4bpp");
 
 const u16 gObjectEventPal_HoOh[] = INCBIN_U16("graphics/object_events/palettes/ho_oh.gbapal");
-<<<<<<< HEAD
 const u32 gObjectEventPic_Biker[] = INCBIN_U32("graphics/object_events/pics/people/biker.4bpp");
 const u16 gObjectEventPalette_Biker[] = INCBIN_U16("graphics/object_events/pics/people/biker.gbapal");
 const u32 gObjectEventPic_Cowboy[] = INCBIN_U32("graphics/object_events/pics/people/cowboy.4bpp");
@@ -393,7 +392,16 @@ const u32 gObjectEventPic_Ranger_F[] = INCBIN_U32("graphics/object_events/pics/p
 const u16 gObjectEventPalette_Ranger_F[] = INCBIN_U16("graphics/object_events/pics/people/ranger_f.gbapal");
 const u32 gObjectEventPic_Worker[] = INCBIN_U32("graphics/object_events/pics/people/worker.4bpp");
 const u16 gObjectEventPalette_Worker[] = INCBIN_U16("graphics/object_events/pics/people/worker.gbapal");
-=======
+const u32 gObjectEventPic_Sage[] = INCBIN_U32("graphics/object_events/pics/people/sage.4bpp");
+const u16 gObjectEventPalette_Sage[] = INCBIN_U16("graphics/object_events/pics/people/sage.gbapal");
+const u32 gObjectEventPic_Roughneck[] = INCBIN_U32("graphics/object_events/pics/people/roughneck.4bpp");
+const u16 gObjectEventPalette_Roughneck[] = INCBIN_U16("graphics/object_events/pics/people/roughneck.gbapal");
+const u32 gObjectEventPic_Skier_m[] = INCBIN_U32("graphics/object_events/pics/people/skier_m.4bpp");
+const u16 gObjectEventPalette_Skier_m[] = INCBIN_U16("graphics/object_events/pics/people/skier_m.gbapal");
+const u32 gObjectEventPic_Skier_f[] = INCBIN_U32("graphics/object_events/pics/people/skier_f.4bpp");
+const u16 gObjectEventPalette_Skier_f[] = INCBIN_U16("graphics/object_events/pics/people/skier_f.gbapal");
+const u32 gObjectEventPic_Guard[] = INCBIN_U32("graphics/object_events/pics/people/guard.4bpp");
+const u16 gObjectEventPalette_Guard[] = INCBIN_U16("graphics/object_events/pics/people/guard.gbapal");
 const u16 gObjectEventPal_Lugia[] = INCBIN_U16("graphics/object_events/palettes/lugia.gbapal");
 
 const u16 gObjectEventPal_Substitute[] = INCBIN_U16("graphics/pokemon/question_mark/overworld.gbapal");
@@ -470,4 +478,3 @@ const u16 gObjectEventPal_BeastBall[] = INCBIN_U16("graphics/object_events/pics/
 const u16 gObjectEventPal_StrangeBall[] = INCBIN_U16("graphics/object_events/pics/misc/ball_strange.gbapal");
 #endif //ITEM_STRANGE_BALL
 #endif //OW_FOLLOWERS_POKEBALLS
->>>>>>> a2685d0d087acd9e90fd9195b4bc398627dd4371

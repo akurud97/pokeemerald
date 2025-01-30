@@ -1122,3 +1122,63 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/CastulaHouse3/scripts.inc"
 
 	.include "data/maps/CastulaUni/scripts.inc"
+
+	.include "data/maps/CastulaOffice/scripts.inc"
+
+	.include "data/maps/CastulaOfficeF2/scripts.inc"
+
+	.include "data/maps/CastulaOffice3/scripts.inc"
+
+	.include "data/maps/CastulaHouse4/scripts.inc"
+
+	.include "data/maps/UniLab/scripts.inc"
+
+	.include "data/maps/UniHall/scripts.inc"
+
+	.include "data/maps/UniOffice/scripts.inc"
+
+	.include "data/maps/InquillHouse4/scripts.inc"
+
+	.include "data/maps/AcamarHouse/scripts.inc"
+
+	.include "data/maps/AcamarHouse2/scripts.inc"
+
+	.include "data/maps/AcamarHouse3/scripts.inc"
+
+	.include "data/maps/AcamarHouse4/scripts.inc"
+
+	.include "data/maps/TiakiHouse/scripts.inc"
+
+	.include "data/maps/TiakiHouse2/scripts.inc"
+
+	.include "data/maps/TiakiHouse3/scripts.inc"
+
+	.include "data/maps/WurrenHouse/scripts.inc"
+
+	.include "data/maps/WurrenHouse2/scripts.inc"
+
+	.include "data/maps/WurrenHouse3/scripts.inc"
+
+	.include "data/maps/WurrenHouse4/scripts.inc"
+
+	.include "data/maps/WurrenHouse5/scripts.inc"
+
+	.include "data/maps/PorrimaHouse/scripts.inc"
+
+	.include "data/maps/PorrimaHouse2/scripts.inc"
+
+	.include "data/maps/PorrimaHouse3/scripts.inc"
+
+	.include "data/maps/PorrimaHouse4/scripts.inc"
+
+	.include "data/maps/SchedarHouse/scripts.inc"
+
+	.include "data/maps/SchedarHouse2/scripts.inc"
+
+	.include "data/maps/SchedarHouse3/scripts.inc"
+
+	.include "data/maps/SchedarHouse4/scripts.inc"
+
+	.include "data/maps/SchedarClub/scripts.inc"
+
+	.include "data/maps/MintakaCity/scripts.inc"

@@ -1,0 +1,2 @@
+SchedarHouse_MapScripts::
+	.byte 0

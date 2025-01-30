@@ -66,6 +66,7 @@
 #define MAP_LIESMA_CITY         (57 | (0 << 8))
 #define MAP_NEW_MAP1            (58 | (0 << 8))
 #define MAP_WEST_CASTULA        (59 | (0 << 8))
+#define MAP_MINTAKA_CITY        (60 | (0 << 8))
 
 // gMapGroup_IndoorLittleroot
 #define MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F    (0 | (1 << 8))
@@ -75,6 +76,10 @@
 #define MAP_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB (4 | (1 << 8))
 #define MAP_ALASIA_HOUSE3                        (5 | (1 << 8))
 #define MAP_ROUTE101_LAB                         (6 | (1 << 8))
+#define MAP_PORRIMA_HOUSE                        (7 | (1 << 8))
+#define MAP_PORRIMA_HOUSE2                       (8 | (1 << 8))
+#define MAP_PORRIMA_HOUSE3                       (9 | (1 << 8))
+#define MAP_PORRIMA_HOUSE4                       (10 | (1 << 8))
 
 // gMapGroup_IndoorOldale
 #define MAP_OLDALE_TOWN_HOUSE1            (0 | (2 << 8))
@@ -90,6 +95,9 @@
 #define MAP_DEWFORD_TOWN_GYM               (3 | (3 << 8))
 #define MAP_DEWFORD_TOWN_HALL              (4 | (3 << 8))
 #define MAP_DEWFORD_TOWN_HOUSE2            (5 | (3 << 8))
+#define MAP_TIAKI_HOUSE                    (6 | (3 << 8))
+#define MAP_TIAKI_HOUSE2                   (7 | (3 << 8))
+#define MAP_TIAKI_HOUSE3                   (8 | (3 << 8))
 
 // gMapGroup_IndoorLavaridge
 #define MAP_LAVARIDGE_TOWN_HERB_SHOP         (0 | (4 << 8))
@@ -99,6 +107,10 @@
 #define MAP_LAVARIDGE_TOWN_MART              (4 | (4 << 8))
 #define MAP_LAVARIDGE_TOWN_POKEMON_CENTER_1F (5 | (4 << 8))
 #define MAP_LAVARIDGE_TOWN_POKEMON_CENTER_2F (6 | (4 << 8))
+#define MAP_ACAMAR_HOUSE                     (7 | (4 << 8))
+#define MAP_ACAMAR_HOUSE2                    (8 | (4 << 8))
+#define MAP_ACAMAR_HOUSE3                    (9 | (4 << 8))
+#define MAP_ACAMAR_HOUSE4                    (10 | (4 << 8))
 
 // gMapGroup_IndoorFallarbor
 #define MAP_FALLARBOR_TOWN_MART                    (0 | (5 << 8))
@@ -109,6 +121,11 @@
 #define MAP_FALLARBOR_TOWN_POKEMON_CENTER_2F       (5 | (5 << 8))
 #define MAP_FALLARBOR_TOWN_COZMOS_HOUSE            (6 | (5 << 8))
 #define MAP_FALLARBOR_TOWN_MOVE_RELEARNERS_HOUSE   (7 | (5 << 8))
+#define MAP_WURREN_HOUSE                           (8 | (5 << 8))
+#define MAP_WURREN_HOUSE2                          (9 | (5 << 8))
+#define MAP_WURREN_HOUSE3                          (10 | (5 << 8))
+#define MAP_WURREN_HOUSE4                          (11 | (5 << 8))
+#define MAP_WURREN_HOUSE5                          (12 | (5 << 8))
 
 // gMapGroup_IndoorVerdanturf
 #define MAP_VERDANTURF_TOWN_BATTLE_TENT_LOBBY       (0 | (6 << 8))
@@ -138,6 +155,11 @@
 #define MAP_PETALBURG_CITY_POKEMON_CENTER_1F (4 | (8 << 8))
 #define MAP_PETALBURG_CITY_POKEMON_CENTER_2F (5 | (8 << 8))
 #define MAP_PETALBURG_CITY_MART              (6 | (8 << 8))
+#define MAP_SCHEDAR_HOUSE                    (7 | (8 << 8))
+#define MAP_SCHEDAR_HOUSE2                   (8 | (8 << 8))
+#define MAP_SCHEDAR_HOUSE3                   (9 | (8 << 8))
+#define MAP_SCHEDAR_HOUSE4                   (10 | (8 << 8))
+#define MAP_SCHEDAR_CLUB                     (11 | (8 << 8))
 
 // gMapGroup_IndoorSlateport
 #define MAP_SLATEPORT_CITY_STERNS_SHIPYARD_1F      (0 | (9 << 8))
@@ -171,6 +193,7 @@
 #define MAP_INQULL_GARDEN                   (8 | (10 << 8))
 #define MAP_INQUILL_HOUSE2                  (9 | (10 << 8))
 #define MAP_INQUILL_HOUSE3                  (10 | (10 << 8))
+#define MAP_INQUILL_HOUSE4                  (11 | (10 << 8))
 
 // gMapGroup_IndoorRustboro
 #define MAP_RUSTBORO_CITY_DEVON_CORP_1F     (0 | (11 << 8))
@@ -198,6 +221,13 @@
 #define MAP_CASTULA_APT4                    (22 | (11 << 8))
 #define MAP_CASTULA_HOUSE3                  (23 | (11 << 8))
 #define MAP_CASTULA_UNI                     (24 | (11 << 8))
+#define MAP_CASTULA_OFFICE                  (25 | (11 << 8))
+#define MAP_CASTULA_OFFICE_F2               (26 | (11 << 8))
+#define MAP_CASTULA_OFFICE3                 (27 | (11 << 8))
+#define MAP_CASTULA_HOUSE4                  (28 | (11 << 8))
+#define MAP_UNI_LAB                         (29 | (11 << 8))
+#define MAP_UNI_HALL                        (30 | (11 << 8))
+#define MAP_UNI_OFFICE                      (31 | (11 << 8))
 
 // gMapGroup_IndoorFortree
 #define MAP_FORTREE_CITY_HOUSE1            (0 | (12 << 8))

@@ -1,0 +1,2 @@
+CastulaOfficeF2_MapScripts::
+	.byte 0

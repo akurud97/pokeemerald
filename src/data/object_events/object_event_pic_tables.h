@@ -1428,6 +1428,67 @@ const struct SpriteFrameImage gObjectEventPicTable_Worker[] = {
     overworld_frame(gObjectEventPic_Worker, 2, 4, 8),
 };
 
+const struct SpriteFrameImage gObjectEventPicTable_Sage[] = {
+    overworld_frame(gObjectEventPic_Sage, 2, 4, 0),
+    overworld_frame(gObjectEventPic_Sage, 2, 4, 1),
+    overworld_frame(gObjectEventPic_Sage, 2, 4, 2),
+    overworld_frame(gObjectEventPic_Sage, 2, 4, 3),
+    overworld_frame(gObjectEventPic_Sage, 2, 4, 4),
+    overworld_frame(gObjectEventPic_Sage, 2, 4, 5),
+    overworld_frame(gObjectEventPic_Sage, 2, 4, 6),
+    overworld_frame(gObjectEventPic_Sage, 2, 4, 7),
+    overworld_frame(gObjectEventPic_Sage, 2, 4, 8),
+};
+
+const struct SpriteFrameImage gObjectEventPicTable_Roughneck[] = {
+    overworld_frame(gObjectEventPic_Roughneck, 2, 4, 0),
+    overworld_frame(gObjectEventPic_Roughneck, 2, 4, 1),
+    overworld_frame(gObjectEventPic_Roughneck, 2, 4, 2),
+    overworld_frame(gObjectEventPic_Roughneck, 2, 4, 3),
+    overworld_frame(gObjectEventPic_Roughneck, 2, 4, 4),
+    overworld_frame(gObjectEventPic_Roughneck, 2, 4, 5),
+    overworld_frame(gObjectEventPic_Roughneck, 2, 4, 6),
+    overworld_frame(gObjectEventPic_Roughneck, 2, 4, 7),
+    overworld_frame(gObjectEventPic_Roughneck, 2, 4, 8),
+};
+
+const struct SpriteFrameImage gObjectEventPicTable_Skier_m[] = {
+    overworld_frame(gObjectEventPic_Skier_m, 2, 4, 0),
+    overworld_frame(gObjectEventPic_Skier_m, 2, 4, 1),
+    overworld_frame(gObjectEventPic_Skier_m, 2, 4, 2),
+    overworld_frame(gObjectEventPic_Skier_m, 2, 4, 3),
+    overworld_frame(gObjectEventPic_Skier_m, 2, 4, 4),
+    overworld_frame(gObjectEventPic_Skier_m, 2, 4, 5),
+    overworld_frame(gObjectEventPic_Skier_m, 2, 4, 6),
+    overworld_frame(gObjectEventPic_Skier_m, 2, 4, 7),
+    overworld_frame(gObjectEventPic_Skier_m, 2, 4, 8),
+};
+
+const struct SpriteFrameImage gObjectEventPicTable_Skier_f[] = {
+    overworld_frame(gObjectEventPic_Skier_f, 2, 4, 0),
+    overworld_frame(gObjectEventPic_Skier_f, 2, 4, 1),
+    overworld_frame(gObjectEventPic_Skier_f, 2, 4, 2),
+    overworld_frame(gObjectEventPic_Skier_f, 2, 4, 3),
+    overworld_frame(gObjectEventPic_Skier_f, 2, 4, 4),
+    overworld_frame(gObjectEventPic_Skier_f, 2, 4, 5),
+    overworld_frame(gObjectEventPic_Skier_f, 2, 4, 6),
+    overworld_frame(gObjectEventPic_Skier_f, 2, 4, 7),
+    overworld_frame(gObjectEventPic_Skier_f, 2, 4, 8),
+};
+
+const struct SpriteFrameImage gObjectEventPicTable_Guard[] = {
+    overworld_frame(gObjectEventPic_Guard, 2, 4, 0),
+    overworld_frame(gObjectEventPic_Guard, 2, 4, 1),
+    overworld_frame(gObjectEventPic_Guard, 2, 4, 2),
+    overworld_frame(gObjectEventPic_Guard, 2, 4, 3),
+    overworld_frame(gObjectEventPic_Guard, 2, 4, 4),
+    overworld_frame(gObjectEventPic_Guard, 2, 4, 5),
+    overworld_frame(gObjectEventPic_Guard, 2, 4, 6),
+    overworld_frame(gObjectEventPic_Guard, 2, 4, 7),
+    overworld_frame(gObjectEventPic_Guard, 2, 4, 8),
+};
+
+
 
 static const struct SpriteFrameImage sPicTable_RubySapphireBrendan[] = {
     overworld_ascending_frames(gObjectEventPic_RubySapphireBrendanNormal, 2, 4),

@@ -196,11 +196,8 @@ TrainerHill_Entrance_EventScript_PlayerExitChallenge::
 	setvar VAR_TRAINER_HILL_IS_ACTIVE, 0
 # 99 "data/maps/TrainerHill_Entrance/scripts.pory"
 	special HealPlayerParty
-<<<<<<< HEAD
 # 100 "data/maps/TrainerHill_Entrance/scripts.pory"
-=======
 	callnative UpdateFollowingPokemon
->>>>>>> a2685d0d087acd9e90fd9195b4bc398627dd4371
 	releaseall
 # 101 "data/maps/TrainerHill_Entrance/scripts.pory"
 TrainerHill_Entrance_EventScript_EndExitChallenge::
@@ -330,11 +327,8 @@ TrainerHill_Entrance_EventScript_ChooseChallenge::
 	setvar VAR_TEMP_5, 0
 # 164 "data/maps/TrainerHill_Entrance/scripts.pory"
 	special HealPlayerParty
-<<<<<<< HEAD
 # 165 "data/maps/TrainerHill_Entrance/scripts.pory"
-=======
 	callnative UpdateFollowingPokemon
->>>>>>> a2685d0d087acd9e90fd9195b4bc398627dd4371
 	msgbox TrainerHill_Entrance_Text_TimeProgessGetSetGo, MSGBOX_DEFAULT
 # 166 "data/maps/TrainerHill_Entrance/scripts.pory"
 	trainerhill_start

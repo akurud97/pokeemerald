@@ -1,0 +1,2 @@
+WurrenHouse_MapScripts::
+	.byte 0

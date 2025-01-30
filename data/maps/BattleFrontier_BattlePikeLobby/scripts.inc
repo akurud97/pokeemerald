@@ -122,11 +122,8 @@ BattleFrontier_BattlePikeLobby_EventScript_GiveBattlePoints::
 	special LoadPlayerParty
 # 62 "data/maps/BattleFrontier_BattlePikeLobby/scripts.pory"
 	special HealPlayerParty
-<<<<<<< HEAD
 # 63 "data/maps/BattleFrontier_BattlePikeLobby/scripts.pory"
-=======
 	callnative UpdateFollowingPokemon
->>>>>>> a2685d0d087acd9e90fd9195b4bc398627dd4371
 	pike_resethelditems
 # 64 "data/maps/BattleFrontier_BattlePikeLobby/scripts.pory"
 	message BattleFrontier_BattlePikeLobby_Text_ShallRecordResults
@@ -168,11 +165,8 @@ BattleFrontier_BattlePikeLobby_EventScript_LostChallenge::
 	special LoadPlayerParty
 # 83 "data/maps/BattleFrontier_BattlePikeLobby/scripts.pory"
 	special HealPlayerParty
-<<<<<<< HEAD
 # 84 "data/maps/BattleFrontier_BattlePikeLobby/scripts.pory"
-=======
 	callnative UpdateFollowingPokemon
->>>>>>> a2685d0d087acd9e90fd9195b4bc398627dd4371
 	pike_resethelditems
 # 85 "data/maps/BattleFrontier_BattlePikeLobby/scripts.pory"
 	pike_save 0
@@ -250,11 +244,8 @@ BattleFrontier_BattlePikeLobby_EventScript_TryEnterChallenge::
 	msgbox BattleFrontier_BattlePikeLobby_Text_PleaseChooseThreeMons, MSGBOX_DEFAULT
 # 122 "data/maps/BattleFrontier_BattlePikeLobby/scripts.pory"
 	fadescreen FADE_TO_BLACK
-<<<<<<< HEAD
 # 123 "data/maps/BattleFrontier_BattlePikeLobby/scripts.pory"
-=======
 	callnative RemoveFollowingPokemon
->>>>>>> a2685d0d087acd9e90fd9195b4bc398627dd4371
 	call BattleFrontier_EventScript_GetLvlMode
 # 124 "data/maps/BattleFrontier_BattlePikeLobby/scripts.pory"
 	copyvar VAR_0x8004, VAR_RESULT
@@ -382,11 +373,8 @@ BattleFrontier_BattlePikeLobby_EventScript_CancelChallengeSaveFailed::
 BattleFrontier_BattlePikeLobby_EventScript_LoadPartyAndCancelChallenge::
 # 186 "data/maps/BattleFrontier_BattlePikeLobby/scripts.pory"
 	special LoadPlayerParty
-<<<<<<< HEAD
 # 187 "data/maps/BattleFrontier_BattlePikeLobby/scripts.pory"
-=======
 	callnative UpdateFollowingPokemon
->>>>>>> a2685d0d087acd9e90fd9195b4bc398627dd4371
 BattleFrontier_BattlePikeLobby_EventScript_CancelChallenge::
 # 188 "data/maps/BattleFrontier_BattlePikeLobby/scripts.pory"
 	msgbox BattleFrontier_BattlePikeLobby_Text_LookForwardToSeeingYou, MSGBOX_DEFAULT

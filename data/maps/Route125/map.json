@@ -14,14 +14,14 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "map": "MAP_ROUTE124",
-      "offset": 0,
-      "direction": "left"
-    },
-    {
       "map": "MAP_UNDERWATER_ROUTE125",
       "offset": 0,
       "direction": "dive"
+    },
+    {
+      "map": "MAP_VERDANTURF_TOWN",
+      "offset": 13,
+      "direction": "left"
     }
   ],
   "object_events": [

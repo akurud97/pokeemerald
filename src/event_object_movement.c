@@ -461,7 +461,6 @@ const u8 gInitialMovementTypeFacingDirections[] = {
     [MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_RIGHT] = DIR_EAST,
 };
 
-<<<<<<< HEAD
 #define OBJ_EVENT_PAL_TAG_BRENDAN                 0x1100
 #define OBJ_EVENT_PAL_TAG_BRENDAN_REFLECTION      0x1101
 #define OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION       0x1102
@@ -505,11 +504,14 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_RANGER_M                    0x1128
 #define OBJ_EVENT_PAL_RANGER_F                    0x1129
 #define OBJ_EVENT_PAL_WORKER                      0x1130
+#define OBJ_EVENT_PAL_SAGE                        0x1131
+#define OBJ_EVENT_PAL_ROUGHNECK                   0x1132
+#define OBJ_EVENT_PAL_SKIER_M                     0x1133
+#define OBJ_EVENT_PAL_SKIER_F                     0x1134
+#define OBJ_EVENT_PAL_GUARD                       0x1135
 
 #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
 
-=======
->>>>>>> a2685d0d087acd9e90fd9195b4bc398627dd4371
 #include "data/object_events/object_event_graphics_info_pointers.h"
 #include "data/field_effects/field_effect_object_template_pointers.h"
 #include "data/object_events/object_event_pic_tables.h"
@@ -555,7 +557,6 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Lugia,                 OBJ_EVENT_PAL_TAG_LUGIA},
     {gObjectEventPal_RubySapphireBrendan,   OBJ_EVENT_PAL_TAG_RS_BRENDAN},
     {gObjectEventPal_RubySapphireMay,       OBJ_EVENT_PAL_TAG_RS_MAY},
-<<<<<<< HEAD
     {gObjectEventPalette_Biker,             OBJ_EVENT_PAL_BIKER},
     {gObjectEventPalette_Cowboy,            OBJ_EVENT_PAL_COWBOY},
     {gObjectEventPalette_Cowgirl,           OBJ_EVENT_PAL_COWGIRL},
@@ -563,9 +564,13 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPalette_Ranger_M,          OBJ_EVENT_PAL_RANGER_M},
     {gObjectEventPalette_Ranger_F,          OBJ_EVENT_PAL_RANGER_F},
     {gObjectEventPalette_Worker,            OBJ_EVENT_PAL_WORKER},
+    {gObjectEventPalette_Sage,              OBJ_EVENT_PAL_SAGE},
+    {gObjectEventPalette_Roughneck,         OBJ_EVENT_PAL_ROUGHNECK},
+    {gObjectEventPalette_Skier_m,           OBJ_EVENT_PAL_SKIER_M},
+    {gObjectEventPalette_Skier_f,           OBJ_EVENT_PAL_SKIER_F},
+    {gObjectEventPalette_Guard,             OBJ_EVENT_PAL_GUARD},
     
 
-=======
 #if OW_FOLLOWERS_POKEBALLS
     {gObjectEventPal_MasterBall,            OBJ_EVENT_PAL_TAG_BALL_MASTER},
     {gObjectEventPal_UltraBall,             OBJ_EVENT_PAL_TAG_BALL_ULTRA},
@@ -600,7 +605,6 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
 #endif //OW_FOLLOWERS_POKEBALLS
     {gObjectEventPal_Substitute,            OBJ_EVENT_PAL_TAG_SUBSTITUTE},
     {gObjectEventPaletteEmotes,             OBJ_EVENT_PAL_TAG_EMOTES},
->>>>>>> a2685d0d087acd9e90fd9195b4bc398627dd4371
 #ifdef BUGFIX
     {NULL,                                  OBJ_EVENT_PAL_TAG_NONE},
 #else

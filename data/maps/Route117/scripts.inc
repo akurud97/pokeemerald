@@ -2,12 +2,9 @@
 
 # 2 "data/maps/Route117/scripts.pory"
 .set LOCALID_DAYCARE_MAN, 3
-<<<<<<< HEAD
 # 3 "data/maps/Route117/scripts.pory"
-=======
 .set LOCALID_DAYCARE_MON_0, 25
 .set LOCALID_DAYCARE_MON_1, 26
->>>>>>> a2685d0d087acd9e90fd9195b4bc398627dd4371
 
 # 4 "data/maps/Route117/scripts.pory"
 Route117_MapScripts::
@@ -21,9 +18,7 @@ Route117_MapScripts::
 Route117_OnTransition:
 # 9 "data/maps/Route117/scripts.pory"
 	call Route117_EventScript_TryMoveDayCareMan
-<<<<<<< HEAD
 # 10 "data/maps/Route117/scripts.pory"
-=======
 	@ set flags for OW daycare mons
 	setflag FLAG_TEMP_1
 	setflag FLAG_TEMP_2
@@ -31,13 +26,11 @@ Route117_OnTransition:
 	switch VAR_RESULT
 	case 2, Route117_EventScript_ShowDaycareMon1
 	case 1, Route117_EventScript_ShowDaycareMon0
->>>>>>> a2685d0d087acd9e90fd9195b4bc398627dd4371
 	end
 # 11 "data/maps/Route117/scripts.pory"
 
-<<<<<<< HEAD
 # 12 "data/maps/Route117/scripts.pory"
-=======
+
 Route117_EventScript_ShowDaycareMon1:
 	@ set pokemon movement type based on compatibility
 	special SetDaycareCompatibilityString
@@ -65,7 +58,7 @@ Route117_EventScript_DaycareMonMaxCompatibility: @ facing; walk in place
 	setobjectmovementtype LOCALID_DAYCARE_MON_1, MOVEMENT_TYPE_WALK_IN_PLACE_LEFT
 	return
 
->>>>>>> a2685d0d087acd9e90fd9195b4bc398627dd4371
+
 Route117_EventScript_TryMoveDayCareMan::
 # 13 "data/maps/Route117/scripts.pory"
 	goto_if_unset FLAG_PENDING_DAYCARE_EGG, Route117_EventScript_StopMoveDayCareMan

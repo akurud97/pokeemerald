@@ -67,7 +67,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_BELLOSSOM",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(BELLOSSOM)",
       "x": 3,
       "y": 5,
       "elevation": 0,
@@ -80,7 +80,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_VILEPLUME",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(VILEPLUME)",
       "x": 1,
       "y": 3,
       "elevation": 0,
@@ -95,14 +95,14 @@
   ],
   "warp_events": [
     {
-      "x": 3,
+      "x": 8,
       "y": 7,
       "elevation": 0,
       "dest_map": "MAP_MOSSDEEP_CITY",
       "dest_warp_id": "7"
     },
     {
-      "x": 4,
+      "x": 9,
       "y": 7,
       "elevation": 0,
       "dest_map": "MAP_MOSSDEEP_CITY",

@@ -252,6 +252,11 @@ const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Ruin;
 const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Ranger_M;
 const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Ranger_F;
 const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Worker;
+const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sage;
+const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Roughneck;
+const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Skier_m;
+const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Skier_f;
+const struct        ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Guard;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedMauvilleOldMan1;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedMauvilleOldMan2;
 
@@ -495,7 +500,6 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_LINK_RS_MAY] =              &gObjectEventGraphicsInfo_RubySapphireMay,
     [OBJ_EVENT_GFX_LUGIA] =                    &gObjectEventGraphicsInfo_Lugia,
     [OBJ_EVENT_GFX_HOOH] =                     &gObjectEventGraphicsInfo_HoOh,
-<<<<<<< HEAD
     [OBJ_EVENT_GFX_BIKER] =                    &gObjectEventGraphicsInfo_Biker,
     [OBJ_EVENT_GFX_COWBOY] =                   &gObjectEventGraphicsInfo_Cowboy,
     [OBJ_EVENT_GFX_COWGIRL] =                  &gObjectEventGraphicsInfo_Cowgirl,
@@ -503,10 +507,13 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_RANGER_M] =                 &gObjectEventGraphicsInfo_Ranger_M,
     [OBJ_EVENT_GFX_RANGER_F] =                 &gObjectEventGraphicsInfo_Ranger_F,
     [OBJ_EVENT_GFX_WORKER] =                   &gObjectEventGraphicsInfo_Worker,
-=======
+    [OBJ_EVENT_GFX_SAGE] =                     &gObjectEventGraphicsInfo_Sage,
+    [OBJ_EVENT_GFX_ROUGHNECK] =                &gObjectEventGraphicsInfo_Roughneck,
+    [OBJ_EVENT_GFX_SKIER_M] =                  &gObjectEventGraphicsInfo_Skier_m,
+    [OBJ_EVENT_GFX_SKIER_F] =                  &gObjectEventGraphicsInfo_Skier_f,
+    [OBJ_EVENT_GFX_GUARD] =                    &gObjectEventGraphicsInfo_Guard,
     [OBJ_EVENT_GFX_POKE_BALL] =                &gObjectEventGraphicsInfo_PokeBall,
     [OBJ_EVENT_GFX_OW_MON] =                   &gObjectEventGraphicsInfo_Follower,
->>>>>>> a2685d0d087acd9e90fd9195b4bc398627dd4371
 };
 
 const struct ObjectEventGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {

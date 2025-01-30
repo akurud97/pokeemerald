@@ -95,7 +95,8 @@
     "Underwater_Route125",
     "LiesmaCity",
     "NewMap1",
-    "WestCastula"
+    "WestCastula",
+    "MintakaCity"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",
@@ -104,7 +105,11 @@
     "LittlerootTown_MaysHouse_2F",
     "LittlerootTown_ProfessorBirchsLab",
     "AlasiaHouse3",
-    "Route101_Lab"
+    "Route101_Lab",
+    "PorrimaHouse",
+    "PorrimaHouse2",
+    "PorrimaHouse3",
+    "PorrimaHouse4"
   ],
   "gMapGroup_IndoorOldale": [
     "OldaleTown_House1",
@@ -119,7 +124,10 @@
     "DewfordTown_PokemonCenter_2F",
     "DewfordTown_Gym",
     "DewfordTown_Hall",
-    "DewfordTown_House2"
+    "DewfordTown_House2",
+    "TiakiHouse",
+    "TiakiHouse2",
+    "TiakiHouse3"
   ],
   "gMapGroup_IndoorLavaridge": [
     "LavaridgeTown_HerbShop",
@@ -128,7 +136,11 @@
     "LavaridgeTown_House",
     "LavaridgeTown_Mart",
     "LavaridgeTown_PokemonCenter_1F",
-    "LavaridgeTown_PokemonCenter_2F"
+    "LavaridgeTown_PokemonCenter_2F",
+    "AcamarHouse",
+    "AcamarHouse2",
+    "AcamarHouse3",
+    "AcamarHouse4"
   ],
   "gMapGroup_IndoorFallarbor": [
     "FallarborTown_Mart",
@@ -138,7 +150,12 @@
     "FallarborTown_PokemonCenter_1F",
     "FallarborTown_PokemonCenter_2F",
     "FallarborTown_CozmosHouse",
-    "FallarborTown_MoveRelearnersHouse"
+    "FallarborTown_MoveRelearnersHouse",
+    "WurrenHouse",
+    "WurrenHouse2",
+    "WurrenHouse3",
+    "WurrenHouse4",
+    "WurrenHouse5"
   ],
   "gMapGroup_IndoorVerdanturf": [
     "VerdanturfTown_BattleTentLobby",
@@ -167,7 +184,12 @@
     "PetalburgCity_House2",
     "PetalburgCity_PokemonCenter_1F",
     "PetalburgCity_PokemonCenter_2F",
-    "PetalburgCity_Mart"
+    "PetalburgCity_Mart",
+    "SchedarHouse",
+    "SchedarHouse2",
+    "SchedarHouse3",
+    "SchedarHouse4",
+    "SchedarClub"
   ],
   "gMapGroup_IndoorSlateport": [
     "SlateportCity_SternsShipyard_1F",
@@ -200,7 +222,8 @@
     "MauvilleCity_Mart",
     "InqullGarden",
     "InquillHouse2",
-    "InquillHouse3"
+    "InquillHouse3",
+    "InquillHouse4"
   ],
   "gMapGroup_IndoorRustboro": [
     "RustboroCity_DevonCorp_1F",
@@ -227,7 +250,14 @@
     "CastulaApt3",
     "CastulaApt4",
     "CastulaHouse3",
-    "CastulaUni"
+    "CastulaUni",
+    "CastulaOffice",
+    "CastulaOfficeF2",
+    "CastulaOffice3",
+    "CastulaHouse4",
+    "UniLab",
+    "UniHall",
+    "UniOffice"
   ],
   "gMapGroup_IndoorFortree": [
     "FortreeCity_House1",
