@@ -1,0 +1,39 @@
+{
+  "id": "MAP_ROUTE14",
+  "name": "Route14",
+  "layout": "LAYOUT_ROUTE14",
+  "music": "MUS_DUMMY",
+  "region_map_section": "MAPSEC_ABANDONED_SHIP",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_NONE",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": false,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_TIAKI_TOWN",
+      "offset": 23,
+      "direction": "down"
+    },
+    {
+      "map": "MAP_LIESMA_CITY_SOUTH",
+      "offset": 6,
+      "direction": "up"
+    }
+  ],
+  "object_events": [
+
+  ],
+  "warp_events": [
+
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

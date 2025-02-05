@@ -1182,3 +1182,129 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/SchedarClub/scripts.inc"
 
 	.include "data/maps/MintakaCity/scripts.inc"
+
+	.include "data/maps/Alasiaville/scripts.inc"
+
+	.include "data/maps/NewMap2/scripts.inc"
+
+	.include "data/maps/InquillTown/scripts.inc"
+
+	.include "data/maps/Mintaka_City/scripts.inc"
+
+	.include "data/maps/UubaCity/scripts.inc"
+
+	.include "data/maps/CastulaCity/scripts.inc"
+
+	.include "data/maps/AcamarJunction/scripts.inc"
+
+	.include "data/maps/WurrenTown/scripts.inc"
+
+	.include "data/maps/TiakiTown/scripts.inc"
+
+	.include "data/maps/LiesmaCitySouth/scripts.inc"
+
+	.include "data/maps/LiesmaCityNorth/scripts.inc"
+
+	.include "data/maps/SchederTown/scripts.inc"
+
+	.include "data/maps/SansunaCity/scripts.inc"
+
+	.include "data/maps/Route1/scripts.inc"
+
+	.include "data/maps/Route2/scripts.inc"
+
+	.include "data/maps/Route3/scripts.inc"
+
+	.include "data/maps/Route4/scripts.inc"
+
+	.include "data/maps/Route5/scripts.inc"
+
+	.include "data/maps/Route6/scripts.inc"
+
+	.include "data/maps/Route7/scripts.inc"
+
+	.include "data/maps/Route8/scripts.inc"
+
+	.include "data/maps/Route9/scripts.inc"
+
+	.include "data/maps/Route10/scripts.inc"
+
+	.include "data/maps/Route11/scripts.inc"
+
+	.include "data/maps/Route12/scripts.inc"
+
+	.include "data/maps/Route13/scripts.inc"
+
+	.include "data/maps/Route14/scripts.inc"
+
+	.include "data/maps/Route15/scripts.inc"
+
+	.include "data/maps/Route16/scripts.inc"
+
+	.include "data/maps/NewMap3/scripts.inc"
+
+	.include "data/maps/Route17/scripts.inc"
+
+	.include "data/maps/Route18/scripts.inc"
+
+	.include "data/maps/Route19/scripts.inc"
+
+	.include "data/maps/Route20/scripts.inc"
+
+	.include "data/maps/Route21/scripts.inc"
+
+	.include "data/maps/Route22/scripts.inc"
+
+	.include "data/maps/Route23/scripts.inc"
+
+	.include "data/maps/UubaMarsh/scripts.inc"
+
+	.include "data/maps/CastulaForest/scripts.inc"
+
+	.include "data/maps/RustboroPark/scripts.inc"
+
+	.include "data/maps/CraterCanyon/scripts.inc"
+
+	.include "data/maps/CastulaPark/scripts.inc"
+
+	.include "data/maps/InquillTunnelF1/scripts.inc"
+
+	.include "data/maps/InquillTunnelF2/scripts.inc"
+
+	.include "data/maps/InquillTunnelF3/scripts.inc"
+
+	.include "data/maps/InquillTunnelF4/scripts.inc"
+
+	.include "data/maps/BeachsideCaveF1/scripts.inc"
+
+	.include "data/maps/BeachsideCaveF2/scripts.inc"
+
+	.include "data/maps/PowerPlantF1/scripts.inc"
+
+	.include "data/maps/PowerPlantF2/scripts.inc"
+
+	.include "data/maps/PowerPlantF3/scripts.inc"
+
+	.include "data/maps/AcamarMinesF1/scripts.inc"
+
+	.include "data/maps/AcamarMinesF2/scripts.inc"
+
+	.include "data/maps/AcamarMinesF3/scripts.inc"
+
+	.include "data/maps/CraterCavesF1/scripts.inc"
+
+	.include "data/maps/CraterCavesF/scripts.inc"
+
+	.include "data/maps/CraterCavesF2/scripts.inc"
+
+	.include "data/maps/LiesmaCavernsF1/scripts.inc"
+
+	.include "data/maps/LiesmaCavernsF2/scripts.inc"
+
+	.include "data/maps/LiesmaCavernsF3/scripts.inc"
+
+	.include "data/maps/LiesmaFallsOutdoorF1/scripts.inc"
+
+	.include "data/maps/LiesmaFallsOutdoorF2/scripts.inc"
+
+	.include "data/maps/PowerPlant/scripts.inc"

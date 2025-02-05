@@ -1,0 +1,2 @@
+UubaMarsh_MapScripts::
+	.byte 0

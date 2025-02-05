@@ -1,0 +1,2 @@
+PowerPlantF2_MapScripts::
+	.byte 0

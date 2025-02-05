@@ -1,0 +1,2 @@
+SchederTown_MapScripts::
+	.byte 0

@@ -1,0 +1,2 @@
+LiesmaFallsOutdoorF2_MapScripts::
+	.byte 0
