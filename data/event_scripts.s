@@ -18,6 +18,7 @@
 #include "constants/berry.h"
 #include "constants/cable_club.h"
 #include "constants/coins.h"
+#include "constants/comparison_operators.h"
 #include "constants/contest.h"
 #include "constants/daycare.h"
 #include "constants/decorations.h"
@@ -52,6 +53,7 @@
 #include "constants/pokedex.h"
 #include "constants/pokemon.h"
 #include "constants/pokemon_size_record.h"
+#include "constants/random_mon_generation.h"
 #include "constants/rtc.h"
 #include "constants/roulette.h"
 #include "constants/script_menu.h"
@@ -1343,10 +1345,10 @@ Common_EventScript_PlayerHandedOverTheItem::
 	.include "data/scripts/elite_four.inc"
 	.include "data/scripts/movement.inc"
 	.include "data/scripts/check_furniture.inc"
+	.include "data/scripts/mart_clerk.inc"
 	.include "data/text/record_mix.inc"
 	.include "data/text/pc.inc"
 	.include "data/text/pkmn_center_nurse.inc"
-	.include "data/text/mart_clerk.inc"
 	.include "data/text/obtain_item.inc"
 
 @ The below and surf.inc could be split into some text/notices.inc
@@ -1732,6 +1734,7 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/scripts/dexnav.inc"
 	.include "data/scripts/battle_frontier.inc"
 	.include "data/scripts/apricorn_tree.inc"
+	.include "data/scripts/wild_encounter.inc"
 
 	.include "data/maps/AlasiaHouse3/scripts.inc"
 
