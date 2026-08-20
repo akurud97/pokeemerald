@@ -1652,7 +1652,7 @@ const u16 gTilesetPalettes_Snow[][16] =
     INCBIN_U16("data/tilesets/primary/snow/palettes/12.gbapal"),
 };
 
-const u32 gTilesetTiles_Snow[] = INCBIN_U32("data/tilesets/primary/snow/tiles.4bpp.lz");
+const u32 gTilesetTiles_Snow[] = INCBIN_U32("data/tilesets/primary/snow/tiles.4bpp.smol");
 
 const u16 gTilesetPalettes_swamp[][16] =
 {
@@ -1671,4 +1671,4 @@ const u16 gTilesetPalettes_swamp[][16] =
     INCBIN_U16("data/tilesets/secondary/swamp/palettes/12.gbapal"),
 };
 
-const u32 gTilesetTiles_swamp[] = INCBIN_U32("data/tilesets/secondary/swamp/tiles.4bpp.lz");
+const u32 gTilesetTiles_swamp[] = INCBIN_U32("data/tilesets/secondary/swamp/tiles.4bpp.fastSmol");
