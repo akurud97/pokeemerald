@@ -70,6 +70,26 @@ SINGLE_BATTLE_TEST("Red Card does not activate if holder faints")
     }
 }
 
+SINGLE_BATTLE_TEST("Red Card does not activate if attacker faints from recoil")
+{
+    GIVEN {
+        ASSUME(GetMoveRecoil(MOVE_FLARE_BLITZ) > 0);
+        PLAYER(SPECIES_WOBBUFFET) { HP(1); }
+        PLAYER(SPECIES_WYNAUT);
+        OPPONENT(SPECIES_WOBBUFFET) { Item(ITEM_RED_CARD); }
+    } WHEN {
+        TURN { MOVE(player, MOVE_FLARE_BLITZ); SEND_OUT(player, 1); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FLARE_BLITZ, player);
+        NONE_OF {
+            ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponent);
+            MESSAGE("The opposing Wobbuffet held up its Red Card against Wobbuffet!");
+        }
+    } THEN {
+        EXPECT_EQ(opponent->item, ITEM_RED_CARD);
+    }
+}
+
 SINGLE_BATTLE_TEST("Red Card does not activate if target is behind a Substitute")
 {
     GIVEN {
@@ -166,7 +186,7 @@ SINGLE_BATTLE_TEST("Red Card does not activate if knocked off")
 
 SINGLE_BATTLE_TEST("Red Card does not activate if stolen by a move")
 {
-    u32 item;
+    enum Item item;
     bool32 activate;
     PARAMETRIZE { item = ITEM_NONE; activate = FALSE; }
     PARAMETRIZE { item = ITEM_POTION; activate = TRUE; }
@@ -196,7 +216,7 @@ SINGLE_BATTLE_TEST("Red Card does not activate if stolen by a move")
 
 SINGLE_BATTLE_TEST("Red Card does not activate if stolen by Magician")
 {
-    u32 item;
+    enum Item item;
     bool32 activate;
     PARAMETRIZE { item = ITEM_NONE; activate = FALSE; }
     PARAMETRIZE { item = ITEM_POTION; activate = TRUE; }
@@ -385,7 +405,7 @@ SINGLE_BATTLE_TEST("Red Card activates and overrides U-turn")
 
 SINGLE_BATTLE_TEST("Red Card does not activate if attacker's Sheer Force applied")
 {
-    u32 move;
+    enum Move move;
     bool32 activate;
     PARAMETRIZE { move = MOVE_SCRATCH; activate = TRUE; }
     PARAMETRIZE { move = MOVE_STOMP; activate = FALSE; }
@@ -539,3 +559,19 @@ SINGLE_BATTLE_TEST("Red Card activates before Eject Pack")
     }
 }
 
+DOUBLE_BATTLE_TEST("Red Card will activate before Eject Button if holder is faster")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET) { Speed(20); }
+        PLAYER(SPECIES_WOBBUFFET) { Speed(10); }
+        PLAYER(SPECIES_WOBBUFFET) { Speed(5); }
+        OPPONENT(SPECIES_WOBBUFFET) { Speed(30); Item(ITEM_EJECT_BUTTON); }
+        OPPONENT(SPECIES_WYNAUT) { Speed(35); Item(ITEM_RED_CARD); }
+    } WHEN {
+        TURN { MOVE(playerLeft, MOVE_HYPER_VOICE); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_HYPER_VOICE, playerLeft);
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponentRight);
+        NOT ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponentLeft);
+    }
+}

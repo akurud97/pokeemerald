@@ -24,7 +24,7 @@ SINGLE_BATTLE_TEST("Corrosion can poison or badly poison a Pokemon regardless of
 
 SINGLE_BATTLE_TEST("Corrosion can poison or badly poison a Steel type with a status poison effect")
 {
-    u16 move;
+    enum Move move;
 
     PARAMETRIZE { move = MOVE_POISON_POWDER; }
     PARAMETRIZE { move = MOVE_TOXIC; }
@@ -82,7 +82,7 @@ SINGLE_BATTLE_TEST("Corrosion badly poisons its Poison/Steel-type user who holds
 
 SINGLE_BATTLE_TEST("Corrosion can poison a target with Synchronize and Synchronize will not poison Poison- or Steel-type Pokémon")
 {
-    u16 move;
+    enum Move move;
     PARAMETRIZE { move = MOVE_TOXIC; }
     PARAMETRIZE { move = MOVE_POISON_POWDER; }
     GIVEN {
@@ -111,7 +111,7 @@ SINGLE_BATTLE_TEST("Corrosion can poison a target with Synchronize and Synchroni
 
 SINGLE_BATTLE_TEST("Corrosion cannot bypass moves that prevent poisoning such as Safeguard")
 {
-    u16 move;
+    enum Move move;
     PARAMETRIZE { move = MOVE_TOXIC; }
     PARAMETRIZE { move = MOVE_POISON_POWDER; }
     GIVEN {
@@ -135,7 +135,7 @@ SINGLE_BATTLE_TEST("Corrosion cannot bypass moves that prevent poisoning such as
 
 SINGLE_BATTLE_TEST("Corrosion cannot bypass abilities that prevent poisoning such as Immunity")
 {
-    u16 move;
+    enum Move move;
     PARAMETRIZE { move = MOVE_TOXIC; }
     PARAMETRIZE { move = MOVE_POISON_POWDER; }
     GIVEN {
@@ -159,7 +159,7 @@ SINGLE_BATTLE_TEST("Corrosion cannot bypass abilities that prevent poisoning suc
 
 SINGLE_BATTLE_TEST("Corrosion allows the Pokémon with the ability to poison a Steel or Poison-type opponent by using Magic Coat")
 {
-    u16 move;
+    enum Move move;
     PARAMETRIZE { move = MOVE_TOXIC; }
     PARAMETRIZE { move = MOVE_POISON_POWDER; }
     GIVEN {
@@ -185,7 +185,7 @@ SINGLE_BATTLE_TEST("Corrosion allows the Pokémon with the ability to poison a S
 
 SINGLE_BATTLE_TEST("Corrosion's effect is lost if the move used by the Pokémon with the ability is reflected by Magic Coat")
 {
-    u16 move;
+    enum Move move;
     PARAMETRIZE { move = MOVE_TOXIC; }
     PARAMETRIZE { move = MOVE_POISON_POWDER; }
     GIVEN {
@@ -316,6 +316,24 @@ SINGLE_BATTLE_TEST("Corrosion does not affect Poison Spikes")
     } WHEN {
         TURN { MOVE(player, MOVE_TOXIC_SPIKES); }
         TURN { SWITCH(opponent, 1); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_TOXIC_SPIKES, player);
+    } THEN {
+        EXPECT_EQ(opponent->status1, STATUS1_NONE);
+    }
+}
+
+SINGLE_BATTLE_TEST("Corrosion does not make Toxic Spikes poison a Corrosion user Terastallized into Steel")
+{
+    GIVEN {
+        ASSUME(GetMoveEffect(MOVE_TOXIC_SPIKES) == EFFECT_TOXIC_SPIKES);
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_SALANDIT) { Ability(ABILITY_CORROSION); TeraType(TYPE_STEEL); }
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(player, MOVE_TOXIC_SPIKES); MOVE(opponent, MOVE_CELEBRATE, gimmick: GIMMICK_TERA); }
+        TURN { SWITCH(opponent, 1); }
+        TURN { SWITCH(opponent, 0); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TOXIC_SPIKES, player);
     } THEN {
