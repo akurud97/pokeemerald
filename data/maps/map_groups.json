@@ -2,6 +2,12 @@
   "group_order": [
     "gMapGroup_HyadesOutdoor",
     "gMapGroup_HyadesDungeon",
+    "IndoorAlasia",
+    "gMapGroup_IndoorInquill",
+    "gMapGroup_IndoorMintaka",
+    "gMapGroup_IndoorUuba",
+    "gMapGroup_IndoorCastula",
+    "gMapGroup_UnusedIndoor",
     "gMapGroup_TownsAndRoutes",
     "gMapGroup_IndoorLittleroot",
     "gMapGroup_IndoorOldale",
@@ -11,8 +17,6 @@
     "gMapGroup_IndoorVerdanturf",
     "gMapGroup_IndoorPacifidlog",
     "gMapGroup_IndoorPetalburg",
-    "gMapGroup_IndoorSlateport",
-    "gMapGroup_IndoorMauville",
     "gMapGroup_IndoorRustboro",
     "gMapGroup_IndoorFortree",
     "gMapGroup_IndoorLilycove",
@@ -76,12 +80,13 @@
     "gMapGroup_IndoorFiveIslandRoute_Frlg",
     "gMapGroup_IndoorTwoIslandRoute_Frlg",
     "gMapGroup_IndoorSixIslandRoute_Frlg",
-    "gMapGroup_IndoorSevenIslandRoute_Frlg"
+    "gMapGroup_IndoorSevenIslandRoute_Frlg",
+    "gMapGroup_testingstage"
   ],
   "gMapGroup_HyadesOutdoor": [
     "Alasiaville",
     "InquillTown",
-    "Mintaka_City",
+    "MintakaCity",
     "UubaCity",
     "CastulaCity",
     "AcamarJunction",
@@ -118,7 +123,8 @@
     "PowerPlant",
     "CastulaForest",
     "CastulaPark",
-    "CraterCanyon"
+    "CraterCanyon",
+    "PokemonLeague"
   ],
   "gMapGroup_HyadesDungeon": [
     "InquillTunnelF1",
@@ -139,7 +145,81 @@
     "LiesmaCavernsF2",
     "LiesmaCavernsF3",
     "LiesmaFallsOutdoorF1",
-    "LiesmaFallsOutdoorF2"
+    "LiesmaFallsOutdoorF2",
+    "VictoryRoadF1",
+    "VictoryRoadOutdoors"
+  ],
+  "IndoorAlasia": [
+    "TrainerSchool",
+    "SitkaLab",
+    "PlayerHouse1F",
+    "PlayerHouse2F",
+    "AprilHouse1F",
+    "AprilHouse2F",
+    "UncleHouse"
+  ],
+  "gMapGroup_IndoorInquill": [
+    "InquillHouse1",
+    "InqullGarden",
+    "InquillHouse2",
+    "InquillHouse3",
+    "InquillHouse4",
+    "FlowerShop",
+    "InquillHouse5",
+    "InquillCenter",
+    "InquillMart"
+  ],
+  "gMapGroup_IndoorMintaka": [
+    "MintakaHouse1",
+    "MintakaHouse2",
+    "MintakaHouse3",
+    "MintakaHouse4",
+    "MintakaHouse5",
+    "MintakaCenter",
+    "MintakaMart",
+    "MintakaGym",
+    "WarehouseF1",
+    "WarehouseF2",
+    "Boathouse"
+  ],
+  "gMapGroup_IndoorUuba": [
+    "UubaHouse1",
+    "UubaHouse2",
+    "UubaHouse3",
+    "UubaHouse4",
+    "UubaGym",
+    "UubaCafe",
+    "UubaCenter"
+  ],
+  "gMapGroup_IndoorCastula": [
+    "CastulaMart"
+  ],
+  "gMapGroup_UnusedIndoor": [
+    "MauvilleCity_Gym",
+    "MauvilleCity_BikeShop",
+    "MauvilleCity_House1",
+    "MauvilleCity_GameCorner",
+    "MauvilleCity_House2",
+    "MauvilleCity_PokemonCenter_1F",
+    "MauvilleCity_PokemonCenter_2F",
+    "MauvilleCity_Mart",
+    "SlateportCity_BattleTentLobby",
+    "SlateportCity_BattleTentCorridor",
+    "SlateportCity_BattleTentBattleRoom",
+    "SlateportCity_NameRatersHouse",
+    "SlateportCity_PokemonFanClub",
+    "SlateportCity_OceanicMuseum_1F",
+    "SlateportCity_OceanicMuseum_2F",
+    "SlateportCity_Harbor",
+    "SlateportCity_House",
+    "SlateportCity_PokemonCenter_1F",
+    "SlateportCity_PokemonCenter_2F",
+    "SlateportCity_Mart",
+    "SlateportCity_SternsShipyard_1F",
+    "SlateportCity_SternsShipyard_2F",
+    "MintakaHarbor",
+    "MintakaHarbo2F",
+    "UubaMart"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",
@@ -202,7 +282,6 @@
     "LiesmaCity",
     "NewMap1",
     "WestCastula",
-    "MintakaCity",
     "NewMap2",
     "NewMap3",
     "RustboroPark"
@@ -300,40 +379,6 @@
     "SchedarHouse4",
     "SchedarClub"
   ],
-  "gMapGroup_IndoorSlateport": [
-    "SlateportCity_SternsShipyard_1F",
-    "SlateportCity_SternsShipyard_2F",
-    "SlateportCity_BattleTentLobby",
-    "SlateportCity_BattleTentCorridor",
-    "SlateportCity_BattleTentBattleRoom",
-    "SlateportCity_NameRatersHouse",
-    "SlateportCity_PokemonFanClub",
-    "SlateportCity_OceanicMuseum_1F",
-    "SlateportCity_OceanicMuseum_2F",
-    "SlateportCity_Harbor",
-    "SlateportCity_House",
-    "SlateportCity_PokemonCenter_1F",
-    "SlateportCity_PokemonCenter_2F",
-    "SlateportCity_Mart",
-    "MintakaHouse1",
-    "MintakaHouse2",
-    "MintakaHouse3",
-    "MintakaHouse4"
-  ],
-  "gMapGroup_IndoorMauville": [
-    "MauvilleCity_Gym",
-    "MauvilleCity_BikeShop",
-    "MauvilleCity_House1",
-    "MauvilleCity_GameCorner",
-    "MauvilleCity_House2",
-    "MauvilleCity_PokemonCenter_1F",
-    "MauvilleCity_PokemonCenter_2F",
-    "MauvilleCity_Mart",
-    "InqullGarden",
-    "InquillHouse2",
-    "InquillHouse3",
-    "InquillHouse4"
-  ],
   "gMapGroup_IndoorRustboro": [
     "RustboroCity_DevonCorp_1F",
     "RustboroCity_DevonCorp_2F",
@@ -418,11 +463,7 @@
     "MossdeepCity_SpaceCenter_1F",
     "MossdeepCity_SpaceCenter_2F",
     "MossdeepCity_GameCorner_1F",
-    "MossdeepCity_GameCorner_B1F",
-    "UubaHouse1",
-    "UubaHouse2",
-    "UubaHouse3",
-    "UubaHouse4"
+    "MossdeepCity_GameCorner_B1F"
   ],
   "gMapGroup_IndoorSootopolis": [
     "SootopolisCity_Gym_1F",
@@ -1282,5 +1323,24 @@
   ],
   "gMapGroup_IndoorSevenIslandRoute_Frlg": [
     "SevenIsland_SevaultCanyon_House_Frlg"
+  ],
+  "gMapGroup_testingstage": [
+    "alasiatest",
+    "inquilltest",
+    "mintakatest",
+    "uubatest",
+    "acumartest",
+    "wurrentest",
+    "tiakitest",
+    "liesmatest",
+    "LiesmaCityNorth2",
+    "LiesmaCitySouth2",
+    "sansunatest",
+    "castulatest",
+    "castulatest2",
+    "castulatest3",
+    "evergrandetest",
+    "evergrandetest2",
+    "schedartest"
   ]
 }

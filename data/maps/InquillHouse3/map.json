@@ -2,29 +2,29 @@
   "id": "MAP_INQUILL_HOUSE3",
   "name": "InquillHouse3",
   "layout": "LAYOUT_INQUILL_HOUSE3",
-  "music": "MUS_DUMMY",
-  "region_map_section": "MAPSEC_NONE",
+  "music": "MUS_HG_VERMILION",
+  "region_map_section": "MAPSEC_INQUILL",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
   "allow_cycling": false,
   "allow_escaping": false,
   "allow_running": true,
-  "show_map_name": true,
+  "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": 0,
+  "connections": null,
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_BEAUTY",
-      "x": 1,
+      "x": 3,
       "y": 4,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_WANDER_DOWN_AND_UP",
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "InquillHouse3_EventScript_Object1",
       "flag": "0"
     },
     {
@@ -37,7 +37,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "InquillHouse3_EventScript_Object2",
       "flag": "0"
     }
   ],
@@ -46,21 +46,18 @@
       "x": 3,
       "y": 8,
       "elevation": 0,
-      "dest_map": "MAP_MAUVILLE_CITY",
-      "dest_warp_id": "6"
+      "dest_map": "MAP_INQUILL_TOWN",
+      "dest_warp_id": "2"
     },
     {
       "x": 4,
       "y": 8,
       "elevation": 0,
-      "dest_map": "MAP_MAUVILLE_CITY",
-      "dest_warp_id": "6"
+      "dest_map": "MAP_INQUILL_TOWN",
+      "dest_warp_id": "2"
     }
   ],
-  "coord_events": [
-
-  ],
-  "bg_events": [
-
-  ]
+  "coord_events": [],
+  "bg_events": [],
+  "region": "REGION_HOENN"
 }

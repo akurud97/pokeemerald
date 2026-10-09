@@ -3,7 +3,6 @@
   "name": "PetalburgCity",
   "layout": "LAYOUT_PETALBURG_CITY",
   "music": "MUS_PETALBURG",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_PETALBURG_CITY",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY_CLOUDS",
@@ -99,15 +98,15 @@
   ],
   "warp_events": [
     {
-      "x": 21,
-      "y": 20,
+      "x": 7,
+      "y": 5,
       "elevation": 0,
       "dest_map": "MAP_LITTLEROOT_TOWN_MAYS_HOUSE_1F",
       "dest_warp_id": "0"
     },
     {
-      "x": 7,
-      "y": 5,
+      "x": 21,
+      "y": 20,
       "elevation": 0,
       "dest_map": "MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F",
       "dest_warp_id": "0"
@@ -120,9 +119,7 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [
-
-  ],
+  "coord_events": [],
   "bg_events": [
     {
       "type": "sign",
@@ -132,5 +129,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "PetalburgCity_EventScript_CitySign"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

@@ -1,4 +1,5 @@
 Common_EventScript_PkmnCenterNurse::
+	setspeaker SP_NAME_NONE
 	lock
 	faceplayer
 	setvar VAR_0x8004, 0
@@ -7,6 +8,40 @@ Common_EventScript_PkmnCenterNurse::
 	msgbox gText_WouldYouLikeToRestYourPkmn, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, EventScript_PkmnCenterNurse_HealPkmn
 	goto_if_eq VAR_RESULT, NO, EventScript_PkmnCenterNurse_Goodbye
+	end
+
+@ Safe nurse flow for custom centers. The stock field effect can corrupt the
+@ message/namebox window state in this build, so heal outside that effect and
+@ explicitly close/reopen the message window around the animation.
+Common_EventScript_CustomPkmnCenterNurse::
+	setspeaker SP_NAME_NONE
+	lock
+	faceplayer
+	msgbox gText_WouldYouLikeToRestYourPkmn, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, Common_EventScript_CustomPkmnCenterNurse_Heal
+	message gText_WeHopeToSeeYouAgain
+	goto Common_EventScript_CustomPkmnCenterNurse_Finish
+
+Common_EventScript_CustomPkmnCenterNurse_Heal::
+	message gText_IllTakeYourPkmn
+	waitmessage
+	closemessage
+	applymovement VAR_0x800B, Movement_PkmnCenterNurse_Turn
+	waitmovement 0
+	call Common_EventScript_OutOfCenterPartyHeal
+	callnative UpdateFollowingPokemon
+	applymovement VAR_0x800B, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	message gText_RestoredPkmnToFullHealth
+	waitmessage
+	applymovement VAR_0x800B, Movement_PkmnCenterNurse_Bow
+	waitmovement 0
+	message gText_WeHopeToSeeYouAgain
+
+Common_EventScript_CustomPkmnCenterNurse_Finish::
+	waitmessage
+	waitbuttonpress
+	release
 	end
 
 EventScript_PkmnCenterNurse_Goodbye::

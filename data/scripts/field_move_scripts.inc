@@ -55,32 +55,35 @@ Text_CantCut:
 	.string "This tree looks like it can be\n"
 	.string "CUT down!$"
 
-@ Use rock smash from party menu
+@ Compatibility label retained for old scripts. Rock Smash itself no longer has
+@ field functionality; the Pickaxe handles smashable rocks instead.
 EventScript_UseRockSmash::
 	lockall
-	goto EventScript_RockSmashCommon
+	msgbox Text_RockSmashReplacedByPickaxe, MSGBOX_DEFAULT
+	releaseall
+	end
+
+@ Use the Pickaxe from the Key Items pocket while facing a smashable rock.
+EventScript_UsePickaxe::
+	lockall
+	msgbox Text_PlayerUsedPickaxe, MSGBOX_DEFAULT
+	closemessage
+	goto EventScript_PickaxeSmashRock
 
 @ Interact with smashable rock
 EventScript_RockSmash::
 	lockall
-	checkfieldmove FIELD_MOVE_ROCK_SMASH, TRUE
-	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantSmashRock
-	setfieldeffectargument 0, VAR_RESULT
-	bufferpartymonnick STR_VAR_1, VAR_RESULT
-	buffermovename STR_VAR_2, MOVE_ROCK_SMASH
-	msgbox Text_WantToSmash, MSGBOX_YESNO
+	checkitem ITEM_PICKAXE
+	goto_if_eq VAR_RESULT, FALSE, EventScript_CantSmashRock
+	msgbox Text_WantToUsePickaxe, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_CancelSmash
-	msgbox Text_MonUsedFieldMove, MSGBOX_DEFAULT
+	msgbox Text_PlayerUsedPickaxe, MSGBOX_DEFAULT
 	closemessage
-EventScript_RockSmashCommon:
-	@ check if follower should use the field move
-	isfollowerfieldmoveuser VAR_0x8004
-	setfieldeffectargument 3, VAR_0x8004 @ skip pose if so
-	dofieldeffect FLDEFF_USE_ROCK_SMASH
-	waitstate
+
+EventScript_PickaxeSmashRock:
+	playse SE_M_ROCK_THROW
 EventScript_SmashRock:: @ fallthrough
 	setflag FLAG_SAFE_FOLLOWER_MOVEMENT
-	call_if_eq VAR_0x8004, TRUE, EventScript_FollowerFieldMove
 	applymovement VAR_LAST_TALKED, Movement_SmashRock
 	waitmovement 0
 	removeobject VAR_LAST_TALKED
@@ -213,13 +216,20 @@ EventScript_CancelSmash::
 	releaseall
 	end
 
-Text_WantToSmash:
+Text_WantToUsePickaxe:
 	.string "This rock appears to be breakable.\n"
-	.string "Would you like to use ROCK SMASH?$"
+	.string "Would you like to use the PICKAXE?$"
 
 Text_CantSmash:
-	.string "It's a rugged rock, but a POKéMON\n"
-	.string "may be able to smash it.$"
+	.string "This rock looks like it could be\n"
+	.string "smashed with a PICKAXE.$"
+
+Text_PlayerUsedPickaxe:
+	.string "{PLAYER} used the PICKAXE!$"
+
+Text_RockSmashReplacedByPickaxe:
+	.string "ROCK SMASH can't be used in the\n"
+	.string "field. A PICKAXE is needed.$"
 
 EventScript_StrengthBoulder::
 	lockall

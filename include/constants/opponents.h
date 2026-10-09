@@ -859,12 +859,52 @@
 #define TRAINER_LEAF                        852
 #define TRAINER_BRENDAN_PLACEHOLDER         853
 #define TRAINER_MAY_PLACEHOLDER             854
+#define TRAINER_RIVAL_SCHOOL_START1         855
+#define TRAINER_LANDON                      856
+#define TRAINER_EVELYN                      857
+#define TRAINER_APRIL_SPHEAL                 858
+#define TRAINER_APRIL_SANDILE                859
+#define TRAINER_APRIL_MAREEP                 860
+#define TRAINER_MINTAKA_GYM_SAWYER           861
+#define TRAINER_MINTAKA_GYM_HAILEY           862
+#define TRAINER_MINTAKA_GYM_LEADER_LUCA      863
 
-// NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
-//       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled
-//       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
+// Route 2 repurposes the original Route 102 trainer slots.
+#define TRAINER_ROUTE2_MAX                   TRAINER_CALVIN_1
+#define TRAINER_ROUTE2_ELI                   TRAINER_RICK
+#define TRAINER_ROUTE2_EMMA                  TRAINER_TIANA
+#define TRAINER_ROUTE2_CHLOE                 TRAINER_ALLEN
 
-#define TRAINERS_COUNT_EMERALD     855
+// Route 3 and the Inquill Tunnels repurpose unused stock trainer slots.
+#define TRAINER_ROUTE3_ALEX                  TRAINER_ISAAC_1
+#define TRAINER_ROUTE3_CHERISE               TRAINER_DAISY
+#define TRAINER_ROUTE3_ZACK                  TRAINER_MIGUEL_1
+#define TRAINER_ROUTE3_DAISY_AND_SUMMER      TRAINER_AMY_AND_LIV_1
+#define TRAINER_INQUILL_TUNNEL_AIDEN         TRAINER_DAVIS
+#define TRAINER_INQUILL_TUNNEL_MASON         TRAINER_GRUNT_RUSTURF_TUNNEL
+#define TRAINER_INQUILL_TUNNEL_JULIAN        TRAINER_EDWIN_1
+#define TRAINER_INQUILL_TUNNEL_CHARLES       TRAINER_ELI
+
+#define TRAINER_MINTAKA_ACOLYTE TRAINER_GRUNT_AQUA_HIDEOUT_1
+
+// Warehouse trainers repurpose unused stock trainer slots.
+#define TRAINER_WAREHOUSE_JEREMY TRAINER_HUEY
+#define TRAINER_WAREHOUSE_STEVEN TRAINER_STEVE_1
+
+// Route 4 trainers repurpose unused stock trainer slots.
+#define TRAINER_ROUTE4_GABRIEL       TRAINER_RICKY_2
+#define TRAINER_ROUTE4_OLIVER        TRAINER_ERNEST_2
+#define TRAINER_ROUTE4_JACK_AND_MIA  TRAINER_ANNA_AND_MEG_2
+#define TRAINER_ROUTE4_LIAM          TRAINER_WINSTON_2
+#define TRAINER_ROUTE4_AMY           TRAINER_MARIA_2
+#define TRAINER_ROUTE4_ANNA_AND_NICOLE TRAINER_ANNA_AND_MEG_3
+#define TRAINER_ROUTE4_ELIJAH        TRAINER_DALTON_2
+#define TRAINER_ROUTE4_ISAAC         TRAINER_ELLIOT_2
+
+// NOTE: All trainer flag slots are now allocated. Adding more unique trainer IDs requires
+//       expanding the trainer flag range/saveblock or repurposing an existing stock ID.
+
+#define TRAINERS_COUNT_EMERALD     864
 #define MAX_TRAINERS_COUNT_EMERALD 864
 
 #if IS_FRLG

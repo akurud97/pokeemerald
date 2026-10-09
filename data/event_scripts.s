@@ -3,6 +3,7 @@
 #include "config/item.h"
 #include "constants/global.h"
 #include "constants/apprentice.h"
+#include "constants/apricorn_tree.h"
 #include "constants/battle.h"
 #include "constants/battle_arena.h"
 #include "constants/battle_dome.h"
@@ -15,6 +16,7 @@
 #include "constants/battle_special.h"
 #include "constants/battle_tent.h"
 #include "constants/battle_tower.h"
+#include "constants/blackjack.h"
 #include "constants/berry.h"
 #include "constants/cable_club.h"
 #include "constants/coins.h"
@@ -46,6 +48,7 @@
 #include "constants/maps.h"
 #include "constants/mauville_old_man.h"
 #include "constants/metatile_labels.h"
+#include "constants/move_relearner.h"
 #include "constants/moves.h"
 #include "constants/mystery_gift.h"
 #include "constants/party_menu.h"
@@ -60,6 +63,7 @@
 #include "constants/seagallop.h"
 #include "constants/secret_bases.h"
 #include "constants/siirtc.h"
+#include "constants/sliding_puzzles.h"
 #include "constants/songs.h"
 #include "constants/sound.h"
 #include "constants/species.h"
@@ -72,6 +76,8 @@
 #include "constants/union_room.h"
 #include "constants/vars.h"
 #include "constants/weather.h"
+#include "constants/speaker_names.h"
+#include "constants/custom_map_compat.h"
 	.include "asm/macros.inc"
 	.include "asm/macros/event.inc"
 	.include "constants/constants.inc"
@@ -81,6 +87,7 @@
 	.set ALLOCATE_SCRIPT_CMD_TABLE, 1
 	.include "data/script_cmd_table.inc"
 
+.align 2
 gSpecialVars::
 	.4byte gSpecialVar_0x8000
 	.4byte gSpecialVar_0x8001
@@ -1161,6 +1168,7 @@ EventScript_SetBrineyLocation_Route109::
 	.include "data/scripts/obtain_item.inc"
 	.include "data/scripts/record_mix.inc"
 	.include "data/scripts/pc.inc"
+	.include "data/scripts/move_relearner.inc"
 
 @ scripts/notices.inc? signs.inc? See comment about text/notices.inc
 Common_EventScript_ShowPokemartSign::
@@ -1350,6 +1358,7 @@ Common_EventScript_PlayerHandedOverTheItem::
 	.include "data/text/pc.inc"
 	.include "data/text/pkmn_center_nurse.inc"
 	.include "data/text/obtain_item.inc"
+	.include "data/text/move_relearner.inc"
 
 @ The below and surf.inc could be split into some text/notices.inc
 gText_PokemartSign::
@@ -1686,9 +1695,6 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/scripts/cable_club.inc"
 	.include "data/text/cable_club.inc"
 	.include "data/scripts/contest_hall.inc"
-	.include "data/text/contest_strings.inc"
-	.include "data/text/contest_link.inc"
-	.include "data/text/contest_painting.inc"
 	.include "data/scripts/tv.inc"
 	.include "data/text/tv.inc"
 	.include "data/scripts/interview.inc"
@@ -1842,15 +1848,13 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 
 	.include "data/maps/SchedarClub/scripts.inc"
 
-	.include "data/maps/MintakaCity/scripts.inc"
-
 	.include "data/maps/Alasiaville/scripts.inc"
 
 	.include "data/maps/NewMap2/scripts.inc"
 
 	.include "data/maps/InquillTown/scripts.inc"
 
-	.include "data/maps/Mintaka_City/scripts.inc"
+	.include "data/maps/MintakaCity/scripts.inc"
 
 	.include "data/maps/UubaCity/scripts.inc"
 
@@ -1969,3 +1973,95 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/LiesmaFallsOutdoorF2/scripts.inc"
 
 	.include "data/maps/PowerPlant/scripts.inc"
+
+	.include "data/maps/TrainerSchool/scripts.inc"
+
+	.include "data/maps/PokemonLeague/scripts.inc"
+
+	.include "data/maps/VictoryRoadF1/scripts.inc"
+
+	.include "data/maps/VictoryRoadOutdoors/scripts.inc"
+
+	.include "data/maps/SitkaLab/scripts.inc"
+
+	.include "data/maps/AprilHouse1F/scripts.inc"
+
+	.include "data/maps/PlayerHouse1F/scripts.inc"
+
+	.include "data/maps/AprilHouse2F/scripts.inc"
+
+	.include "data/maps/PlayerHouse2F/scripts.inc"
+
+	.include "data/maps/UncleHouse/scripts.inc"
+
+	.include "data/maps/FlowerShop/scripts.inc"
+
+	.include "data/maps/InquillHouse1/scripts.inc"
+
+	.include "data/maps/InquillHouse5/scripts.inc"
+
+	.include "data/maps/InquillMart/scripts.inc"
+
+	.include "data/maps/InquillCenter/scripts.inc"
+
+	.include "data/maps/MintakaHarbor/scripts.inc"
+
+	.include "data/maps/MintakaHarbo2F/scripts.inc"
+
+	.include "data/maps/MintakaMart/scripts.inc"
+
+	.include "data/maps/MintakaCenter/scripts.inc"
+
+	.include "data/maps/MintakaGym/scripts.inc"
+
+	.include "data/maps/WarehouseF1/scripts.inc"
+
+	.include "data/maps/WarehouseF2/scripts.inc"
+
+	.include "data/maps/MintakaHouse5/scripts.inc"
+
+	.include "data/maps/Boathouse/scripts.inc"
+
+	.include "data/maps/UubaGym/scripts.inc"
+
+	.include "data/maps/UubaCafe/scripts.inc"
+
+	.include "data/maps/UubaCenter/scripts.inc"
+
+	.include "data/maps/UubaMart/scripts.inc"
+
+	.include "data/maps/CastulaMart/scripts.inc"
+
+	.include "data/maps/alasiatest/scripts.inc"
+
+	.include "data/maps/inquilltest/scripts.inc"
+
+	.include "data/maps/mintakatest/scripts.inc"
+
+	.include "data/maps/uubatest/scripts.inc"
+
+	.include "data/maps/acumartest/scripts.inc"
+
+	.include "data/maps/wurrentest/scripts.inc"
+
+	.include "data/maps/tiakitest/scripts.inc"
+
+	.include "data/maps/liesmatest/scripts.inc"
+
+	.include "data/maps/LiesmaCityNorth2/scripts.inc"
+
+	.include "data/maps/LiesmaCitySouth2/scripts.inc"
+
+	.include "data/maps/sansunatest/scripts.inc"
+
+	.include "data/maps/castulatest/scripts.inc"
+
+	.include "data/maps/evergrandetest2/scripts.inc"
+
+	.include "data/maps/castulatest2/scripts.inc"
+
+	.include "data/maps/evergrandetest/scripts.inc"
+
+	.include "data/maps/castulatest3/scripts.inc"
+
+	.include "data/maps/schedartest/scripts.inc"

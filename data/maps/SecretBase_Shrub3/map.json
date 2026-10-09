@@ -220,11 +220,7 @@
       "dest_warp_id": "WARP_ID_SECRET_BASE"
     }
   ],
-  "coord_events": [
-
-  ],
-  "bg_events": [
-
-  ],
+  "coord_events": [],
+  "bg_events": [],
   "shared_scripts_map": "SecretBase"
 }

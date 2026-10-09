@@ -1,0 +1,78 @@
+raw `
+FlowerShop_MapScripts::
+	.byte 0
+
+FlowerShop_EventScript_Shopkeeper::
+	lock
+	faceplayer
+	msgbox FlowerShop_Text_ShopWelcome, MSGBOX_DEFAULT
+	pokemart FlowerShop_Pokemart_Mulch
+	msgbox FlowerShop_Text_ShopThanks, MSGBOX_DEFAULT
+	release
+	end
+
+	.align 2
+FlowerShop_Pokemart_Mulch:
+	.2byte ITEM_GROWTH_MULCH
+	.2byte ITEM_STABLE_MULCH
+	.2byte ITEM_GOOEY_MULCH
+	.2byte ITEM_RICH_MULCH
+	.2byte ITEM_NONE
+	release
+	end
+
+FlowerShop_EventScript_WailmerPailGift::
+	lock
+	faceplayer
+	goto_if_set FLAG_RECEIVED_WAILMER_PAIL, FlowerShop_EventScript_WailmerPailRepeat
+	msgbox FlowerShop_Text_WailmerPailGift, MSGBOX_DEFAULT
+	giveitem ITEM_WAILMER_PAIL
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	setflag FLAG_RECEIVED_WAILMER_PAIL
+	release
+	end
+
+FlowerShop_EventScript_WailmerPailRepeat::
+	msgbox FlowerShop_Text_WailmerPailRepeat, MSGBOX_DEFAULT
+	release
+	end
+`
+
+script FlowerShop_EventScript_Object3 {
+    msgbox(FlowerShop_Text_Object3, MSGBOX_NPC)
+    end
+}
+
+script FlowerShop_EventScript_Object4 {
+    msgbox(FlowerShop_Text_Object4, MSGBOX_NPC)
+    end
+}
+
+text FlowerShop_Text_ShopWelcome {
+    "Welcome! Are you here to buy mulch?"
+}
+
+text FlowerShop_Text_ShopThanks {
+    "Thank you! Enjoy growing berries."
+}
+
+text FlowerShop_Text_WailmerPailGift {
+    "Hello, young boy. Are you interested\n"
+    "in growing berries for your Pokémon?\p"
+    "You can have this watering can on us -\n"
+    "just promise to buy some mulch from\l"
+    "the counter!"
+}
+
+text FlowerShop_Text_WailmerPailRepeat {
+    "Have you been growing lots of berries?"
+}
+
+text FlowerShop_Text_Object3 {
+    "This shop smells so good!"
+}
+
+text FlowerShop_Text_Object4 {
+    "I wonder what kind of flowers my wife\n"
+    "would like…"
+}

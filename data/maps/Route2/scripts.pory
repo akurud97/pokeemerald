@@ -1,0 +1,126 @@
+raw `
+Route2_MapScripts::
+	.byte 0
+
+Route2_EventScript_Emma::
+	trainerbattle TRAINER_BATTLE_EARLY_RIVAL, LOCALID_NONE, TRAINER_ROUTE2_EMMA, Route2_Text_EmmaIntro, Route2_Text_EmmaDefeat, NULL, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, Route2_Text_EmmaVictory, NULL, FALSE, TRUE, FALSE, FALSE
+	goto_if_set FLAG_SYS_DEXNAV_GET, Route2_EventScript_EmmaDexNavUnlocked
+	msgbox Route2_Text_EmmaDexNavTutorial, MSGBOX_AUTOCLOSE
+	setvar VAR_DEXNAV_SPECIES, SPECIES_NONE
+	setvar VAR_DEXNAV_STEP_COUNTER, 0
+	setflag FLAG_SYS_DEXNAV_GET
+	setflag FLAG_SYS_DEXNAV_DETECTOR_MODE
+	playfanfare MUS_OBTAIN_ITEM
+	message Route2_Text_DexNavEnabled
+	waitmessage
+	waitfanfare
+	waitbuttonpress
+	closemessage
+	end
+
+Route2_EventScript_EmmaDexNavUnlocked::
+	msgbox Route2_Text_EmmaPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route2_EventScript_Eli::
+	trainerbattle TRAINER_BATTLE_EARLY_RIVAL, LOCALID_NONE, TRAINER_ROUTE2_ELI, Route2_Text_EliIntro, Route2_Text_EliDefeat, NULL, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, Route2_Text_EliVictory, NULL, FALSE, TRUE, FALSE, FALSE
+	msgbox Route2_Text_EliPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route2_EventScript_Chloe::
+	trainerbattle TRAINER_BATTLE_EARLY_RIVAL, LOCALID_NONE, TRAINER_ROUTE2_CHLOE, Route2_Text_ChloeIntro, Route2_Text_ChloeDefeat, NULL, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, Route2_Text_ChloeVictory, NULL, FALSE, TRUE, FALSE, FALSE
+	msgbox Route2_Text_ChloePostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route2_EventScript_Max::
+	trainerbattle TRAINER_BATTLE_EARLY_RIVAL, LOCALID_NONE, TRAINER_ROUTE2_MAX, Route2_Text_MaxIntro, Route2_Text_MaxDefeat, NULL, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, Route2_Text_MaxVictory, NULL, FALSE, TRUE, FALSE, FALSE
+	msgbox Route2_Text_MaxPostBattle, MSGBOX_AUTOCLOSE
+	end
+`
+
+text Route2_Text_EmmaIntro {
+    "My Azurill is super strong!"
+}
+
+text Route2_Text_EmmaDefeat {
+    "I guess Azurill still needs some\n"
+    "training…"
+}
+
+text Route2_Text_EmmaVictory {
+    "Told you my Azurill was strong!"
+}
+
+text Route2_Text_EmmaPostBattle {
+    "I'm going to use Dexnav to look for\n"
+    "all kinds of Pokémon!"
+}
+
+text Route2_Text_EmmaDexNavTutorial {
+    "Hey, do you know about the Dexnav\n"
+    "feature of your Pokédex? You can use\l"
+    "it to find rare Pokémon that don't\l"
+    "normally come out! That's how I caught\l"
+    "my Azurill. Here, I'll help you\l"
+    "activate it."
+}
+
+text Route2_Text_DexNavEnabled {
+    "Your DexNav has been enabled.\n"
+    "Use it from the Start Menu."
+}
+
+text Route2_Text_EliIntro {
+    "Get out of the way! I’m looking for\n"
+    "rare bugs!"
+}
+
+text Route2_Text_EliDefeat {
+    "I shouldn’t have picked a fight.."
+}
+
+text Route2_Text_EliVictory {
+    "That’s what you get for distracting\n"
+    "me!"
+}
+
+text Route2_Text_EliPostBattle {
+    "Let me know if you see any bug\n"
+    "Pokémon around here."
+}
+
+text Route2_Text_ChloeIntro {
+    "I love cute Pokémon! I want to see\n"
+    "your cute Pokémon!"
+}
+
+text Route2_Text_ChloeDefeat {
+    "Your Pokémon are cute and strong!"
+}
+
+text Route2_Text_ChloeVictory {
+    "My Pokémon are cuter than yours."
+}
+
+text Route2_Text_ChloePostBattle {
+    "There are so many cute Pokémon!\n"
+    "I want to catch them all!"
+}
+
+text Route2_Text_MaxIntro {
+    "I’m bored. Battle me!"
+}
+
+text Route2_Text_MaxDefeat {
+    "Even losing a battle can be fun…\n"
+    "I guess."
+}
+
+text Route2_Text_MaxVictory {
+    "Yeah! That was fun!"
+}
+
+text Route2_Text_MaxPostBattle {
+    "Inquill Town is so boring. I want to\n"
+    "go on an adventure!"
+}

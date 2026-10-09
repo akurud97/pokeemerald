@@ -1,0 +1,37 @@
+{
+  "id": "MAP_LIESMA_CITY_SOUTH2",
+  "name": "LiesmaCitySouth2",
+  "layout": "LAYOUT_LIESMA_CITY_SOUTH2",
+  "music": "MUS_DUMMY",
+  "region_map_section": "MAPSEC_ABANDONED_SHIP",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_CITY",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_HYADES_ROUTE14",
+      "offset": -6,
+      "direction": "down"
+    },
+    {
+      "map": "MAP_LIESMA_CITY_NORTH2",
+      "offset": 0,
+      "direction": "up"
+    },
+    {
+      "map": "MAP_HYADES_ROUTE16",
+      "offset": -10,
+      "direction": "left"
+    }
+  ],
+  "object_events": [],
+  "warp_events": [],
+  "coord_events": [],
+  "bg_events": [],
+  "region": "REGION_HOENN"
+}

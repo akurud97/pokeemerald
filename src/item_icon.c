@@ -165,7 +165,8 @@ const void *GetItemIconPic(enum Item itemId)
         return gItemsInfo[0].iconPic;
     if (gItemsInfo[itemId].pocket == POCKET_TM_HM)
     {
-        if (GetItemTMHMIndex(itemId) > NUM_TECHNICAL_MACHINES)
+        if (GetItemTMHMIndex(itemId) > NUM_TECHNICAL_MACHINES
+         && GetItemTMHMMoveId(itemId) != MOVE_ROCK_SMASH)
             return gItemIcon_HM;
         return gItemIcon_TM;
     }

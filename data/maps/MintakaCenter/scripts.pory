@@ -1,0 +1,38 @@
+raw `
+.set LOCALID_NURSE, LOCALID_MINTAKA_CENTER_NURSE
+
+MintakaCenter_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, MintakaCenter_OnTransition
+	.byte 0
+
+MintakaCenter_OnTransition:
+	setrespawn HEAL_LOCATION_MINTAKA_CITY
+	end
+
+MintakaCenter_EventScript_Nurse::
+	setvar VAR_0x800B, LOCALID_NURSE
+	goto Common_EventScript_CustomPkmnCenterNurse
+`
+
+script MintakaCenter_EventScript_Object2 {
+    lock
+    msgbox(MintakaCenter_Text_Object2, MSGBOX_DEFAULT)
+    release
+    end
+}
+
+script MintakaCenter_EventScript_Object3 {
+    lock
+    msgbox(MintakaCenter_Text_Object3, MSGBOX_DEFAULT)
+    release
+    end
+}
+
+text MintakaCenter_Text_Object2 {
+    "…and look at the picture of this\n"
+    "Barboach I pulled up! It was huge!"
+}
+
+text MintakaCenter_Text_Object3 {
+    "…Hm? Oh… wow, yeah…"
+}

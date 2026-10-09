@@ -17,6 +17,16 @@ EventScript_ObtainItemMessage::
 	return
 
 EventScript_BufferPocketNameAndTryFanfare::
+	compare VAR_0x8006, ITEM_BEACH_GLASS
+	goto_if_eq EventScript_BufferForagingPouch
+	compare VAR_0x8006, ITEM_DRIFTWOOD
+	goto_if_eq EventScript_BufferForagingPouch
+	compare VAR_0x8006, ITEM_LOST_EARRING
+	goto_if_eq EventScript_BufferForagingPouch
+	compare VAR_0x8006, ITEM_COLDWATER_AGATE
+	goto_if_eq EventScript_BufferForagingPouch
+	compare VAR_0x8006, ITEM_ANTIQUE_BOTTLE
+	goto_if_eq EventScript_BufferForagingPouch
 	switch VAR_RESULT
 	case POCKET_ITEMS,      EventScript_BufferItemsPocket
 	case POCKET_KEY_ITEMS,  EventScript_BufferKeyItemsPocket
@@ -50,6 +60,11 @@ EventScript_BufferBerriesPocket::
 	call_if_eq VAR_0x8007, TRUE, EventScript_PlayFanfareObtainedItem
 	return
 
+EventScript_BufferForagingPouch::
+	bufferstdstring STR_VAR_3, STDSTRING_FORAGING_POUCH
+	call_if_eq VAR_0x8007, TRUE, EventScript_PlayFanfareObtainedItem
+	return
+
 EventScript_ObtainedItem::
 	compare VAR_0x8001, TRUE
 	goto_if_eq EventScript_ObtainedItemMessage
@@ -68,6 +83,8 @@ EventScript_ContinueObtainedItem:
 	return
 
 EventScript_NoRoomForItem::
+	call EventScript_CheckMissingForagingPouch
+	goto_if_eq VAR_RESULT, TRUE, EventScript_CouldNotStoreForagingItem
 	setvar VAR_RESULT, FALSE
 	return
 
@@ -167,10 +184,51 @@ EventScript_FoundItemMessage::
 	return
 
 EventScript_NoRoomToPickUpItem::
+	call EventScript_CheckMissingForagingPouch
+	goto_if_eq VAR_RESULT, TRUE, EventScript_CouldNotPickUpForagingItem
 	msgbox gText_ObtainedTheItem, MSGBOX_DEFAULT
 	msgbox gText_TooBadBagIsFull, MSGBOX_DEFAULT
 	setvar VAR_RESULT, FALSE
 	return
+
+EventScript_CouldNotStoreForagingItem::
+	msgbox gText_ObtainedTheItem, MSGBOX_DEFAULT
+EventScript_NoForagingPouchMessage::
+	msgbox Text_NoForagingPouch, MSGBOX_DEFAULT
+	setvar VAR_RESULT, FALSE
+	return
+
+EventScript_CouldNotPickUpForagingItem::
+	msgbox gText_PlayerFoundOneItem, MSGBOX_DEFAULT
+	goto EventScript_NoForagingPouchMessage
+
+EventScript_CheckMissingForagingPouch::
+	setvar VAR_RESULT, FALSE
+	compare VAR_0x8006, ITEM_BEACH_GLASS
+	goto_if_eq EventScript_CheckForagingPouchOwned
+	compare VAR_0x8006, ITEM_DRIFTWOOD
+	goto_if_eq EventScript_CheckForagingPouchOwned
+	compare VAR_0x8006, ITEM_LOST_EARRING
+	goto_if_eq EventScript_CheckForagingPouchOwned
+	compare VAR_0x8006, ITEM_COLDWATER_AGATE
+	goto_if_eq EventScript_CheckForagingPouchOwned
+	compare VAR_0x8006, ITEM_ANTIQUE_BOTTLE
+	goto_if_eq EventScript_CheckForagingPouchOwned
+	return
+
+EventScript_CheckForagingPouchOwned::
+	checkitem ITEM_FORAGING_POUCH, 1
+	compare VAR_RESULT, FALSE
+	goto_if_eq EventScript_MissingForagingPouch
+	setvar VAR_RESULT, FALSE
+	return
+
+EventScript_MissingForagingPouch::
+	setvar VAR_RESULT, TRUE
+	return
+
+Text_NoForagingPouch:
+	.string "You don't have anywhere\nto put this.\pSome kind of pouch would\ncome in handy...$"
 
 EventScript_HiddenItemScript::
 	lockall
@@ -233,8 +291,16 @@ EventScript_PutHiddenItemInPocket::
 
 EventScript_NoRoomForHiddenItem::
 	msgbox gText_PlayerFoundOneItem, MSGBOX_DEFAULT
+	call EventScript_CheckMissingForagingPouch
+	goto_if_eq VAR_RESULT, TRUE, EventScript_NoForagingPouchHiddenItem
 	msgbox gText_TooBadBagIsFull, MSGBOX_DEFAULT
 	setvar VAR_RESULT, 0
+	releaseall
+	end
+
+EventScript_NoForagingPouchHiddenItem::
+	msgbox Text_NoForagingPouch, MSGBOX_DEFAULT
+	setvar VAR_RESULT, FALSE
 	releaseall
 	end
 

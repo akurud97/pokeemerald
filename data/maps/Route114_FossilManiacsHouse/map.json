@@ -3,7 +3,6 @@
   "name": "Route114_FossilManiacsHouse",
   "layout": "LAYOUT_ROUTE114_FOSSIL_MANIACS_HOUSE",
   "music": "MUS_FALLARBOR",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_ROUTE_114",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -13,7 +12,7 @@
   "allow_running": false,
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": 0,
+  "connections": null,
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
@@ -52,9 +51,7 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [
-
-  ],
+  "coord_events": [],
   "bg_events": [
     {
       "type": "sign",
@@ -88,5 +85,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
       "script": "Route114_FossilManiacsHouse_EventScript_Bookshelf"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

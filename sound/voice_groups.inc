@@ -201,3 +201,7 @@
 .include "sound/voicegroups/rg_sevii_45.inc"
 .include "sound/voicegroups/rg_sevii_67.inc"
 .include "sound/voicegroups/drumsets/rg_credits.inc"
+.include "sound/voicegroups/mus_alasiaville.inc"
+.include "sound/voicegroups/drumsets/custom_region.inc"
+.include "sound/voicegroups/custom_region_music.inc"
+.include "sound/imported_music/voice_groups.inc"

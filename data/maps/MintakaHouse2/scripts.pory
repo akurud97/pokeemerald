@@ -2,3 +2,34 @@ raw `
 MintakaHouse2_MapScripts::
 	.byte 0
 `
+
+script MintakaHouse2_EventScript_Object1 {
+    msgbox(MintakaHouse2_Text_Object1, MSGBOX_NPC)
+    end
+}
+
+script MintakaHouse2_EventScript_Object2 {
+    msgbox(MintakaHouse2_Text_Object2, MSGBOX_NPC)
+    end
+}
+
+script MintakaHouse2_EventScript_Object3 {
+    lock
+    msgbox(MintakaHouse2_Text_Object3, MSGBOX_DEFAULT)
+    release
+    end
+}
+
+text MintakaHouse2_Text_Object1 {
+    "I’ve been on a ship for weeks. It’s\n"
+    "great to be back home with my family."
+}
+
+text MintakaHouse2_Text_Object2 {
+    "It’s hard having my husband away for\n"
+    "long periods, but he provides for us."
+}
+
+text MintakaHouse2_Text_Object3 {
+    "Daddy! Tell me more stories!"
+}

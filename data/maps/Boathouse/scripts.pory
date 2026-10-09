@@ -1,0 +1,90 @@
+raw `
+Boathouse_MapScripts::
+	.byte 0
+
+Boathouse_EventScript_Object1::
+	lock
+	faceplayer
+	checkitem ITEM_FORAGING_POUCH
+	goto_if_eq VAR_RESULT, TRUE, Boathouse_EventScript_CheckForagingPouch
+	msgbox Boathouse_Text_Object1Intro, MSGBOX_DEFAULT
+	giveitem ITEM_FORAGING_POUCH
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	release
+	end
+
+Boathouse_EventScript_CheckForagingPouch::
+	specialvar VAR_RESULT, CalculateForagingPouchSalvageValue
+	goto_if_eq VAR_RESULT, FALSE, Boathouse_EventScript_Object1NoItems
+	buffernumberstring STR_VAR_1, VAR_0x8004
+	msgbox Boathouse_Text_Object1Offer, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, Boathouse_EventScript_Object1Decline
+	special SellForagingPouchItems
+	msgbox Boathouse_Text_Object1Accept, MSGBOX_DEFAULT
+	release
+	end
+
+Boathouse_EventScript_Object1NoItems::
+	msgbox Boathouse_Text_Object1NoItems, MSGBOX_DEFAULT
+	release
+	end
+
+Boathouse_EventScript_Object1Decline::
+	msgbox Boathouse_Text_Object1Decline, MSGBOX_DEFAULT
+	release
+	end
+
+Boathouse_EventScript_Object2::
+	lock
+	faceplayer
+	msgbox Boathouse_Text_Object2, MSGBOX_DEFAULT
+	pokemart Boathouse_Pokemart
+	release
+	end
+
+	.align 2
+Boathouse_Pokemart:
+	.2byte ITEM_SODA_POP
+	.2byte ITEM_NONE
+	release
+	end
+
+Boathouse_EventScript_Object3::
+	msgbox Boathouse_Text_Object3, MSGBOX_NPC
+	end
+
+Boathouse_Text_Object1Intro:
+	.string "Hello! If you find items on the beach,\n"
+	.string "you can bring them here and we’ll pay\n"
+	.string "you to salvage them.\p"
+	.string "Here, take this pouch so you don’t take\n"
+	.string "up too much space in your bag.$"
+
+Boathouse_Text_Object1NoItems:
+	.string "Hello! Come see me if you find anything\n"
+	.string "interesting on the beach! We'll buy it\n"
+	.string "from you to salvage.$"
+
+Boathouse_Text_Object1Offer:
+	.string "Hello! It looks like your Foraging Pouch\n"
+	.string "is full. Would you like to sell what\n"
+	.string "you’ve found?\n"
+	.string "We can offer you ¥{STR_VAR_1} for those\n"
+	.string "items.$"
+
+Boathouse_Text_Object1Decline:
+	.string "Okay! Come see us if you want to sell\n"
+	.string "what you’ve foraged.$"
+
+Boathouse_Text_Object1Accept:
+	.string "Great! Come back here if you find\n"
+	.string "anything else on the beach that can be\n"
+	.string "salvaged.$"
+
+Boathouse_Text_Object2:
+	.string "Hey kid. Wanna buy a soda?$"
+
+Boathouse_Text_Object3:
+	.string "A soda pop is so refreshing after being\n"
+	.string "on the beach!$"
+`

@@ -1201,14 +1201,25 @@ bool8 StandardWildEncounter_Debug(void)
 u32 ChooseHiddenMonIndex(void)
 {
     #ifdef ENCOUNTER_CHANCE_HIDDEN_MONS_TOTAL
+        #if defined(ENCOUNTER_CHANCE_HIDDEN_MONS_SLOT_1)
         u8 rand = Random() % ENCOUNTER_CHANCE_HIDDEN_MONS_TOTAL;
+        #endif
 
+        #if defined(ENCOUNTER_CHANCE_HIDDEN_MONS_SLOT_2)
         if (rand < ENCOUNTER_CHANCE_HIDDEN_MONS_SLOT_0)
             return 0;
         else if (rand >= ENCOUNTER_CHANCE_HIDDEN_MONS_SLOT_0 && rand < ENCOUNTER_CHANCE_HIDDEN_MONS_SLOT_1)
             return 1;
         else
             return 2;
+        #elif defined(ENCOUNTER_CHANCE_HIDDEN_MONS_SLOT_1)
+        if (rand < ENCOUNTER_CHANCE_HIDDEN_MONS_SLOT_0)
+            return 0;
+        else
+            return 1;
+        #else
+        return 0;
+        #endif
     #else
         return 0xFF;
     #endif

@@ -34,6 +34,9 @@ $(SOUND_BIN_DIR)/%.bin: sound/%.wav
 
 # For each line in midi.cfg, we do some trickery to convert it into a make rule for the `.mid` file described on the line
 # Data following the colon in said file corresponds to arguments passed into mid2agb
+# Before registering imported music there, follow docs/music_imports.md.  In
+# particular, Nintendo DS CC33/CC39 events must be sanitized so they do not
+# become track priorities that can suppress cries and sound effects.
 MID_CFG_PATH := $(MID_SUBDIR)/midi.cfg
 
 # $1: Source path no extension, $2 Options

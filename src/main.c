@@ -73,6 +73,7 @@ COMMON_DATA s8 gPcmDmaCounter = 0;
 COMMON_DATA void *gAgbMainLoop_sp = NULL;
 
 static EWRAM_DATA u16 sTrainerId = 0;
+static EWRAM_DATA u8 sSoftResetHoldFrames = 0;
 
 //EWRAM_DATA void (**gFlashTimerIntrFunc)(void) = NULL;
 
@@ -88,6 +89,7 @@ static void WaitForVBlank(void);
 void EnableVCountIntrAtLine150(void);
 
 #define B_START_SELECT (B_BUTTON | START_BUTTON | SELECT_BUTTON)
+#define SOFT_RESET_HOLD_FRAMES 30
 
 void AgbMain(void)
 {
@@ -141,10 +143,16 @@ void AgbMainLoop(void)
          && JOY_HELD_RAW(A_BUTTON)
          && JOY_HELD_RAW(B_START_SELECT) == B_START_SELECT)
         {
-            rfu_REQ_stopMode();
-            rfu_waitREQComplete();
-            DoSoftReset();
+            if (++sSoftResetHoldFrames >= SOFT_RESET_HOLD_FRAMES)
+            {
+                DebugPrintf("In-game soft reset chord triggered (keys=%04X)", gMain.heldKeysRaw);
+                rfu_REQ_stopMode();
+                rfu_waitREQComplete();
+                DoSoftReset();
+            }
         }
+        else
+            sSoftResetHoldFrames = 0;
 
         if (Overworld_SendKeysToLinkIsRunning() == TRUE)
         {

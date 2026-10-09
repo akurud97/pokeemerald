@@ -63,7 +63,5 @@
       "script": "SkyPillar_Top_EventScript_AwakenRayquaza"
     }
   ],
-  "bg_events": [
-
-  ]
+  "bg_events": []
 }

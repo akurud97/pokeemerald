@@ -93,6 +93,7 @@ void GetOnOffBike(u8 transitionFlags);
 void BikeClearState(int newDirHistory, int newAbStartHistory);
 void Bike_UpdateBikeCounterSpeed(u8 counter);
 enum PlayerSpeed GetPlayerSpeed(void);
+bool8 IsPlayerOnStandardBike(void);
 void Bike_HandleBumpySlopeJump(void);
 bool32 IsRunningDisallowed(u8 metatile);
 

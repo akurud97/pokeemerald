@@ -43,7 +43,8 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "EventScript_StrengthBoulder",
-      "flag": "0"
+      "flag": "0",
+      "local_id": "LOCALID_RUBY"
     },
     {
       "type": "object",
@@ -57,7 +58,8 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "EventScript_StrengthBoulder",
-      "flag": "0"
+      "flag": "0",
+      "local_id": "LOCALID_RUBY"
     },
     {
       "type": "object",
@@ -155,7 +157,8 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "EventScript_StrengthBoulder",
-      "flag": "0"
+      "flag": "0",
+      "local_id": "LOCALID_RUBY"
     }
   ],
   "warp_events": [

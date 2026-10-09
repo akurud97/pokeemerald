@@ -301,8 +301,8 @@ static const s8 sCenterToCornerVecXs[8] ={-32, -16, -16, -32, -32};
 // [TRAINER_CLASS_XYZ] = { _("name"), <money=5>, <ball=BALL_POKE> }
 const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
 {
-    [TRAINER_CLASS_PKMN_TRAINER_1] = { _("{PKMN} TRAINER") },
-    [TRAINER_CLASS_PKMN_TRAINER_2] = { _("{PKMN} TRAINER") },
+    [TRAINER_CLASS_PKMN_TRAINER_1] = { _("SCHOOLGIRL") },
+    [TRAINER_CLASS_PKMN_TRAINER_2] = { _("SCHOOLBOY") },
     [TRAINER_CLASS_HIKER] = { _("HIKER"), 10, B_TRAINER_CLASS_POKE_BALLS >= GEN_8 ? BALL_ULTRA : BALL_POKE },
     [TRAINER_CLASS_TEAM_AQUA] = { _("TEAM AQUA") },
     [TRAINER_CLASS_PKMN_BREEDER] = { _("{PKMN} BREEDER"), 10, B_TRAINER_CLASS_POKE_BALLS >= GEN_8 ? BALL_HEAL : BALL_FRIEND },
@@ -418,6 +418,31 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     [TRAINER_CLASS_RUIN_MANIAC_FRLG] =     { _("RUIN MANIAC"), 12 },
     [TRAINER_CLASS_LADY_FRLG] =            { _("LADY"), 50 },
     [TRAINER_CLASS_PAINTER_FRLG] =         { _("PAINTER"), 4 },
+    [TRAINER_CLASS_FREEBOOTER_M] =          { _("FREEBOOTER"), 8 },
+    [TRAINER_CLASS_FREEBOOTER_F] =          { _("FREEBOOTER"), 8 },
+    [TRAINER_CLASS_ASTRAL_PATH_ACOLYTE_M] =  { _("ASTRAL PATH ACOLYTE"), 8 },
+    [TRAINER_CLASS_ASTRAL_PATH_ACOLYTE_F] =  { _("ASTRAL PATH ACOLYTE"), 8 },
+    [TRAINER_CLASS_GUARD] =                 { _("GUARD"), 10 },
+    [TRAINER_CLASS_SKIER] =                 { _("SKIER"), 8 },
+    [TRAINER_CLASS_SAGE] =                  { _("SAGE"), 10 },
+    [TRAINER_CLASS_BOARDER] =               { _("BOARDER"), 8 },
+    [TRAINER_CLASS_BIKER] =                 { _("BIKER"), 5 },
+    [TRAINER_CLASS_ROUGHNECK] =             { _("ROUGHNECK"), 6 },
+    [TRAINER_CLASS_GAMBLER] =               { _("GAMBLER"), 18 },
+    [TRAINER_CLASS_WORKER] =                { _("WORKER"), 12 },
+    [TRAINER_CLASS_PAINTER] =               { _("PAINTER"), 4 },
+    [TRAINER_CLASS_SCIENTIST] =             { _("SCIENTIST"), 12 },
+    [TRAINER_CLASS_RANCHER] =                { _("RANCHER"), 10 },
+    [TRAINER_CLASS_COWGIRL] =                { _("COWGIRL"), 8 },
+    [TRAINER_CLASS_BELLE_AND_PA] =           { _("BELLE & PA"), 10 },
+    [TRAINER_CLASS_SCOUTS] =                 { _("SCOUTS"), 4 },
+    [TRAINER_CLASS_HOOLIGANS] =              { _("HOOLIGANS"), 6 },
+    [TRAINER_CLASS_PUNK_COUPLE] =            { _("PUNK COUPLE"), 8 },
+    [TRAINER_CLASS_POKEFANS] =               { _("POKéFANS"), 8 },
+    [TRAINER_CLASS_SCHOOLKIDS] =             { _("SCHOOLKIDS"), 4 },
+    [TRAINER_CLASS_SLOPE_RIDERS] =           { _("SLOPE RIDERS"), 8 },
+    [TRAINER_CLASS_PKMN_BREEDERS] =          { _("{PKMN} BREEDERS"), 10 },
+    [TRAINER_CLASS_PKMN_RANGERS] =           { _("{PKMN} RANGERS"), 12 },
 };
 
 static void (*const sTurnActionsFuncsTable[])(void) =

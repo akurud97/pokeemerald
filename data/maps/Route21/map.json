@@ -1,15 +1,15 @@
 {
-  "id": "MAP_ROUTE21",
+  "id": "MAP_HYADES_ROUTE21",
   "name": "Route21",
   "layout": "LAYOUT_ROUTE21",
   "music": "MUS_DUMMY",
   "region_map_section": "MAPSEC_ABANDONED_SHIP",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
-  "map_type": "MAP_TYPE_NONE",
-  "allow_cycling": false,
+  "map_type": "MAP_TYPE_ROUTE",
+  "allow_cycling": true,
   "allow_escaping": false,
-  "allow_running": false,
+  "allow_running": true,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
@@ -22,18 +22,16 @@
       "map": "MAP_SANSUNA_CITY",
       "offset": 103,
       "direction": "left"
+    },
+    {
+      "map": "MAP_POKEMON_LEAGUE",
+      "offset": 42,
+      "direction": "down"
     }
   ],
-  "object_events": [
-
-  ],
-  "warp_events": [
-
-  ],
-  "coord_events": [
-
-  ],
-  "bg_events": [
-
-  ]
+  "object_events": [],
+  "warp_events": [],
+  "coord_events": [],
+  "bg_events": [],
+  "region": "REGION_HOENN"
 }

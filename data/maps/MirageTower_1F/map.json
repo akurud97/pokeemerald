@@ -3,7 +3,6 @@
   "name": "MirageTower_1F",
   "layout": "LAYOUT_MIRAGE_TOWER_1F",
   "music": "MUS_MT_CHIMNEY",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_MIRAGE_TOWER",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -13,10 +12,8 @@
   "allow_running": true,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": 0,
-  "object_events": [
-
-  ],
+  "connections": null,
+  "object_events": [],
   "warp_events": [
     {
       "x": 10,
@@ -33,10 +30,7 @@
       "dest_warp_id": "1"
     }
   ],
-  "coord_events": [
-
-  ],
-  "bg_events": [
-
-  ]
+  "coord_events": [],
+  "bg_events": [],
+  "region": "REGION_HOENN"
 }

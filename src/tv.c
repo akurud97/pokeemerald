@@ -1028,6 +1028,14 @@ u8 GabbyAndTyGetLastBattleTrivia(void)
 // See gabby_and_ty.inc for details
 void GetGabbyAndTyLocalIds(void)
 {
+#if defined(LOCALID_ROUTE111_GABBY_1) && defined(LOCALID_ROUTE111_TY_1) \
+ && defined(LOCALID_ROUTE118_GABBY_1) && defined(LOCALID_ROUTE118_TY_1) \
+ && defined(LOCALID_ROUTE120_GABBY_1) && defined(LOCALID_ROUTE120_TY_1) \
+ && defined(LOCALID_ROUTE111_GABBY_2) && defined(LOCALID_ROUTE111_TY_2) \
+ && defined(LOCALID_ROUTE118_GABBY_2) && defined(LOCALID_ROUTE118_TY_2) \
+ && defined(LOCALID_ROUTE120_GABBY_2) && defined(LOCALID_ROUTE120_TY_2) \
+ && defined(LOCALID_ROUTE111_GABBY_3) && defined(LOCALID_ROUTE111_TY_3) \
+ && defined(LOCALID_ROUTE118_GABBY_3) && defined(LOCALID_ROUTE118_TY_3)
     switch (GabbyAndTyGetBattleNum())
     {
     case 1:
@@ -1063,6 +1071,11 @@ void GetGabbyAndTyLocalIds(void)
         gSpecialVar_0x8005 = LOCALID_ROUTE118_TY_3;
         break;
     }
+#else
+    // The custom region repurposes some of Gabby and Ty's stock maps.
+    gSpecialVar_0x8004 = 0;
+    gSpecialVar_0x8005 = 0;
+#endif
 }
 
 void InterviewAfter(void)
@@ -2644,10 +2657,12 @@ static bool8 ShouldApplyPokeNewsEffect(u8 newsKind)
     switch (newsKind)
     {
     case POKENEWS_SLATEPORT:
+#ifdef LOCALID_SLATEPORT_ENERGY_GURU
         if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_SLATEPORT_CITY)
          && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_SLATEPORT_CITY)
          && gSpecialVar_LastTalked == LOCALID_SLATEPORT_ENERGY_GURU)
             return TRUE;
+#endif
         return FALSE;
     case POKENEWS_LILYCOVE:
         if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_LILYCOVE_CITY_DEPARTMENT_STORE_ROOFTOP)

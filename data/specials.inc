@@ -18,6 +18,8 @@
 gSpecials::
 .endif
 	def_special HealPlayerParty
+	def_special DoesPlayerPartyNeedHealing
+	def_special StartBlackJack, waitstate=1
 	def_special SetCableClubWarp
 	def_special DoCableClubWarp, waitstate=1
 	def_special ReturnFromLinkRoom, waitstate=1
@@ -515,6 +517,7 @@ gSpecials::
 	def_special SetUnlockedPokedexFlags
 	def_special IsTrainerRegistered
 	def_special ShouldDoBrailleRegicePuzzle
+	def_special DoSlidingPuzzle, waitstate=1
 	def_special EnableNationalPokedex
 	def_special ScriptMenu_CreateLilycoveSSTidalMultichoice, waitstate=1
 	def_special GetLilycoveSSTidalSelection
@@ -564,6 +567,10 @@ gSpecials::
 	def_special UseBlankMessageToCancelPokemonPic
 	def_special EnterCode
 	def_special GetCodeFeedback
+	def_special StartAprilNamingScreen, waitstate=1
+	def_special SetAprilNameFromChoice
+	def_special BufferAprilName
+	def_special BufferPlayerSubjectPronoun
 	def_special SetHiddenNature
 	def_special SetAbility
 	def_special CanTeachMoveBoxMon
@@ -639,3 +646,8 @@ gSpecials::
 	def_special UpdateTrainerCardPhotoIcons
 	def_special StickerManGetBragFlags
 	def_special CheckAddCoins
+	def_special InitRoute4SandPiles
+	def_special ChooseRoute4SandPileOutcome
+	def_special RemoveRoute4SandPile
+	def_special CalculateForagingPouchSalvageValue
+	def_special SellForagingPouchItems

@@ -19,6 +19,7 @@ enum {
     ITEMMENULOCATION_WALLY,
     ITEMMENULOCATION_PCBOX,
     ITEMMENULOCATION_BERRY_TREE_MULCH,
+    ITEMMENULOCATION_FORAGING_POUCH,
     ITEMMENULOCATION_LAST,
 };
 
@@ -112,6 +113,7 @@ void DoWallyTutorialBagMenu(void);
 void InitOldManBag(void);
 void ResetBagScrollPositions(void);
 void ChooseBerryForMachine(MainCallback exitCallback);
+void OpenForagingPouch(MainCallback exitCallback);
 void CB2_ChooseBerry(void);
 void CB2_ChooseMulch(void);
 void Task_FadeAndCloseBagMenu(u8 taskId);

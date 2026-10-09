@@ -1,0 +1,51 @@
+raw `
+InquillTunnelF1_MapScripts::
+	.byte 0
+
+InquillTunnelF1_EventScript_Aiden::
+	trainerbattle TRAINER_BATTLE_EARLY_RIVAL, LOCALID_NONE, TRAINER_INQUILL_TUNNEL_AIDEN, InquillTunnelF1_Text_AidenIntro, InquillTunnelF1_Text_AidenDefeat, NULL, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, InquillTunnelF1_Text_AidenVictory, NULL, FALSE, TRUE, FALSE, FALSE
+	msgbox InquillTunnelF1_Text_AidenPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+InquillTunnelF1_EventScript_Mason::
+	trainerbattle TRAINER_BATTLE_EARLY_RIVAL, LOCALID_NONE, TRAINER_INQUILL_TUNNEL_MASON, InquillTunnelF1_Text_MasonIntro, InquillTunnelF1_Text_MasonDefeat, NULL, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, InquillTunnelF1_Text_MasonVictory, NULL, FALSE, TRUE, FALSE, FALSE
+	msgbox InquillTunnelF1_Text_MasonPostBattle, MSGBOX_AUTOCLOSE
+	end
+`
+
+text InquillTunnelF1_Text_AidenIntro {
+    "Is that a bug? Oh no, it’s just a\n"
+    "trainer."
+}
+
+text InquillTunnelF1_Text_AidenDefeat {
+    "I need to get my eyesight checked…"
+}
+
+text InquillTunnelF1_Text_AidenVictory {
+    "Squashed like a bug."
+}
+
+text InquillTunnelF1_Text_AidenPostBattle {
+    "There are lots of crawlies in these\n"
+    "caves…but they’re hard to spot in the\l"
+    "dark."
+}
+
+text InquillTunnelF1_Text_MasonIntro {
+    "Hey kid! Are you gonna snitch on me?"
+}
+
+text InquillTunnelF1_Text_MasonDefeat {
+    "I knew I should have found a better\n"
+    "hiding spot."
+}
+
+text InquillTunnelF1_Text_MasonVictory {
+    "That’ll teach you to be a snitch!"
+}
+
+text InquillTunnelF1_Text_MasonPostBattle {
+    "Listen kid, I’m hiding out in here\n"
+    "for…reasons. Don’t tell no one, okay?"
+}

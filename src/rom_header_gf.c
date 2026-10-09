@@ -120,7 +120,7 @@ __attribute__((section(".text.header_gf"))) USED static const struct GFRomHeader
     .mysteryEventFlag = FLAG_SYS_MYSTERY_EVENT_ENABLE,
     .pokedexCount = NATIONAL_DEX_COUNT,
     .playerNameLength = PLAYER_NAME_LENGTH,
-    .trainerNameLength = TRAINER_NAME_LENGTH,
+    .trainerNameLength = NPC_TRAINER_NAME_LENGTH,
     .pokemonNameLength1 = POKEMON_NAME_LENGTH,
     .pokemonNameLength2 = POKEMON_NAME_LENGTH,
     // Two of the below 12s are likely move/ability name length, given their presence in this header

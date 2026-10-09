@@ -96,18 +96,23 @@ Geodude
 Level: 21
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_GRUNT_AQUA_HIDEOUT_1 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+=== TRAINER_MINTAKA_ACOLYTE ===
+Name: ???
+Class: Astral Path Acolyte M
+Pic: Astral Path Acolyte M
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Battle Type: Singles
 AI: Check Bad Move
 
-Poochyena
-Level: 32
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Solosis
+Level: 9
+
+Abra
+Level: 10
+
+Munna
+Level: 10
 
 === TRAINER_GRUNT_AQUA_HIDEOUT_2 ===
 Name: GRUNT
@@ -315,18 +320,16 @@ Gyarados
 Level: 34
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_GRUNT_RUSTURF_TUNNEL ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+=== TRAINER_INQUILL_TUNNEL_MASON ===
+Name: Mason
+Class: Freebooter M
+Pic: Freebooter M
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Battle Type: Singles
-AI: Check Bad Move
 
-Poochyena
-Level: 11
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Corphish
+Level: 9
 
 === TRAINER_GRUNT_WEATHER_INST_1 ===
 Name: GRUNT
@@ -625,22 +628,16 @@ Spoink
 Level: 31
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_DAISY ===
-Name: DAISY
+=== TRAINER_ROUTE3_CHERISE ===
+Name: Cherise
 Class: Aroma Lady
 Pic: Aroma Lady
 Gender: Female
 Music: Female
 Battle Type: Singles
-AI: Check Bad Move
 
-Shroomish
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Roselia
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Budew
+Level: 8
 
 === TRAINER_ROSE_1 ===
 Name: ROSE
@@ -1193,7 +1190,7 @@ Level: 26
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_RICKY_2 ===
-Name: RICKY
+Name: GABRIEL
 Class: Tuber M
 Pic: Tuber M
 Gender: Male
@@ -1201,13 +1198,13 @@ Music: Girl
 Battle Type: Singles
 AI: Check Bad Move
 
-Linoone
-Level: 27
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
-- Sand Attack
-- Pin Missile
-- Tail Whip
-- Surf
+Wiglett (M)
+Level: 10
+Ability: Gooey
+
+Poliwag (F)
+Level: 11
+Ability: Damp
 
 === TRAINER_RICKY_3 ===
 Name: RICKY
@@ -2565,18 +2562,17 @@ Level: 45
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_WINSTON_2 ===
-Name: WINSTON
+Name: LIAM
 Class: Rich Boy
 Pic: Rich Boy
 Gender: Male
 Music: Rich
-Items: Full Restore
 Battle Type: Singles
 AI: Check Bad Move
 
-Linoone @ Nugget
-Level: 27
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Sandshrew (F)
+Level: 12
+Ability: Sand Veil
 
 === TRAINER_WINSTON_3 ===
 Name: WINSTON
@@ -2625,17 +2621,18 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sand Attack
 
 === TRAINER_STEVE_1 ===
-Name: STEVE
-Class: Pokemaniac
-Pic: Pokemaniac
+Name: Steven
+Class: Worker
+Pic: Worker
 Gender: Male
-Music: Suspicious
+Music: Male
 Battle Type: Singles
-AI: Check Bad Move
 
-Aron
-Level: 19
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Scraggy
+Level: 9
+
+Mankey
+Level: 11
 
 === TRAINER_THALIA_1 ===
 Name: THALIA
@@ -3462,7 +3459,7 @@ Level: 15
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DALTON_2 ===
-Name: DALTON
+Name: ELIJAH
 Class: Guitarist
 Pic: Guitarist
 Gender: Male
@@ -3470,17 +3467,13 @@ Music: Intense
 Battle Type: Singles
 AI: Check Bad Move
 
-Magnemite
-Level: 25
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+SPECIES_VOLTORB_HISUI
+Level: 11
+Ability: Soundproof
 
-Whismur
-Level: 25
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
-
-Magnemite
-Level: 25
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Nosepass (F)
+Level: 12
+Ability: Sturdy
 
 === TRAINER_DALTON_3 ===
 Name: DALTON
@@ -5393,52 +5386,38 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Arm Thrust
 
 === TRAINER_ANNA_AND_MEG_2 ===
-Name: ANNA & MEG
-Class: Sr And Jr
-Pic: Sr And Jr
+Name: JACK & MIA
+Class: Tuber M
+Pic: Tuber M
 Gender: Male
 Music: Twins
 Battle Type: Doubles
 AI: Check Bad Move
 
-Zigzagoon
-Level: 28
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
-- Growl
-- Tail Whip
-- Headbutt
-- Odor Sleuth
+Lotad (F)
+Level: 11
+Ability: Rain Dish
 
-Makuhita
-Level: 30
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
-- Tackle
-- Focus Energy
-- Arm Thrust
+Dwebble (M)
+Level: 12
+Ability: Sturdy
 
 === TRAINER_ANNA_AND_MEG_3 ===
-Name: ANNA & MEG
+Name: ANNA&NICOLE
 Class: Sr And Jr
 Pic: Sr And Jr
-Gender: Male
+Gender: Female
 Music: Twins
 Battle Type: Doubles
 AI: Check Bad Move
 
-Zigzagoon
-Level: 31
-IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
-- Growl
-- Tail Whip
-- Headbutt
-- Odor Sleuth
+Teddiursa (F)
+Level: 13
+Ability: Quick Feet
 
-Makuhita
-Level: 33
-IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
-- Tackle
-- Focus Energy
-- Arm Thrust
+Phanpy (M)
+Level: 9
+Ability: Sand Veil
 
 === TRAINER_ANNA_AND_MEG_4 ===
 Name: ANNA & MEG
@@ -5505,18 +5484,19 @@ Zigzagoon @ Oran Berry
 Level: 16
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 
-=== TRAINER_MIGUEL_1 ===
-Name: MIGUEL
-Class: Pokefan
-Pic: Pokefan M
+=== TRAINER_ROUTE3_ZACK ===
+Name: Zack
+Class: Youngster
+Pic: Youngster
 Gender: Male
-Music: Twins
+Music: Male
 Battle Type: Singles
-AI: Check Bad Move
 
-Skitty @ Oran Berry
-Level: 15
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Phanpy
+Level: 7
+
+Poliwag
+Level: 8
 
 === TRAINER_COLTON ===
 Name: COLTON
@@ -5942,18 +5922,19 @@ Hariyama
 Level: 39
 IVs: 29 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 29 Spe
 
-=== TRAINER_CALVIN_1 ===
-Name: CALVIN
+=== TRAINER_ROUTE2_MAX ===
+Name: Max
 Class: Youngster
 Pic: Youngster
 Gender: Male
 Music: Male
 Battle Type: Singles
-AI: Check Bad Move
 
-Poochyena
+Lotad
 Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Fletchling
+Level: 6
 
 === TRAINER_BILLY ===
 Name: BILLY
@@ -6208,22 +6189,19 @@ Zigzagoon
 Level: 16
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_ALLEN ===
-Name: ALLEN
-Class: Youngster
-Pic: Youngster
-Gender: Male
-Music: Male
+=== TRAINER_ROUTE2_CHLOE ===
+Name: Chloe
+Class: Lass
+Pic: Lass
+Gender: Female
+Music: Female
 Battle Type: Singles
-AI: Check Bad Move
 
-Zigzagoon
-Level: 4
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+SPECIES_FLABEBE_RED
+Level: 5
 
-Taillow
-Level: 3
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Sentret
+Level: 5
 
 === TRAINER_TIMMY ===
 Name: TIMMY
@@ -6484,7 +6462,7 @@ Level: 25
 IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
 
 === TRAINER_ELLIOT_2 ===
-Name: ELLIOT
+Name: ISAAC
 Class: Fisherman
 Pic: Fisherman
 Gender: Male
@@ -6492,17 +6470,17 @@ Music: Hiker
 Battle Type: Singles
 AI: Check Bad Move
 
-Tentacool
-Level: 24
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Magikarp (M)
+Level: 11
+Ability: Swift Swim
 
-Gyarados
-Level: 27
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Magikarp (F)
+Level: 11
+Ability: Swift Swim
 
-Gyarados
-Level: 27
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Magikarp (M)
+Level: 11
+Ability: Swift Swim
 
 === TRAINER_ELLIOT_3 ===
 Name: ELLIOT
@@ -6880,7 +6858,7 @@ Level: 17
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_MARIA_2 ===
-Name: MARIA
+Name: AMY
 Class: Triathlete
 Pic: Running Triathlete F
 Gender: Female
@@ -6888,9 +6866,17 @@ Music: Female
 Battle Type: Singles
 AI: Check Bad Move
 
-Doduo
-Level: 28
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Toedscool (F)
+Level: 10
+Ability: Mycelium Might
+
+Rolycoly (M)
+Level: 10
+Ability: Heatproof
+
+Blitzle (F)
+Level: 11
+Ability: Motor Drive
 
 === TRAINER_MARIA_3 ===
 Name: MARIA
@@ -8765,22 +8751,19 @@ Altaria
 Level: 40
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
-=== TRAINER_AMY_AND_LIV_1 ===
-Name: AMY & LIV
+=== TRAINER_ROUTE3_DAISY_AND_SUMMER ===
+Name: Daisy&Summer
 Class: Twins
 Pic: Twins
-Gender: Male
+Gender: Female
 Music: Twins
 Battle Type: Doubles
-AI: Check Bad Move
 
-Plusle
-Level: 15
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Nidoran (F)
+Level: 8
 
-Minun
-Level: 15
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Nidoran (M)
+Level: 8
 
 === TRAINER_AMY_AND_LIV_2 ===
 Name: AMY & LIV
@@ -8939,21 +8922,18 @@ IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 - Helping Hand
 
 === TRAINER_HUEY ===
-Name: HUEY
+Name: Jeremy
 Class: Sailor
 Pic: Sailor
 Gender: Male
 Music: Male
 Battle Type: Singles
-AI: Check Bad Move
 
-Wingull
-Level: 12
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Slowpoke
+Level: 9
 
-Machop
-Level: 12
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Chinchou
+Level: 10
 
 === TRAINER_EDMOND ===
 Name: EDMOND
@@ -9062,7 +9042,7 @@ Level: 25
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_ERNEST_2 ===
-Name: ERNEST
+Name: OLIVER
 Class: Sailor
 Pic: Sailor
 Gender: Male
@@ -9070,17 +9050,9 @@ Music: Male
 Battle Type: Singles
 AI: Check Bad Move
 
-Wingull
-Level: 36
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
-
-Tentacool
-Level: 36
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
-
-Machoke
-Level: 36
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Shellder (M)
+Level: 12
+Ability: Skill Link
 
 === TRAINER_ERNEST_3 ===
 Name: ERNEST
@@ -9145,18 +9117,19 @@ Tentacruel
 Level: 45
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
-=== TRAINER_ELI ===
-Name: ELI
+=== TRAINER_INQUILL_TUNNEL_CHARLES ===
+Name: Charles
 Class: Hiker
 Pic: Hiker
 Gender: Male
 Music: Hiker
 Battle Type: Singles
-AI: Check Bad Move
 
-Numel
-Level: 23
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Rolycoly
+Level: 8
+
+Rolycoly
+Level: 8
 
 === TRAINER_ANNIKA ===
 Name: ANNIKA
@@ -9330,22 +9303,22 @@ Hariyama
 Level: 33
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
-=== TRAINER_EDWIN_1 ===
-Name: EDWIN
+=== TRAINER_INQUILL_TUNNEL_JULIAN ===
+Name: Julian
 Class: Collector
 Pic: Collector
 Gender: Male
 Music: Suspicious
 Battle Type: Singles
-AI: Check Bad Move
 
-Lombre
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Abra
+Level: 7
 
-Nuzleaf
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Abra
+Level: 7
+
+Abra
+Level: 7
 
 === TRAINER_HECTOR ===
 Name: HECTOR
@@ -9834,51 +9807,33 @@ Marshtomp
 Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
-=== TRAINER_ISAAC_1 ===
-Name: ISAAC
+=== TRAINER_ROUTE3_ALEX ===
+Name: Alex
 Class: Pkmn Breeder
 Pic: Pokemon Breeder M
 Gender: Male
 Music: Male
 Battle Type: Singles
-AI: Check Bad Move
 
-Whismur
-Level: 11
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Mudkip
+Level: 7
 
-Zigzagoon
-Level: 11
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Chespin
+Level: 7
 
-Aron
-Level: 11
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Poochyena
-Level: 11
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Taillow
-Level: 11
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Makuhita
-Level: 11
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_DAVIS ===
-Name: DAVIS
+=== TRAINER_INQUILL_TUNNEL_AIDEN ===
+Name: Aiden
 Class: Bug Catcher
 Pic: Bug Catcher
 Gender: Male
 Music: Male
 Battle Type: Singles
-AI: Check Bad Move
 
-Pinsir
-Level: 27
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Joltik
+Level: 7
+
+Nincada
+Level: 8
 
 === TRAINER_MITCHELL ===
 Name: MITCHELL
@@ -11047,22 +11002,16 @@ Camerupt
 Level: 25
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
-=== TRAINER_TIANA ===
-Name: TIANA
-Class: Lass
-Pic: Lass
+=== TRAINER_ROUTE2_EMMA ===
+Name: Emma
+Class: Pkmn Trainer 1
+Pic: School Kid F
 Gender: Female
 Music: Female
 Battle Type: Singles
-AI: Check Bad Move
 
-Zigzagoon
-Level: 4
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Shroomish
-Level: 4
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Azurill
+Level: 6
 
 === TRAINER_HALEY_1 ===
 Name: HALEY
@@ -11251,22 +11200,16 @@ Wailmer
 Level: 39
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-=== TRAINER_RICK ===
-Name: RICK
+=== TRAINER_ROUTE2_ELI ===
+Name: Eli
 Class: Bug Catcher
 Pic: Bug Catcher
 Gender: Male
 Music: Male
 Battle Type: Singles
-AI: Check Bad Move
 
-Wurmple
-Level: 4
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Wurmple
-Level: 4
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Sewaddle
+Level: 5
 
 === TRAINER_LYLE ===
 Name: LYLE
@@ -16877,3 +16820,121 @@ Battle Type: Singles
 Kyogre
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_RIVAL_SCHOOL_START1 ===
+Name: Rival
+Class: Rival
+Pic: Leader Flannery
+Gender: Female
+Music: Male
+Double Battle: No
+
+Chikorita
+Level: 5
+
+=== TRAINER_LANDON ===
+Name: Landon
+Class: Pkmn Trainer 2
+Pic: School Kid M
+Gender: Male
+Music: Male
+Double Battle: No
+
+Fletchling
+Level: 4
+
+=== TRAINER_EVELYN ===
+Name: Evelyn
+Class: Lass
+Pic: Lass
+Gender: Female
+Music: Male
+Double Battle: No
+
+Sentret
+Level: 4
+
+=== TRAINER_APRIL_SPHEAL ===
+Name: April
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+Battle Type: Singles
+
+Spheal
+Level: 5
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_APRIL_SANDILE ===
+Name: April
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+Battle Type: Singles
+
+Sandile
+Level: 5
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_APRIL_MAREEP ===
+Name: April
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+Battle Type: Singles
+
+Mareep
+Level: 5
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_MINTAKA_GYM_SAWYER ===
+Name: Sawyer
+Class: Rich Boy
+Pic: Rich Boy
+Gender: Male
+Music: Male
+Battle Type: Singles
+
+Rufflet
+Level: 11
+
+=== TRAINER_MINTAKA_GYM_HAILEY ===
+Name: Hailey
+Class: Lass
+Pic: Lass
+Gender: Female
+Music: Female
+Battle Type: Singles
+
+Wingull
+Level: 10
+
+Fletchling
+Level: 12
+
+=== TRAINER_MINTAKA_GYM_LEADER_LUCA ===
+Name: Luca
+Class: Leader
+Pic: Leader Brawly
+Gender: Male
+Music: Male
+Battle Type: Singles
+AI: Basic Trainer
+
+Drifloon
+Level: 13
+Ability: Aftermath
+- Gust
+- Astonish
+- Focus Energy
+- Bind
+
+Murkrow
+Level: 14
+Ability: Super Luck
+- Pursuit
+- Peck
+- Screech

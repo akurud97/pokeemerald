@@ -24,14 +24,6 @@ static bool32 IsFieldMoveUnlocked_Flash(void)
     return FlagGet(FLAG_BADGE02_GET);
 }
 
-static bool32 IsFieldMoveUnlocked_RockSmash(void)
-{
-    if (IS_FRLG)
-        return FlagGet(FLAG_BADGE06_GET);
-
-    return FlagGet(FLAG_BADGE03_GET);
-}
-
 static bool32 IsFieldMoveUnlocked_Strength(void)
 {
     return FlagGet(FLAG_BADGE04_GET);
@@ -123,9 +115,10 @@ const struct FieldMoveInfo gFieldMoveInfo[FIELD_MOVES_COUNT] =
 
     [FIELD_MOVE_ROCK_SMASH] =
     {
-        .fieldMoveFunc = SetUpFieldMove_RockSmash,
-        .isUnlockedFunc = IsFieldMoveUnlocked_RockSmash,
-        .moveID = MOVE_ROCK_SMASH,
+        // Rock Smash remains a battle move, but the Pickaxe replaces its field use.
+        .fieldMoveFunc = NULL,
+        .isUnlockedFunc = NULL,
+        .moveID = MOVE_UNAVAILABLE,
         .partyMsgID = PARTY_MSG_CANT_USE_HERE,
     },
 

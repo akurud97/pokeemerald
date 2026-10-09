@@ -1,0 +1,74 @@
+raw `
+InquillHouse5_MapScripts::
+	.byte 0
+
+InquillHouse5_EventScript_TradeBuneary::
+	lock
+	faceplayer
+	goto_if_set FLAG_INQUILL_HOUSE5_TRADE_COMPLETED, InquillHouse5_EventScript_TradeCompleted
+	setvar VAR_0x8008, INGAME_TRADE_BUNEARY
+	call EventScript_GetInGameTradeSpeciesInfo
+	msgbox InquillHouse5_Text_TradeOffer, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, InquillHouse5_EventScript_TradeDeclined
+	checkspecies SPECIES_PHANPY
+	goto_if_eq VAR_RESULT, FALSE, InquillHouse5_EventScript_NoPhanpy
+	call EventScript_ChooseMonForInGameTrade
+	goto_if_ge VAR_0x8004, PARTY_SIZE, InquillHouse5_EventScript_TradeDeclined
+	call EventScript_GetInGameTradeSpecies
+	goto_if_ne VAR_RESULT, VAR_0x8009, InquillHouse5_EventScript_NotPhanpy
+	call EventScript_DoInGameTrade
+	msgbox InquillHouse5_Text_TradeCompleted, MSGBOX_DEFAULT
+	setflag FLAG_INQUILL_HOUSE5_TRADE_COMPLETED
+	release
+	end
+
+InquillHouse5_EventScript_NoPhanpy::
+	msgbox InquillHouse5_Text_NoPhanpy, MSGBOX_DEFAULT
+	release
+	end
+
+InquillHouse5_EventScript_NotPhanpy::
+	msgbox InquillHouse5_Text_NotPhanpy, MSGBOX_DEFAULT
+	release
+	end
+
+InquillHouse5_EventScript_TradeDeclined::
+	release
+	end
+
+InquillHouse5_EventScript_TradeCompleted::
+	msgbox InquillHouse5_Text_TradeCompleted, MSGBOX_DEFAULT
+	release
+	end
+`
+
+script InquillHouse5_EventScript_Object1 {
+    msgbox(InquillHouse5_Text_Object1, MSGBOX_NPC)
+    end
+}
+
+text InquillHouse5_Text_Object1 {
+    "I moved into town to work at the new\n"
+    "lab, but some shady characters took\l"
+    "over operations.\p"
+    "They wouldn’t tell us what we were\n"
+    "working on."
+}
+
+text InquillHouse5_Text_TradeOffer {
+    "Have you seen Phanpy? They're so cute!\n"
+    "I'll trade you my Buneary for one."
+}
+
+text InquillHouse5_Text_NoPhanpy {
+    "You don't have a Phanpy? Too bad..."
+}
+
+text InquillHouse5_Text_NotPhanpy {
+    "That isn't a Phanpy. Too bad..."
+}
+
+text InquillHouse5_Text_TradeCompleted {
+    "Phanpy's trunk is so adorable! Thank\n"
+    "you!"
+}

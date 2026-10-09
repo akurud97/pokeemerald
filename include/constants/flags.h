@@ -51,25 +51,25 @@
 
 #else
 
-#define FLAG_UNUSED_0x020    0x20 // Unused Flag
-#define FLAG_UNUSED_0x021    0x21 // Unused Flag
-#define FLAG_UNUSED_0x022    0x22 // Unused Flag
-#define FLAG_UNUSED_0x023    0x23 // Unused Flag
-#define FLAG_UNUSED_0x024    0x24 // Unused Flag
-#define FLAG_UNUSED_0x025    0x25 // Unused Flag
-#define FLAG_UNUSED_0x026    0x26 // Unused Flag
-#define FLAG_UNUSED_0x027    0x27 // Unused Flag
-#define FLAG_UNUSED_0x028    0x28 // Unused Flag
-#define FLAG_UNUSED_0x029    0x29 // Unused Flag
-#define FLAG_UNUSED_0x02A    0x2A // Unused Flag
-#define FLAG_UNUSED_0x02B    0x2B // Unused Flag
-#define FLAG_UNUSED_0x02C    0x2C // Unused Flag
-#define FLAG_UNUSED_0x02D    0x2D // Unused Flag
-#define FLAG_UNUSED_0x02E    0x2E // Unused Flag
-#define FLAG_UNUSED_0x02F    0x2F // Unused Flag
-#define FLAG_UNUSED_0x030    0x30 // Unused Flag
-#define FLAG_UNUSED_0x031    0x31 // Unused Flag
-#define FLAG_UNUSED_0x032    0x32 // Unused Flag
+#define FLAG_ALASIAVILLE_TALKED_TO_MOM       0x20
+#define FLAG_HIDE_ALASIAVILLE_APRIL          0x21
+#define FLAG_HIDE_ROUTE1_PROFESSOR_SITKA     0x22
+#define FLAG_HIDE_ROUTE1_APRIL               0x23
+#define FLAG_HIDE_SITKA_LAB_APRIL            0x24
+#define FLAG_HIDE_SITKA_LAB_SPHEAL           0x25
+#define FLAG_HIDE_SITKA_LAB_SANDILE          0x26
+#define FLAG_HIDE_SITKA_LAB_MAREEP           0x27
+#define FLAG_APRIL_NAMED                     0x28
+#define FLAG_HIDE_APRIL_HOUSE2F_APRIL        0x29
+#define FLAG_MINTAKA_GYM_FLYING_BIRD_PUZZLE 0x2A
+#define FLAG_MINTAKA_GYM_FOREST_BIRD_PUZZLE 0x2B
+#define FLAG_MINTAKA_GYM_DUCK_BOAT_PUZZLE   0x2C
+#define FLAG_DEFEATED_MINTAKA_GYM            0x2D
+#define FLAG_RECEIVED_TM_ROOST               0x2E
+#define FLAG_INQUILL_HOUSE5_TRADE_COMPLETED 0x2F
+#define FLAG_HIDE_MINTAKA_ACOLYTE 0x30
+#define FLAG_HIDE_MINTAKA_CARGO_WORKER 0x31
+#define FLAG_RECEIVED_PICKAXE 0x32
 #define FLAG_UNUSED_0x033    0x33 // Unused Flag
 #define FLAG_UNUSED_0x034    0x34 // Unused Flag
 #define FLAG_UNUSED_0x035    0x35 // Unused Flag
@@ -1237,13 +1237,13 @@
 #define FLAG_UNUSED_0x49F                                           0x49F // Unused Flag
 #define FLAG_UNUSED_0x4A0                                           0x4A0 // Unused Flag
 #define FLAG_UNUSED_0x4A1                                           0x4A1 // Unused Flag
-#define FLAG_UNUSED_0x4A2                                           0x4A2 // Unused Flag
-#define FLAG_UNUSED_0x4A3                                           0x4A3 // Unused Flag
-#define FLAG_UNUSED_0x4A4                                           0x4A4 // Unused Flag
-#define FLAG_UNUSED_0x4A5                                           0x4A5 // Unused Flag
-#define FLAG_UNUSED_0x4A6                                           0x4A6 // Unused Flag
-#define FLAG_UNUSED_0x4A7                                           0x4A7 // Unused Flag
-#define FLAG_UNUSED_0x4A8                                           0x4A8 // Unused Flag
+#define FLAG_ITEM_ALASIAVILLE_POTION                                0x4A2
+#define FLAG_ITEM_ROUTE1_ETHER                                      0x4A3
+#define FLAG_RECEIVED_MINTAKA_SEA_INCENSE                           0x4A4
+#define FLAG_RECEIVED_MINTAKA_DAMP_ROCK                             0x4A5
+#define FLAG_ITEM_ROUTE3_RARE_CANDY                                 0x4A6
+#define FLAG_ITEM_ROUTE3_TM79                                       0x4A7
+#define FLAG_ITEM_ROUTE3_AWAKENING                                  0x4A8
 #define FLAG_UNUSED_0x4A9                                           0x4A9 // Unused Flag
 #define FLAG_UNUSED_0x4AA                                           0x4AA // Unused Flag
 #define FLAG_UNUSED_0x4AB                                           0x4AB // Unused Flag
@@ -1366,6 +1366,9 @@
 #define FLAG_BADGE08_GET                      (SYSTEM_FLAGS + 0xE)
 #define NUM_BADGES                            (1 + FLAG_BADGE08_GET - FLAG_BADGE01_GET)
 
+// The Aria Badge currently uses the first stock badge slot and artwork.
+#define FLAG_ARIA_BADGE_GET                   FLAG_BADGE01_GET
+
 // Towns and Cities
 #define FLAG_VISITED_LITTLEROOT_TOWN                (SYSTEM_FLAGS + 0xF)
 #define FLAG_VISITED_OLDALE_TOWN                    (SYSTEM_FLAGS + 0x10)
@@ -1387,9 +1390,9 @@
 #define FLAG_IS_CHAMPION                            (SYSTEM_FLAGS + 0x1F) // Seems to be related to linking.
 #define FLAG_NURSE_UNION_ROOM_REMINDER              (SYSTEM_FLAGS + 0x20)
 
-#define FLAG_UNUSED_0x881                           (SYSTEM_FLAGS + 0x21) // Unused Flag
-#define FLAG_UNUSED_0x882                           (SYSTEM_FLAGS + 0x22) // Unused Flag
-#define FLAG_UNUSED_0x883                           (SYSTEM_FLAGS + 0x23) // Unused Flag
+#define FLAG_SYS_DEXNAV_SEARCHING                   (SYSTEM_FLAGS + 0x21)
+#define FLAG_SYS_DEXNAV_GET                         (SYSTEM_FLAGS + 0x22)
+#define FLAG_SYS_DEXNAV_DETECTOR_MODE               (SYSTEM_FLAGS + 0x23)
 #define FLAG_UNUSED_0x884                           (SYSTEM_FLAGS + 0x24) // Unused Flag
 #define FLAG_UNUSED_0x885                           (SYSTEM_FLAGS + 0x25) // Unused Flag
 #define FLAG_UNUSED_0x886                           (SYSTEM_FLAGS + 0x26) // Unused Flag
@@ -1646,7 +1649,7 @@
 #define FLAG_HIDE_MAP_NAME_POPUP                (SPECIAL_FLAGS_START + 0x0)
 #define FLAG_DONT_TRANSITION_MUSIC              (SPECIAL_FLAGS_START + 0x1)
 #define FLAG_ENABLE_MULTI_CORRIDOR_DOOR         (SPECIAL_FLAGS_START + 0x2)
-#define FLAG_SPECIAL_FLAG_UNUSED_0x4003         (SPECIAL_FLAGS_START + 0x3) // Unused Flag
+#define FLAG_SPECIAL_NO_WHITEOUT                (SPECIAL_FLAGS_START + 0x3) // Temporarily allows scripted battles to return after a loss
 #define FLAG_STORING_ITEMS_IN_PYRAMID_BAG       (SPECIAL_FLAGS_START + 0x4)
 #define FLAG_SAFE_FOLLOWER_MOVEMENT             (SPECIAL_FLAGS_START + 0x5) // When set, applymovement does not put the follower inside a pokeball
                                                                             // Also, scripted movements on the player will move follower(s), too

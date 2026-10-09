@@ -1949,6 +1949,9 @@ const u16 gItemIconPalette_BikeVoucher[] = INCGFX_U16("graphics/items/icon_palet
 const u32 gItemIcon_GoldTeeth[] = INCGFX_U32("graphics/items/icons/gold_teeth.png", ".4bpp.smol");
 const u16 gItemIconPalette_GoldTeeth[] = INCGFX_U16("graphics/items/icon_palettes/gold_teeth.pal", ".gbapal");
 
+const u32 gItemIcon_Pickaxe[] = INCGFX_U32("graphics/items/icons/pickaxe.png", ".4bpp.smol");
+const u16 gItemIconPalette_Pickaxe[] = INCGFX_U16("graphics/items/icon_palettes/pickaxe.pal", ".gbapal");
+
 const u32 gItemIcon_CardKey[] = INCGFX_U32("graphics/items/icons/card_key.png", ".4bpp.smol");
 const u16 gItemIconPalette_CardKey[] = INCGFX_U16("graphics/items/icon_palettes/card_key.pal", ".gbapal");
 

@@ -1,0 +1,35 @@
+raw `
+Route6_MapScripts::
+    .byte 0
+
+Route6_EventScript_CyclingRoadGate::
+    lockall
+    specialvar VAR_RESULT, GetPlayerFacingDirection
+    goto_if_eq VAR_RESULT, DIR_SOUTH, Route6_EventScript_LeaveCyclingRoad
+    specialvar VAR_RESULT, GetPlayerAvatarBike
+    goto_if_eq VAR_RESULT, 0, Route6_EventScript_NoBike
+    setflag FLAG_SYS_CYCLING_ROAD
+    releaseall
+    end
+
+Route6_EventScript_LeaveCyclingRoad::
+    clearflag FLAG_SYS_CYCLING_ROAD
+    releaseall
+    end
+
+Route6_EventScript_NoBike::
+    msgbox Route6_Text_CyclingRoadRequiresBicycle, MSGBOX_DEFAULT
+    closemessage
+    applymovement OBJ_EVENT_ID_PLAYER, Route6_Movement_PushPlayerSouth
+    waitmovement 0
+    releaseall
+    end
+
+Route6_Movement_PushPlayerSouth:
+    walk_down
+    step_end
+
+Route6_Text_CyclingRoadRequiresBicycle:
+    .string "Cycling Road is dangerous without\n"
+    .string "a bicycle.$"
+`

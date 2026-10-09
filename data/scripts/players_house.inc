@@ -70,7 +70,11 @@ PlayersHouse_2F_EventScript_WallClock::
 	end
 
 PlayersHouse_2F_EventScript_MomComesUpstairsMale::
+#ifdef LOCALID_PLAYERS_HOUSE_2F_MOM
 	setvar VAR_0x8008, LOCALID_PLAYERS_HOUSE_2F_MOM
+#else
+	setvar VAR_0x8008, 0
+#endif
 	addobject VAR_0x8008
 	applymovement VAR_0x8008, PlayersHouse_2F_Movement_MomEntersMale
 	waitmovement 0
@@ -83,7 +87,11 @@ PlayersHouse_2F_EventScript_MomComesUpstairsMale::
 	return
 
 PlayersHouse_2F_EventScript_MomComesUpstairsFemale::
+#ifdef LOCALID_PLAYERS_HOUSE_2F_MOM
 	setvar VAR_0x8008, LOCALID_PLAYERS_HOUSE_2F_MOM
+#else
+	setvar VAR_0x8008, 0
+#endif
 	addobject VAR_0x8008
 	applymovement VAR_0x8008, PlayersHouse_2F_Movement_MomEntersFemale
 	waitmovement 0
@@ -485,14 +493,24 @@ PlayersHouse_1F_EventScript_AirLatiBroadcast::
 
 PlayersHouse_1F_EventScript_SetUpObjectEventVarsMale::
 	setvar VAR_0x8008, MALE
+#if defined(LOCALID_PLAYERS_HOUSE_1F_DAD) && defined(LOCALID_PLAYERS_HOUSE_1F_MOM)
 	setvar VAR_0x8009, LOCALID_PLAYERS_HOUSE_1F_DAD
 	setvar VAR_0x800A, LOCALID_PLAYERS_HOUSE_1F_MOM
+#else
+	setvar VAR_0x8009, 0
+	setvar VAR_0x800A, 0
+#endif
 	return
 
 PlayersHouse_1F_EventScript_SetUpObjectEventVarsFemale::
 	setvar VAR_0x8008, FEMALE
+#if defined(LOCALID_PLAYERS_HOUSE_1F_DAD) && defined(LOCALID_PLAYERS_HOUSE_1F_MOM)
 	setvar VAR_0x8009, LOCALID_PLAYERS_HOUSE_1F_DAD
 	setvar VAR_0x800A, LOCALID_PLAYERS_HOUSE_1F_MOM
+#else
+	setvar VAR_0x8009, 0
+	setvar VAR_0x800A, 0
+#endif
 	return
 
 PlayersHouse_1F_EventScript_DadApproachPlayerMale::

@@ -888,8 +888,15 @@ static void BuyMenuCollectObjectEventData(void)
         {
             u8 objEventId = GetObjectEventIdByXY(facingX - 4 + x, facingY - 2 + y);
 
-            // skip if invalid or an overworld Pokémon that is not following the player
-            if (objEventId != OBJECT_EVENTS_COUNT && !(gObjectEvents[objEventId].active && gObjectEvents[objEventId].graphicsId & OBJ_EVENT_MON && gObjectEvents[objEventId].localId != OBJ_EVENT_ID_FOLLOWER))
+            // Dynamic Pokémon object graphics are owned by the field/follower
+            // system.  The buy menu tears down the field sprite state and
+            // recreates nearby objects in its miniature viewport, so trying to
+            // clone one here can leave it with invalid sprite resources when
+            // returning to the field.  The follower is restored normally after
+            // the shop menu closes.
+            if (objEventId != OBJECT_EVENTS_COUNT
+             && !(gObjectEvents[objEventId].active
+               && (gObjectEvents[objEventId].graphicsId & OBJ_EVENT_MON)))
             {
                 sShopData->viewportObjects[numObjects][OBJ_EVENT_ID] = objEventId;
                 sShopData->viewportObjects[numObjects][X_COORD] = x;
@@ -942,6 +949,14 @@ static void BuyMenuDrawObjectEvents(void)
             (u16)sShopData->viewportObjects[i][X_COORD] * 16 + 8,
             (u16)sShopData->viewportObjects[i][Y_COORD] * 16 + 48 - graphicsInfo->height / 2,
             2);
+
+        if (spriteId == MAX_SPRITES)
+        {
+            DebugPrintf("Shop viewport could not create object sprite %u (gfx=%04X)",
+                        sShopData->viewportObjects[i][OBJ_EVENT_ID],
+                        gObjectEvents[sShopData->viewportObjects[i][OBJ_EVENT_ID]].graphicsId);
+            continue;
+        }
 
         if (BuyMenuCheckIfObjectEventOverlapsMenuBg(sShopData->viewportObjects[i]) == TRUE)
         {

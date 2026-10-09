@@ -237,6 +237,8 @@ const u32 gObjectEventPic_CableCar[] = INCGFX_U32("graphics/object_events/pics/m
 const u16 gObjectEventPal_CableCar[] = INCGFX_U16("graphics/object_events/palettes/cable_car.pal", ".gbapal");
 const u32 gObjectEventPic_SSTidal[] = INCGFX_U32("graphics/object_events/pics/misc/ss_tidal.png", ".4bpp");
 const u16 gObjectEventPal_SSTidal[] = INCGFX_U16("graphics/object_events/palettes/ss_tidal.pal", ".gbapal");
+const u32 gObjectEventPic_Train[] = INCGFX_U32("graphics/object_events/pics/misc/train.png", ".4bpp");
+const u16 gObjectEventPal_Train[] = INCGFX_U16("graphics/object_events/palettes/train.pal", ".gbapal");
 const u32 gFieldEffectObjectPic_Sparkle[] = INCGFX_U32("graphics/field_effects/pics/sparkle.png", ".4bpp", "-mwidth 2 -mheight 2");
 const u32 gObjectEventPic_BerryTreeDirtPile[] = INCGFX_U32("graphics/object_events/pics/berry_trees/dirt_pile.png", ".4bpp");
 const u32 gObjectEventPic_BerryTreeSprout[] = INCGFX_U32("graphics/object_events/pics/berry_trees/sprout.png", ".4bpp", "-mwidth 2 -mheight 2");
@@ -466,6 +468,14 @@ const u32 gObjectEventPic_ApricornTree[] = INCGFX_U32("graphics/object_events/pi
 
 const u32 gFieldEffectObjectPic_ShinySparkle[] = INCGFX_U32("graphics/field_effects/pics/shiny_sparkle.png", ".4bpp", "-mwidth 2 -mheight 4");
 
+#if !IS_FRLG
+// FRLG object graphics explicitly ported for use in the Emerald build.
+const u16 gObjectEventPal_NpcWhite[] = INCGFX_U16("graphics/object_events/palettes/npc_white.pal", ".gbapal");
+const u16 gObjectEventPal_NpcPink[] = INCGFX_U16("graphics/object_events/palettes/npc_pink.pal", ".gbapal");
+const u16 gObjectEventPic_Lorelei[] = INCGFX_U16("graphics/object_events/pics/people/lorelei.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u16 gObjectEventPic_GymGuy[] = INCGFX_U16("graphics/object_events/pics/people/gym_guy.png", ".4bpp", "-mwidth 2 -mheight 4");
+#endif
+
 #if IS_FRLG
 
 const u16 gObjectEventPic_RedNormal[] = INCGFX_U16("graphics/object_events/pics/people/red/red_normal.png", ".4bpp", "-mwidth 2 -mheight 4");
@@ -633,27 +643,31 @@ const u16 gObjectEventPic_ClefairyOld[] = INCGFX_U16("graphics/object_events/pic
 
 #endif // IS_FRLG
 
-const u32 gObjectEventPic_Biker[] = INCGFX_U32("graphics/object_events/pics/people/biker.png", ".4bpp");
+const u32 gObjectEventPic_Biker[] = INCGFX_U32("graphics/object_events/pics/people/biker.png", ".4bpp", "-mwidth 4 -mheight 4");
 const u16 gObjectEventPalette_Biker[] = INCGFX_U16("graphics/object_events/pics/people/biker.png", ".gbapal");
-const u32 gObjectEventPic_Cowboy[] = INCGFX_U32("graphics/object_events/pics/people/cowboy.png", ".4bpp");
+const u32 gObjectEventPic_Cowboy[] = INCGFX_U32("graphics/object_events/pics/people/cowboy.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPalette_Cowboy[] = INCGFX_U16("graphics/object_events/pics/people/cowboy.png", ".gbapal");
-const u32 gObjectEventPic_Cowgirl[] = INCGFX_U32("graphics/object_events/pics/people/cowgirl.png", ".4bpp");
+const u32 gObjectEventPic_Cowgirl[] = INCGFX_U32("graphics/object_events/pics/people/cowgirl.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPalette_Cowgirl[] = INCGFX_U16("graphics/object_events/pics/people/cowgirl.png", ".gbapal");
-const u32 gObjectEventPic_Ruin[] = INCGFX_U32("graphics/object_events/pics/people/ruin.png", ".4bpp");
+const u32 gObjectEventPic_Ruin[] = INCGFX_U32("graphics/object_events/pics/people/ruin.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPalette_Ruin[] = INCGFX_U16("graphics/object_events/pics/people/ruin.png", ".gbapal");
-const u32 gObjectEventPic_Ranger_M[] = INCGFX_U32("graphics/object_events/pics/people/ranger_m.png", ".4bpp");
+const u32 gObjectEventPic_Ranger_M[] = INCGFX_U32("graphics/object_events/pics/people/ranger_m.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPalette_Ranger_M[] = INCGFX_U16("graphics/object_events/pics/people/ranger_m.png", ".gbapal");
-const u32 gObjectEventPic_Ranger_F[] = INCGFX_U32("graphics/object_events/pics/people/ranger_f.png", ".4bpp");
+const u32 gObjectEventPic_Ranger_F[] = INCGFX_U32("graphics/object_events/pics/people/ranger_f.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPalette_Ranger_F[] = INCGFX_U16("graphics/object_events/pics/people/ranger_f.png", ".gbapal");
-const u32 gObjectEventPic_Worker[] = INCGFX_U32("graphics/object_events/pics/people/worker.png", ".4bpp");
+const u32 gObjectEventPic_Worker[] = INCGFX_U32("graphics/object_events/pics/people/worker.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPalette_Worker[] = INCGFX_U16("graphics/object_events/pics/people/worker.png", ".gbapal");
-const u32 gObjectEventPic_Sage[] = INCGFX_U32("graphics/object_events/pics/people/sage.png", ".4bpp");
+const u32 gObjectEventPic_Sage[] = INCGFX_U32("graphics/object_events/pics/people/sage.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPalette_Sage[] = INCGFX_U16("graphics/object_events/pics/people/sage.png", ".gbapal");
-const u32 gObjectEventPic_Roughneck[] = INCGFX_U32("graphics/object_events/pics/people/roughneck.png", ".4bpp");
+const u32 gObjectEventPic_Roughneck[] = INCGFX_U32("graphics/object_events/pics/people/roughneck.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPalette_Roughneck[] = INCGFX_U16("graphics/object_events/pics/people/roughneck.png", ".gbapal");
-const u32 gObjectEventPic_Skier_m[] = INCGFX_U32("graphics/object_events/pics/people/skier_m.png", ".4bpp");
-const u16 gObjectEventPalette_Skier_m[] = INCGFX_U16("graphics/object_events/pics/people/skier_m.png", ".gbapal");
-const u32 gObjectEventPic_Skier_f[] = INCGFX_U32("graphics/object_events/pics/people/skier_f.png", ".4bpp");
-const u16 gObjectEventPalette_Skier_f[] = INCGFX_U16("graphics/object_events/pics/people/skier_f.png", ".gbapal");
-const u32 gObjectEventPic_Guard[] = INCGFX_U32("graphics/object_events/pics/people/guard.png", ".4bpp");
+const u32 gObjectEventPic_Boarder[] = INCGFX_U32("graphics/object_events/pics/people/boarder.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u16 gObjectEventPalette_Boarder[] = INCGFX_U16("graphics/object_events/pics/people/boarder.png", ".gbapal");
+const u32 gObjectEventPic_Skier[] = INCGFX_U32("graphics/object_events/pics/people/skier.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u16 gObjectEventPalette_Skier[] = INCGFX_U16("graphics/object_events/pics/people/skier.png", ".gbapal");
+const u32 gObjectEventPic_Guard[] = INCGFX_U32("graphics/object_events/pics/people/guard.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPalette_Guard[] = INCGFX_U16("graphics/object_events/pics/people/guard.png", ".gbapal");
+const u32 gObjectEventPic_AcolyteF[] = INCGFX_U32("graphics/object_events/pics/people/acolyte_f.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u16 gObjectEventPalette_AcolyteF[] = INCGFX_U16("graphics/object_events/pics/people/acolyte_f.png", ".gbapal");
+const u32 gObjectEventPic_AcolyteM[] = INCGFX_U32("graphics/object_events/pics/people/acolyte_m.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u16 gObjectEventPalette_AcolyteM[] = INCGFX_U16("graphics/object_events/pics/people/acolyte_m.png", ".gbapal");

@@ -97,7 +97,5 @@
       "script": "EventScript_RecordCenter_Spot3"
     }
   ],
-  "bg_events": [
-
-  ]
+  "bg_events": []
 }

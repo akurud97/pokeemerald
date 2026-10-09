@@ -3,7 +3,6 @@
   "name": "BattleFrontier_BattlePikeRoomWildMons",
   "layout": "LAYOUT_BATTLE_FRONTIER_BATTLE_PIKE_ROOM_WILD_MONS",
   "music": "MUS_B_PIKE",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_BATTLE_FRONTIER",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -13,13 +12,9 @@
   "allow_running": true,
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": 0,
-  "object_events": [
-
-  ],
-  "warp_events": [
-
-  ],
+  "connections": null,
+  "object_events": [],
+  "warp_events": [],
   "coord_events": [
     {
       "type": "trigger",
@@ -85,7 +80,6 @@
       "script": "BattleFrontier_BattlePikeRoomWildMons_EventScript_NoTurningBack"
     }
   ],
-  "bg_events": [
-
-  ]
+  "bg_events": [],
+  "region": "REGION_HOENN"
 }

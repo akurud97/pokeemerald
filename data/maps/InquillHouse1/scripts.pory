@@ -1,0 +1,24 @@
+raw `
+InquillHouse1_MapScripts::
+	.byte 0
+`
+
+script InquillHouse1_EventScript_Object1 {
+    msgbox(InquillHouse1_Text_Object1, MSGBOX_NPC)
+    end
+}
+
+script InquillHouse1_EventScript_Object2 {
+    msgbox(InquillHouse1_Text_Object2, MSGBOX_NPC)
+    end
+}
+
+text InquillHouse1_Text_Object1 {
+    "My husband is out in his garden like\n"
+    "always. I wish he would help around\l"
+    "the house more."
+}
+
+text InquillHouse1_Text_Object2 {
+    "Zoom! Zoom!"
+}

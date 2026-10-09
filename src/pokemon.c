@@ -4207,6 +4207,7 @@ enum Species GetGMaxTargetSpecies(enum Species species)
 bool32 DoesMonMeetAdditionalConditions(struct Pokemon *mon, const struct EvolutionParam *params, struct Pokemon *tradePartner, u32 partyId, bool32 *canStopEvo, enum EvoState evoState)
 {
     u32 i, j;
+    enum Species species = GetMonData(mon, MON_DATA_SPECIES);
     enum Item heldItem = GetMonData(mon, MON_DATA_HELD_ITEM);
     u32 gender = GetMonGender(mon);
     u32 friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, 0);
@@ -4275,10 +4276,15 @@ bool32 DoesMonMeetAdditionalConditions(struct Pokemon *mon, const struct Evoluti
                 currentCondition = TRUE;
             break;
         case IF_TIME:
-            if (GetTimeOfDay() == params[i].arg1)
-                currentCondition = TRUE;
+        {
+            enum TimeOfDay timeOfDay = GetTimeOfDay();
 
+            // Alcremie's daytime recipes also apply during the separate morning period.
+            if (timeOfDay == params[i].arg1
+             || (species == SPECIES_MILCERY && timeOfDay == TIME_MORNING && params[i].arg1 == TIME_DAY))
+                currentCondition = TRUE;
             break;
+        }
         case IF_NOT_TIME:
             if (GetTimeOfDay() != params[i].arg1)
                 currentCondition = TRUE;
@@ -5298,6 +5304,9 @@ u16 GetBattleBGM(void)
         case TRAINER_CLASS_AQUA_ADMIN:
         case TRAINER_CLASS_MAGMA_ADMIN:
             return MUS_VS_AQUA_MAGMA;
+        case TRAINER_CLASS_ASTRAL_PATH_ACOLYTE_M:
+        case TRAINER_CLASS_ASTRAL_PATH_ACOLYTE_F:
+            return MUS_BW_VS_PLASMA;
         case TRAINER_CLASS_LEADER:
             return MUS_VS_GYM_LEADER;
         case TRAINER_CLASS_CHAMPION:
@@ -5446,6 +5455,9 @@ const u16 *GetMonSpritePalFromSpeciesIsEgg(enum Species species, bool32 isShiny,
 
 bool32 IsMoveHM(enum Move move)
 {
+    if (move == MOVE_ROCK_SMASH)
+        return FALSE;
+
     return FALSE FOREACH_HM(OR_MOVE_IS_HM);
 }
 

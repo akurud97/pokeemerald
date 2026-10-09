@@ -1,0 +1,72 @@
+raw `
+InquillTown_MapScripts::
+	.byte 0
+`
+
+script InquillTown_EventScript_Object1 {
+    msgbox(InquillTown_Text_Object1, MSGBOX_NPC)
+    end
+}
+
+script InquillTown_EventScript_Object2 {
+    msgbox(InquillTown_Text_Object2, MSGBOX_NPC)
+    end
+}
+
+script InquillTown_EventScript_Object3 {
+    msgbox(InquillTown_Text_Object3, MSGBOX_NPC)
+    end
+}
+
+script InquillTown_EventScript_Object4 {
+    msgbox(InquillTown_Text_Object4, MSGBOX_NPC)
+    end
+}
+
+script InquillTown_EventScript_Object5 {
+    msgbox(InquillTown_Text_Object5, MSGBOX_NPC)
+    end
+}
+
+script InquillTown_EventScript_Object6 {
+    msgbox(InquillTown_Text_Object6, MSGBOX_NPC)
+    end
+}
+
+text InquillTown_Text_Object1 {
+    "Check out our shop! We’re offering\n"
+    "a promotional Wailmer Pail to new\l"
+    "customers."
+}
+
+text InquillTown_Text_Object2 {
+    "The air in this town is so clean and\n"
+    "fresh thanks to efforts to keep it\l"
+    "green.\p"
+    "That new lab on the edge of town only\n"
+    "got approved when it promised to use\l"
+    "clean hydroelectric energy."
+}
+
+text InquillTown_Text_Object3 {
+    "Ah, I love to stroll and smell the\n"
+    "flowers. Inquill may be uneventful,\l"
+    "but it’s beautiful."
+}
+
+text InquillTown_Text_Object4 {
+    "I smell something delicious from in\n"
+    "the house. I need to finish watering\l"
+    "these plants and get inside."
+}
+
+text InquillTown_Text_Object5 {
+    "Are you here to challenge the gym?\n"
+    "Their Pokémon are so cute!"
+}
+
+text InquillTown_Text_Object6 {
+    "Sigh… Can’t you see I’m on break, kid?\p"
+    "You’ll have to go in the mart if you\n"
+    "want to buy items."
+}

@@ -1,0 +1,87 @@
+raw `
+TrainerSchool_MapScripts::
+	.byte 0
+`
+script TrainerSchool_EventScript_Starter1{
+
+    lockall
+    showmonpic(SPECIES_TOTODILE, 10,3)
+    msgbox("Do you want to choose Totodile?", MSGBOX_YESNO)
+    if(var(VAR_RESULT) == YES){
+        givemon(SPECIES_TOTODILE, 5, ITEM_POKE_BALL)
+        if(var(VAR_RESULT) == MON_GIVEN_TO_PARTY){
+            playfanfare(MUS_OBTAIN_ITEM)
+            msgbox("Received Totodile!")
+            removeobject(1)
+            setflag(VAR_UNUSED_0x40F7)
+            call(NicknamePartyMon)
+        }
+        else{
+            hidemonpic
+            msgbox(TrainerSchool_NotChosen)
+        }
+    }
+        waitmessage
+        releaseall
+        end
+}
+script TrainerSchool_EventScript_Starter2{
+
+    lockall
+    showmonpic(SPECIES_CHIKORITA, 10,3)
+    msgbox("Do you want to choose Chikorita?", MSGBOX_YESNO)
+    if(var(VAR_RESULT) == YES){
+        givemon(SPECIES_CHIKORITA, 5, ITEM_POKE_BALL)
+        if(var(VAR_RESULT) == MON_GIVEN_TO_PARTY){
+            playfanfare(MUS_OBTAIN_ITEM)
+            msgbox("Received Chikorita!")
+            removeobject(2)
+            setflag(VAR_UNUSED_0x40F7)
+            call(NicknamePartyMon)
+        }
+        else{
+            hidemonpic
+            msgbox(TrainerSchool_NotChosen)
+        }
+    }
+        waitmessage
+        releaseall
+        end
+}
+script TrainerSchool_EventScript_Starter3{
+
+    lockall
+    showmonpic(SPECIES_CYNDAQUIL, 10,3)
+    msgbox("Do you want to choose Cyndaquil?", MSGBOX_YESNO)
+    if(var(VAR_RESULT) == YES){
+        givemon(SPECIES_CYNDAQUIL, 5, ITEM_POKE_BALL)
+        if(var(VAR_RESULT) == MON_GIVEN_TO_PARTY){
+            playfanfare(MUS_OBTAIN_ITEM)
+            msgbox("Received Cyndaquil!")
+            removeobject(3)
+            setflag(VAR_UNUSED_0x40F7)
+            call(NicknamePartyMon)
+        }
+        else{
+            hidemonpic
+            msgbox(TrainerSchool_NotChosen)
+        }
+    }
+        waitmessage
+        releaseall
+        end
+}
+
+
+script NicknamePartyMon{
+
+    msgbox("Give it a nickname?", MSGBOX_YESNO)
+    hidemonpic
+    if(var(VAR_RESULT) == YES){
+        call(Common_EventScript_GetGiftMonPartySlot)
+        call(Common_EventScript_NameReceivedPartyMon)
+    }
+}
+text TrainerSchool_NotChosen{
+    "You did not choose this Pokemon."
+}

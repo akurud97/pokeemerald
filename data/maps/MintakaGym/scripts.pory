@@ -1,0 +1,237 @@
+raw `
+MintakaGym_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, MintakaGym_OnLoad
+	.byte 0
+
+MintakaGym_OnLoad:
+	call_if_set FLAG_MINTAKA_GYM_FLYING_BIRD_PUZZLE, MintakaGym_EventScript_SetFlyingBirdSolved
+	call_if_set FLAG_MINTAKA_GYM_FOREST_BIRD_PUZZLE, MintakaGym_EventScript_SetForestBirdSolved
+	call_if_set FLAG_MINTAKA_GYM_DUCK_BOAT_PUZZLE, MintakaGym_EventScript_SetDuckBoatSolved
+	goto_if_unset FLAG_MINTAKA_GYM_FLYING_BIRD_PUZZLE, MintakaGym_EventScript_OnLoadEnd
+	goto_if_unset FLAG_MINTAKA_GYM_FOREST_BIRD_PUZZLE, MintakaGym_EventScript_OnLoadEnd
+	goto_if_unset FLAG_MINTAKA_GYM_DUCK_BOAT_PUZZLE, MintakaGym_EventScript_OnLoadEnd
+	call MintakaGym_EventScript_SetDoorOpen
+
+MintakaGym_EventScript_OnLoadEnd:
+	end
+
+MintakaGym_EventScript_Hailey::
+	trainerbattle TRAINER_BATTLE_EARLY_RIVAL, LOCALID_NONE, TRAINER_MINTAKA_GYM_HAILEY, MintakaGym_Text_HaileyIntro, MintakaGym_Text_HaileyDefeat, NULL, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, MintakaGym_Text_HaileyVictory, NULL, FALSE, TRUE, FALSE, FALSE
+	msgbox MintakaGym_Text_HaileyPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+MintakaGym_EventScript_Sawyer::
+	trainerbattle TRAINER_BATTLE_EARLY_RIVAL, LOCALID_NONE, TRAINER_MINTAKA_GYM_SAWYER, MintakaGym_Text_SawyerIntro, MintakaGym_Text_SawyerDefeat, NULL, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, MintakaGym_Text_SawyerVictory, NULL, FALSE, TRUE, FALSE, FALSE
+	msgbox MintakaGym_Text_SawyerPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+MintakaGym_EventScript_GymGuide::
+	lock
+	faceplayer
+	setspeaker SP_NAME_NONE
+	goto_if_set FLAG_DEFEATED_MINTAKA_GYM, MintakaGym_EventScript_GymGuideAfterLuca
+	msgbox MintakaGym_Text_GymGuideAdvice, MSGBOX_DEFAULT
+	release
+	end
+
+MintakaGym_EventScript_GymGuideAfterLuca:
+	msgbox MintakaGym_Text_GymGuideAfterLuca, MSGBOX_DEFAULT
+	release
+	end
+
+MintakaGym_EventScript_Luca::
+	goto_if_set FLAG_DEFEATED_MINTAKA_GYM, MintakaGym_EventScript_LucaDefeated
+	setspeaker SP_NAME_NONE
+	trainerbattle TRAINER_BATTLE_EARLY_RIVAL, LOCALID_NONE, TRAINER_MINTAKA_GYM_LEADER_LUCA, MintakaGym_Text_LucaIntro, MintakaGym_Text_LucaDefeat, MintakaGym_EventScript_LucaWon, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, MintakaGym_Text_LucaVictory, NULL, FALSE, TRUE, FALSE, FALSE
+	end
+
+MintakaGym_EventScript_LucaWon::
+	setflag FLAG_DEFEATED_MINTAKA_GYM
+	setflag FLAG_ARIA_BADGE_GET
+	setspeaker SP_NAME_LUCA
+	msgbox MintakaGym_Text_LucaEarnedAriaBadge, MSGBOX_DEFAULT
+	setspeaker SP_NAME_NONE
+	message MintakaGym_Text_ReceivedAriaBadge
+	waitmessage
+	call Common_EventScript_PlayGymBadgeFanfare
+	setspeaker SP_NAME_LUCA
+	msgbox MintakaGym_Text_LucaTakeRoost, MSGBOX_DEFAULT
+	goto MintakaGym_EventScript_GiveRoost
+
+MintakaGym_EventScript_LucaDefeated:
+	goto_if_unset FLAG_RECEIVED_TM_ROOST, MintakaGym_EventScript_RetryRoost
+	setspeaker SP_NAME_LUCA
+	msgbox MintakaGym_Text_LucaPostBattle, MSGBOX_DEFAULT
+	release
+	end
+
+MintakaGym_EventScript_RetryRoost:
+	setspeaker SP_NAME_LUCA
+	msgbox MintakaGym_Text_LucaRetryRoost, MSGBOX_DEFAULT
+
+MintakaGym_EventScript_GiveRoost:
+	setspeaker SP_NAME_NONE
+	giveitem ITEM_TM_ROOST
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	setflag FLAG_RECEIVED_TM_ROOST
+	release
+	end
+
+MintakaGym_EventScript_FlyingBirdPuzzle::
+	goto_if_set FLAG_MINTAKA_GYM_FLYING_BIRD_PUZZLE, MintakaGym_EventScript_End
+	lockall
+	setvar VAR_0x8004, SLIDING_PUZZLE_FLYING_BIRD
+	setvar VAR_0x8005, FALSE
+	special DoSlidingPuzzle
+	goto_if_eq VAR_RESULT, FALSE, MintakaGym_EventScript_CancelPuzzle
+	setflag FLAG_MINTAKA_GYM_FLYING_BIRD_PUZZLE
+	call MintakaGym_EventScript_SetFlyingBirdSolved
+	goto MintakaGym_EventScript_FinishPuzzle
+
+MintakaGym_EventScript_ForestBirdPuzzle::
+	goto_if_set FLAG_MINTAKA_GYM_FOREST_BIRD_PUZZLE, MintakaGym_EventScript_End
+	lockall
+	setvar VAR_0x8004, SLIDING_PUZZLE_FOREST_BIRD
+	setvar VAR_0x8005, FALSE
+	special DoSlidingPuzzle
+	goto_if_eq VAR_RESULT, FALSE, MintakaGym_EventScript_CancelPuzzle
+	setflag FLAG_MINTAKA_GYM_FOREST_BIRD_PUZZLE
+	call MintakaGym_EventScript_SetForestBirdSolved
+	goto MintakaGym_EventScript_FinishPuzzle
+
+MintakaGym_EventScript_DuckBoatPuzzle::
+	goto_if_set FLAG_MINTAKA_GYM_DUCK_BOAT_PUZZLE, MintakaGym_EventScript_End
+	lockall
+	setvar VAR_0x8004, SLIDING_PUZZLE_DUCK_BOAT
+	setvar VAR_0x8005, FALSE
+	special DoSlidingPuzzle
+	goto_if_eq VAR_RESULT, FALSE, MintakaGym_EventScript_CancelPuzzle
+	setflag FLAG_MINTAKA_GYM_DUCK_BOAT_PUZZLE
+	call MintakaGym_EventScript_SetDuckBoatSolved
+
+MintakaGym_EventScript_FinishPuzzle:
+	goto_if_unset FLAG_MINTAKA_GYM_FLYING_BIRD_PUZZLE, MintakaGym_EventScript_PuzzleClickedIntoPlace
+	goto_if_unset FLAG_MINTAKA_GYM_FOREST_BIRD_PUZZLE, MintakaGym_EventScript_PuzzleClickedIntoPlace
+	goto_if_unset FLAG_MINTAKA_GYM_DUCK_BOAT_PUZZLE, MintakaGym_EventScript_PuzzleClickedIntoPlace
+	call MintakaGym_EventScript_SetDoorOpen
+	special DrawWholeMapView
+	setspeaker SP_NAME_NONE
+	msgbox MintakaGym_Text_DoorOpening, MSGBOX_DEFAULT
+	releaseall
+	end
+
+MintakaGym_EventScript_PuzzleClickedIntoPlace:
+	special DrawWholeMapView
+	setspeaker SP_NAME_NONE
+	msgbox MintakaGym_Text_ClickIntoPlace, MSGBOX_DEFAULT
+	releaseall
+	end
+
+MintakaGym_EventScript_CancelPuzzle:
+	releaseall
+	end
+
+MintakaGym_EventScript_End:
+	end
+
+MintakaGym_EventScript_SetFlyingBirdSolved:
+	setmetatile 7, 29, METATILE_LilycoveMuseum_Painting0_Left, TRUE
+	setmetatile 8, 29, METATILE_LilycoveMuseum_Painting0_Right, TRUE
+	return
+
+MintakaGym_EventScript_SetForestBirdSolved:
+	setmetatile 2, 25, METATILE_LilycoveMuseum_Painting1_Left, TRUE
+	setmetatile 3, 25, METATILE_LilycoveMuseum_Painting1_Right, TRUE
+	return
+
+MintakaGym_EventScript_SetDuckBoatSolved:
+	setmetatile 12, 25, METATILE_LilycoveMuseum_Painting2_Left, TRUE
+	setmetatile 13, 25, METATILE_LilycoveMuseum_Painting2_Right, TRUE
+	return
+
+MintakaGym_EventScript_SetDoorOpen:
+	setmetatile 7, 19, METATILE_LilycoveMuseum_MintakaGym_DoorWall, TRUE
+	setmetatile 8, 19, METATILE_LilycoveMuseum_MintakaGym_DoorWall, TRUE
+	setmetatile 7, 20, METATILE_LilycoveMuseum_MintakaGym_DoorWarp, FALSE
+	setmetatile 8, 20, METATILE_LilycoveMuseum_MintakaGym_DoorWarp, FALSE
+	return
+
+MintakaGym_Text_ClickIntoPlace:
+	.string "You hear something click into place.$"
+
+MintakaGym_Text_DoorOpening:
+	.string "You hear a door opening.$"
+
+MintakaGym_Text_HaileyIntro:
+	.string "I want to fly high like a bird!$"
+
+MintakaGym_Text_HaileyDefeat:
+	.string "You grounded me…$"
+
+MintakaGym_Text_HaileyVictory:
+	.string "I’m soaring!$"
+
+MintakaGym_Text_HaileyPostBattle:
+	.string "I want to feel the wind in my hair…$"
+
+MintakaGym_Text_SawyerIntro:
+	.string "You came to challenge the Gym?\n"
+	.string "You’ll have to face me first!$"
+
+MintakaGym_Text_SawyerDefeat:
+	.string "You won’t beat Luca!$"
+
+MintakaGym_Text_SawyerVictory:
+	.string "Come back when you’re stronger.$"
+
+MintakaGym_Text_SawyerPostBattle:
+	.string "My daddy has a better art\n"
+	.string "collection than this.$"
+
+MintakaGym_Text_GymGuideAdvice:
+	.string "Hey, a new challenger! This Gym uses\n"
+	.string "Flying-type Pokémon. Take a look at\l"
+	.string "the artwork around the Gym before you\l"
+	.string "take on the Leader.$"
+
+MintakaGym_Text_GymGuideAfterLuca:
+	.string "I’ve never seen Luca defeated like\n"
+	.string "that! Looks like we’ve got a new champ\l"
+	.string "in the making.$"
+
+MintakaGym_Text_LucaIntro:
+	.string "So, you’re taking on the Gym\n"
+	.string "challenge? I’m Luca, the Gym Leader\l"
+	.string "of Mintaka City.\p"
+	.string "My Pokémon have mastered the art\n"
+	.string "form of flying. Let’s see what\l"
+	.string "you’ve got.$"
+
+MintakaGym_Text_LucaDefeat:
+	.string "That was excellent! The battlefield\n"
+	.string "is your canvas.$"
+
+MintakaGym_Text_LucaVictory:
+	.string "That may have been my masterpiece.$"
+
+MintakaGym_Text_LucaEarnedAriaBadge:
+	.string "You fight with real artistry. You’ve\n"
+	.string "earned the Aria Badge.$"
+
+MintakaGym_Text_ReceivedAriaBadge:
+	.string "{PLAYER} received the ARIA BADGE\n"
+	.string "from LUCA.$"
+
+MintakaGym_Text_LucaTakeRoost:
+	.string "Take this too. The TM contains Roost.\n"
+	.string "It lets your Flying-type Pokémon take\l"
+	.string "a rest.$"
+
+MintakaGym_Text_LucaRetryRoost:
+	.string "Don’t forget the TM I wanted to give\n"
+	.string "you. Make some room in your Bag.$"
+
+MintakaGym_Text_LucaPostBattle:
+	.string "You fight with real artistry. Good luck\n"
+	.string "on the rest of your Gym challenge.$"
+`

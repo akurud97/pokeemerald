@@ -335,13 +335,19 @@ void SetMirageTowerVisibility(void)
 
 void StartPlayerDescendMirageTower(void)
 {
+#ifdef LOCALID_ROUTE111_PLAYER_FALLING
     CreateTask(PlayerDescendMirageTower, 8);
+#else
+    // Custom Route 111 layouts may omit the invisible falling-player object.
+    ScriptContext_Enable();
+#endif
 }
 
 // As the tower disintegrates, a duplicate object event of the player
 // is created at the top of the tower and moved down to show the player falling
 static void PlayerDescendMirageTower(u8 taskId)
 {
+#ifdef LOCALID_ROUTE111_PLAYER_FALLING
     u8 objectEventId;
     struct ObjectEvent *fallingPlayer;
     struct ObjectEvent *player;
@@ -356,6 +362,10 @@ static void PlayerDescendMirageTower(u8 taskId)
         DestroyTask(taskId);
         ScriptContext_Enable();
     }
+#else
+    DestroyTask(taskId);
+    ScriptContext_Enable();
+#endif
 }
 
 #define tXShakeOffset data[0]

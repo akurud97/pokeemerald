@@ -1,0 +1,30 @@
+raw `
+MintakaHouse5_MapScripts::
+	.byte 0
+
+MintakaHouse5_EventScript_Object1::
+	lock
+	faceplayer
+	goto_if_set FLAG_RECEIVED_MINTAKA_DAMP_ROCK, MintakaHouse5_EventScript_Object1Repeat
+	msgbox MintakaHouse5_Text_Object1Gift, MSGBOX_DEFAULT
+	giveitem ITEM_DAMP_ROCK
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	setflag FLAG_RECEIVED_MINTAKA_DAMP_ROCK
+	release
+	end
+
+MintakaHouse5_EventScript_Object1Repeat::
+	msgbox MintakaHouse5_Text_Object1Repeat, MSGBOX_DEFAULT
+	release
+	end
+
+MintakaHouse5_Text_Object1Gift:
+	.string "I brought this home from the\n"
+	.string "beach thinking it might be a\n"
+	.string "fossil, but it’s just a plain old\n"
+	.string "rock. You can have it.$"
+
+MintakaHouse5_Text_Object1Repeat:
+	.string "I heard there might be fossils in\n"
+	.string "cave systems along the shore.$"
+`

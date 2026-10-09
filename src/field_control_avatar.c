@@ -43,6 +43,7 @@
 #include "constants/layouts.h"
 #include "constants/metatile_behaviors.h"
 #include "constants/songs.h"
+#include "constants/sound.h"
 #include "constants/trainer_hill.h"
 
 static EWRAM_DATA u8 sWildEncounterImmunitySteps = 0;
@@ -72,6 +73,8 @@ static const u8 *GetCoordEventScriptAtPosition(struct MapHeader *, u16, u16, u8)
 static const struct BgEvent *GetBackgroundEventAtPosition(struct MapHeader *, u16, u16, u8);
 static bool8 TryStartCoordEventScript(struct MapPosition *);
 static bool8 TryStartWarpEventScript(struct MapPosition *, u16);
+static bool8 TrySetUpStoryWarpBlock(s8);
+static bool8 TrySetUpRoute1GrassWarning(const struct FieldInput *, const struct MapPosition *, enum Direction);
 static bool8 TryStartMiscWalkingScripts(u16);
 static bool8 TryStartStepCountScript(u16);
 static void UpdateFriendshipStepCounter(void);
@@ -178,6 +181,9 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     if (TryRunOnFrameMapScript() == TRUE)
         return TRUE;
 
+    if (TrySetUpRoute1GrassWarning(input, &position, playerDirection) == TRUE)
+        return TRUE;
+
     if (input->pressedBButton && TrySetupDiveEmergeScript() == TRUE)
         return TRUE;
     if (input->tookStep)
@@ -282,6 +288,36 @@ static u16 GetPlayerCurMetatileBehavior(int runningState)
 
     PlayerGetDestCoords(&x, &y);
     return MapGridGetMetatileBehaviorAt(x, y);
+}
+
+static bool8 TrySetUpRoute1GrassWarning(const struct FieldInput *input, const struct MapPosition *position, enum Direction direction)
+{
+    struct MapPosition target = *position;
+    u16 approach;
+
+    if (gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(MAP_HYADES_ROUTE1)
+     || gSaveBlock1Ptr->location.mapNum != MAP_NUM(MAP_HYADES_ROUTE1)
+     || VarGet(VAR_ALASIA_INTRO_STATE) != 3
+     || !input->heldDirection2
+     || input->dpadDirection != direction)
+        return FALSE;
+
+    GetInFrontOfPlayerPosition(&target);
+
+    if (target.x == 12 + MAP_OFFSET && target.y == 18 + MAP_OFFSET && direction == DIR_NORTH)
+        approach = 0;
+    else if ((target.x == 12 + MAP_OFFSET && target.y == 18 + MAP_OFFSET && direction == DIR_WEST)
+          || (target.x == 13 + MAP_OFFSET && target.y == 17 + MAP_OFFSET && direction == DIR_NORTH))
+        approach = 1;
+    else if (target.x == 13 + MAP_OFFSET && target.y == 17 + MAP_OFFSET && direction == DIR_WEST)
+        approach = 2;
+    else
+        return FALSE;
+
+    gSpecialVar_0x8000 = approach;
+    VarSet(VAR_ALASIA_INTRO_STATE, 4);
+    ScriptContext_SetupScript(Route1_EventScript_GrassWarning);
+    return TRUE;
 }
 
 static bool8 TryStartInteractionScript(struct MapPosition *position, u16 metatileBehavior, enum Direction direction)
@@ -412,7 +448,14 @@ static const u8 *GetInteractedObjectEventScript(struct MapPosition *position, u8
     else if (InTrainerHill() == TRUE)
         script = GetTrainerHillTrainerScript();
     else
+    {
+        // Static Pokémon object events advertise their species in the graphics
+        // id. Play that species' cry automatically when the player talks to
+        // one. Followers and overworld wild encounters handle cries separately.
+        if (IS_OW_MON_OBJ(&gObjectEvents[objectEventId]))
+            PlayCry_Script(OW_SPECIES(&gObjectEvents[objectEventId]), CRY_MODE_NORMAL);
         script = GetObjectEventScriptPointerByObjectEventId(objectEventId);
+    }
 
     script = GetRamScript(gSpecialVar_LastTalked, script);
     return script;
@@ -479,6 +522,8 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
 {
     s8 elevation;
 
+    if (MetatileBehavior_IsRandomResource(metatileBehavior) == TRUE)
+        return Route4_EventScript_SandPile;
     if (MetatileBehavior_IsPlayerFacingTVScreen(metatileBehavior, direction) == TRUE)
     {
         if (IS_FRLG)
@@ -946,6 +991,9 @@ static bool8 TryArrowWarp(struct MapPosition *position, u16 metatileBehavior, en
     if (warpEventId == WARP_ID_NONE)
         return FALSE;
 
+    if (TrySetUpStoryWarpBlock(warpEventId))
+        return TRUE;
+
     if (IsArrowWarpMetatileBehavior(metatileBehavior, direction) == TRUE)
     {
         StorePlayerStateAndSetupWarp(position, warpEventId);
@@ -974,6 +1022,9 @@ static bool8 TryStartWarpEventScript(struct MapPosition *position, u16 metatileB
 
     if (warpEventId != WARP_ID_NONE && IsWarpMetatileBehavior(metatileBehavior) == TRUE)
     {
+        if (TrySetUpStoryWarpBlock(warpEventId))
+            return TRUE;
+
         StoreInitialPlayerAvatarState();
         SetupWarp(&gMapHeader, warpEventId, position);
         if (MetatileBehavior_IsEscalator(metatileBehavior) == TRUE)
@@ -1117,6 +1168,9 @@ static bool8 TryDoorWarp(struct MapPosition *position, u16 metatileBehavior, enu
             warpEventId = GetWarpEventAtMapPosition(&gMapHeader, position);
             if (warpEventId != WARP_ID_NONE && IsWarpMetatileBehavior(metatileBehavior) == TRUE)
             {
+                if (TrySetUpStoryWarpBlock(warpEventId))
+                    return TRUE;
+
                 StoreInitialPlayerAvatarState();
                 SetupWarp(&gMapHeader, warpEventId, position);
                 DoDoorWarp();
@@ -1124,6 +1178,28 @@ static bool8 TryDoorWarp(struct MapPosition *position, u16 metatileBehavior, enu
             }
         }
     }
+    return FALSE;
+}
+
+static bool8 TrySetUpStoryWarpBlock(s8 warpEventId)
+{
+    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_HYADES_ROUTE1)
+     && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_HYADES_ROUTE1)
+     && warpEventId == 0
+     && VarGet(VAR_ALASIA_INTRO_STATE) == 3)
+    {
+        ScriptContext_SetupScript(Route1_EventScript_LabDoorLocked);
+        return TRUE;
+    }
+
+    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_SITKA_LAB)
+     && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_SITKA_LAB)
+     && VarGet(VAR_ALASIA_INTRO_STATE) == 5)
+    {
+        ScriptContext_SetupScript(SitkaLab_EventScript_BlockWarp);
+        return TRUE;
+    }
+
     return FALSE;
 }
 

@@ -121,6 +121,10 @@
 #define METATILE_BuildingFrlg_PCOff  0x062
 #define METATILE_BuildingFrlg_PCOn   0x063
 
+// gTileset_Castula
+#define METATILE_Castula_Door_1  0x368
+#define METATILE_Castula_Door_2  0x242
+
 // gTileset_Cave
 #define METATILE_Cave_CrackedFloor                       0x22F
 #define METATILE_Cave_CrackedFloor_Hole                  0x206
@@ -329,6 +333,12 @@
 #define METATILE_Lavaridge_NormalGrass          0x206
 #define METATILE_Lavaridge_RockWall             0x274
 
+// gTileset_Acamar
+#define METATILE_Acamar_Door  0x3AA
+
+// gTileset_Sansuna
+#define METATILE_Sansuna_Door 0x3EC
+
 // gTileset_LavenderTown
 #define METATILE_LavenderTown_Door  0x2A2
 
@@ -337,6 +347,10 @@
 #define METATILE_Lilycove_Door_DeptStore   0x30C
 #define METATILE_Lilycove_Door_SafariZone  0x32D
 #define METATILE_Lilycove_Door_Wooden      0x28E
+
+#define METATILE_Liesma_Door_BattleDome 0x2CB
+#define METATILE_Liesma_Door_Frontier 0x2B6
+#define METATILE_Liesma_Door_Wooden 0x33E
 #define METATILE_Lilycove_Wailmer0         0x290
 #define METATILE_Lilycove_Wailmer0_Alt     0x298
 #define METATILE_Lilycove_Wailmer1         0x291
@@ -345,16 +359,18 @@
 #define METATILE_Lilycove_Wailmer3         0x2A1
 
 // gTileset_LilycoveMuseum
-#define METATILE_LilycoveMuseum_Painting0_Left   0x25A
-#define METATILE_LilycoveMuseum_Painting0_Right  0x25B
-#define METATILE_LilycoveMuseum_Painting1_Left   0x25C
-#define METATILE_LilycoveMuseum_Painting1_Right  0x25D
-#define METATILE_LilycoveMuseum_Painting2_Left   0x25E
-#define METATILE_LilycoveMuseum_Painting2_Right  0x25F
-#define METATILE_LilycoveMuseum_Painting3_Left   0x260
-#define METATILE_LilycoveMuseum_Painting3_Right  0x261
-#define METATILE_LilycoveMuseum_Painting4_Left   0x262
-#define METATILE_LilycoveMuseum_Painting4_Right  0x263
+#define METATILE_LilycoveMuseum_MintakaGym_DoorWall  0x26B
+#define METATILE_LilycoveMuseum_MintakaGym_DoorWarp  0x273
+#define METATILE_LilycoveMuseum_Painting0_Left       0x25A
+#define METATILE_LilycoveMuseum_Painting0_Right      0x25B
+#define METATILE_LilycoveMuseum_Painting1_Left       0x25C
+#define METATILE_LilycoveMuseum_Painting1_Right      0x25D
+#define METATILE_LilycoveMuseum_Painting2_Left       0x25E
+#define METATILE_LilycoveMuseum_Painting2_Right      0x25F
+#define METATILE_LilycoveMuseum_Painting3_Left       0x260
+#define METATILE_LilycoveMuseum_Painting3_Right      0x261
+#define METATILE_LilycoveMuseum_Painting4_Left       0x262
+#define METATILE_LilycoveMuseum_Painting4_Right      0x263
 
 // gTileset_Mart
 #define METATILE_Mart_CounterMid_Bottom  0x2C0
@@ -947,6 +963,8 @@
 // gTileset_Slateport
 #define METATILE_Slateport_Door             0x2DC
 #define METATILE_Slateport_Door_BattleTent  0x393
+#define METATILE_Slateport_Route4Sand       0x2DF
+#define METATILE_Slateport_Route4SandPile   0x38F
 
 // gTileset_Sootopolis
 #define METATILE_Sootopolis_Door             0x21E

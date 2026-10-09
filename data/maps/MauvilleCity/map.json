@@ -3,11 +3,10 @@
   "name": "MauvilleCity",
   "layout": "LAYOUT_MAUVILLE_CITY",
   "music": "MUS_RUSTBORO",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_MAUVILLE_CITY",
   "requires_flash": false,
-  "weather": "WEATHER_SUNNY",
-  "map_type": "MAP_TYPE_CITY",
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_TOWN",
   "allow_cycling": true,
   "allow_escaping": false,
   "allow_running": true,
@@ -37,6 +36,7 @@
   ],
   "object_events": [
     {
+      "local_id": "LOCALID_MAUVILLE_WALLY",
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
       "x": 15,
       "y": 18,
@@ -50,6 +50,7 @@
       "flag": "FLAG_HIDE_MAUVILLE_CITY_WALLY"
     },
     {
+      "local_id": "LOCALID_MAUVILLE_WALLYS_UNCLE",
       "graphics_id": "OBJ_EVENT_GFX_HEX_MANIAC",
       "x": 19,
       "y": 10,
@@ -107,19 +108,19 @@
       "x": 9,
       "y": 5,
       "elevation": 0,
-      "dest_map": "MAP_MAUVILLE_CITY_HOUSE1",
+      "dest_map": "MAP_INQUILL_HOUSE1",
       "dest_warp_id": "0"
     },
     {
       "x": 22,
-      "y": 17,
+      "y": 16,
       "elevation": 0,
       "dest_map": "MAP_MAUVILLE_CITY_POKEMON_CENTER_1F",
       "dest_warp_id": "0"
     },
     {
       "x": 14,
-      "y": 33,
+      "y": 32,
       "elevation": 0,
       "dest_map": "MAP_MAUVILLE_CITY_BIKE_SHOP",
       "dest_warp_id": "0"
@@ -156,7 +157,7 @@
       "x": 13,
       "y": 15,
       "elevation": 0,
-      "dest_map": "MAP_MAUVILLE_CITY_POKEMON_CENTER_2F",
+      "dest_map": "MAP_FLOWER_SHOP",
       "dest_warp_id": "0"
     },
     {
@@ -167,9 +168,7 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [
-
-  ],
+  "coord_events": [],
   "bg_events": [
     {
       "type": "sign",
@@ -179,5 +178,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "MauvilleCity_EventScript_GameCornerSign"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

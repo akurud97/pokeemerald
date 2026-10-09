@@ -3,7 +3,6 @@
   "name": "BattlePyramidSquare12",
   "layout": "LAYOUT_BATTLE_PYRAMID_SQUARE12",
   "music": "MUS_NONE",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_DYNAMIC",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -13,7 +12,8 @@
   "allow_running": false,
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_GYM",
-  "connections": 0,
+  "connections": null,
+  "shared_scripts_map": "BattlePyramidSquare01",
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_1",
@@ -107,14 +107,8 @@
       "flag": "0"
     }
   ],
-  "warp_events": [
-
-  ],
-  "coord_events": [
-
-  ],
-  "bg_events": [
-
-  ],
-  "shared_scripts_map": "BattlePyramidSquare01"
+  "warp_events": [],
+  "coord_events": [],
+  "bg_events": [],
+  "region": "REGION_HOENN"
 }

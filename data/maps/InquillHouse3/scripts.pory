@@ -2,3 +2,23 @@ raw `
 InquillHouse3_MapScripts::
 	.byte 0
 `
+
+script InquillHouse3_EventScript_Object1 {
+    msgbox(InquillHouse3_Text_Object1, MSGBOX_NPC)
+    end
+}
+
+script InquillHouse3_EventScript_Object2 {
+    msgbox(InquillHouse3_Text_Object2, MSGBOX_NPC)
+    end
+}
+
+text InquillHouse3_Text_Object1 {
+    "Oh dear, are you out on your own?\n"
+    "Feel free to stay for dinner."
+}
+
+text InquillHouse3_Text_Object2 {
+    "I’m supposed to be eating my dinner,\n"
+    "but I’m so close to beating this game!"
+}

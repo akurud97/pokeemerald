@@ -616,6 +616,48 @@ gSongTable::
 	song ph_nurse_blend, MUSIC_PLAYER_SE2, 2
 	song ph_nurse_held, MUSIC_PLAYER_SE2, 2
 	song ph_nurse_solo, MUSIC_PLAYER_SE2, 2
+	song mus_alasiaville, MUSIC_PLAYER_BGM, 0
+	song mus_bw_dreamyard, MUSIC_PLAYER_BGM, 0
+	song mus_bw_icirrus, MUSIC_PLAYER_BGM, 0
+	song mus_bw_lacunosa, MUSIC_PLAYER_BGM, 0
+	song mus_bw_nacrene, MUSIC_PLAYER_BGM, 0
+	song mus_bw_route10, MUSIC_PLAYER_BGM, 0
+	song mus_bw_route12_autumn, MUSIC_PLAYER_BGM, 0
+	song mus_bw_route12_winter, MUSIC_PLAYER_BGM, 0
+	song mus_bw_route2_summer, MUSIC_PLAYER_BGM, 0
+	song mus_dp_eterna_forest, MUSIC_PLAYER_BGM, 0
+	song mus_dp_floaroma_day, MUSIC_PLAYER_BGM, 0
+	song mus_dp_route201_day, MUSIC_PLAYER_BGM, 0
+	song mus_dp_route203_day, MUSIC_PLAYER_BGM, 0
+	song mus_dp_route205_day, MUSIC_PLAYER_BGM, 0
+	song mus_dp_route209_day, MUSIC_PLAYER_BGM, 0
+	song mus_dp_route210_day, MUSIC_PLAYER_BGM, 0
+	song mus_dp_route216_night, MUSIC_PLAYER_BGM, 0
+	song mus_dp_solaceon_day, MUSIC_PLAYER_BGM, 0
+	song mus_dp_sunyshore_night, MUSIC_PLAYER_BGM, 0
+	song mus_hg_b_hall, MUSIC_PLAYER_BGM, 0
+	song mus_hg_cianwood, MUSIC_PLAYER_BGM, 0
+	song mus_hg_route34, MUSIC_PLAYER_BGM, 0
+	song mus_hg_route47, MUSIC_PLAYER_BGM, 0
+	song mus_hg_vs_lugia, MUSIC_PLAYER_BGM, 0
+	song mus_hg_vs_ho_oh, MUSIC_PLAYER_BGM, 0
+	song mus_hg_ho_oh_appears, MUSIC_PLAYER_BGM, 0
+	song mus_hg_lugia_appears, MUSIC_PLAYER_BGM, 0
+	song mus_hg_vermilion, MUSIC_PLAYER_BGM, 0
+	song mus_castula, MUSIC_PLAYER_BGM, 0
+	song mus_bw_anville_town, MUSIC_PLAYER_BGM, 0
+	song mus_bw_dragonspiral_tower, MUSIC_PLAYER_BGM, 0
+	song mus_bw_drawbridge, MUSIC_PLAYER_BGM, 0
+	song mus_bw_gear_station, MUSIC_PLAYER_BGM, 0
+	song mus_dp_oreburgh_gate, MUSIC_PLAYER_BGM, 0
+	song mus_dp_route209_night, MUSIC_PLAYER_BGM, 0
+	song mus_dp_route228_night, MUSIC_PLAYER_BGM, 0
+	song mus_dp_rowan_lab, MUSIC_PLAYER_BGM, 0
+	song mus_hg_ecruteak, MUSIC_PLAYER_BGM, 0
+	song mus_hg_national_park, MUSIC_PLAYER_BGM, 0
+	song mus_bw_vs_plasma, MUSIC_PLAYER_BGM, 0
+	song mus_bw_plasma, MUSIC_PLAYER_BGM, 0
+	song mus_bw_encounter_plasma, MUSIC_PLAYER_BGM, 0
 
 	.align 2
 dummy_song_header:

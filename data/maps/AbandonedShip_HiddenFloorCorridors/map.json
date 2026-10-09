@@ -3,7 +3,6 @@
   "name": "AbandonedShip_HiddenFloorCorridors",
   "layout": "LAYOUT_ABANDONED_SHIP_HIDDEN_FLOOR_CORRIDORS",
   "music": "MUS_ABANDONED_SHIP",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_ABANDONED_SHIP",
   "requires_flash": false,
   "weather": "WEATHER_SHADE",
@@ -13,10 +12,8 @@
   "allow_running": true,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": 0,
-  "object_events": [
-
-  ],
+  "connections": null,
+  "object_events": [],
   "warp_events": [
     {
       "x": 3,
@@ -61,9 +58,7 @@
       "dest_warp_id": "8"
     }
   ],
-  "coord_events": [
-
-  ],
+  "coord_events": [],
   "bg_events": [
     {
       "type": "sign",
@@ -97,5 +92,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "AbandonedShip_HiddenFloorCorridors_EventScript_Room6Door"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

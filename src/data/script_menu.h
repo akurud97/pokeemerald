@@ -829,6 +829,13 @@ static const struct MenuAction sMultichoiceList_Eeveelutions[] = {
     {COMPOUND_STRING("Quit looking.")}
 };
 
+static const struct MenuAction sMultichoiceList_AprilName[] = {
+    {COMPOUND_STRING("New Name")},
+    {COMPOUND_STRING("April")},
+    {COMPOUND_STRING("Olive")},
+    {COMPOUND_STRING("Sophie")},
+};
+
 static const u8 gText_SeviiIslands[] = _("SEVII ISLANDS");
 static const u8 gText_OneIsland[] = _("ONE ISLAND");
 static const u8 gText_TwoIsland[] = _("TWO ISLAND");
@@ -1294,6 +1301,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_HOF_VICTORIES_QUIT]                         = MULTICHOICE(sMultichoiceList_HOF_Victories_Quit),
     [MULTI_EGGS_VICTORIES_QUIT]                        = MULTICHOICE(sMultichoiceList_Eggs_Victories_Quit),
     [MULTI_HOF_EGGS_VICTORIES_QUIT]                    = MULTICHOICE(sMultichoiceList_HOF_Eggs_Victories_Quit),
+    [MULTI_APRIL_NAME]                                 = MULTICHOICE(sMultichoiceList_AprilName),
 };
 
 const u8 *const gStdStrings[] =
@@ -1337,6 +1345,7 @@ const u8 *const gStdStrings[] =
     [STDSTRING_VOLCANO_BADGE] = gText_Volcanobadge,
     [STDSTRING_EARTH_BADGE]   = gText_Earthbadge,
     [STDSTRING_COINS]         = COMPOUND_STRING("COINS"),
+    [STDSTRING_FORAGING_POUCH] = COMPOUND_STRING("FORAGING POUCH"),
 };
 
 static const u8 sLinkServicesMultichoiceIds[] =

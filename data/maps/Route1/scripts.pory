@@ -1,0 +1,346 @@
+raw `
+.set LOCALID_SITKA, LOCALID_ROUTE1_PROFESSOR_SITKA
+.set LOCALID_APRIL, LOCALID_ROUTE1_APRIL
+
+Route1_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Route1_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route1_OnFrame
+	.byte 0
+
+Route1_OnTransition:
+	call_if_eq VAR_ALASIA_INTRO_STATE, 3, Route1_EventScript_HideStoryActors
+	end
+
+Route1_EventScript_HideStoryActors:
+	setflag FLAG_HIDE_ROUTE1_PROFESSOR_SITKA
+	setflag FLAG_HIDE_ROUTE1_APRIL
+	return
+
+Route1_OnFrame:
+	map_script_2 VAR_ALASIA_INTRO_STATE, 6, Route1_EventScript_FirstAprilBattle
+	.2byte 0
+
+Route1_EventScript_FirstAprilBattle::
+	lockall
+	setvar VAR_ALASIA_INTRO_STATE, 7
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft
+	waitmovement 0
+	setobjectxyperm LOCALID_APRIL, 19, 15
+	clearflag FLAG_HIDE_ROUTE1_APRIL
+	addobject LOCALID_APRIL
+	opendoor 19, 15
+	waitdooranim
+	applymovement LOCALID_APRIL, Route1_Movement_AprilExitLabForBattle
+	waitmovement 0
+	closedoor 19, 15
+	waitdooranim
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	special BufferAprilName
+	setspeaker Route1_Text_AprilSpeakerName
+	msgbox Route1_Text_AprilChallengesPlayer, MSGBOX_DEFAULT
+	setflag FLAG_SPECIAL_NO_WHITEOUT
+	goto_if_eq VAR_APRIL_STARTER, SPECIES_SPHEAL, Route1_EventScript_BattleAprilSpheal
+	goto_if_eq VAR_APRIL_STARTER, SPECIES_SANDILE, Route1_EventScript_BattleAprilSandile
+
+Route1_EventScript_BattleAprilMareep::
+	trainerbattle_no_intro TRAINER_APRIL_MAREEP, Route1_Text_AprilDefeated
+	goto Route1_EventScript_AfterAprilBattle
+
+Route1_EventScript_BattleAprilSpheal::
+	trainerbattle_no_intro TRAINER_APRIL_SPHEAL, Route1_Text_AprilDefeated
+	goto Route1_EventScript_AfterAprilBattle
+
+Route1_EventScript_BattleAprilSandile::
+	trainerbattle_no_intro TRAINER_APRIL_SANDILE, Route1_Text_AprilDefeated
+
+Route1_EventScript_AfterAprilBattle::
+	clearflag FLAG_SPECIAL_NO_WHITEOUT
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_LOST, Route1_EventScript_AprilWonBattle
+	special HealPlayerParty
+	special BufferAprilName
+	setspeaker Route1_Text_AprilSpeakerName
+	msgbox Route1_Text_AprilAfterPlayerWins, MSGBOX_DEFAULT
+	goto Route1_EventScript_AprilLeavesAfterBattle
+
+Route1_EventScript_AprilWonBattle::
+	special HealPlayerParty
+	special BufferAprilName
+	setspeaker Route1_Text_AprilSpeakerName
+	msgbox Route1_Text_AprilAfterPlayerLoses, MSGBOX_DEFAULT
+
+Route1_EventScript_AprilLeavesAfterBattle::
+	applymovement LOCALID_APRIL, Route1_Movement_AprilLeaveAfterBattle
+	waitmovement 0
+	setflag FLAG_HIDE_SITKA_LAB_APRIL
+	setflag FLAG_HIDE_ROUTE1_APRIL
+	setflag FLAG_HIDE_APRIL_HOUSE2F_APRIL
+	removeobject LOCALID_APRIL
+	releaseall
+	end
+
+Route1_EventScript_LabDoorLocked::
+	lockall
+	msgbox Route1_Text_DoorLocked, MSGBOX_DEFAULT
+	releaseall
+	end
+
+Route1_EventScript_SitkaLabSign::
+	setspeaker SP_NAME_NONE
+	msgbox Route1_Text_SitkaLabSign, MSGBOX_SIGN
+	end
+
+Route1_EventScript_GrassWarning::
+	lockall
+	setvar VAR_ALASIA_INTRO_STATE, 4
+	opendoor 19, 15
+	waitdooranim
+	clearflag FLAG_HIDE_ROUTE1_PROFESSOR_SITKA
+	addobject LOCALID_SITKA
+	applymovement LOCALID_SITKA, Route1_Movement_SitkaExitLab
+	waitmovement 0
+	closedoor 19, 15
+	waitdooranim
+	setspeaker SP_NAME_PROFESSOR_SITKA
+	msgbox Route1_Text_Wait, MSGBOX_DEFAULT
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	msgbox Route1_Text_GrassOvergrown, MSGBOX_DEFAULT
+	msgbox Route1_Text_DangerousWithoutPokemon, MSGBOX_DEFAULT
+	msgbox Route1_Text_MaintainPath, MSGBOX_DEFAULT
+	msgbox Route1_Text_OutOfSchool, MSGBOX_DEFAULT
+	msgbox Route1_Text_ComeIntoLab, MSGBOX_DEFAULT
+	goto_if_eq VAR_0x8000, 1, Route1_EventScript_ApproachSitkaFromCenter
+	goto_if_eq VAR_0x8000, 2, Route1_EventScript_ApproachSitkaFromEast
+	applymovement OBJ_EVENT_ID_PLAYER, Route1_Movement_PlayerApproachFromSouthwest
+	goto Route1_EventScript_PlayerBesideSitka
+
+Route1_EventScript_ApproachSitkaFromCenter::
+	applymovement OBJ_EVENT_ID_PLAYER, Route1_Movement_PlayerApproachFromCenter
+	goto Route1_EventScript_PlayerBesideSitka
+
+Route1_EventScript_ApproachSitkaFromEast::
+	applymovement OBJ_EVENT_ID_PLAYER, Route1_Movement_PlayerApproachFromEast
+
+Route1_EventScript_PlayerBesideSitka::
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
+	applymovement LOCALID_SITKA, Common_Movement_WalkUp
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	clearflag FLAG_HIDE_ROUTE1_APRIL
+	addobject LOCALID_APRIL
+	applymovement LOCALID_APRIL, Route1_Movement_AprilApproach
+	waitmovement 0
+	special BufferAprilName
+	setspeaker Route1_Text_AprilSpeakerName
+	msgbox Route1_Text_AprilCallsPlayer, MSGBOX_DEFAULT
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_SITKA, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox Route1_Text_AprilCookies, MSGBOX_DEFAULT
+	msgbox Route1_Text_AprilCottageGreeting, MSGBOX_DEFAULT
+	special BufferAprilName
+	setspeaker SP_NAME_PROFESSOR_SITKA
+	msgbox Route1_Text_SitkaInvitesApril, MSGBOX_DEFAULT
+	opendoor 19, 15
+	waitdooranim
+	applymovement LOCALID_SITKA, Route1_Movement_SitkaEnterLab
+	waitmovement 0
+	setflag FLAG_HIDE_ROUTE1_PROFESSOR_SITKA
+	removeobject LOCALID_SITKA
+	applymovement OBJ_EVENT_ID_PLAYER, Route1_Movement_PlayerEnterLab
+	waitmovement 0
+	setflag FLAG_HIDE_ROUTE1_APRIL
+	removeobject LOCALID_APRIL
+	closedoor 19, 15
+	waitdooranim
+	warp MAP_SITKA_LAB, 5, 10
+	waitstate
+	end
+
+Route1_Movement_SitkaExitLab:
+	walk_down
+	walk_down
+	face_left
+	step_end
+
+Route1_Movement_PlayerApproachFromSouthwest:
+	walk_up
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+Route1_Movement_PlayerApproachFromCenter:
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+Route1_Movement_PlayerApproachFromEast:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+Route1_Movement_AprilApproach:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	face_up
+	step_end
+
+Route1_Movement_AprilExitLabForBattle:
+	walk_down
+	face_left
+	step_end
+
+Route1_Movement_AprilLeaveAfterBattle:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	set_invisible
+	step_end
+
+Route1_Movement_SitkaEnterLab:
+	walk_up
+	set_invisible
+	step_end
+
+Route1_Movement_PlayerEnterLab:
+	walk_right
+	walk_up
+	set_invisible
+	step_end
+
+Route1_Text_DoorLocked:
+	.string "The door is locked.$"
+
+Route1_Text_SitkaLabSign:
+	.string "Professor Sitka’s Lab$"
+
+Route1_Text_AprilSpeakerName:
+	.string "{STR_VAR_1}$"
+
+Route1_Text_AprilChallengesPlayer:
+	.string "{PLAYER}, wait! We have to have a\n"
+	.string "Pokémon battle!\p"
+	.string "Ohh, I never thought I’d say that!\p"
+	.string "Come on, let’s do this!$"
+
+Route1_Text_AprilDefeated:
+	.string "Wow, you’re a natural!$"
+
+Route1_Text_AprilVictory:
+	.string "Haha! I kicked your butt!$"
+
+Route1_Text_AprilAfterPlayerWins:
+	.string "That was awesome!\p"
+	.string "Listen, I know you need to go see\n"
+	.string "your uncle, but I need to go tell my\l"
+	.string "dad about this…\p"
+	.string "He’s not going to be happy, but he\n"
+	.string "should find out from me.\p"
+	.string "I’ll see you later!$"
+
+Route1_Text_AprilAfterPlayerLoses:
+	.string "Haha! I kicked your butt!\p"
+	.string "That was awesome!\p"
+	.string "Listen, I know you need to go see\n"
+	.string "your uncle, but I need to go tell my\l"
+	.string "dad about this…\p"
+	.string "He’s not going to be happy, but he\n"
+	.string "should find out from me.\p"
+	.string "I’ll see you later!$"
+
+Route1_Text_Wait:
+	.string "Wait!$"
+
+Route1_Text_GrassOvergrown:
+	.string "That grass is overgrown and there\n"
+	.string "may be Pokémon lurking in it.$"
+
+Route1_Text_DangerousWithoutPokemon:
+	.string "It’s dangerous without a Pokémon\n"
+	.string "of your own.$"
+
+Route1_Text_MaintainPath:
+	.string "I really should maintain this path\n"
+	.string "better. I’m just so caught up in my\l"
+	.string "studies.$"
+
+Route1_Text_OutOfSchool:
+	.string "Hey, you’re {PLAYER}, right? Are you\n"
+	.string "out of school for the summer?$"
+
+Route1_Text_ComeIntoLab:
+	.string "Hmm…I really shouldn’t do this\n"
+	.string "without consulting your mother…but\l"
+	.string "you’re old enough now. I have an\l"
+	.string "idea. Come into my lab with me.$"
+
+Route1_Text_AprilCallsPlayer:
+	.string "{PLAYER}!$"
+
+Route1_Text_AprilCookies:
+	.string "Your mom told me you were coming\n"
+	.string "this way! Her cookies were\l"
+	.string "delicious.$"
+
+Route1_Text_AprilCottageGreeting:
+	.string "I wanted to come see your uncle’s\n"
+	.string "cottage… Oh, hi, Professor Sitka!$"
+
+Route1_Text_SitkaInvitesApril:
+	.string "You’re {PLAYER}’s friend,\n"
+	.string "{STR_VAR_1}, right? I was just\l"
+	.string "showing {PLAYER} something in my\l"
+	.string "lab. Why don’t you join us?$"
+
+Route1_EventScript_Landon::
+	trainerbattle TRAINER_BATTLE_EARLY_RIVAL, LOCALID_NONE, TRAINER_LANDON, Landon_Intro, Landon_Defeat, NULL, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, Landon_Victory, NULL, FALSE, TRUE, FALSE, FALSE
+	msgbox PostBattle_Landon, MSGBOX_AUTOCLOSE
+	end
+
+Route1_EventScript_Evelyn::
+	trainerbattle TRAINER_BATTLE_EARLY_RIVAL, LOCALID_NONE, TRAINER_EVELYN, Evelyn_Intro, Evelyn_Defeat, NULL, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, Evelyn_Victory, NULL, FALSE, TRUE, FALSE, FALSE
+	msgbox PostBattle_Evelyn, MSGBOX_AUTOCLOSE
+	end
+`
+
+text Landon_Intro{
+    "Hey, {PLAYER}! You got a Pokémon\n"
+    "too? Let’s battle!"
+}
+
+text Landon_Defeat{ "Drat… You’re that strong already?" }
+text Landon_Victory{ "You’re gonna have to do better than that!" }
+text PostBattle_Landon{ "So, what are you going to do over\nsummer vacation?" }
+
+text Evelyn_Intro{
+    "Hey, weren’t you in my class? Let’s\n"
+    "test what we learned!"
+}
+
+text Evelyn_Defeat{ "I guess I should have studied more…" }
+text Evelyn_Victory{ "Ha! My top marks weren’t for nothing." }
+text PostBattle_Evelyn{
+    "My parents are making me go back to\n"
+    "school next year, but I just want to\l"
+    "travel with my Pokémon."
+}

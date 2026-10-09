@@ -138,7 +138,7 @@ static void WarpToTruck(void)
     if (IS_FRLG)
         SetWarpDestination(MAP_GROUP(MAP_PALLET_TOWN_PLAYERS_HOUSE_2F), MAP_NUM(MAP_PALLET_TOWN_PLAYERS_HOUSE_2F), WARP_ID_NONE, 6, 6);
     else
-        SetWarpDestination(MAP_GROUP(MAP_LIESMA_CITY), MAP_NUM(MAP_LIESMA_CITY), WARP_ID_NONE, -1, -1);
+        SetWarpDestination(MAP_GROUP(MAP_ALASIAVILLE), MAP_NUM(MAP_ALASIAVILLE), WARP_ID_NONE, 10, 8);
     WarpIntoMap();
 }
 
@@ -176,6 +176,11 @@ void NewGameInitData(void)
     ResetPokedex();
     ClearFrontierRecord();
     ClearSav1();
+#if FREE_EXTRA_SEEN_FLAGS_SAVEBLOCK1 == FALSE
+    // String fields must use EOS rather than the zero bytes written by
+    // ClearSav1.  April remains unnamed until the story sets her flag.
+    gSaveBlock1Ptr->aprilName[0] = EOS;
+#endif
     ClearSav3();
     ClearAllMail();
     gSaveBlock2Ptr->specialSaveWarpFlags = 0;
@@ -202,6 +207,7 @@ void NewGameInitData(void)
     DeactivateAllRoamers();
     gSaveBlock1Ptr->registeredItem = ITEM_NONE;
     ClearBag();
+    ClearForagingPouch();
     NewGameInitPCItems();
     ClearPokeblocks();
     ClearDecorationInventories();
@@ -257,4 +263,6 @@ static void ResetDexNav(void)
     memset(gSaveBlock3Ptr->dexNavSearchLevels, 0, sizeof(gSaveBlock3Ptr->dexNavSearchLevels));
 #endif
     gSaveBlock3Ptr->dexNavChain = 0;
+    VarSet(DN_VAR_SPECIES, SPECIES_NONE);
+    VarSet(DN_VAR_STEP_COUNTER, 0);
 }

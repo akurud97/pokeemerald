@@ -16,8 +16,10 @@
 #include "tv.h"
 #include "constants/rgb.h"
 #include "constants/layouts.h"
+#include "constants/maps.h"
 #include "constants/metatile_behaviors.h"
 #include "constants/metatile_behaviors_frlg.h"
+#include "constants/metatile_labels.h"
 #include "wild_encounter.h"
 
 struct ConnectionFlags
@@ -459,6 +461,14 @@ u32 MapGridGetMetatileAttributeAt(s16 x, s16 y, u8 attributeType)
 
 u32 MapGridGetMetatileBehaviorAt(int x, int y)
 {
+    // Slateport metatile 0x38F is shared with other maps, so scope its new
+    // resource behavior to Route 4 rather than changing the tileset-wide
+    // attribute and making Route 104's existing copies interactive.
+    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_HYADES_ROUTE4)
+     && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_HYADES_ROUTE4)
+     && MapGridGetMetatileIdAt(x, y) == METATILE_Slateport_Route4SandPile)
+        return MB_RANDOM_RESOURCE;
+
     return MapGridGetMetatileAttributeAt(x, y, METATILE_ATTRIBUTE_BEHAVIOR);
 }
 

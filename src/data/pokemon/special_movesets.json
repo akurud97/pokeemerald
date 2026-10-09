@@ -33,5 +33,15 @@
   "extraTutors":
     [
       
-    ]
+    ],
+  "extraTeachablesBySpecies":
+    {
+      "ARMALDO": ["MOVE_POISON_TAIL"],
+      "GASTRODON": ["MOVE_POISON_TAIL"],
+      "KROKOROK": ["MOVE_POISON_TAIL"],
+      "KROOKODILE": ["MOVE_POISON_TAIL"],
+      "MILOTIC": ["MOVE_POISON_TAIL"],
+      "UMBREON": ["MOVE_POISON_TAIL"],
+      "YANMEGA": ["MOVE_POISON_TAIL"]
+    }
 }

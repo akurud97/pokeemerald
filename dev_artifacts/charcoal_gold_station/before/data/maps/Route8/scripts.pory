@@ -1,0 +1,26 @@
+raw `
+Route8_MapScripts::
+	.byte 0
+`
+
+script Route8_EventScript_BridgeWarning {
+    msgbox(Route8_Text_BridgeWarning, MSGBOX_NPC)
+    end
+}
+
+script Route8_EventScript_PokemonBarrier {
+    msgbox(Route8_Text_PokemonBarrier, MSGBOX_SIGN)
+    end
+}
+
+text Route8_Text_BridgeWarning {
+    "There's a Pokémon blocking the bridge.\p"
+    "If you need to get to Castula City,\n"
+    "you'll have to go through\l"
+    "Dreamcatcher Woods."
+}
+
+text Route8_Text_PokemonBarrier {
+    "The Pokémon is projecting some kind\n"
+    "of barrier."
+}

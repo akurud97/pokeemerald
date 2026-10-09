@@ -1,0 +1,56 @@
+raw `
+.set LOCALID_DAD, LOCALID_APRIL_HOUSE1F_DAD
+
+AprilHouse1F_MapScripts::
+	.byte 0
+
+AprilHouse1F_EventScript_Dad::
+	lock
+	faceplayer
+	goto_if_ge VAR_ALASIA_INTRO_STATE, 10, AprilHouse1F_EventScript_AfterChapterOne
+	goto_if_ge VAR_ALASIA_INTRO_STATE, 6, AprilHouse1F_EventScript_AfterStarters
+	setspeaker SP_NAME_NONE
+	msgbox AprilHouse1F_Text_DadBeforeStarters, MSGBOX_DEFAULT
+	release
+	end
+
+AprilHouse1F_EventScript_AfterChapterOne::
+	special BufferAprilName
+	setspeaker AprilHouse1F_Text_DadSpeakerName
+	msgbox AprilHouse1F_Text_DadAfterChapterOne, MSGBOX_DEFAULT
+	setspeaker SP_NAME_NONE
+	release
+	end
+
+AprilHouse1F_EventScript_AfterStarters::
+	special BufferAprilName
+	setspeaker AprilHouse1F_Text_DadSpeakerName
+	msgbox AprilHouse1F_Text_Dad, MSGBOX_DEFAULT
+	setspeaker SP_NAME_NONE
+	release
+	end
+
+AprilHouse1F_Text_DadSpeakerName:
+	.string "{STR_VAR_1}'s Dad$"
+
+AprilHouse1F_Text_DadBeforeStarters:
+	.string "You guys are off school already?\n"
+	.string "Time flies.\p"
+	.string "My daughter went downstairs to her\n"
+	.string "room if you're looking for her.$"
+
+AprilHouse1F_Text_Dad:
+	.string "Have you seen {STR_VAR_1}? She said\n"
+	.string "she was going by your house.$"
+
+AprilHouse1F_Text_DadAfterChapterOne:
+	.string "So, Professor Sitka gave you two\n"
+	.string "Pokémon, huh?\p"
+	.string "I chewed her out, but really, I’m\n"
+	.string "happy for you.\p"
+	.string "That professor needs to learn some\n"
+	.string "responsibility though…\p"
+	.string "Anyway, if you see {STR_VAR_1}, tell\n"
+	.string "her to stop by sometimes. She rushed\l"
+	.string "off. You know how she is.$"
+`

@@ -296,6 +296,26 @@ void AnimateSprites(void)
 
         if (sprite->inUse)
         {
+            u32 callback = (u32)sprite->callback;
+
+            // All sprite callbacks in this build are Thumb functions stored in
+            // ROM.  Calling a corrupted/even callback makes the CPU decode
+            // Thumb instructions as ARM opcodes, which mGBA reports as a flood
+            // of illegal-opcode and bad-memory accesses before the game hangs.
+            // Quarantine the offending sprite and leave an actionable log
+            // entry instead of executing through a bad pointer.
+            if (!(callback & 1)
+             || (callback & ~1) < ROM_START
+             || (callback & ~1) >= ROM_END)
+            {
+                DebugPrintf("Invalid sprite callback: id=%u cb=%08X anims=%08X images=%08X anim=%u cmd=%u",
+                            i, callback, sprite->anims, sprite->images,
+                            sprite->animNum, sprite->animCmdIndex);
+                sprite->callback = SpriteCallbackDummy;
+                sprite->invisible = TRUE;
+                continue;
+            }
+
             sprite->callback(sprite);
 
             if (sprite->inUse)

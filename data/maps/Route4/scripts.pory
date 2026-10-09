@@ -1,0 +1,199 @@
+raw `
+Route4_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, Route4_OnLoad
+	.byte 0
+
+Route4_OnLoad:
+	special InitRoute4SandPiles
+	end
+
+Route4_EventScript_SandPile::
+	lockall
+	specialvar VAR_RESULT, ChooseRoute4SandPileOutcome
+	switch VAR_RESULT
+	case 0, Route4_EventScript_EmptySandPile
+	case 1, Route4_EventScript_SandPileItem
+	case 2, Route4_EventScript_WiglettLevel6
+	case 3, Route4_EventScript_WiglettLevel7
+	releaseall
+	end
+
+Route4_EventScript_SandPileItem:
+	giveitem VAR_0x8004
+	goto_if_eq VAR_RESULT, FALSE, Route4_EventScript_EndSandPileInteraction
+	goto Route4_EventScript_RemoveSandPile
+
+Route4_EventScript_EmptySandPile:
+	msgbox Route4_Text_EmptySandPile, MSGBOX_DEFAULT
+	goto Route4_EventScript_RemoveSandPile
+
+Route4_EventScript_WiglettLevel6:
+	setwildbattle SPECIES_WIGLETT, 6
+	goto Route4_EventScript_StartWiglettBattle
+
+Route4_EventScript_WiglettLevel7:
+	setwildbattle SPECIES_WIGLETT, 7
+
+Route4_EventScript_StartWiglettBattle:
+	msgbox Route4_Text_WiglettInSand, MSGBOX_DEFAULT
+	dowildbattle
+
+Route4_EventScript_RemoveSandPile:
+	specialvar VAR_RESULT, RemoveRoute4SandPile
+	goto_if_eq VAR_RESULT, FALSE, Route4_EventScript_EndSandPileInteraction
+	waitstate
+	releaseall
+	end
+
+Route4_EventScript_EndSandPileInteraction:
+	releaseall
+	end
+
+Route4_Text_WiglettInSand:
+	.string "There was a Pokémon hiding in\nthe sand!$"
+
+Route4_Text_EmptySandPile:
+	.string "It's just an empty pile of sand.$"
+
+Route4_EventScript_Gabriel::
+	trainerbattle TRAINER_BATTLE_EARLY_RIVAL, LOCALID_NONE, TRAINER_ROUTE4_GABRIEL, Route4_Text_GabrielIntro, Route4_Text_GabrielDefeat, NULL, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, Route4_Text_GabrielVictory, NULL, FALSE, TRUE, FALSE, FALSE
+	msgbox Route4_Text_GabrielPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route4_EventScript_Oliver::
+	trainerbattle TRAINER_BATTLE_EARLY_RIVAL, LOCALID_NONE, TRAINER_ROUTE4_OLIVER, Route4_Text_OliverIntro, Route4_Text_OliverDefeat, NULL, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, Route4_Text_OliverVictory, NULL, FALSE, TRUE, FALSE, FALSE
+	msgbox Route4_Text_OliverPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route4_EventScript_JackAndMia::
+	trainerbattle TRAINER_BATTLE_EARLY_RIVAL, LOCALID_NONE, TRAINER_ROUTE4_JACK_AND_MIA, Route4_Text_JackAndMiaIntro, Route4_Text_JackAndMiaDefeat, NULL, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, Route4_Text_JackAndMiaVictory, Route4_Text_JackAndMiaNeedTwoPokemon, TRUE, TRUE, FALSE, FALSE
+	msgbox Route4_Text_JackAndMiaPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route4_EventScript_Liam::
+	trainerbattle TRAINER_BATTLE_EARLY_RIVAL, LOCALID_NONE, TRAINER_ROUTE4_LIAM, Route4_Text_LiamIntro, Route4_Text_LiamDefeat, NULL, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, Route4_Text_LiamVictory, NULL, FALSE, TRUE, FALSE, FALSE
+	msgbox Route4_Text_LiamPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route4_EventScript_Amy::
+	trainerbattle TRAINER_BATTLE_EARLY_RIVAL, LOCALID_NONE, TRAINER_ROUTE4_AMY, Route4_Text_AmyIntro, Route4_Text_AmyDefeat, NULL, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, Route4_Text_AmyVictory, NULL, FALSE, TRUE, FALSE, FALSE
+	msgbox Route4_Text_AmyPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route4_EventScript_AnnaAndNicole::
+	trainerbattle TRAINER_BATTLE_EARLY_RIVAL, LOCALID_NONE, TRAINER_ROUTE4_ANNA_AND_NICOLE, Route4_Text_AnnaAndNicoleIntro, Route4_Text_AnnaAndNicoleDefeat, NULL, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, Route4_Text_AnnaAndNicoleVictory, Route4_Text_AnnaAndNicoleNeedTwoPokemon, TRUE, TRUE, FALSE, FALSE
+	msgbox Route4_Text_AnnaAndNicolePostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route4_EventScript_Elijah::
+	trainerbattle TRAINER_BATTLE_EARLY_RIVAL, LOCALID_NONE, TRAINER_ROUTE4_ELIJAH, Route4_Text_ElijahIntro, Route4_Text_ElijahDefeat, NULL, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, Route4_Text_ElijahVictory, NULL, FALSE, TRUE, FALSE, FALSE
+	msgbox Route4_Text_ElijahPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route4_EventScript_Isaac::
+	trainerbattle TRAINER_BATTLE_EARLY_RIVAL, LOCALID_NONE, TRAINER_ROUTE4_ISAAC, Route4_Text_IsaacIntro, Route4_Text_IsaacDefeat, NULL, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, Route4_Text_IsaacVictory, NULL, FALSE, TRUE, FALSE, FALSE
+	msgbox Route4_Text_IsaacPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route4_Text_GabrielIntro:
+	.string "I found this Pokémon hiding in the\nsand. Look!$"
+
+Route4_Text_GabrielDefeat:
+	.string "Where did you find your Pokémon?$"
+
+Route4_Text_GabrielVictory:
+	.string "Come battle me again!$"
+
+Route4_Text_GabrielPostBattle:
+	.string "You never know where you’ll find\nPokémon. Look everywhere!$"
+
+Route4_Text_OliverIntro:
+	.string "I’ve been cooped up on a boat for so\nlong. I’m itching for a battle!$"
+
+Route4_Text_OliverDefeat:
+	.string "My skills are rusty from being away.$"
+
+Route4_Text_OliverVictory:
+	.string "Still got it!$"
+
+Route4_Text_OliverPostBattle:
+	.string "You can navigate from this lake all\nthe way to the ocean through a\nseries of rivers and canals. It’s a\nlong trip.$"
+
+Route4_Text_JackAndMiaIntro:
+	.string "The water is so cold!\nA Pokémon battle will warm us up!$"
+
+Route4_Text_JackAndMiaDefeat:
+	.string "Brr…\nThat was heated!$"
+
+Route4_Text_JackAndMiaVictory:
+	.string "Haha!\nGo cool off!$"
+
+Route4_Text_JackAndMiaNeedTwoPokemon:
+	.string "You need two Pokémon to battle us!$"
+
+Route4_Text_JackAndMiaPostBattle:
+	.string "The lake gets cold because it’s so\nbig.\nCome on bro, let’s go back in the\nwater.$"
+
+Route4_Text_LiamIntro:
+	.string "My dad owns a boat! If you beat me,\nmaybe I’ll let you see it.$"
+
+Route4_Text_LiamDefeat:
+	.string "Guess I need to put my money where\nmy mouth is.$"
+
+Route4_Text_LiamVictory:
+	.string "Ha! You should have bought stronger\nPokémon.$"
+
+Route4_Text_LiamPostBattle:
+	.string "See that big boat over there? That’s\nmy dad’s.$"
+
+Route4_Text_AmyIntro:
+	.string "Can you keep up the pace with me?$"
+
+Route4_Text_AmyDefeat:
+	.string "Phew…You outpaced me.$"
+
+Route4_Text_AmyVictory:
+	.string "You’re too slow!$"
+
+Route4_Text_AmyPostBattle:
+	.string "The trails along the lakefront are a\ngreat place to go running.$"
+
+Route4_Text_AnnaAndNicoleIntro:
+	.string "Here comes a trainer! Show him what\nI’ve taught you!\nI’ll do my best!$"
+
+Route4_Text_AnnaAndNicoleDefeat:
+	.string "Maybe we need a few more lessons…\nI just followed your lead…$"
+
+Route4_Text_AnnaAndNicoleVictory:
+	.string "That’s all thanks to my coaching!\nI want some of the credit…$"
+
+Route4_Text_AnnaAndNicoleNeedTwoPokemon:
+	.string "You need two Pokémon to battle us!$"
+
+Route4_Text_AnnaAndNicolePostBattle:
+	.string "We’ll call that a lesson in losing\ngracefully.\nI think I need a new mentor.$"
+
+Route4_Text_ElijahIntro:
+	.string "Hey, a trainer! Let’s jam!$"
+
+Route4_Text_ElijahDefeat:
+	.string "My tempo was off.$"
+
+Route4_Text_ElijahVictory:
+	.string "Your tempo’s off.$"
+
+Route4_Text_ElijahPostBattle:
+	.string "The rhythm of the waves is my\nmetronome.$"
+
+Route4_Text_IsaacIntro:
+	.string "Hey! You broke my concentration.$"
+
+Route4_Text_IsaacDefeat:
+	.string "Sigh…Nothing’s biting anyway.$"
+
+Route4_Text_IsaacVictory:
+	.string "That’s what you get.$"
+
+Route4_Text_IsaacPostBattle:
+	.string "Fishing takes a lot of patience. A\nlot.$"
+`

@@ -1,0 +1,416 @@
+raw `
+MintakaCity_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, MintakaCity_HideAcolyteActors
+	.byte 0
+
+MintakaCity_HideAcolyteActors:
+	setflag FLAG_HIDE_MINTAKA_ACOLYTE
+	setflag FLAG_HIDE_MINTAKA_CARGO_WORKER
+	end
+`
+
+script MintakaCity_EventScript_Object1 {
+    lock
+    msgbox(MintakaCity_Text_Object1, MSGBOX_DEFAULT)
+    release
+    end
+}
+
+script MintakaCity_EventScript_Object2 {
+    msgbox(MintakaCity_Text_Object2, MSGBOX_NPC)
+    end
+}
+
+script MintakaCity_EventScript_Object3 {
+    msgbox(MintakaCity_Text_Object3, MSGBOX_NPC)
+    end
+}
+
+script MintakaCity_EventScript_Object5 {
+    msgbox(MintakaCity_Text_Object5, MSGBOX_NPC)
+    end
+}
+
+script MintakaCity_EventScript_Object6 {
+    msgbox(MintakaCity_Text_Object6, MSGBOX_NPC)
+    end
+}
+
+script MintakaCity_EventScript_Object7 {
+    msgbox(MintakaCity_Text_Object7, MSGBOX_NPC)
+    end
+}
+
+script MintakaCity_EventScript_Object8 {
+    lock
+    msgbox(MintakaCity_Text_Object8, MSGBOX_DEFAULT)
+    release
+    end
+}
+
+script MintakaCity_EventScript_Object9 {
+    msgbox(MintakaCity_Text_Object9, MSGBOX_NPC)
+    end
+}
+
+script MintakaCity_EventScript_Object10 {
+    msgbox(MintakaCity_Text_Object10, MSGBOX_NPC)
+    end
+}
+
+script MintakaCity_EventScript_Object11 {
+    msgbox(MintakaCity_Text_Object11, MSGBOX_NPC)
+    end
+}
+
+script MintakaCity_EventScript_Object12 {
+    msgbox(MintakaCity_Text_Object12, MSGBOX_NPC)
+    end
+}
+
+script MintakaCity_EventScript_Object14 {
+    msgbox(MintakaCity_Text_Object14, MSGBOX_NPC)
+    end
+}
+
+script MintakaCity_EventScript_Object15 {
+    msgbox(MintakaCity_Text_Object15, MSGBOX_NPC)
+    end
+}
+
+script MintakaCity_EventScript_Object16 {
+    msgbox(MintakaCity_Text_Object16, MSGBOX_NPC)
+    end
+}
+
+text MintakaCity_Text_Object1 {
+    "You forgot your swimsuit? It’s okay,\n"
+    "I’ll just buy you a new one."
+}
+
+text MintakaCity_Text_Object2 {
+    "Careful, kid. The warehouse can be\n"
+    "dangerous. Especially if the guys in\l"
+    "there are bored and itching for a fight."
+}
+
+text MintakaCity_Text_Object3 {
+    "Vigoo!"
+}
+
+text MintakaCity_Text_Object5 {
+    "I love the cool breeze this city gets\n"
+    "from the lake."
+}
+
+text MintakaCity_Text_Object6 {
+    "I’m not doing anything shady! This\n"
+    "cargo is totally legit!"
+}
+
+text MintakaCity_Text_Object7 {
+    "I’m going to be a Pokémon when I\n"
+    "grow up!"
+}
+
+text MintakaCity_Text_Object8 {
+    "Will you buy me an icecream too?\n"
+    "And a soda? And…"
+}
+
+text MintakaCity_Text_Object9 {
+    "From up here, you can watch the boats\n"
+    "sail in and out of the harbour."
+}
+
+text MintakaCity_Text_Object10 {
+    "Lake Hyades is so big, it feels like a\n"
+    "sea. The horizon seems to stretch on\l"
+    "endlessly."
+}
+
+text MintakaCity_Text_Object11 {
+    "The water is really cold…"
+}
+
+text MintakaCity_Text_Object12 {
+    "I love working so close to the water."
+}
+
+text MintakaCity_Text_Object14 {
+    "Come on, psyche yourself up, Mankey!\n"
+    "We can take on this gym."
+}
+
+text MintakaCity_Text_Object15 {
+    "Man-keyyy!"
+}
+
+text MintakaCity_Text_Object16 {
+    "Hey… You’re blocking my sun…"
+}
+
+raw `
+@ Both coordinate approaches use VAR_MINTAKA_ACOLYTE_EVENT. A loss blackouts
+@ normally and leaves the scene available; only a completed rescue consumes it.
+MintakaCity_EventScript_AcolyteWest::
+	lockall
+	playbgm MUS_BW_PLASMA, FALSE
+	setspeaker SP_NAME_NONE
+	getplayerxy VAR_0x8004, VAR_0x8005
+	setobjectxyperm LOCALID_MINTAKA_ACOLYTE, 34, 29
+	setobjectxyperm LOCALID_MINTAKA_CARGO_WORKER, 35, 29
+	call MintakaCity_AcolyteSpawnAndCry
+	applymovement OBJ_EVENT_ID_PLAYER, MintakaCity_RunDown3
+	waitmovement 0
+	goto_if_eq VAR_0x8004, 24, MintakaCity_WestFrom24
+	goto_if_eq VAR_0x8004, 25, MintakaCity_WestFrom25
+	applymovement OBJ_EVENT_ID_PLAYER, MintakaCity_RunRight6
+	goto MintakaCity_WestArrived
+MintakaCity_WestFrom24:
+	applymovement OBJ_EVENT_ID_PLAYER, MintakaCity_RunRight8
+	goto MintakaCity_WestArrived
+MintakaCity_WestFrom25:
+	applymovement OBJ_EVENT_ID_PLAYER, MintakaCity_RunRight7
+MintakaCity_WestArrived:
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement 0
+	msgbox MintakaCity_Text_CargoHelp, MSGBOX_DEFAULT
+	applymovement LOCALID_MINTAKA_ACOLYTE, Common_Movement_FaceLeft
+	waitmovement 0
+	call MintakaCity_AcolyteBattle
+	applymovement LOCALID_MINTAKA_ACOLYTE, MintakaCity_WalkDown1
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	applymovement LOCALID_MINTAKA_ACOLYTE, MintakaCity_WalkLeft3
+	waitmovement LOCALID_MINTAKA_ACOLYTE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement LOCALID_MINTAKA_ACOLYTE, MintakaCity_WestAcolyteExit
+	waitmovement LOCALID_MINTAKA_ACOLYTE
+	removeobject LOCALID_MINTAKA_ACOLYTE
+	fadedefaultbgm
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement 0
+	msgbox MintakaCity_Text_CargoThanks, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_MINTAKA_CARGO_WORKER, MintakaCity_WalkRight6
+	waitmovement 0
+	goto MintakaCity_AcolyteFinish
+
+MintakaCity_EventScript_AcolyteNorth::
+	lockall
+	playbgm MUS_BW_PLASMA, FALSE
+	setspeaker SP_NAME_NONE
+	getplayerxy VAR_0x8004, VAR_0x8005
+	setobjectxyperm LOCALID_MINTAKA_ACOLYTE, 40, 17
+	setobjectxyperm LOCALID_MINTAKA_CARGO_WORKER, 41, 17
+	call MintakaCity_AcolyteSpawnAndCry
+	applymovement OBJ_EVENT_ID_PLAYER, MintakaCity_RunDown4
+	waitmovement 0
+	goto_if_eq VAR_0x8004, 38, MintakaCity_NorthFrom38
+	applymovement OBJ_EVENT_ID_PLAYER, MintakaCity_RunRight1
+	goto MintakaCity_NorthTurnDown
+MintakaCity_NorthFrom38:
+	applymovement OBJ_EVENT_ID_PLAYER, MintakaCity_RunRight2
+MintakaCity_NorthTurnDown:
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, MintakaCity_RunDown2
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement 0
+	applymovement LOCALID_MINTAKA_CARGO_WORKER, Common_Movement_FaceUp
+	waitmovement 0
+	msgbox MintakaCity_Text_CargoHelp, MSGBOX_DEFAULT
+	applymovement LOCALID_MINTAKA_ACOLYTE, Common_Movement_FaceUp
+	waitmovement 0
+	call MintakaCity_AcolyteBattle
+	applymovement LOCALID_MINTAKA_ACOLYTE, MintakaCity_WalkDown7
+	waitmovement 0
+	removeobject LOCALID_MINTAKA_ACOLYTE
+	fadedefaultbgm
+	msgbox MintakaCity_Text_CargoThanks, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_MINTAKA_CARGO_WORKER, MintakaCity_NorthWorkerExit
+	waitmovement 0
+	opendoor 47, 12
+	waitdooranim
+	applymovement LOCALID_MINTAKA_CARGO_WORKER, MintakaCity_WalkUp1
+	waitmovement 0
+	removeobject LOCALID_MINTAKA_CARGO_WORKER
+	closedoor 47, 12
+	waitdooranim
+	goto MintakaCity_AcolyteFinish
+
+MintakaCity_AcolyteSpawnAndCry:
+	clearflag FLAG_HIDE_MINTAKA_ACOLYTE
+	clearflag FLAG_HIDE_MINTAKA_CARGO_WORKER
+	addobject LOCALID_MINTAKA_ACOLYTE
+	addobject LOCALID_MINTAKA_CARGO_WORKER
+	msgbox MintakaCity_Text_CargoCry, MSGBOX_DEFAULT
+	closemessage
+	@ Finish the recall before any scripted movement can interrupt it.
+	hidefollower
+	applymovement LOCALID_MINTAKA_ACOLYTE, Common_Movement_FaceRight
+	applymovement LOCALID_MINTAKA_CARGO_WORKER, Common_Movement_FaceLeft
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement 0
+	return
+
+MintakaCity_AcolyteBattle:
+	msgbox MintakaCity_Text_AcolyteChallenge, MSGBOX_DEFAULT
+	closemessage
+	trainerbattle_no_intro TRAINER_MINTAKA_ACOLYTE, NULL
+	playbgm MUS_BW_PLASMA, FALSE
+	setspeaker SP_NAME_NONE
+	msgbox MintakaCity_Text_AcolyteThreat, MSGBOX_DEFAULT
+	closemessage
+	return
+
+MintakaCity_AcolyteFinish:
+	removeobject LOCALID_MINTAKA_CARGO_WORKER
+	setflag FLAG_HIDE_MINTAKA_ACOLYTE
+	setflag FLAG_HIDE_MINTAKA_CARGO_WORKER
+	setvar VAR_MINTAKA_ACOLYTE_EVENT, 1
+	releaseall
+	end
+
+MintakaCity_RunDown3:
+	player_run_down
+	player_run_down
+	player_run_down
+	step_end
+
+MintakaCity_RunDown4:
+	player_run_down
+	player_run_down
+	player_run_down
+	player_run_down
+	step_end
+
+MintakaCity_RunDown2:
+	player_run_down
+	player_run_down
+	step_end
+
+MintakaCity_RunRight1:
+	player_run_right
+	step_end
+
+MintakaCity_RunRight2:
+	player_run_right
+	player_run_right
+	step_end
+
+MintakaCity_RunRight6:
+	player_run_right
+	player_run_right
+	player_run_right
+	player_run_right
+	player_run_right
+	player_run_right
+	step_end
+
+MintakaCity_RunRight7:
+	player_run_right
+	player_run_right
+	player_run_right
+	player_run_right
+	player_run_right
+	player_run_right
+	player_run_right
+	step_end
+
+MintakaCity_RunRight8:
+	player_run_right
+	player_run_right
+	player_run_right
+	player_run_right
+	player_run_right
+	player_run_right
+	player_run_right
+	player_run_right
+	step_end
+
+MintakaCity_WalkDown1:
+	walk_down
+	step_end
+
+MintakaCity_WalkLeft3:
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+MintakaCity_WestAcolyteExit:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+MintakaCity_WalkRight6:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+MintakaCity_WalkDown7:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+MintakaCity_NorthWorkerExit:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+MintakaCity_WalkUp1:
+	walk_up
+	step_end
+`
+
+text MintakaCity_Text_CargoCry {
+    format("Help! Somebody with a Pokémon!\pHelp me!")
+}
+
+text MintakaCity_Text_CargoHelp {
+    format("Hey, are you a Pokémon trainer?\pThis guy is a thief! Help me!")
+}
+
+text MintakaCity_Text_AcolyteChallenge {
+    format("Stay out of this, kid!\pOh, you think you're tough? Fine!")
+}
+
+text MintakaCity_Text_AcolyteThreat {
+    format("Tch..The boss won't be happy about this...\pThat's okay! It's only a minor setback.\pKid, I don't know who you think you are, but today you've made an enemy of the Astral Path.\pDon't get in our way again. It won't go well for you.")
+}
+
+text MintakaCity_Text_CargoThanks {
+    format("Thanks, kid. That guy was really weird. What is the Astral Path?\pHe was trying to steal my keys to our cargo truck. There's a lot of valuable stuff in there.\pI work at the harbour warehouse. Hey, come see me in there and I'll give you a little reward. Later!")
+}

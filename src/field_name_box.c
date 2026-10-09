@@ -206,14 +206,15 @@ void TrySpawnAndShowNamebox(const u8 *speaker, u32 tileNum)
     }
 
     PrepareNamebox(tileNum);
-    DrawNamebox(sNameboxWindowId, tileNum - NAME_BOX_BASE_TILES_TOTAL, TRUE);
+    if (sNameboxWindowId != WINDOW_NONE)
+        DrawNamebox(sNameboxWindowId, tileNum - NAME_BOX_BASE_TILES_TOTAL, TRUE);
 }
 
 bool32 IsSpeakerBuffered(const u8 *str)
 {
     if (str[0] == EXT_CTRL_CODE_BEGIN
      && str[1] == EXT_CTRL_CODE_SPEAKER
-     && str[2] >= SP_NAME_NONE)
+     && str[2] < SP_NAME_COUNT)
     {
         gSpeakerName = gSpeakerNamesTable[str[2]];
     }

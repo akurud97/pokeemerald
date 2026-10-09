@@ -1825,3 +1825,10 @@ bool8 MetatileBehavior_IsTrainerTowerMonitor(u8 metatileBehavior)
         return FALSE;
 }
 
+bool8 MetatileBehavior_IsRandomResource(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_RANDOM_RESOURCE)
+        return TRUE;
+    else
+        return FALSE;
+}

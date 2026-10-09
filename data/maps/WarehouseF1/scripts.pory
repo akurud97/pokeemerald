@@ -1,0 +1,49 @@
+raw `
+WarehouseF1_MapScripts::
+	.byte 0
+
+WarehouseF1_EventScript_Jeremy::
+	trainerbattle TRAINER_BATTLE_EARLY_RIVAL, LOCALID_NONE, TRAINER_WAREHOUSE_JEREMY, WarehouseF1_Text_JeremyIntro, WarehouseF1_Text_JeremyDefeat, NULL, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, WarehouseF1_Text_JeremyVictory, NULL, FALSE, TRUE, FALSE, FALSE
+	msgbox WarehouseF1_Text_JeremyPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+WarehouseF1_EventScript_Steven::
+	trainerbattle TRAINER_BATTLE_EARLY_RIVAL, LOCALID_NONE, TRAINER_WAREHOUSE_STEVEN, WarehouseF1_Text_StevenIntro, WarehouseF1_Text_StevenDefeat, NULL, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, WarehouseF1_Text_StevenVictory, NULL, FALSE, TRUE, FALSE, FALSE
+	msgbox WarehouseF1_Text_StevenPostBattle, MSGBOX_AUTOCLOSE
+	end
+`
+
+text WarehouseF1_Text_JeremyIntro {
+    "Hey! What’s a kid doing in here?"
+}
+
+text WarehouseF1_Text_JeremyDefeat {
+    "Haha! That was fun."
+}
+
+text WarehouseF1_Text_JeremyVictory {
+    "Haha! That was fun."
+}
+
+text WarehouseF1_Text_JeremyPostBattle {
+    "You can hang out in here, just don’t\n"
+    "touch anything."
+}
+
+text WarehouseF1_Text_StevenIntro {
+    "I’ve been working all day. I guess I\n"
+    "could take a break to battle!"
+}
+
+text WarehouseF1_Text_StevenDefeat {
+    "At least I was on the clock for that."
+}
+
+text WarehouseF1_Text_StevenVictory {
+    "That’s what they pay me for!"
+}
+
+text WarehouseF1_Text_StevenPostBattle {
+    "We do hard work in here. It’s nice to\n"
+    "unwind with a Pokémon battle."
+}

@@ -139,7 +139,7 @@ struct Trainer
     u16 partySize:3;
     u16 padding:2;
     enum TrainerPicID trainerPic;
-    u8 trainerName[TRAINER_NAME_LENGTH + 1];
+    u8 trainerName[NPC_TRAINER_NAME_LENGTH + 1];
     u8 poolSize;
     u8 poolRuleIndex;
     u8 poolPickIndex;
@@ -149,7 +149,7 @@ struct Trainer
 
 struct TrainerClass
 {
-    u8 name[13];
+    u8 name[21];
     u8 money;
     u16 ball;
 };

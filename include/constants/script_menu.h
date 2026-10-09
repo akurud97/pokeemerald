@@ -169,6 +169,7 @@ enum
     MULTI_HOF_VICTORIES_QUIT,
     MULTI_EGGS_VICTORIES_QUIT,
     MULTI_HOF_EGGS_VICTORIES_QUIT,
+    MULTI_APRIL_NAME,
 };
 
 #define MULTI_NONE 255
@@ -223,6 +224,7 @@ enum
 #define STDSTRING_VOLCANO_BADGE    36
 #define STDSTRING_EARTH_BADGE      37
 #define STDSTRING_COINS            38
+#define STDSTRING_FORAGING_POUCH   39
 
 // Dynamic Multichoice Callbacks
 

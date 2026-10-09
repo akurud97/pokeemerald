@@ -1,0 +1,1406 @@
+tools/mapjson/mapjson layouts emerald data/layouts/layouts.json data/layouts include/constants
+tools/scaninc/scaninc -M build/emerald/data/maps.d -g build/assets -I include -I "" data/maps.s
+tools/scaninc/scaninc -M build/emerald/data/event_scripts.d -g build/assets -I include -I "" data/event_scripts.s
+tools/scaninc/scaninc -M build/emerald/src/wild_encounter_ow.d -g build/assets -I include -I tools/agbcc/include src/wild_encounter_ow.c
+tools/scaninc/scaninc -M build/emerald/src/wild_encounter.d -g build/assets -I include -I tools/agbcc/include src/wild_encounter.c
+tools/scaninc/scaninc -M build/emerald/src/tv.d -g build/assets -I include -I tools/agbcc/include src/tv.c
+tools/scaninc/scaninc -M build/emerald/src/trainer_tower.d -g build/assets -I include -I tools/agbcc/include src/trainer_tower.c
+tools/scaninc/scaninc -M build/emerald/src/trainer_hill.d -g build/assets -I include -I tools/agbcc/include src/trainer_hill.c
+tools/scaninc/scaninc -M build/emerald/src/tilesets.d -g build/assets -I include -I tools/agbcc/include src/tilesets.c
+tools/scaninc/scaninc -M build/emerald/src/secret_base.d -g build/assets -I include -I tools/agbcc/include src/secret_base.c
+tools/scaninc/scaninc -M build/emerald/src/rotating_tile_puzzle.d -g build/assets -I include -I tools/agbcc/include src/rotating_tile_puzzle.c
+tools/scaninc/scaninc -M build/emerald/src/random_resource.d -g build/assets -I include -I tools/agbcc/include src/random_resource.c
+python3 tools/learnset_helpers/make_tutors.py tools/learnset_helpers/build/all_tutors.json
+tools/scaninc/scaninc -M build/emerald/src/player_pc.d -g build/assets -I include -I tools/agbcc/include src/player_pc.c
+tools/scaninc/scaninc -M build/emerald/src/overworld.d -g build/assets -I include -I tools/agbcc/include src/overworld.c
+tools/scaninc/scaninc -M build/emerald/src/mirage_tower.d -g build/assets -I include -I tools/agbcc/include src/mirage_tower.c
+tools/scaninc/scaninc -M build/emerald/src/map_name_popup.d -g build/assets -I include -I tools/agbcc/include src/map_name_popup.c
+tools/scaninc/scaninc -M build/emerald/src/fldeff_misc.d -g build/assets -I include -I tools/agbcc/include src/fldeff_misc.c
+tools/scaninc/scaninc -M build/emerald/src/fldeff_escalator.d -g build/assets -I include -I tools/agbcc/include src/fldeff_escalator.c
+tools/scaninc/scaninc -M build/emerald/src/fldeff_cut.d -g build/assets -I include -I tools/agbcc/include src/fldeff_cut.c
+tools/scaninc/scaninc -M build/emerald/src/fieldmap.d -g build/assets -I include -I tools/agbcc/include src/fieldmap.c
+tools/scaninc/scaninc -M build/emerald/src/field_tasks.d -g build/assets -I include -I tools/agbcc/include src/field_tasks.c
+tools/scaninc/scaninc -M build/emerald/src/field_specials.d -g build/assets -I include -I tools/agbcc/include src/field_specials.c
+tools/scaninc/scaninc -M build/emerald/src/field_special_scene.d -g build/assets -I include -I tools/agbcc/include src/field_special_scene.c
+tools/scaninc/scaninc -M build/emerald/src/field_door.d -g build/assets -I include -I tools/agbcc/include src/field_door.c
+tools/scaninc/scaninc -M build/emerald/src/field_control_avatar.d -g build/assets -I include -I tools/agbcc/include src/field_control_avatar.c
+tools/scaninc/scaninc -M build/emerald/src/decoration.d -g build/assets -I include -I tools/agbcc/include src/decoration.c
+tools/scaninc/scaninc -M build/emerald/src/braille_puzzles.d -g build/assets -I include -I tools/agbcc/include src/braille_puzzles.c
+tools/scaninc/scaninc -M build/emerald/src/battle_tent.d -g build/assets -I include -I tools/agbcc/include src/battle_tent.c
+tools/scaninc/scaninc -M build/emerald/src/battle_pyramid.d -g build/assets -I include -I tools/agbcc/include src/battle_pyramid.c
+tools/scaninc/scaninc -M build/emerald/src/battle_pike.d -g build/assets -I include -I tools/agbcc/include src/battle_pike.c
+tools/scaninc/scaninc -M build/emerald/src/battle_factory.d -g build/assets -I include -I tools/agbcc/include src/battle_factory.c
+tools/scaninc/scaninc -M build/emerald/src/pokemon.d -g build/assets -I include -I tools/agbcc/include src/pokemon.c
+/opt/devkitpro/devkitARM/bin/../libexec/gcc/arm-none-eabi/13.2.0/cc1 -quiet <flags> -o build/emerald/src/battle_factory.o src/battle_factory.c
+/opt/devkitpro/devkitARM/bin/../libexec/gcc/arm-none-eabi/13.2.0/cc1 -quiet <flags> -o build/emerald/src/battle_pike.o src/battle_pike.c
+/opt/devkitpro/devkitARM/bin/../libexec/gcc/arm-none-eabi/13.2.0/cc1 -quiet <flags> -o build/emerald/src/battle_pyramid.o src/battle_pyramid.c
+/opt/devkitpro/devkitARM/bin/../libexec/gcc/arm-none-eabi/13.2.0/cc1 -quiet <flags> -o build/emerald/src/battle_tent.o src/battle_tent.c
+In file included from include/constants/event_objects.h:5,
+                 from src/battle_pike.c:16:
+include/constants/map_event_ids.h:196: warning: "LOCALID_CELADON_BORDER_TREE" redefined
+  196 | #define LOCALID_CELADON_BORDER_TREE 11
+      | 
+include/constants/map_event_ids.h:195: note: this is the location of the previous definition
+  195 | #define LOCALID_CELADON_BORDER_TREE 10
+      | 
+include/constants/map_event_ids.h:317: warning: "LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE" redefined
+  317 | #define LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE 5
+      | 
+include/constants/map_event_ids.h:316: note: this is the location of the previous definition
+  316 | #define LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE 4
+      | 
+include/constants/map_event_ids.h:602: warning: "LOCALID_RUBY" redefined
+  602 | #define LOCALID_RUBY 2
+      | 
+include/constants/map_event_ids.h:601: note: this is the location of the previous definition
+  601 | #define LOCALID_RUBY 1
+      | 
+include/constants/map_event_ids.h:603: warning: "LOCALID_RUBY" redefined
+  603 | #define LOCALID_RUBY 3
+      | 
+include/constants/map_event_ids.h:602: note: this is the location of the previous definition
+  602 | #define LOCALID_RUBY 2
+      | 
+include/constants/map_event_ids.h:604: warning: "LOCALID_RUBY" redefined
+  604 | #define LOCALID_RUBY 10
+      | 
+include/constants/map_event_ids.h:603: note: this is the location of the previous definition
+  603 | #define LOCALID_RUBY 3
+      | 
+include/constants/map_event_ids.h:807: warning: "LOCALID_ROUTE14_BORDER_TREE" redefined
+  807 | #define LOCALID_ROUTE14_BORDER_TREE 12
+      | 
+include/constants/map_event_ids.h:806: note: this is the location of the previous definition
+  806 | #define LOCALID_ROUTE14_BORDER_TREE 11
+      | 
+include/constants/map_event_ids.h:808: warning: "LOCALID_ROUTE14_BORDER_TREE" redefined
+  808 | #define LOCALID_ROUTE14_BORDER_TREE 13
+      | 
+include/constants/map_event_ids.h:807: note: this is the location of the previous definition
+  807 | #define LOCALID_ROUTE14_BORDER_TREE 12
+      | 
+include/constants/map_event_ids.h:1171: warning: "LOCALID_MOSSDEEP_SCOTT" redefined
+ 1171 | #define LOCALID_MOSSDEEP_SCOTT 5
+      | 
+include/constants/map_event_ids.h:552: note: this is the location of the previous definition
+  552 | #define LOCALID_MOSSDEEP_SCOTT 16
+      | 
+include/constants/map_event_ids.h:1208: warning: "LOCALID_VICTORY_ROAD_1F_BOULDER" redefined
+ 1208 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 6
+      | 
+include/constants/map_event_ids.h:1207: note: this is the location of the previous definition
+ 1207 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 5
+      | 
+include/constants/map_event_ids.h:1209: warning: "LOCALID_VICTORY_ROAD_1F_BOULDER" redefined
+ 1209 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 7
+      | 
+include/constants/map_event_ids.h:1208: note: this is the location of the previous definition
+ 1208 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 6
+      | 
+include/constants/map_event_ids.h:1224: warning: "LOCALID_VIRIDIAN_BORDER_TREE" redefined
+ 1224 | #define LOCALID_VIRIDIAN_BORDER_TREE 8
+      | 
+include/constants/map_event_ids.h:1220: note: this is the location of the previous definition
+ 1220 | #define LOCALID_VIRIDIAN_BORDER_TREE 2
+      | 
+In file included from include/constants/event_objects.h:5,
+                 from src/battle_pyramid.c:34:
+include/constants/map_event_ids.h:196: warning: "LOCALID_CELADON_BORDER_TREE" redefined
+  196 | #define LOCALID_CELADON_BORDER_TREE 11
+      | 
+include/constants/map_event_ids.h:195: note: this is the location of the previous definition
+  195 | #define LOCALID_CELADON_BORDER_TREE 10
+      | 
+include/constants/map_event_ids.h:317: warning: "LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE" redefined
+  317 | #define LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE 5
+      | 
+include/constants/map_event_ids.h:316: note: this is the location of the previous definition
+  316 | #define LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE 4
+      | 
+include/constants/map_event_ids.h:602: warning: "LOCALID_RUBY" redefined
+  602 | #define LOCALID_RUBY 2
+      | 
+include/constants/map_event_ids.h:601: note: this is the location of the previous definition
+  601 | #define LOCALID_RUBY 1
+      | 
+include/constants/map_event_ids.h:603: warning: "LOCALID_RUBY" redefined
+  603 | #define LOCALID_RUBY 3
+      | 
+include/constants/map_event_ids.h:602: note: this is the location of the previous definition
+  602 | #define LOCALID_RUBY 2
+      | 
+include/constants/map_event_ids.h:604: warning: "LOCALID_RUBY" redefined
+  604 | #define LOCALID_RUBY 10
+      | 
+include/constants/map_event_ids.h:603: note: this is the location of the previous definition
+  603 | #define LOCALID_RUBY 3
+      | 
+include/constants/map_event_ids.h:807: warning: "LOCALID_ROUTE14_BORDER_TREE" redefined
+  807 | #define LOCALID_ROUTE14_BORDER_TREE 12
+      | 
+include/constants/map_event_ids.h:806: note: this is the location of the previous definition
+  806 | #define LOCALID_ROUTE14_BORDER_TREE 11
+      | 
+include/constants/map_event_ids.h:808: warning: "LOCALID_ROUTE14_BORDER_TREE" redefined
+  808 | #define LOCALID_ROUTE14_BORDER_TREE 13
+      | 
+include/constants/map_event_ids.h:807: note: this is the location of the previous definition
+  807 | #define LOCALID_ROUTE14_BORDER_TREE 12
+      | 
+include/constants/map_event_ids.h:1171: warning: "LOCALID_MOSSDEEP_SCOTT" redefined
+ 1171 | #define LOCALID_MOSSDEEP_SCOTT 5
+      | 
+include/constants/map_event_ids.h:552: note: this is the location of the previous definition
+  552 | #define LOCALID_MOSSDEEP_SCOTT 16
+      | 
+include/constants/map_event_ids.h:1208: warning: "LOCALID_VICTORY_ROAD_1F_BOULDER" redefined
+ 1208 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 6
+      | 
+include/constants/map_event_ids.h:1207: note: this is the location of the previous definition
+ 1207 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 5
+      | 
+include/constants/map_event_ids.h:1209: warning: "LOCALID_VICTORY_ROAD_1F_BOULDER" redefined
+ 1209 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 7
+      | 
+include/constants/map_event_ids.h:1208: note: this is the location of the previous definition
+ 1208 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 6
+      | 
+include/constants/map_event_ids.h:1224: warning: "LOCALID_VIRIDIAN_BORDER_TREE" redefined
+ 1224 | #define LOCALID_VIRIDIAN_BORDER_TREE 8
+      | 
+include/constants/map_event_ids.h:1220: note: this is the location of the previous definition
+ 1220 | #define LOCALID_VIRIDIAN_BORDER_TREE 2
+      | 
+/opt/devkitpro/devkitARM/bin/../libexec/gcc/arm-none-eabi/13.2.0/cc1 -quiet <flags> -o build/emerald/src/braille_puzzles.o src/braille_puzzles.c
+/opt/devkitpro/devkitARM/bin/../libexec/gcc/arm-none-eabi/13.2.0/cc1 -quiet <flags> -o build/emerald/src/decoration.o src/decoration.c
+/opt/devkitpro/devkitARM/bin/../libexec/gcc/arm-none-eabi/13.2.0/cc1 -quiet <flags> -o build/emerald/src/field_control_avatar.o src/field_control_avatar.c
+In file included from include/constants/event_objects.h:5,
+                 from src/decoration.c:37:
+include/constants/map_event_ids.h:196: warning: "LOCALID_CELADON_BORDER_TREE" redefined
+  196 | #define LOCALID_CELADON_BORDER_TREE 11
+      | 
+include/constants/map_event_ids.h:195: note: this is the location of the previous definition
+  195 | #define LOCALID_CELADON_BORDER_TREE 10
+      | 
+include/constants/map_event_ids.h:317: warning: "LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE" redefined
+  317 | #define LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE 5
+      | 
+include/constants/map_event_ids.h:316: note: this is the location of the previous definition
+  316 | #define LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE 4
+      | 
+include/constants/map_event_ids.h:602: warning: "LOCALID_RUBY" redefined
+  602 | #define LOCALID_RUBY 2
+      | 
+include/constants/map_event_ids.h:601: note: this is the location of the previous definition
+  601 | #define LOCALID_RUBY 1
+      | 
+include/constants/map_event_ids.h:603: warning: "LOCALID_RUBY" redefined
+  603 | #define LOCALID_RUBY 3
+      | 
+include/constants/map_event_ids.h:602: note: this is the location of the previous definition
+  602 | #define LOCALID_RUBY 2
+      | 
+include/constants/map_event_ids.h:604: warning: "LOCALID_RUBY" redefined
+  604 | #define LOCALID_RUBY 10
+      | 
+include/constants/map_event_ids.h:603: note: this is the location of the previous definition
+  603 | #define LOCALID_RUBY 3
+      | 
+include/constants/map_event_ids.h:807: warning: "LOCALID_ROUTE14_BORDER_TREE" redefined
+  807 | #define LOCALID_ROUTE14_BORDER_TREE 12
+      | 
+include/constants/map_event_ids.h:806: note: this is the location of the previous definition
+  806 | #define LOCALID_ROUTE14_BORDER_TREE 11
+      | 
+include/constants/map_event_ids.h:808: warning: "LOCALID_ROUTE14_BORDER_TREE" redefined
+  808 | #define LOCALID_ROUTE14_BORDER_TREE 13
+      | 
+include/constants/map_event_ids.h:807: note: this is the location of the previous definition
+  807 | #define LOCALID_ROUTE14_BORDER_TREE 12
+      | 
+include/constants/map_event_ids.h:1171: warning: "LOCALID_MOSSDEEP_SCOTT" redefined
+ 1171 | #define LOCALID_MOSSDEEP_SCOTT 5
+      | 
+include/constants/map_event_ids.h:552: note: this is the location of the previous definition
+  552 | #define LOCALID_MOSSDEEP_SCOTT 16
+      | 
+include/constants/map_event_ids.h:1208: warning: "LOCALID_VICTORY_ROAD_1F_BOULDER" redefined
+ 1208 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 6
+      | 
+include/constants/map_event_ids.h:1207: note: this is the location of the previous definition
+ 1207 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 5
+      | 
+include/constants/map_event_ids.h:1209: warning: "LOCALID_VICTORY_ROAD_1F_BOULDER" redefined
+ 1209 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 7
+      | 
+include/constants/map_event_ids.h:1208: note: this is the location of the previous definition
+ 1208 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 6
+      | 
+include/constants/map_event_ids.h:1224: warning: "LOCALID_VIRIDIAN_BORDER_TREE" redefined
+ 1224 | #define LOCALID_VIRIDIAN_BORDER_TREE 8
+      | 
+include/constants/map_event_ids.h:1220: note: this is the location of the previous definition
+ 1220 | #define LOCALID_VIRIDIAN_BORDER_TREE 2
+      | 
+/opt/devkitpro/devkitARM/bin/../libexec/gcc/arm-none-eabi/13.2.0/cc1 -quiet <flags> -o build/emerald/src/field_door.o src/field_door.c
+In file included from include/constants/event_objects.h:5,
+                 from src/field_control_avatar.c:41:
+include/constants/map_event_ids.h:196: warning: "LOCALID_CELADON_BORDER_TREE" redefined
+  196 | #define LOCALID_CELADON_BORDER_TREE 11
+      | 
+include/constants/map_event_ids.h:195: note: this is the location of the previous definition
+  195 | #define LOCALID_CELADON_BORDER_TREE 10
+      | 
+include/constants/map_event_ids.h:317: warning: "LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE" redefined
+  317 | #define LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE 5
+      | 
+include/constants/map_event_ids.h:316: note: this is the location of the previous definition
+  316 | #define LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE 4
+      | 
+include/constants/map_event_ids.h:602: warning: "LOCALID_RUBY" redefined
+  602 | #define LOCALID_RUBY 2
+      | 
+include/constants/map_event_ids.h:601: note: this is the location of the previous definition
+  601 | #define LOCALID_RUBY 1
+      | 
+include/constants/map_event_ids.h:603: warning: "LOCALID_RUBY" redefined
+  603 | #define LOCALID_RUBY 3
+      | 
+include/constants/map_event_ids.h:602: note: this is the location of the previous definition
+  602 | #define LOCALID_RUBY 2
+      | 
+include/constants/map_event_ids.h:604: warning: "LOCALID_RUBY" redefined
+  604 | #define LOCALID_RUBY 10
+      | 
+include/constants/map_event_ids.h:603: note: this is the location of the previous definition
+  603 | #define LOCALID_RUBY 3
+      | 
+include/constants/map_event_ids.h:807: warning: "LOCALID_ROUTE14_BORDER_TREE" redefined
+  807 | #define LOCALID_ROUTE14_BORDER_TREE 12
+      | 
+include/constants/map_event_ids.h:806: note: this is the location of the previous definition
+  806 | #define LOCALID_ROUTE14_BORDER_TREE 11
+      | 
+include/constants/map_event_ids.h:808: warning: "LOCALID_ROUTE14_BORDER_TREE" redefined
+  808 | #define LOCALID_ROUTE14_BORDER_TREE 13
+      | 
+include/constants/map_event_ids.h:807: note: this is the location of the previous definition
+  807 | #define LOCALID_ROUTE14_BORDER_TREE 12
+      | 
+include/constants/map_event_ids.h:1171: warning: "LOCALID_MOSSDEEP_SCOTT" redefined
+ 1171 | #define LOCALID_MOSSDEEP_SCOTT 5
+      | 
+include/constants/map_event_ids.h:552: note: this is the location of the previous definition
+  552 | #define LOCALID_MOSSDEEP_SCOTT 16
+      | 
+include/constants/map_event_ids.h:1208: warning: "LOCALID_VICTORY_ROAD_1F_BOULDER" redefined
+ 1208 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 6
+      | 
+include/constants/map_event_ids.h:1207: note: this is the location of the previous definition
+ 1207 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 5
+      | 
+include/constants/map_event_ids.h:1209: warning: "LOCALID_VICTORY_ROAD_1F_BOULDER" redefined
+ 1209 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 7
+      | 
+include/constants/map_event_ids.h:1208: note: this is the location of the previous definition
+ 1208 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 6
+      | 
+include/constants/map_event_ids.h:1224: warning: "LOCALID_VIRIDIAN_BORDER_TREE" redefined
+ 1224 | #define LOCALID_VIRIDIAN_BORDER_TREE 8
+      | 
+include/constants/map_event_ids.h:1220: note: this is the location of the previous definition
+ 1220 | #define LOCALID_VIRIDIAN_BORDER_TREE 2
+      | 
+/opt/devkitpro/devkitARM/bin/../libexec/gcc/arm-none-eabi/13.2.0/cc1 -quiet <flags> -o build/emerald/src/field_special_scene.o src/field_special_scene.c
+In file included from include/constants/event_objects.h:5,
+                 from src/field_special_scene.c:16:
+include/constants/map_event_ids.h:196: warning: "LOCALID_CELADON_BORDER_TREE" redefined
+  196 | #define LOCALID_CELADON_BORDER_TREE 11
+      | 
+include/constants/map_event_ids.h:195: note: this is the location of the previous definition
+  195 | #define LOCALID_CELADON_BORDER_TREE 10
+      | 
+include/constants/map_event_ids.h:317: warning: "LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE" redefined
+  317 | #define LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE 5
+      | 
+include/constants/map_event_ids.h:316: note: this is the location of the previous definition
+  316 | #define LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE 4
+      | 
+include/constants/map_event_ids.h:602: warning: "LOCALID_RUBY" redefined
+  602 | #define LOCALID_RUBY 2
+      | 
+include/constants/map_event_ids.h:601: note: this is the location of the previous definition
+  601 | #define LOCALID_RUBY 1
+      | 
+include/constants/map_event_ids.h:603: warning: "LOCALID_RUBY" redefined
+  603 | #define LOCALID_RUBY 3
+      | 
+include/constants/map_event_ids.h:602: note: this is the location of the previous definition
+  602 | #define LOCALID_RUBY 2
+      | 
+include/constants/map_event_ids.h:604: warning: "LOCALID_RUBY" redefined
+  604 | #define LOCALID_RUBY 10
+      | 
+include/constants/map_event_ids.h:603: note: this is the location of the previous definition
+  603 | #define LOCALID_RUBY 3
+      | 
+include/constants/map_event_ids.h:807: warning: "LOCALID_ROUTE14_BORDER_TREE" redefined
+  807 | #define LOCALID_ROUTE14_BORDER_TREE 12
+      | 
+include/constants/map_event_ids.h:806: note: this is the location of the previous definition
+  806 | #define LOCALID_ROUTE14_BORDER_TREE 11
+      | 
+include/constants/map_event_ids.h:808: warning: "LOCALID_ROUTE14_BORDER_TREE" redefined
+  808 | #define LOCALID_ROUTE14_BORDER_TREE 13
+      | 
+include/constants/map_event_ids.h:807: note: this is the location of the previous definition
+  807 | #define LOCALID_ROUTE14_BORDER_TREE 12
+      | 
+include/constants/map_event_ids.h:1171: warning: "LOCALID_MOSSDEEP_SCOTT" redefined
+ 1171 | #define LOCALID_MOSSDEEP_SCOTT 5
+      | 
+include/constants/map_event_ids.h:552: note: this is the location of the previous definition
+  552 | #define LOCALID_MOSSDEEP_SCOTT 16
+      | 
+include/constants/map_event_ids.h:1208: warning: "LOCALID_VICTORY_ROAD_1F_BOULDER" redefined
+ 1208 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 6
+      | 
+include/constants/map_event_ids.h:1207: note: this is the location of the previous definition
+ 1207 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 5
+      | 
+include/constants/map_event_ids.h:1209: warning: "LOCALID_VICTORY_ROAD_1F_BOULDER" redefined
+ 1209 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 7
+      | 
+include/constants/map_event_ids.h:1208: note: this is the location of the previous definition
+ 1208 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 6
+      | 
+include/constants/map_event_ids.h:1224: warning: "LOCALID_VIRIDIAN_BORDER_TREE" redefined
+ 1224 | #define LOCALID_VIRIDIAN_BORDER_TREE 8
+      | 
+include/constants/map_event_ids.h:1220: note: this is the location of the previous definition
+ 1220 | #define LOCALID_VIRIDIAN_BORDER_TREE 2
+      | 
+/opt/devkitpro/devkitARM/bin/../libexec/gcc/arm-none-eabi/13.2.0/cc1 -quiet <flags> -o build/emerald/src/field_specials.o src/field_specials.c
+/opt/devkitpro/devkitARM/bin/../libexec/gcc/arm-none-eabi/13.2.0/cc1 -quiet <flags> -o build/emerald/src/field_tasks.o src/field_tasks.c
+/opt/devkitpro/devkitARM/bin/../libexec/gcc/arm-none-eabi/13.2.0/cc1 -quiet <flags> -o build/emerald/src/fieldmap.o src/fieldmap.c
+/opt/devkitpro/devkitARM/bin/../libexec/gcc/arm-none-eabi/13.2.0/cc1 -quiet <flags> -o build/emerald/src/fldeff_cut.o src/fldeff_cut.c
+In file included from include/constants/event_objects.h:5,
+                 from src/field_specials.c:63:
+include/constants/map_event_ids.h:196: warning: "LOCALID_CELADON_BORDER_TREE" redefined
+  196 | #define LOCALID_CELADON_BORDER_TREE 11
+      | 
+include/constants/map_event_ids.h:195: note: this is the location of the previous definition
+  195 | #define LOCALID_CELADON_BORDER_TREE 10
+      | 
+include/constants/map_event_ids.h:317: warning: "LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE" redefined
+  317 | #define LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE 5
+      | 
+include/constants/map_event_ids.h:316: note: this is the location of the previous definition
+  316 | #define LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE 4
+      | 
+include/constants/map_event_ids.h:602: warning: "LOCALID_RUBY" redefined
+  602 | #define LOCALID_RUBY 2
+      | 
+include/constants/map_event_ids.h:601: note: this is the location of the previous definition
+  601 | #define LOCALID_RUBY 1
+      | 
+include/constants/map_event_ids.h:603: warning: "LOCALID_RUBY" redefined
+  603 | #define LOCALID_RUBY 3
+      | 
+include/constants/map_event_ids.h:602: note: this is the location of the previous definition
+  602 | #define LOCALID_RUBY 2
+      | 
+include/constants/map_event_ids.h:604: warning: "LOCALID_RUBY" redefined
+  604 | #define LOCALID_RUBY 10
+      | 
+include/constants/map_event_ids.h:603: note: this is the location of the previous definition
+  603 | #define LOCALID_RUBY 3
+      | 
+include/constants/map_event_ids.h:807: warning: "LOCALID_ROUTE14_BORDER_TREE" redefined
+  807 | #define LOCALID_ROUTE14_BORDER_TREE 12
+      | 
+include/constants/map_event_ids.h:806: note: this is the location of the previous definition
+  806 | #define LOCALID_ROUTE14_BORDER_TREE 11
+      | 
+include/constants/map_event_ids.h:808: warning: "LOCALID_ROUTE14_BORDER_TREE" redefined
+  808 | #define LOCALID_ROUTE14_BORDER_TREE 13
+      | 
+include/constants/map_event_ids.h:807: note: this is the location of the previous definition
+  807 | #define LOCALID_ROUTE14_BORDER_TREE 12
+      | 
+include/constants/map_event_ids.h:1171: warning: "LOCALID_MOSSDEEP_SCOTT" redefined
+ 1171 | #define LOCALID_MOSSDEEP_SCOTT 5
+      | 
+include/constants/map_event_ids.h:552: note: this is the location of the previous definition
+  552 | #define LOCALID_MOSSDEEP_SCOTT 16
+      | 
+include/constants/map_event_ids.h:1208: warning: "LOCALID_VICTORY_ROAD_1F_BOULDER" redefined
+ 1208 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 6
+      | 
+include/constants/map_event_ids.h:1207: note: this is the location of the previous definition
+ 1207 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 5
+      | 
+include/constants/map_event_ids.h:1209: warning: "LOCALID_VICTORY_ROAD_1F_BOULDER" redefined
+ 1209 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 7
+      | 
+include/constants/map_event_ids.h:1208: note: this is the location of the previous definition
+ 1208 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 6
+      | 
+include/constants/map_event_ids.h:1224: warning: "LOCALID_VIRIDIAN_BORDER_TREE" redefined
+ 1224 | #define LOCALID_VIRIDIAN_BORDER_TREE 8
+      | 
+include/constants/map_event_ids.h:1220: note: this is the location of the previous definition
+ 1220 | #define LOCALID_VIRIDIAN_BORDER_TREE 2
+      | 
+In file included from include/constants/event_objects.h:5,
+                 from src/fldeff_cut.c:22:
+include/constants/map_event_ids.h:196: warning: "LOCALID_CELADON_BORDER_TREE" redefined
+  196 | #define LOCALID_CELADON_BORDER_TREE 11
+      | 
+include/constants/map_event_ids.h:195: note: this is the location of the previous definition
+  195 | #define LOCALID_CELADON_BORDER_TREE 10
+      | 
+include/constants/map_event_ids.h:317: warning: "LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE" redefined
+  317 | #define LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE 5
+      | 
+include/constants/map_event_ids.h:316: note: this is the location of the previous definition
+  316 | #define LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE 4
+      | 
+include/constants/map_event_ids.h:602: warning: "LOCALID_RUBY" redefined
+  602 | #define LOCALID_RUBY 2
+      | 
+include/constants/map_event_ids.h:601: note: this is the location of the previous definition
+  601 | #define LOCALID_RUBY 1
+      | 
+include/constants/map_event_ids.h:603: warning: "LOCALID_RUBY" redefined
+  603 | #define LOCALID_RUBY 3
+      | 
+include/constants/map_event_ids.h:602: note: this is the location of the previous definition
+  602 | #define LOCALID_RUBY 2
+      | 
+include/constants/map_event_ids.h:604: warning: "LOCALID_RUBY" redefined
+  604 | #define LOCALID_RUBY 10
+      | 
+include/constants/map_event_ids.h:603: note: this is the location of the previous definition
+  603 | #define LOCALID_RUBY 3
+      | 
+include/constants/map_event_ids.h:807: warning: "LOCALID_ROUTE14_BORDER_TREE" redefined
+  807 | #define LOCALID_ROUTE14_BORDER_TREE 12
+      | 
+include/constants/map_event_ids.h:806: note: this is the location of the previous definition
+  806 | #define LOCALID_ROUTE14_BORDER_TREE 11
+      | 
+include/constants/map_event_ids.h:808: warning: "LOCALID_ROUTE14_BORDER_TREE" redefined
+  808 | #define LOCALID_ROUTE14_BORDER_TREE 13
+      | 
+include/constants/map_event_ids.h:807: note: this is the location of the previous definition
+  807 | #define LOCALID_ROUTE14_BORDER_TREE 12
+      | 
+include/constants/map_event_ids.h:1171: warning: "LOCALID_MOSSDEEP_SCOTT" redefined
+ 1171 | #define LOCALID_MOSSDEEP_SCOTT 5
+      | 
+include/constants/map_event_ids.h:552: note: this is the location of the previous definition
+  552 | #define LOCALID_MOSSDEEP_SCOTT 16
+      | 
+include/constants/map_event_ids.h:1208: warning: "LOCALID_VICTORY_ROAD_1F_BOULDER" redefined
+ 1208 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 6
+      | 
+include/constants/map_event_ids.h:1207: note: this is the location of the previous definition
+ 1207 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 5
+      | 
+include/constants/map_event_ids.h:1209: warning: "LOCALID_VICTORY_ROAD_1F_BOULDER" redefined
+ 1209 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 7
+      | 
+include/constants/map_event_ids.h:1208: note: this is the location of the previous definition
+ 1208 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 6
+      | 
+include/constants/map_event_ids.h:1224: warning: "LOCALID_VIRIDIAN_BORDER_TREE" redefined
+ 1224 | #define LOCALID_VIRIDIAN_BORDER_TREE 8
+      | 
+include/constants/map_event_ids.h:1220: note: this is the location of the previous definition
+ 1220 | #define LOCALID_VIRIDIAN_BORDER_TREE 2
+      | 
+/opt/devkitpro/devkitARM/bin/../libexec/gcc/arm-none-eabi/13.2.0/cc1 -quiet <flags> -o build/emerald/src/fldeff_escalator.o src/fldeff_escalator.c
+/opt/devkitpro/devkitARM/bin/../libexec/gcc/arm-none-eabi/13.2.0/cc1 -quiet <flags> -o build/emerald/src/fldeff_misc.o src/fldeff_misc.c
+/opt/devkitpro/devkitARM/bin/../libexec/gcc/arm-none-eabi/13.2.0/cc1 -quiet <flags> -o build/emerald/src/map_name_popup.o src/map_name_popup.c
+/opt/devkitpro/devkitARM/bin/../libexec/gcc/arm-none-eabi/13.2.0/cc1 -quiet <flags> -o build/emerald/src/mirage_tower.o src/mirage_tower.c
+In file included from include/constants/event_objects.h:5,
+                 from src/mirage_tower.c:19:
+include/constants/map_event_ids.h:196: warning: "LOCALID_CELADON_BORDER_TREE" redefined
+  196 | #define LOCALID_CELADON_BORDER_TREE 11
+      | 
+include/constants/map_event_ids.h:195: note: this is the location of the previous definition
+  195 | #define LOCALID_CELADON_BORDER_TREE 10
+      | 
+include/constants/map_event_ids.h:317: warning: "LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE" redefined
+  317 | #define LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE 5
+      | 
+include/constants/map_event_ids.h:316: note: this is the location of the previous definition
+  316 | #define LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE 4
+      | 
+include/constants/map_event_ids.h:602: warning: "LOCALID_RUBY" redefined
+  602 | #define LOCALID_RUBY 2
+      | 
+include/constants/map_event_ids.h:601: note: this is the location of the previous definition
+  601 | #define LOCALID_RUBY 1
+      | 
+include/constants/map_event_ids.h:603: warning: "LOCALID_RUBY" redefined
+  603 | #define LOCALID_RUBY 3
+      | 
+include/constants/map_event_ids.h:602: note: this is the location of the previous definition
+  602 | #define LOCALID_RUBY 2
+      | 
+include/constants/map_event_ids.h:604: warning: "LOCALID_RUBY" redefined
+  604 | #define LOCALID_RUBY 10
+      | 
+include/constants/map_event_ids.h:603: note: this is the location of the previous definition
+  603 | #define LOCALID_RUBY 3
+      | 
+include/constants/map_event_ids.h:807: warning: "LOCALID_ROUTE14_BORDER_TREE" redefined
+  807 | #define LOCALID_ROUTE14_BORDER_TREE 12
+      | 
+include/constants/map_event_ids.h:806: note: this is the location of the previous definition
+  806 | #define LOCALID_ROUTE14_BORDER_TREE 11
+      | 
+include/constants/map_event_ids.h:808: warning: "LOCALID_ROUTE14_BORDER_TREE" redefined
+  808 | #define LOCALID_ROUTE14_BORDER_TREE 13
+      | 
+include/constants/map_event_ids.h:807: note: this is the location of the previous definition
+  807 | #define LOCALID_ROUTE14_BORDER_TREE 12
+      | 
+include/constants/map_event_ids.h:1171: warning: "LOCALID_MOSSDEEP_SCOTT" redefined
+ 1171 | #define LOCALID_MOSSDEEP_SCOTT 5
+      | 
+include/constants/map_event_ids.h:552: note: this is the location of the previous definition
+  552 | #define LOCALID_MOSSDEEP_SCOTT 16
+      | 
+include/constants/map_event_ids.h:1208: warning: "LOCALID_VICTORY_ROAD_1F_BOULDER" redefined
+ 1208 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 6
+      | 
+include/constants/map_event_ids.h:1207: note: this is the location of the previous definition
+ 1207 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 5
+      | 
+include/constants/map_event_ids.h:1209: warning: "LOCALID_VICTORY_ROAD_1F_BOULDER" redefined
+ 1209 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 7
+      | 
+include/constants/map_event_ids.h:1208: note: this is the location of the previous definition
+ 1208 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 6
+      | 
+include/constants/map_event_ids.h:1224: warning: "LOCALID_VIRIDIAN_BORDER_TREE" redefined
+ 1224 | #define LOCALID_VIRIDIAN_BORDER_TREE 8
+      | 
+include/constants/map_event_ids.h:1220: note: this is the location of the previous definition
+ 1220 | #define LOCALID_VIRIDIAN_BORDER_TREE 2
+      | 
+/opt/devkitpro/devkitARM/bin/../libexec/gcc/arm-none-eabi/13.2.0/cc1 -quiet <flags> -o build/emerald/src/overworld.o src/overworld.c
+src/mirage_tower.c:348:13: warning: 'PlayerDescendMirageTower' defined but not used [-Wunused-function]
+  348 | static void PlayerDescendMirageTower(u8 taskId)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~
+/opt/devkitpro/devkitARM/bin/../libexec/gcc/arm-none-eabi/13.2.0/cc1 -quiet <flags> -o build/emerald/src/player_pc.o src/player_pc.c
+In file included from include/constants/event_objects.h:5,
+                 from src/overworld.c:79:
+include/constants/map_event_ids.h:196: warning: "LOCALID_CELADON_BORDER_TREE" redefined
+  196 | #define LOCALID_CELADON_BORDER_TREE 11
+      | 
+include/constants/map_event_ids.h:195: note: this is the location of the previous definition
+  195 | #define LOCALID_CELADON_BORDER_TREE 10
+      | 
+include/constants/map_event_ids.h:317: warning: "LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE" redefined
+  317 | #define LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE 5
+      | 
+include/constants/map_event_ids.h:316: note: this is the location of the previous definition
+  316 | #define LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE 4
+      | 
+include/constants/map_event_ids.h:602: warning: "LOCALID_RUBY" redefined
+  602 | #define LOCALID_RUBY 2
+      | 
+include/constants/map_event_ids.h:601: note: this is the location of the previous definition
+  601 | #define LOCALID_RUBY 1
+      | 
+include/constants/map_event_ids.h:603: warning: "LOCALID_RUBY" redefined
+  603 | #define LOCALID_RUBY 3
+      | 
+include/constants/map_event_ids.h:602: note: this is the location of the previous definition
+  602 | #define LOCALID_RUBY 2
+      | 
+include/constants/map_event_ids.h:604: warning: "LOCALID_RUBY" redefined
+  604 | #define LOCALID_RUBY 10
+      | 
+include/constants/map_event_ids.h:603: note: this is the location of the previous definition
+  603 | #define LOCALID_RUBY 3
+      | 
+include/constants/map_event_ids.h:807: warning: "LOCALID_ROUTE14_BORDER_TREE" redefined
+  807 | #define LOCALID_ROUTE14_BORDER_TREE 12
+      | 
+include/constants/map_event_ids.h:806: note: this is the location of the previous definition
+  806 | #define LOCALID_ROUTE14_BORDER_TREE 11
+      | 
+include/constants/map_event_ids.h:808: warning: "LOCALID_ROUTE14_BORDER_TREE" redefined
+  808 | #define LOCALID_ROUTE14_BORDER_TREE 13
+      | 
+include/constants/map_event_ids.h:807: note: this is the location of the previous definition
+  807 | #define LOCALID_ROUTE14_BORDER_TREE 12
+      | 
+include/constants/map_event_ids.h:1171: warning: "LOCALID_MOSSDEEP_SCOTT" redefined
+ 1171 | #define LOCALID_MOSSDEEP_SCOTT 5
+      | 
+include/constants/map_event_ids.h:552: note: this is the location of the previous definition
+  552 | #define LOCALID_MOSSDEEP_SCOTT 16
+      | 
+include/constants/map_event_ids.h:1208: warning: "LOCALID_VICTORY_ROAD_1F_BOULDER" redefined
+ 1208 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 6
+      | 
+include/constants/map_event_ids.h:1207: note: this is the location of the previous definition
+ 1207 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 5
+      | 
+include/constants/map_event_ids.h:1209: warning: "LOCALID_VICTORY_ROAD_1F_BOULDER" redefined
+ 1209 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 7
+      | 
+include/constants/map_event_ids.h:1208: note: this is the location of the previous definition
+ 1208 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 6
+      | 
+include/constants/map_event_ids.h:1224: warning: "LOCALID_VIRIDIAN_BORDER_TREE" redefined
+ 1224 | #define LOCALID_VIRIDIAN_BORDER_TREE 8
+      | 
+include/constants/map_event_ids.h:1220: note: this is the location of the previous definition
+ 1220 | #define LOCALID_VIRIDIAN_BORDER_TREE 2
+      | 
+/opt/devkitpro/devkitARM/bin/../libexec/gcc/arm-none-eabi/13.2.0/cc1 -quiet <flags> -o build/emerald/src/pokemon.o src/pokemon.c
+/opt/devkitpro/devkitARM/bin/../libexec/gcc/arm-none-eabi/13.2.0/cc1 -quiet <flags> -o build/emerald/src/random_resource.o src/random_resource.c
+In file included from include/constants/event_objects.h:5,
+                 from src/pokemon.c:64:
+include/constants/map_event_ids.h:196: warning: "LOCALID_CELADON_BORDER_TREE" redefined
+  196 | #define LOCALID_CELADON_BORDER_TREE 11
+      | 
+include/constants/map_event_ids.h:195: note: this is the location of the previous definition
+  195 | #define LOCALID_CELADON_BORDER_TREE 10
+      | 
+include/constants/map_event_ids.h:317: warning: "LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE" redefined
+  317 | #define LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE 5
+      | 
+include/constants/map_event_ids.h:316: note: this is the location of the previous definition
+  316 | #define LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE 4
+      | 
+include/constants/map_event_ids.h:602: warning: "LOCALID_RUBY" redefined
+  602 | #define LOCALID_RUBY 2
+      | 
+include/constants/map_event_ids.h:601: note: this is the location of the previous definition
+  601 | #define LOCALID_RUBY 1
+      | 
+include/constants/map_event_ids.h:603: warning: "LOCALID_RUBY" redefined
+  603 | #define LOCALID_RUBY 3
+      | 
+include/constants/map_event_ids.h:602: note: this is the location of the previous definition
+  602 | #define LOCALID_RUBY 2
+      | 
+include/constants/map_event_ids.h:604: warning: "LOCALID_RUBY" redefined
+  604 | #define LOCALID_RUBY 10
+      | 
+include/constants/map_event_ids.h:603: note: this is the location of the previous definition
+  603 | #define LOCALID_RUBY 3
+      | 
+include/constants/map_event_ids.h:807: warning: "LOCALID_ROUTE14_BORDER_TREE" redefined
+  807 | #define LOCALID_ROUTE14_BORDER_TREE 12
+      | 
+include/constants/map_event_ids.h:806: note: this is the location of the previous definition
+  806 | #define LOCALID_ROUTE14_BORDER_TREE 11
+      | 
+include/constants/map_event_ids.h:808: warning: "LOCALID_ROUTE14_BORDER_TREE" redefined
+  808 | #define LOCALID_ROUTE14_BORDER_TREE 13
+      | 
+include/constants/map_event_ids.h:807: note: this is the location of the previous definition
+  807 | #define LOCALID_ROUTE14_BORDER_TREE 12
+      | 
+include/constants/map_event_ids.h:1171: warning: "LOCALID_MOSSDEEP_SCOTT" redefined
+ 1171 | #define LOCALID_MOSSDEEP_SCOTT 5
+      | 
+include/constants/map_event_ids.h:552: note: this is the location of the previous definition
+  552 | #define LOCALID_MOSSDEEP_SCOTT 16
+      | 
+include/constants/map_event_ids.h:1208: warning: "LOCALID_VICTORY_ROAD_1F_BOULDER" redefined
+ 1208 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 6
+      | 
+include/constants/map_event_ids.h:1207: note: this is the location of the previous definition
+ 1207 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 5
+      | 
+include/constants/map_event_ids.h:1209: warning: "LOCALID_VICTORY_ROAD_1F_BOULDER" redefined
+ 1209 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 7
+      | 
+include/constants/map_event_ids.h:1208: note: this is the location of the previous definition
+ 1208 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 6
+      | 
+include/constants/map_event_ids.h:1224: warning: "LOCALID_VIRIDIAN_BORDER_TREE" redefined
+ 1224 | #define LOCALID_VIRIDIAN_BORDER_TREE 8
+      | 
+include/constants/map_event_ids.h:1220: note: this is the location of the previous definition
+ 1220 | #define LOCALID_VIRIDIAN_BORDER_TREE 2
+      | 
+/opt/devkitpro/devkitARM/bin/../libexec/gcc/arm-none-eabi/13.2.0/cc1 -quiet <flags> -o build/emerald/src/rotating_tile_puzzle.o src/rotating_tile_puzzle.c
+/opt/devkitpro/devkitARM/bin/../libexec/gcc/arm-none-eabi/13.2.0/cc1 -quiet <flags> -o build/emerald/src/secret_base.o src/secret_base.c
+In file included from include/constants/event_objects.h:5,
+                 from src/rotating_tile_puzzle.c:8:
+include/constants/map_event_ids.h:196: warning: "LOCALID_CELADON_BORDER_TREE" redefined
+  196 | #define LOCALID_CELADON_BORDER_TREE 11
+      | 
+include/constants/map_event_ids.h:195: note: this is the location of the previous definition
+  195 | #define LOCALID_CELADON_BORDER_TREE 10
+      | 
+include/constants/map_event_ids.h:317: warning: "LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE" redefined
+  317 | #define LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE 5
+      | 
+include/constants/map_event_ids.h:316: note: this is the location of the previous definition
+  316 | #define LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE 4
+      | 
+include/constants/map_event_ids.h:602: warning: "LOCALID_RUBY" redefined
+  602 | #define LOCALID_RUBY 2
+      | 
+include/constants/map_event_ids.h:601: note: this is the location of the previous definition
+  601 | #define LOCALID_RUBY 1
+      | 
+include/constants/map_event_ids.h:603: warning: "LOCALID_RUBY" redefined
+  603 | #define LOCALID_RUBY 3
+      | 
+include/constants/map_event_ids.h:602: note: this is the location of the previous definition
+  602 | #define LOCALID_RUBY 2
+      | 
+include/constants/map_event_ids.h:604: warning: "LOCALID_RUBY" redefined
+  604 | #define LOCALID_RUBY 10
+      | 
+include/constants/map_event_ids.h:603: note: this is the location of the previous definition
+  603 | #define LOCALID_RUBY 3
+      | 
+include/constants/map_event_ids.h:807: warning: "LOCALID_ROUTE14_BORDER_TREE" redefined
+  807 | #define LOCALID_ROUTE14_BORDER_TREE 12
+      | 
+include/constants/map_event_ids.h:806: note: this is the location of the previous definition
+  806 | #define LOCALID_ROUTE14_BORDER_TREE 11
+      | 
+include/constants/map_event_ids.h:808: warning: "LOCALID_ROUTE14_BORDER_TREE" redefined
+  808 | #define LOCALID_ROUTE14_BORDER_TREE 13
+      | 
+include/constants/map_event_ids.h:807: note: this is the location of the previous definition
+  807 | #define LOCALID_ROUTE14_BORDER_TREE 12
+      | 
+include/constants/map_event_ids.h:1171: warning: "LOCALID_MOSSDEEP_SCOTT" redefined
+ 1171 | #define LOCALID_MOSSDEEP_SCOTT 5
+      | 
+include/constants/map_event_ids.h:552: note: this is the location of the previous definition
+  552 | #define LOCALID_MOSSDEEP_SCOTT 16
+      | 
+include/constants/map_event_ids.h:1208: warning: "LOCALID_VICTORY_ROAD_1F_BOULDER" redefined
+ 1208 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 6
+      | 
+include/constants/map_event_ids.h:1207: note: this is the location of the previous definition
+ 1207 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 5
+      | 
+include/constants/map_event_ids.h:1209: warning: "LOCALID_VICTORY_ROAD_1F_BOULDER" redefined
+ 1209 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 7
+      | 
+include/constants/map_event_ids.h:1208: note: this is the location of the previous definition
+ 1208 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 6
+      | 
+include/constants/map_event_ids.h:1224: warning: "LOCALID_VIRIDIAN_BORDER_TREE" redefined
+ 1224 | #define LOCALID_VIRIDIAN_BORDER_TREE 8
+      | 
+include/constants/map_event_ids.h:1220: note: this is the location of the previous definition
+ 1220 | #define LOCALID_VIRIDIAN_BORDER_TREE 2
+      | 
+tools/gbagfx/gbagfx data/tilesets/secondary/acamar/palettes/00.pal build/assets/data/tilesets/secondary/acamar/palettes/00.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/acamar/palettes/01.pal build/assets/data/tilesets/secondary/acamar/palettes/01.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/acamar/palettes/02.pal build/assets/data/tilesets/secondary/acamar/palettes/02.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/acamar/palettes/03.pal build/assets/data/tilesets/secondary/acamar/palettes/03.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/acamar/palettes/04.pal build/assets/data/tilesets/secondary/acamar/palettes/04.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/acamar/palettes/05.pal build/assets/data/tilesets/secondary/acamar/palettes/05.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/acamar/palettes/06.pal build/assets/data/tilesets/secondary/acamar/palettes/06.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/acamar/palettes/07.pal build/assets/data/tilesets/secondary/acamar/palettes/07.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/acamar/palettes/08.pal build/assets/data/tilesets/secondary/acamar/palettes/08.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/acamar/palettes/09.pal build/assets/data/tilesets/secondary/acamar/palettes/09.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/acamar/palettes/10.pal build/assets/data/tilesets/secondary/acamar/palettes/10.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/acamar/palettes/11.pal build/assets/data/tilesets/secondary/acamar/palettes/11.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/acamar/palettes/12.pal build/assets/data/tilesets/secondary/acamar/palettes/12.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/acamar/palettes/13.pal build/assets/data/tilesets/secondary/acamar/palettes/13.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/acamar/palettes/14.pal build/assets/data/tilesets/secondary/acamar/palettes/14.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/acamar/palettes/15.pal build/assets/data/tilesets/secondary/acamar/palettes/15.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/acamar/tiles.png build/assets/data/tilesets/secondary/acamar/tiles.png_num_tiles_450__Wnum_tiles.4bpp -num_tiles 450 -Wnum_tiles
+tools/gbagfx/gbagfx data/tilesets/secondary/alasia/palettes/00.pal build/assets/data/tilesets/secondary/alasia/palettes/00.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/alasia/palettes/01.pal build/assets/data/tilesets/secondary/alasia/palettes/01.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/alasia/palettes/02.pal build/assets/data/tilesets/secondary/alasia/palettes/02.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/alasia/palettes/03.pal build/assets/data/tilesets/secondary/alasia/palettes/03.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/alasia/palettes/04.pal build/assets/data/tilesets/secondary/alasia/palettes/04.pal.gbapal 
+In file included from include/constants/event_objects.h:5,
+                 from src/secret_base.c:39:
+include/constants/map_event_ids.h:196: warning: "LOCALID_CELADON_BORDER_TREE" redefined
+  196 | #define LOCALID_CELADON_BORDER_TREE 11
+      | 
+include/constants/map_event_ids.h:195: note: this is the location of the previous definition
+  195 | #define LOCALID_CELADON_BORDER_TREE 10
+      | 
+include/constants/map_event_ids.h:317: warning: "LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE" redefined
+  317 | #define LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE 5
+      | 
+include/constants/map_event_ids.h:316: note: this is the location of the previous definition
+  316 | #define LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE 4
+      | 
+include/constants/map_event_ids.h:602: warning: "LOCALID_RUBY" redefined
+  602 | #define LOCALID_RUBY 2
+      | 
+include/constants/map_event_ids.h:601: note: this is the location of the previous definition
+  601 | #define LOCALID_RUBY 1
+      | 
+include/constants/map_event_ids.h:603: warning: "LOCALID_RUBY" redefined
+  603 | #define LOCALID_RUBY 3
+      | 
+include/constants/map_event_ids.h:602: note: this is the location of the previous definition
+  602 | #define LOCALID_RUBY 2
+      | 
+include/constants/map_event_ids.h:604: warning: "LOCALID_RUBY" redefined
+  604 | #define LOCALID_RUBY 10
+      | 
+include/constants/map_event_ids.h:603: note: this is the location of the previous definition
+  603 | #define LOCALID_RUBY 3
+      | 
+include/constants/map_event_ids.h:807: warning: "LOCALID_ROUTE14_BORDER_TREE" redefined
+  807 | #define LOCALID_ROUTE14_BORDER_TREE 12
+      | 
+include/constants/map_event_ids.h:806: note: this is the location of the previous definition
+  806 | #define LOCALID_ROUTE14_BORDER_TREE 11
+      | 
+include/constants/map_event_ids.h:808: warning: "LOCALID_ROUTE14_BORDER_TREE" redefined
+  808 | #define LOCALID_ROUTE14_BORDER_TREE 13
+      | 
+include/constants/map_event_ids.h:807: note: this is the location of the previous definition
+  807 | #define LOCALID_ROUTE14_BORDER_TREE 12
+      | 
+tools/gbagfx/gbagfx data/tilesets/secondary/alasia/palettes/05.pal build/assets/data/tilesets/secondary/alasia/palettes/05.pal.gbapal 
+include/constants/map_event_ids.h:1171: warning: "LOCALID_MOSSDEEP_SCOTT" redefined
+ 1171 | #define LOCALID_MOSSDEEP_SCOTT 5
+      | 
+include/constants/map_event_ids.h:552: note: this is the location of the previous definition
+  552 | #define LOCALID_MOSSDEEP_SCOTT 16
+      | 
+include/constants/map_event_ids.h:1208: warning: "LOCALID_VICTORY_ROAD_1F_BOULDER" redefined
+ 1208 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 6
+      | 
+include/constants/map_event_ids.h:1207: note: this is the location of the previous definition
+ 1207 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 5
+      | 
+include/constants/map_event_ids.h:1209: warning: "LOCALID_VICTORY_ROAD_1F_BOULDER" redefined
+ 1209 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 7
+      | 
+include/constants/map_event_ids.h:1208: note: this is the location of the previous definition
+ 1208 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 6
+      | 
+include/constants/map_event_ids.h:1224: warning: "LOCALID_VIRIDIAN_BORDER_TREE" redefined
+ 1224 | #define LOCALID_VIRIDIAN_BORDER_TREE 8
+      | 
+include/constants/map_event_ids.h:1220: note: this is the location of the previous definition
+ 1220 | #define LOCALID_VIRIDIAN_BORDER_TREE 2
+      | 
+tools/gbagfx/gbagfx data/tilesets/secondary/alasia/palettes/06.pal build/assets/data/tilesets/secondary/alasia/palettes/06.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/alasia/palettes/07.pal build/assets/data/tilesets/secondary/alasia/palettes/07.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/alasia/palettes/08.pal build/assets/data/tilesets/secondary/alasia/palettes/08.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/alasia/palettes/09.pal build/assets/data/tilesets/secondary/alasia/palettes/09.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/alasia/palettes/10.pal build/assets/data/tilesets/secondary/alasia/palettes/10.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/alasia/palettes/11.pal build/assets/data/tilesets/secondary/alasia/palettes/11.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/alasia/palettes/12.pal build/assets/data/tilesets/secondary/alasia/palettes/12.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/alasia/palettes/13.pal build/assets/data/tilesets/secondary/alasia/palettes/13.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/alasia/palettes/14.pal build/assets/data/tilesets/secondary/alasia/palettes/14.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/alasia/palettes/15.pal build/assets/data/tilesets/secondary/alasia/palettes/15.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/alasia/tiles.png build/assets/data/tilesets/secondary/alasia/tiles.png_num_tiles_190__Wnum_tiles.4bpp -num_tiles 190 -Wnum_tiles
+libpng warning: bKGD: invalid index
+tools/gbagfx/gbagfx data/tilesets/secondary/inquill/palettes/00.pal build/assets/data/tilesets/secondary/inquill/palettes/00.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/inquill/palettes/01.pal build/assets/data/tilesets/secondary/inquill/palettes/01.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/inquill/palettes/02.pal build/assets/data/tilesets/secondary/inquill/palettes/02.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/inquill/palettes/03.pal build/assets/data/tilesets/secondary/inquill/palettes/03.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/inquill/palettes/04.pal build/assets/data/tilesets/secondary/inquill/palettes/04.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/inquill/palettes/05.pal build/assets/data/tilesets/secondary/inquill/palettes/05.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/inquill/palettes/06.pal build/assets/data/tilesets/secondary/inquill/palettes/06.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/inquill/palettes/07.pal build/assets/data/tilesets/secondary/inquill/palettes/07.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/inquill/palettes/08.pal build/assets/data/tilesets/secondary/inquill/palettes/08.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/inquill/palettes/09.pal build/assets/data/tilesets/secondary/inquill/palettes/09.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/inquill/palettes/10.pal build/assets/data/tilesets/secondary/inquill/palettes/10.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/inquill/palettes/11.pal build/assets/data/tilesets/secondary/inquill/palettes/11.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/inquill/palettes/12.pal build/assets/data/tilesets/secondary/inquill/palettes/12.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/inquill/palettes/13.pal build/assets/data/tilesets/secondary/inquill/palettes/13.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/inquill/palettes/14.pal build/assets/data/tilesets/secondary/inquill/palettes/14.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/inquill/palettes/15.pal build/assets/data/tilesets/secondary/inquill/palettes/15.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/inquill/tiles.png build/assets/data/tilesets/secondary/inquill/tiles.png_num_tiles_503__Wnum_tiles.4bpp -num_tiles 503 -Wnum_tiles
+tools/gbagfx/gbagfx data/tilesets/secondary/mintaka/palettes/00.pal build/assets/data/tilesets/secondary/mintaka/palettes/00.pal.gbapal 
+libpng warning: bKGD: invalid index
+tools/gbagfx/gbagfx data/tilesets/secondary/mintaka/palettes/01.pal build/assets/data/tilesets/secondary/mintaka/palettes/01.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/mintaka/palettes/02.pal build/assets/data/tilesets/secondary/mintaka/palettes/02.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/mintaka/palettes/03.pal build/assets/data/tilesets/secondary/mintaka/palettes/03.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/mintaka/palettes/04.pal build/assets/data/tilesets/secondary/mintaka/palettes/04.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/mintaka/palettes/05.pal build/assets/data/tilesets/secondary/mintaka/palettes/05.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/mintaka/palettes/06.pal build/assets/data/tilesets/secondary/mintaka/palettes/06.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/mintaka/palettes/07.pal build/assets/data/tilesets/secondary/mintaka/palettes/07.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/mintaka/palettes/08.pal build/assets/data/tilesets/secondary/mintaka/palettes/08.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/mintaka/palettes/09.pal build/assets/data/tilesets/secondary/mintaka/palettes/09.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/mintaka/palettes/10.pal build/assets/data/tilesets/secondary/mintaka/palettes/10.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/mintaka/palettes/11.pal build/assets/data/tilesets/secondary/mintaka/palettes/11.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/mintaka/palettes/12.pal build/assets/data/tilesets/secondary/mintaka/palettes/12.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/mintaka/palettes/13.pal build/assets/data/tilesets/secondary/mintaka/palettes/13.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/mintaka/palettes/14.pal build/assets/data/tilesets/secondary/mintaka/palettes/14.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/mintaka/palettes/15.pal build/assets/data/tilesets/secondary/mintaka/palettes/15.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/mintaka/tiles.png build/assets/data/tilesets/secondary/mintaka/tiles.png_num_tiles_504__Wnum_tiles.4bpp -num_tiles 504 -Wnum_tiles
+Ignoring -num_tiles 504 because tile 507 contains non-transparent pixels.
+tools/gbagfx/gbagfx data/tilesets/secondary/sansuna/palettes/00.pal build/assets/data/tilesets/secondary/sansuna/palettes/00.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/sansuna/palettes/01.pal build/assets/data/tilesets/secondary/sansuna/palettes/01.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/sansuna/palettes/02.pal build/assets/data/tilesets/secondary/sansuna/palettes/02.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/sansuna/palettes/03.pal build/assets/data/tilesets/secondary/sansuna/palettes/03.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/sansuna/palettes/04.pal build/assets/data/tilesets/secondary/sansuna/palettes/04.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/sansuna/palettes/05.pal build/assets/data/tilesets/secondary/sansuna/palettes/05.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/sansuna/palettes/06.pal build/assets/data/tilesets/secondary/sansuna/palettes/06.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/sansuna/palettes/07.pal build/assets/data/tilesets/secondary/sansuna/palettes/07.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/sansuna/palettes/08.pal build/assets/data/tilesets/secondary/sansuna/palettes/08.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/sansuna/palettes/09.pal build/assets/data/tilesets/secondary/sansuna/palettes/09.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/sansuna/palettes/10.pal build/assets/data/tilesets/secondary/sansuna/palettes/10.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/sansuna/palettes/11.pal build/assets/data/tilesets/secondary/sansuna/palettes/11.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/sansuna/palettes/12.pal build/assets/data/tilesets/secondary/sansuna/palettes/12.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/sansuna/palettes/13.pal build/assets/data/tilesets/secondary/sansuna/palettes/13.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/sansuna/palettes/14.pal build/assets/data/tilesets/secondary/sansuna/palettes/14.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/sansuna/palettes/15.pal build/assets/data/tilesets/secondary/sansuna/palettes/15.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/sansuna/tiles.png build/assets/data/tilesets/secondary/sansuna/tiles.png_num_tiles_450__Wnum_tiles.4bpp -num_tiles 450 -Wnum_tiles
+tools/gbagfx/gbagfx data/tilesets/secondary/tiaki/palettes/00.pal build/assets/data/tilesets/secondary/tiaki/palettes/00.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/tiaki/palettes/01.pal build/assets/data/tilesets/secondary/tiaki/palettes/01.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/tiaki/palettes/02.pal build/assets/data/tilesets/secondary/tiaki/palettes/02.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/tiaki/palettes/03.pal build/assets/data/tilesets/secondary/tiaki/palettes/03.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/tiaki/palettes/04.pal build/assets/data/tilesets/secondary/tiaki/palettes/04.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/tiaki/palettes/05.pal build/assets/data/tilesets/secondary/tiaki/palettes/05.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/tiaki/palettes/06.pal build/assets/data/tilesets/secondary/tiaki/palettes/06.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/tiaki/palettes/07.pal build/assets/data/tilesets/secondary/tiaki/palettes/07.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/tiaki/palettes/08.pal build/assets/data/tilesets/secondary/tiaki/palettes/08.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/tiaki/palettes/09.pal build/assets/data/tilesets/secondary/tiaki/palettes/09.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/tiaki/palettes/10.pal build/assets/data/tilesets/secondary/tiaki/palettes/10.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/tiaki/palettes/11.pal build/assets/data/tilesets/secondary/tiaki/palettes/11.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/tiaki/palettes/12.pal build/assets/data/tilesets/secondary/tiaki/palettes/12.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/tiaki/palettes/13.pal build/assets/data/tilesets/secondary/tiaki/palettes/13.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/tiaki/palettes/14.pal build/assets/data/tilesets/secondary/tiaki/palettes/14.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/tiaki/palettes/15.pal build/assets/data/tilesets/secondary/tiaki/palettes/15.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/tiaki/tiles.png build/assets/data/tilesets/secondary/tiaki/tiles.png_num_tiles_503__Wnum_tiles.4bpp -num_tiles 503 -Wnum_tiles
+libpng warning: bKGD: invalid index
+tools/gbagfx/gbagfx data/tilesets/secondary/uuba/palettes/00.pal build/assets/data/tilesets/secondary/uuba/palettes/00.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/uuba/palettes/01.pal build/assets/data/tilesets/secondary/uuba/palettes/01.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/uuba/palettes/02.pal build/assets/data/tilesets/secondary/uuba/palettes/02.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/uuba/palettes/03.pal build/assets/data/tilesets/secondary/uuba/palettes/03.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/uuba/palettes/04.pal build/assets/data/tilesets/secondary/uuba/palettes/04.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/uuba/palettes/05.pal build/assets/data/tilesets/secondary/uuba/palettes/05.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/uuba/palettes/06.pal build/assets/data/tilesets/secondary/uuba/palettes/06.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/uuba/palettes/07.pal build/assets/data/tilesets/secondary/uuba/palettes/07.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/uuba/palettes/08.pal build/assets/data/tilesets/secondary/uuba/palettes/08.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/uuba/palettes/09.pal build/assets/data/tilesets/secondary/uuba/palettes/09.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/uuba/palettes/10.pal build/assets/data/tilesets/secondary/uuba/palettes/10.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/uuba/palettes/11.pal build/assets/data/tilesets/secondary/uuba/palettes/11.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/uuba/palettes/12.pal build/assets/data/tilesets/secondary/uuba/palettes/12.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/uuba/palettes/13.pal build/assets/data/tilesets/secondary/uuba/palettes/13.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/uuba/palettes/14.pal build/assets/data/tilesets/secondary/uuba/palettes/14.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/uuba/palettes/15.pal build/assets/data/tilesets/secondary/uuba/palettes/15.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/uuba/tiles.png build/assets/data/tilesets/secondary/uuba/tiles.png.4bpp 
+tools/gbagfx/gbagfx data/tilesets/secondary/wurren/palettes/00.pal build/assets/data/tilesets/secondary/wurren/palettes/00.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/wurren/palettes/01.pal build/assets/data/tilesets/secondary/wurren/palettes/01.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/wurren/palettes/02.pal build/assets/data/tilesets/secondary/wurren/palettes/02.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/wurren/palettes/03.pal build/assets/data/tilesets/secondary/wurren/palettes/03.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/wurren/palettes/04.pal build/assets/data/tilesets/secondary/wurren/palettes/04.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/wurren/palettes/05.pal build/assets/data/tilesets/secondary/wurren/palettes/05.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/wurren/palettes/06.pal build/assets/data/tilesets/secondary/wurren/palettes/06.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/wurren/palettes/07.pal build/assets/data/tilesets/secondary/wurren/palettes/07.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/wurren/palettes/08.pal build/assets/data/tilesets/secondary/wurren/palettes/08.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/wurren/palettes/09.pal build/assets/data/tilesets/secondary/wurren/palettes/09.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/wurren/palettes/10.pal build/assets/data/tilesets/secondary/wurren/palettes/10.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/wurren/palettes/11.pal build/assets/data/tilesets/secondary/wurren/palettes/11.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/wurren/palettes/12.pal build/assets/data/tilesets/secondary/wurren/palettes/12.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/wurren/palettes/13.pal build/assets/data/tilesets/secondary/wurren/palettes/13.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/wurren/palettes/14.pal build/assets/data/tilesets/secondary/wurren/palettes/14.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/wurren/palettes/15.pal build/assets/data/tilesets/secondary/wurren/palettes/15.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/wurren/tiles.png build/assets/data/tilesets/secondary/wurren/tiles.png.4bpp 
+tools/gbagfx/gbagfx data/tilesets/secondary/wurren_station/palettes/00.pal build/assets/data/tilesets/secondary/wurren_station/palettes/00.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/wurren_station/palettes/01.pal build/assets/data/tilesets/secondary/wurren_station/palettes/01.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/wurren_station/palettes/02.pal build/assets/data/tilesets/secondary/wurren_station/palettes/02.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/wurren_station/palettes/03.pal build/assets/data/tilesets/secondary/wurren_station/palettes/03.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/wurren_station/palettes/04.pal build/assets/data/tilesets/secondary/wurren_station/palettes/04.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/wurren_station/palettes/05.pal build/assets/data/tilesets/secondary/wurren_station/palettes/05.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/wurren_station/palettes/06.pal build/assets/data/tilesets/secondary/wurren_station/palettes/06.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/wurren_station/palettes/07.pal build/assets/data/tilesets/secondary/wurren_station/palettes/07.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/wurren_station/palettes/08.pal build/assets/data/tilesets/secondary/wurren_station/palettes/08.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/wurren_station/palettes/09.pal build/assets/data/tilesets/secondary/wurren_station/palettes/09.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/wurren_station/palettes/10.pal build/assets/data/tilesets/secondary/wurren_station/palettes/10.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/wurren_station/palettes/11.pal build/assets/data/tilesets/secondary/wurren_station/palettes/11.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/wurren_station/palettes/12.pal build/assets/data/tilesets/secondary/wurren_station/palettes/12.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/wurren_station/palettes/13.pal build/assets/data/tilesets/secondary/wurren_station/palettes/13.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/wurren_station/tiles.png build/assets/data/tilesets/secondary/wurren_station/tiles.png.4bpp 
+tools/gbagfx/gbagfx data/tilesets/secondary/wurren_station/palettes/15.pal build/assets/data/tilesets/secondary/wurren_station/palettes/15.pal.gbapal 
+tools/gbagfx/gbagfx data/tilesets/secondary/wurren_station/palettes/14.pal build/assets/data/tilesets/secondary/wurren_station/palettes/14.pal.gbapal 
+/opt/devkitpro/devkitARM/bin/../libexec/gcc/arm-none-eabi/13.2.0/cc1 -quiet <flags> -o build/emerald/src/trainer_hill.o src/trainer_hill.c
+/opt/devkitpro/devkitARM/bin/../libexec/gcc/arm-none-eabi/13.2.0/cc1 -quiet <flags> -o build/emerald/src/trainer_tower.o src/trainer_tower.c
+/opt/devkitpro/devkitARM/bin/../libexec/gcc/arm-none-eabi/13.2.0/cc1 -quiet <flags> -o build/emerald/src/tv.o src/tv.c
+In file included from include/constants/event_objects.h:5,
+                 from src/trainer_tower.c:17:
+include/constants/map_event_ids.h:196: warning: "LOCALID_CELADON_BORDER_TREE" redefined
+  196 | #define LOCALID_CELADON_BORDER_TREE 11
+      | 
+include/constants/map_event_ids.h:195: note: this is the location of the previous definition
+  195 | #define LOCALID_CELADON_BORDER_TREE 10
+      | 
+include/constants/map_event_ids.h:317: warning: "LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE" redefined
+  317 | #define LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE 5
+      | 
+include/constants/map_event_ids.h:316: note: this is the location of the previous definition
+  316 | #define LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE 4
+      | 
+include/constants/map_event_ids.h:602: warning: "LOCALID_RUBY" redefined
+  602 | #define LOCALID_RUBY 2
+      | 
+include/constants/map_event_ids.h:601: note: this is the location of the previous definition
+  601 | #define LOCALID_RUBY 1
+      | 
+include/constants/map_event_ids.h:603: warning: "LOCALID_RUBY" redefined
+  603 | #define LOCALID_RUBY 3
+      | 
+include/constants/map_event_ids.h:602: note: this is the location of the previous definition
+  602 | #define LOCALID_RUBY 2
+      | 
+include/constants/map_event_ids.h:604: warning: "LOCALID_RUBY" redefined
+  604 | #define LOCALID_RUBY 10
+      | 
+include/constants/map_event_ids.h:603: note: this is the location of the previous definition
+  603 | #define LOCALID_RUBY 3
+      | 
+include/constants/map_event_ids.h:807: warning: "LOCALID_ROUTE14_BORDER_TREE" redefined
+  807 | #define LOCALID_ROUTE14_BORDER_TREE 12
+      | 
+include/constants/map_event_ids.h:806: note: this is the location of the previous definition
+  806 | #define LOCALID_ROUTE14_BORDER_TREE 11
+      | 
+include/constants/map_event_ids.h:808: warning: "LOCALID_ROUTE14_BORDER_TREE" redefined
+  808 | #define LOCALID_ROUTE14_BORDER_TREE 13
+      | 
+include/constants/map_event_ids.h:807: note: this is the location of the previous definition
+  807 | #define LOCALID_ROUTE14_BORDER_TREE 12
+      | 
+include/constants/map_event_ids.h:1171: warning: "LOCALID_MOSSDEEP_SCOTT" redefined
+ 1171 | #define LOCALID_MOSSDEEP_SCOTT 5
+      | 
+include/constants/map_event_ids.h:552: note: this is the location of the previous definition
+  552 | #define LOCALID_MOSSDEEP_SCOTT 16
+      | 
+include/constants/map_event_ids.h:1208: warning: "LOCALID_VICTORY_ROAD_1F_BOULDER" redefined
+ 1208 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 6
+      | 
+include/constants/map_event_ids.h:1207: note: this is the location of the previous definition
+ 1207 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 5
+      | 
+include/constants/map_event_ids.h:1209: warning: "LOCALID_VICTORY_ROAD_1F_BOULDER" redefined
+ 1209 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 7
+      | 
+include/constants/map_event_ids.h:1208: note: this is the location of the previous definition
+ 1208 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 6
+      | 
+include/constants/map_event_ids.h:1224: warning: "LOCALID_VIRIDIAN_BORDER_TREE" redefined
+ 1224 | #define LOCALID_VIRIDIAN_BORDER_TREE 8
+      | 
+include/constants/map_event_ids.h:1220: note: this is the location of the previous definition
+ 1220 | #define LOCALID_VIRIDIAN_BORDER_TREE 2
+      | 
+In file included from include/constants/event_objects.h:5,
+                 from src/trainer_hill.c:28:
+include/constants/map_event_ids.h:196: warning: "LOCALID_CELADON_BORDER_TREE" redefined
+  196 | #define LOCALID_CELADON_BORDER_TREE 11
+      | 
+include/constants/map_event_ids.h:195: note: this is the location of the previous definition
+  195 | #define LOCALID_CELADON_BORDER_TREE 10
+      | 
+include/constants/map_event_ids.h:317: warning: "LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE" redefined
+  317 | #define LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE 5
+      | 
+include/constants/map_event_ids.h:316: note: this is the location of the previous definition
+  316 | #define LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE 4
+      | 
+include/constants/map_event_ids.h:602: warning: "LOCALID_RUBY" redefined
+  602 | #define LOCALID_RUBY 2
+      | 
+include/constants/map_event_ids.h:601: note: this is the location of the previous definition
+  601 | #define LOCALID_RUBY 1
+      | 
+include/constants/map_event_ids.h:603: warning: "LOCALID_RUBY" redefined
+  603 | #define LOCALID_RUBY 3
+      | 
+include/constants/map_event_ids.h:602: note: this is the location of the previous definition
+  602 | #define LOCALID_RUBY 2
+      | 
+include/constants/map_event_ids.h:604: warning: "LOCALID_RUBY" redefined
+  604 | #define LOCALID_RUBY 10
+      | 
+include/constants/map_event_ids.h:603: note: this is the location of the previous definition
+  603 | #define LOCALID_RUBY 3
+      | 
+include/constants/map_event_ids.h:807: warning: "LOCALID_ROUTE14_BORDER_TREE" redefined
+  807 | #define LOCALID_ROUTE14_BORDER_TREE 12
+      | 
+include/constants/map_event_ids.h:806: note: this is the location of the previous definition
+  806 | #define LOCALID_ROUTE14_BORDER_TREE 11
+      | 
+include/constants/map_event_ids.h:808: warning: "LOCALID_ROUTE14_BORDER_TREE" redefined
+  808 | #define LOCALID_ROUTE14_BORDER_TREE 13
+      | 
+include/constants/map_event_ids.h:807: note: this is the location of the previous definition
+  807 | #define LOCALID_ROUTE14_BORDER_TREE 12
+      | 
+include/constants/map_event_ids.h:1171: warning: "LOCALID_MOSSDEEP_SCOTT" redefined
+ 1171 | #define LOCALID_MOSSDEEP_SCOTT 5
+      | 
+include/constants/map_event_ids.h:552: note: this is the location of the previous definition
+  552 | #define LOCALID_MOSSDEEP_SCOTT 16
+      | 
+include/constants/map_event_ids.h:1208: warning: "LOCALID_VICTORY_ROAD_1F_BOULDER" redefined
+ 1208 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 6
+      | 
+include/constants/map_event_ids.h:1207: note: this is the location of the previous definition
+ 1207 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 5
+      | 
+include/constants/map_event_ids.h:1209: warning: "LOCALID_VICTORY_ROAD_1F_BOULDER" redefined
+ 1209 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 7
+      | 
+include/constants/map_event_ids.h:1208: note: this is the location of the previous definition
+ 1208 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 6
+      | 
+include/constants/map_event_ids.h:1224: warning: "LOCALID_VIRIDIAN_BORDER_TREE" redefined
+ 1224 | #define LOCALID_VIRIDIAN_BORDER_TREE 8
+      | 
+include/constants/map_event_ids.h:1220: note: this is the location of the previous definition
+ 1220 | #define LOCALID_VIRIDIAN_BORDER_TREE 2
+      | 
+In file included from include/constants/event_objects.h:5,
+                 from src/tv.c:40:
+include/constants/map_event_ids.h:196: warning: "LOCALID_CELADON_BORDER_TREE" redefined
+  196 | #define LOCALID_CELADON_BORDER_TREE 11
+      | 
+include/constants/map_event_ids.h:195: note: this is the location of the previous definition
+  195 | #define LOCALID_CELADON_BORDER_TREE 10
+      | 
+include/constants/map_event_ids.h:317: warning: "LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE" redefined
+  317 | #define LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE 5
+      | 
+include/constants/map_event_ids.h:316: note: this is the location of the previous definition
+  316 | #define LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE 4
+      | 
+include/constants/map_event_ids.h:602: warning: "LOCALID_RUBY" redefined
+  602 | #define LOCALID_RUBY 2
+      | 
+include/constants/map_event_ids.h:601: note: this is the location of the previous definition
+  601 | #define LOCALID_RUBY 1
+      | 
+include/constants/map_event_ids.h:603: warning: "LOCALID_RUBY" redefined
+  603 | #define LOCALID_RUBY 3
+      | 
+include/constants/map_event_ids.h:602: note: this is the location of the previous definition
+  602 | #define LOCALID_RUBY 2
+      | 
+include/constants/map_event_ids.h:604: warning: "LOCALID_RUBY" redefined
+  604 | #define LOCALID_RUBY 10
+      | 
+include/constants/map_event_ids.h:603: note: this is the location of the previous definition
+  603 | #define LOCALID_RUBY 3
+      | 
+include/constants/map_event_ids.h:807: warning: "LOCALID_ROUTE14_BORDER_TREE" redefined
+  807 | #define LOCALID_ROUTE14_BORDER_TREE 12
+      | 
+include/constants/map_event_ids.h:806: note: this is the location of the previous definition
+  806 | #define LOCALID_ROUTE14_BORDER_TREE 11
+      | 
+include/constants/map_event_ids.h:808: warning: "LOCALID_ROUTE14_BORDER_TREE" redefined
+  808 | #define LOCALID_ROUTE14_BORDER_TREE 13
+      | 
+include/constants/map_event_ids.h:807: note: this is the location of the previous definition
+  807 | #define LOCALID_ROUTE14_BORDER_TREE 12
+      | 
+include/constants/map_event_ids.h:1171: warning: "LOCALID_MOSSDEEP_SCOTT" redefined
+ 1171 | #define LOCALID_MOSSDEEP_SCOTT 5
+      | 
+include/constants/map_event_ids.h:552: note: this is the location of the previous definition
+  552 | #define LOCALID_MOSSDEEP_SCOTT 16
+      | 
+include/constants/map_event_ids.h:1208: warning: "LOCALID_VICTORY_ROAD_1F_BOULDER" redefined
+ 1208 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 6
+      | 
+include/constants/map_event_ids.h:1207: note: this is the location of the previous definition
+ 1207 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 5
+      | 
+include/constants/map_event_ids.h:1209: warning: "LOCALID_VICTORY_ROAD_1F_BOULDER" redefined
+ 1209 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 7
+      | 
+include/constants/map_event_ids.h:1208: note: this is the location of the previous definition
+ 1208 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 6
+      | 
+include/constants/map_event_ids.h:1224: warning: "LOCALID_VIRIDIAN_BORDER_TREE" redefined
+ 1224 | #define LOCALID_VIRIDIAN_BORDER_TREE 8
+      | 
+include/constants/map_event_ids.h:1220: note: this is the location of the previous definition
+ 1220 | #define LOCALID_VIRIDIAN_BORDER_TREE 2
+      | 
+/opt/devkitpro/devkitARM/bin/../libexec/gcc/arm-none-eabi/13.2.0/cc1 -quiet <flags> -o build/emerald/src/wild_encounter.o src/wild_encounter.c
+/opt/devkitpro/devkitARM/bin/../libexec/gcc/arm-none-eabi/13.2.0/cc1 -quiet <flags> -o build/emerald/src/wild_encounter_ow.o src/wild_encounter_ow.c
+In file included from include/constants/event_objects.h:5,
+                 from src/wild_encounter_ow.c:25:
+include/constants/map_event_ids.h:196: warning: "LOCALID_CELADON_BORDER_TREE" redefined
+  196 | #define LOCALID_CELADON_BORDER_TREE 11
+      | 
+include/constants/map_event_ids.h:195: note: this is the location of the previous definition
+  195 | #define LOCALID_CELADON_BORDER_TREE 10
+      | 
+include/constants/map_event_ids.h:317: warning: "LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE" redefined
+  317 | #define LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE 5
+      | 
+include/constants/map_event_ids.h:316: note: this is the location of the previous definition
+  316 | #define LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE 4
+      | 
+include/constants/map_event_ids.h:602: warning: "LOCALID_RUBY" redefined
+  602 | #define LOCALID_RUBY 2
+      | 
+include/constants/map_event_ids.h:601: note: this is the location of the previous definition
+  601 | #define LOCALID_RUBY 1
+      | 
+include/constants/map_event_ids.h:603: warning: "LOCALID_RUBY" redefined
+  603 | #define LOCALID_RUBY 3
+      | 
+include/constants/map_event_ids.h:602: note: this is the location of the previous definition
+  602 | #define LOCALID_RUBY 2
+      | 
+include/constants/map_event_ids.h:604: warning: "LOCALID_RUBY" redefined
+  604 | #define LOCALID_RUBY 10
+      | 
+include/constants/map_event_ids.h:603: note: this is the location of the previous definition
+  603 | #define LOCALID_RUBY 3
+      | 
+include/constants/map_event_ids.h:807: warning: "LOCALID_ROUTE14_BORDER_TREE" redefined
+  807 | #define LOCALID_ROUTE14_BORDER_TREE 12
+      | 
+include/constants/map_event_ids.h:806: note: this is the location of the previous definition
+  806 | #define LOCALID_ROUTE14_BORDER_TREE 11
+      | 
+include/constants/map_event_ids.h:808: warning: "LOCALID_ROUTE14_BORDER_TREE" redefined
+  808 | #define LOCALID_ROUTE14_BORDER_TREE 13
+      | 
+include/constants/map_event_ids.h:807: note: this is the location of the previous definition
+  807 | #define LOCALID_ROUTE14_BORDER_TREE 12
+      | 
+include/constants/map_event_ids.h:1171: warning: "LOCALID_MOSSDEEP_SCOTT" redefined
+ 1171 | #define LOCALID_MOSSDEEP_SCOTT 5
+      | 
+include/constants/map_event_ids.h:552: note: this is the location of the previous definition
+  552 | #define LOCALID_MOSSDEEP_SCOTT 16
+      | 
+include/constants/map_event_ids.h:1208: warning: "LOCALID_VICTORY_ROAD_1F_BOULDER" redefined
+ 1208 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 6
+      | 
+include/constants/map_event_ids.h:1207: note: this is the location of the previous definition
+ 1207 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 5
+      | 
+include/constants/map_event_ids.h:1209: warning: "LOCALID_VICTORY_ROAD_1F_BOULDER" redefined
+ 1209 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 7
+      | 
+include/constants/map_event_ids.h:1208: note: this is the location of the previous definition
+ 1208 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 6
+      | 
+include/constants/map_event_ids.h:1224: warning: "LOCALID_VIRIDIAN_BORDER_TREE" redefined
+ 1224 | #define LOCALID_VIRIDIAN_BORDER_TREE 8
+      | 
+include/constants/map_event_ids.h:1220: note: this is the location of the previous definition
+ 1220 | #define LOCALID_VIRIDIAN_BORDER_TREE 2
+      | 
+tools/preproc/preproc -s data/event_scripts.s charmap.txt | arm-none-eabi-cpp -iquote include -Wno-trigraphs -DMODERN=1 -DTESTING=0 -DEMERALD -std=gnu17 -I include - | tools/preproc/preproc -ie data/event_scripts.s charmap.txt | arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 --defsym EMERALD=1 -o build/emerald/data/event_scripts.o
+tools/preproc/preproc -s data/maps.s charmap.txt | arm-none-eabi-cpp -iquote include -Wno-trigraphs -DMODERN=1 -DTESTING=0 -DEMERALD -std=gnu17 -I include - | tools/preproc/preproc -ie data/maps.s charmap.txt | arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 --defsym EMERALD=1 -o build/emerald/data/maps.o
+In file included from include/constants/event_objects.h:5,
+                 from data/event_scripts.s:29:
+include/constants/map_event_ids.h:196: warning: "LOCALID_CELADON_BORDER_TREE" redefined
+  196 | #define LOCALID_CELADON_BORDER_TREE 11
+      | 
+include/constants/map_event_ids.h:195: note: this is the location of the previous definition
+  195 | #define LOCALID_CELADON_BORDER_TREE 10
+      | 
+include/constants/map_event_ids.h:317: warning: "LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE" redefined
+  317 | #define LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE 5
+      | 
+include/constants/map_event_ids.h:316: note: this is the location of the previous definition
+  316 | #define LOCALID_FIVE_ISLAND_MEADOW_BORDER_TREE 4
+      | 
+include/constants/map_event_ids.h:602: warning: "LOCALID_RUBY" redefined
+  602 | #define LOCALID_RUBY 2
+      | 
+include/constants/map_event_ids.h:601: note: this is the location of the previous definition
+  601 | #define LOCALID_RUBY 1
+      | 
+include/constants/map_event_ids.h:603: warning: "LOCALID_RUBY" redefined
+  603 | #define LOCALID_RUBY 3
+      | 
+include/constants/map_event_ids.h:602: note: this is the location of the previous definition
+  602 | #define LOCALID_RUBY 2
+      | 
+include/constants/map_event_ids.h:604: warning: "LOCALID_RUBY" redefined
+  604 | #define LOCALID_RUBY 10
+      | 
+include/constants/map_event_ids.h:603: note: this is the location of the previous definition
+  603 | #define LOCALID_RUBY 3
+      | 
+include/constants/map_event_ids.h:807: warning: "LOCALID_ROUTE14_BORDER_TREE" redefined
+  807 | #define LOCALID_ROUTE14_BORDER_TREE 12
+      | 
+include/constants/map_event_ids.h:806: note: this is the location of the previous definition
+  806 | #define LOCALID_ROUTE14_BORDER_TREE 11
+      | 
+include/constants/map_event_ids.h:808: warning: "LOCALID_ROUTE14_BORDER_TREE" redefined
+  808 | #define LOCALID_ROUTE14_BORDER_TREE 13
+      | 
+include/constants/map_event_ids.h:807: note: this is the location of the previous definition
+  807 | #define LOCALID_ROUTE14_BORDER_TREE 12
+      | 
+include/constants/map_event_ids.h:1171: warning: "LOCALID_MOSSDEEP_SCOTT" redefined
+ 1171 | #define LOCALID_MOSSDEEP_SCOTT 5
+      | 
+include/constants/map_event_ids.h:552: note: this is the location of the previous definition
+  552 | #define LOCALID_MOSSDEEP_SCOTT 16
+      | 
+include/constants/map_event_ids.h:1208: warning: "LOCALID_VICTORY_ROAD_1F_BOULDER" redefined
+ 1208 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 6
+      | 
+include/constants/map_event_ids.h:1207: note: this is the location of the previous definition
+ 1207 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 5
+      | 
+include/constants/map_event_ids.h:1209: warning: "LOCALID_VICTORY_ROAD_1F_BOULDER" redefined
+ 1209 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 7
+      | 
+include/constants/map_event_ids.h:1208: note: this is the location of the previous definition
+ 1208 | #define LOCALID_VICTORY_ROAD_1F_BOULDER 6
+      | 
+include/constants/map_event_ids.h:1224: warning: "LOCALID_VIRIDIAN_BORDER_TREE" redefined
+ 1224 | #define LOCALID_VIRIDIAN_BORDER_TREE 8
+      | 
+include/constants/map_event_ids.h:1220: note: this is the location of the previous definition
+ 1220 | #define LOCALID_VIRIDIAN_BORDER_TREE 2
+      | 
+tools/compresSmol/compresSmol -w build/assets/data/tilesets/secondary/acamar/tiles.png_num_tiles_450__Wnum_tiles.4bpp build/assets/data/tilesets/secondary/acamar/tiles.png_num_tiles_450__Wnum_tiles.4bpp.fastSmol false false false
+tools/compresSmol/compresSmol -w build/assets/data/tilesets/secondary/alasia/tiles.png_num_tiles_190__Wnum_tiles.4bpp build/assets/data/tilesets/secondary/alasia/tiles.png_num_tiles_190__Wnum_tiles.4bpp.fastSmol false false false
+tools/compresSmol/compresSmol -w build/assets/data/tilesets/secondary/inquill/tiles.png_num_tiles_503__Wnum_tiles.4bpp build/assets/data/tilesets/secondary/inquill/tiles.png_num_tiles_503__Wnum_tiles.4bpp.fastSmol false false false
+tools/compresSmol/compresSmol -w build/assets/data/tilesets/secondary/mintaka/tiles.png_num_tiles_504__Wnum_tiles.4bpp build/assets/data/tilesets/secondary/mintaka/tiles.png_num_tiles_504__Wnum_tiles.4bpp.fastSmol false false false
+tools/compresSmol/compresSmol -w build/assets/data/tilesets/secondary/sansuna/tiles.png_num_tiles_450__Wnum_tiles.4bpp build/assets/data/tilesets/secondary/sansuna/tiles.png_num_tiles_450__Wnum_tiles.4bpp.fastSmol false false false
+asm/macros/event.inc: Assembler messages:
+asm/macros/event.inc:322: Warning: explicit waitstate follows implicit waitstate, ignoring
+data/maps/SlateportCity/scripts.pory:768:  Info: macro invoked from here
+asm/macros/event.inc:322: Warning: explicit waitstate follows implicit waitstate, ignoring
+data/maps/SlateportCity/scripts.pory:950:  Info: macro invoked from here
+tools/compresSmol/compresSmol -w build/assets/data/tilesets/secondary/tiaki/tiles.png_num_tiles_503__Wnum_tiles.4bpp build/assets/data/tilesets/secondary/tiaki/tiles.png_num_tiles_503__Wnum_tiles.4bpp.fastSmol false false false
+tools/compresSmol/compresSmol -w build/assets/data/tilesets/secondary/uuba/tiles.png.4bpp build/assets/data/tilesets/secondary/uuba/tiles.png.4bpp.fastSmol false false false
+asm/macros/event.inc:322: Warning: explicit waitstate follows implicit waitstate, ignoring
+data/maps/AncientTomb/scripts.pory:68:  Info: macro invoked from here
+tools/compresSmol/compresSmol -w build/assets/data/tilesets/secondary/wurren/tiles.png.4bpp build/assets/data/tilesets/secondary/wurren/tiles.png.4bpp.fastSmol false false false
+tools/compresSmol/compresSmol -w build/assets/data/tilesets/secondary/wurren_station/tiles.png.4bpp build/assets/data/tilesets/secondary/wurren_station/tiles.png.4bpp.fastSmol false false false
+/opt/devkitpro/devkitARM/bin/../libexec/gcc/arm-none-eabi/13.2.0/cc1 -quiet <flags> -o build/emerald/src/tilesets.o src/tilesets.c
+arm-none-eabi-ld: warning: ../../pokeemerald.elf has a LOAD segment with RWX permissions
+arm-none-eabi-ld: warning: ../../pokeemerald.elf has a LOAD segment with RWX permissions
+Memory region         Used Size  Region Size  %age Used
+           EWRAM:      226756 B       256 KB     86.50%
+           IWRAM:       28376 B        32 KB     86.60%
+             ROM:    28991244 B        32 MB     86.40%
+cd build/emerald && arm-none-eabi-ld -Map ../../pokeemerald.map --print-memory-usage --gc-sections -T ../../ld_script_modern.ld -o ../../pokeemerald.elf <objs> <libs> | cat
+tools/gbafix/gbafix pokeemerald.elf -t"POKEMON EMER" -cBPEE -m01 -r0 --silent
+arm-none-eabi-objcopy -O binary pokeemerald.elf pokeemerald.gba
+tools/gbafix/gbafix pokeemerald.gba -p --silent

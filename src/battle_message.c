@@ -2926,6 +2926,12 @@ static const u8 *BattleStringGetOpponentNameByTrainerId(u16 trainerId, u8 *text,
         GetEreaderTrainerName(text);
         toCpy = text;
     }
+    else if (trainerId == TRAINER_APRIL_SPHEAL
+          || trainerId == TRAINER_APRIL_SANDILE
+          || trainerId == TRAINER_APRIL_MAREEP)
+    {
+        toCpy = gSaveBlock1Ptr->aprilName;
+    }
     else
     {
         enum TrainerClassID trainerClass = GetTrainerClassFromId(TRAINER_BATTLE_PARAM.opponentA);
@@ -2936,7 +2942,7 @@ static const u8 *BattleStringGetOpponentNameByTrainerId(u16 trainerId, u8 *text,
             toCpy = GetTrainerNameFromId(trainerId);
     }
 
-    assertf(DoesStringProperlyTerminate(toCpy, TRAINER_NAME_LENGTH + 1),"Opponent needs a valid name")
+    assertf(DoesStringProperlyTerminate(toCpy, NPC_TRAINER_NAME_LENGTH + 1),"Opponent needs a valid name")
     {
         return sText_EmptyString4;
     }
@@ -3016,6 +3022,9 @@ static const u8 *BattleStringGetTrainerName(u8 *text, u8 multiplayerId, enum Bat
 static const u8 *BattleStringGetOpponentClassByTrainerId(u16 trainerId)
 {
     const u8 *toCpy;
+
+    if (trainerId == TRAINER_MINTAKA_ACOLYTE)
+        return sText_EmptyString4;
 
     if (gBattleTypeFlags & BATTLE_TYPE_SECRET_BASE)
         toCpy = gTrainerClasses[GetSecretBaseTrainerClass()].name;
@@ -3270,8 +3279,9 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst, u32 dstSize)
                     textStart[classLength] = classString[classLength];
                     classLength++;
                 }
-                textStart[classLength] = CHAR_SPACE;
-                textStart += classLength + 1;
+                if (classLength != 0)
+                    textStart[classLength++] = CHAR_SPACE;
+                textStart += classLength;
                 nameString = BattleStringGetOpponentNameByTrainerId(TRAINER_BATTLE_PARAM.opponentA, textStart, multiplayerId, GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT));
                 if (nameString != textStart)
                 {

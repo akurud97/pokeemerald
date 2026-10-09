@@ -4587,6 +4587,63 @@ void GetCodeFeedback(void)
         gSpecialVar_Result = 0;
 }
 
+void StartAprilNamingScreen(void)
+{
+    DoNamingScreen(NAMING_SCREEN_FRIEND, gSaveBlock1Ptr->aprilName, 0, 0, 0, CB2_ReturnToFieldContinueScript);
+}
+
+void SetAprilNameFromChoice(void)
+{
+    static const u8 sAprilName[] = _("April");
+    static const u8 sOliveName[] = _("Olive");
+    static const u8 sSophieName[] = _("Sophie");
+    const u8 *name = sAprilName;
+
+    if (gSpecialVar_Result == 2)
+        name = sOliveName;
+    else if (gSpecialVar_Result == 3)
+        name = sSophieName;
+
+    StringCopy(gSaveBlock1Ptr->aprilName, name);
+}
+
+static bool8 IsAprilNameValid(void)
+{
+    u32 i;
+
+    // This field occupies space that older saves treated as unused.  Both a
+    // fresh save and an older save may therefore lack the EOS byte required
+    // by the game's string routines.  Never pass it to StringCopy until an
+    // EOS has been found inside the field itself.
+    if (gSaveBlock1Ptr->aprilName[0] == EOS)
+        return FALSE;
+
+    for (i = 1; i <= PLAYER_NAME_LENGTH; i++)
+    {
+        if (gSaveBlock1Ptr->aprilName[i] == EOS)
+            return TRUE;
+    }
+
+    return FALSE;
+}
+
+void BufferAprilName(void)
+{
+    static const u8 sAprilName[] = _("April");
+
+    if (!IsAprilNameValid())
+        StringCopy(gSaveBlock1Ptr->aprilName, sAprilName);
+    StringCopy_PlayerName(gStringVar1, gSaveBlock1Ptr->aprilName);
+}
+
+void BufferPlayerSubjectPronoun(void)
+{
+    static const u8 sHe[] = _("He");
+    static const u8 sShe[] = _("She");
+
+    StringCopy(gStringVar2, gSaveBlock2Ptr->playerGender == MALE ? sHe : sShe);
+}
+
 void SetHiddenNature(void)
 {
     u32 hiddenNature = gSpecialVar_Result;
@@ -5401,8 +5458,6 @@ void ForcePlayerOntoBike(void)
 {
     if (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_ON_FOOT)
         SetPlayerAvatarTransitionFlags(PLAYER_AVATAR_FLAG_ACRO_BIKE);
-    Overworld_SetSavedMusic(IS_FRLG ? MUS_RG_CYCLING : MUS_CYCLING);
-    Overworld_ChangeMusicTo(IS_FRLG ? MUS_RG_CYCLING : MUS_CYCLING);
 }
 
 bool8 IsPlayerNotInTrainerTowerLobby(void)

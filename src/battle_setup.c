@@ -1148,6 +1148,12 @@ const u8 *BattleSetup_ConfigureTrainerBattle(const u8 *data)
 #endif //FREE_MATCH_CALL
     case TRAINER_BATTLE_EARLY_RIVAL:
         SetMapVarsToTrainerA();
+        if (TRAINER_BATTLE_PARAM.introTextA != NULL)
+        {
+            if (TRAINER_BATTLE_PARAM.isDoubleBattle)
+                return EventScript_TryDoDoubleTrainerBattle;
+            return EventScript_TryDoNormalTrainerBattle;
+        }
         return EventScript_DoNoIntroTrainerBattle;
     case TRAINER_BATTLE_TWO_TRAINERS_NO_INTRO:
         gNoOfApproachingTrainers = 2; // set TWO_OPPONENTS gBattleTypeFlags

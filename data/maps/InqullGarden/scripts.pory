@@ -1,4 +1,39 @@
 raw `
 InqullGarden_MapScripts::
 	.byte 0
+
+InqullGarden_EventScript_Object1::
+	lock
+	faceplayer
+	goto_if_set FLAG_RECEIVED_MIRACLE_SEED, InqullGarden_EventScript_Object1Repeat
+	msgbox InqullGarden_Text_Object1Gift, MSGBOX_DEFAULT
+	giveitem ITEM_MIRACLE_SEED
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	setflag FLAG_RECEIVED_MIRACLE_SEED
+	release
+	end
+
+InqullGarden_EventScript_Object1Repeat::
+	msgbox InqullGarden_Text_Object1Repeat, MSGBOX_DEFAULT
+	release
+	end
 `
+
+script InqullGarden_EventScript_Object2 {
+    msgbox(InqullGarden_Text_Object2, MSGBOX_NPC)
+    end
+}
+
+text InqullGarden_Text_Object1Gift {
+    "Do you like my garden? Here, take\n"
+    "this. Maybe you can grow some plants\l"
+    "of your own."
+}
+
+text InqullGarden_Text_Object1Repeat {
+    "I spend all day tending to my garden."
+}
+
+text InqullGarden_Text_Object2 {
+    "Lom-breee."
+}

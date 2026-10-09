@@ -4261,7 +4261,46 @@ static void DebugAction_DestroyFollowerNPC(u8 taskId)
     X(MUS_RG_ENCOUNTER_DEOXYS)      \
     X(MUS_RG_TRAINER_TOWER)         \
     X(MUS_RG_SLOW_PALLET)           \
-    X(MUS_RG_TEACHY_TV_MENU)
+    X(MUS_RG_TEACHY_TV_MENU)        \
+    X(MUS_ALASIAVILLE)              \
+    X(MUS_BW_DREAMYARD)             \
+    X(MUS_BW_ICIRRUS)               \
+    X(MUS_BW_LACUNOSA)              \
+    X(MUS_BW_NACRENE)               \
+    X(MUS_BW_ROUTE10)               \
+    X(MUS_BW_ROUTE12_AUTUMN)        \
+    X(MUS_BW_ROUTE12_WINTER)        \
+    X(MUS_BW_ROUTE2_SUMMER)         \
+    X(MUS_DP_ETERNA_FOREST)         \
+    X(MUS_DP_FLOAROMA_DAY)          \
+    X(MUS_DP_ROUTE201_DAY)          \
+    X(MUS_DP_ROUTE203_DAY)          \
+    X(MUS_DP_ROUTE205_DAY)          \
+    X(MUS_DP_ROUTE209_DAY)          \
+    X(MUS_DP_ROUTE210_DAY)          \
+    X(MUS_DP_ROUTE216_NIGHT)        \
+    X(MUS_DP_SOLACEON_DAY)          \
+    X(MUS_DP_SUNYSHORE_NIGHT)       \
+    X(MUS_HG_B_HALL)                \
+    X(MUS_HG_CIANWOOD)              \
+    X(MUS_HG_ROUTE34)               \
+    X(MUS_HG_ROUTE47)               \
+    X(MUS_HG_VS_LUGIA)              \
+    X(MUS_HG_VS_HO_OH)              \
+    X(MUS_HG_HO_OH_APPEARS)         \
+    X(MUS_HG_LUGIA_APPEARS)         \
+    X(MUS_HG_VERMILION)             \
+    X(MUS_CASTULA)                  \
+    X(MUS_BW_ANVILLE_TOWN)          \
+    X(MUS_BW_DRAGONSPIRAL_TOWER)    \
+    X(MUS_BW_DRAWBRIDGE)            \
+    X(MUS_BW_GEAR_STATION)          \
+    X(MUS_DP_OREBURGH_GATE)         \
+    X(MUS_DP_ROUTE209_NIGHT)        \
+    X(MUS_DP_ROUTE228_NIGHT)        \
+    X(MUS_DP_ROWAN_LAB)             \
+    X(MUS_HG_ECRUTEAK)              \
+    X(MUS_HG_NATIONAL_PARK)
 
 #define SOUND_LIST_SE               \
     X(SE_USE_ITEM)                  \

@@ -2,35 +2,35 @@
   "id": "MAP_INQUILL_TUNNEL_F2",
   "name": "InquillTunnelF2",
   "layout": "LAYOUT_INQUILL_TUNNEL_F2",
-  "music": "MUS_DUMMY",
-  "region_map_section": "MAPSEC_ABANDONED_SHIP",
+  "music": "MUS_BW_DRAGONSPIRAL_TOWER",
+  "region_map_section": "MAPSEC_MOSSY_TUNNELS",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
-  "map_type": "MAP_TYPE_NONE",
-  "allow_cycling": false,
-  "allow_escaping": false,
-  "allow_running": false,
-  "show_map_name": true,
-  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": 0,
+  "map_type": "MAP_TYPE_UNDERGROUND",
+  "allow_cycling": true,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_INDOOR_2",
+  "connections": null,
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_MANIAC",
-      "x": 6,
-      "y": 15,
+      "x": 8,
+      "y": 17,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_ROTATE_CLOCKWISE",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "InquillTunnelF2_EventScript_Julian",
       "flag": "0"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 2,
-      "y": 14,
+      "x": 4,
+      "y": 16,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -42,21 +42,21 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_HIKER",
-      "x": 15,
-      "y": 24,
+      "x": 17,
+      "y": 26,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "InquillTunnelF2_EventScript_Charles",
       "flag": "0"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 32,
-      "y": 15,
+      "x": 34,
+      "y": 17,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -69,38 +69,35 @@
   ],
   "warp_events": [
     {
-      "x": 3,
-      "y": 22,
+      "x": 5,
+      "y": 24,
       "elevation": 0,
       "dest_map": "MAP_INQUILL_TUNNEL_F1",
       "dest_warp_id": "1"
     },
     {
-      "x": 13,
-      "y": 5,
+      "x": 15,
+      "y": 7,
       "elevation": 0,
       "dest_map": "MAP_INQUILL_TUNNEL_F3",
       "dest_warp_id": "0"
     },
     {
-      "x": 17,
-      "y": 26,
+      "x": 19,
+      "y": 28,
       "elevation": 0,
       "dest_map": "MAP_INQUILL_TUNNEL_F1",
       "dest_warp_id": "2"
     },
     {
-      "x": 29,
-      "y": 4,
+      "x": 31,
+      "y": 6,
       "elevation": 0,
       "dest_map": "MAP_INQUILL_TUNNEL_F3",
       "dest_warp_id": "2"
     }
   ],
-  "coord_events": [
-
-  ],
-  "bg_events": [
-
-  ]
+  "coord_events": [],
+  "bg_events": [],
+  "region": "REGION_HOENN"
 }

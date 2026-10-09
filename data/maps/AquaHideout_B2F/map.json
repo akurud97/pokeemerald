@@ -188,7 +188,5 @@
       "script": "AquaHideout_B2F_EventScript_MattNoticePlayer"
     }
   ],
-  "bg_events": [
-
-  ]
+  "bg_events": []
 }

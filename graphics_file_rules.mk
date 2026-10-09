@@ -10,11 +10,17 @@ PKNAVOPTIONSGFXDIR := graphics/pokenav/options
 WALLPAPERGFXDIR := graphics/pokemon_storage/wallpapers
 JPCONTESTGFXDIR := graphics/contest/japanese
 TITLESCREENGFXDIR := graphics/title_screen
+SLIDINGPUZZLEGFXDIR := graphics/sliding_puzzle/puzzles
 
 types := none normal fight flying poison ground rock bug ghost steel mystery fire water grass electric psychic ice dragon dark fairy stellar
 contest_types := cool beauty cute smart tough
 
 ### Miscellaneous ###
+
+# Each sliding-puzzle sprite is a 32x32 piece (4x4 hardware tiles).  Keep each
+# piece contiguous in OBJ VRAM instead of encoding the 128x128 sheet row-wise.
+$(SLIDINGPUZZLEGFXDIR)/%/tiles.4bpp: $(SLIDINGPUZZLEGFXDIR)/%/tiles.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
 
 $(TITLESCREENGFXDIR)/pokemon_logo.gbapal: %.gbapal: %.pal
 	$(GFX) $< $@ -num_colors 224

@@ -1,0 +1,255 @@
+raw `
+.set LOCALID_APRIL, LOCALID_ALASIAVILLE_APRIL
+
+Alasiaville_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Alasiaville_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Alasiaville_OnFrame
+	.byte 0
+
+Alasiaville_OnTransition:
+	call_if_eq VAR_ALASIA_INTRO_STATE, 9, Alasiaville_EventScript_PrepareAprilChapterOneFinale
+	end
+
+Alasiaville_EventScript_PrepareAprilChapterOneFinale:
+	setobjectxyperm LOCALID_APRIL, 20, 21
+	setobjectmovementtype LOCALID_APRIL, MOVEMENT_TYPE_FACE_RIGHT
+	clearflag FLAG_HIDE_ALASIAVILLE_APRIL
+	return
+
+Alasiaville_OnFrame:
+	map_script_2 VAR_ALASIA_INTRO_STATE, 0, Alasiaville_EventScript_Intro
+	map_script_2 VAR_ALASIA_INTRO_STATE, 9, Alasiaville_EventScript_AprilChapterOneFinale
+	.2byte 0
+
+Alasiaville_EventScript_Intro::
+	lockall
+	setvar VAR_ALASIA_INTRO_STATE, 1
+	clearflag FLAG_SYS_POKEDEX_GET
+	clearflag FLAG_SYS_NATIONAL_DEX
+	clearflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
+	msgbox Alasiaville_Text_SchoolYearFlewBy, MSGBOX_DEFAULT
+	msgbox Alasiaville_Text_KidsGettingPokemon, MSGBOX_DEFAULT
+	msgbox Alasiaville_Text_WishForPokemon, MSGBOX_DEFAULT
+	msgbox Alasiaville_Text_AprilSaysGoodbye, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_APRIL, Alasiaville_Movement_AprilApproachDoor
+	waitmovement 0
+	opendoor 11, 4
+	waitdooranim
+	applymovement LOCALID_APRIL, Alasiaville_Movement_AprilEnterDoor
+	waitmovement 0
+	setflag FLAG_HIDE_ALASIAVILLE_APRIL
+	removeobject LOCALID_APRIL
+	closedoor 11, 4
+	waitdooranim
+	setvar VAR_ALASIA_INTRO_STATE, 2
+	releaseall
+	end
+
+Alasiaville_EventScript_AprilChapterOneFinale::
+	lockall
+	applymovement LOCALID_APRIL, Alasiaville_Movement_AprilApproachPlayerAfterMom
+	waitmovement 0
+	special BufferAprilName
+	setspeaker Alasiaville_Text_AprilSpeakerName
+	msgbox Alasiaville_Text_DidYouTalkToYourMom, MSGBOX_DEFAULT
+	msgbox Alasiaville_Text_DadKeptHisCool, MSGBOX_DEFAULT
+	msgbox Alasiaville_Text_JoinMyAdventure, MSGBOX_DEFAULT
+	msgbox Alasiaville_Text_SummerWillBeAwesome, MSGBOX_DEFAULT
+	msgbox Alasiaville_Text_GetAHeadStart, MSGBOX_DEFAULT
+	msgbox Alasiaville_Text_GiveYouMap, MSGBOX_DEFAULT
+	setspeaker SP_NAME_NONE
+	giveitem ITEM_TOWN_MAP
+	special BufferAprilName
+	setspeaker Alasiaville_Text_AprilSpeakerName
+	msgbox Alasiaville_Text_RaceToPokemonLeague, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_APRIL, Alasiaville_Movement_AprilLeaveAfterMap
+	waitmovement 0
+	setflag FLAG_HIDE_ALASIAVILLE_APRIL
+	removeobject LOCALID_APRIL
+	setvar VAR_ALASIA_INTRO_STATE, 10
+	releaseall
+	end
+
+Alasiaville_EventScript_VacationMan::
+	lock
+	faceplayer
+	setspeaker SP_NAME_NONE
+	msgbox Alasiaville_Text_VacationMan, MSGBOX_DEFAULT
+	release
+	end
+
+Alasiaville_EventScript_YoungStudent::
+	lock
+	faceplayer
+	setspeaker SP_NAME_NONE
+	msgbox Alasiaville_Text_YoungStudent, MSGBOX_DEFAULT
+	release
+	end
+
+Alasiaville_EventScript_TownSign::
+	setspeaker SP_NAME_NONE
+	msgbox Alasiaville_Text_TownSign, MSGBOX_SIGN
+	end
+
+Alasiaville_EventScript_PlayerHouseSign::
+	setspeaker SP_NAME_NONE
+	msgbox Alasiaville_Text_PlayerHouseSign, MSGBOX_SIGN
+	end
+
+Alasiaville_EventScript_BlockConnectionExit::
+	lockall
+	goto_if_eq VAR_ALASIA_INTRO_STATE, 8, Alasiaville_EventScript_BlockTellMomExit
+	goto_if_ge VAR_ALASIA_INTRO_STATE, 3, Alasiaville_EventScript_BlockPackageExit
+	msgbox Alasiaville_Text_ShouldTalkToMom, MSGBOX_DEFAULT
+	goto Alasiaville_EventScript_TurnPlayerAround
+
+Alasiaville_EventScript_BlockPackageExit::
+	msgbox Alasiaville_Text_ShouldReturnPackage, MSGBOX_DEFAULT
+	goto Alasiaville_EventScript_TurnPlayerAround
+
+Alasiaville_EventScript_BlockTellMomExit::
+	msgbox Alasiaville_Text_NeedToTellMom, MSGBOX_DEFAULT
+
+Alasiaville_EventScript_TurnPlayerAround::
+	goto_if_eq VAR_0x8000, DIR_NORTH, Alasiaville_EventScript_TurnPlayerSouth
+	goto_if_eq VAR_0x8000, DIR_SOUTH, Alasiaville_EventScript_TurnPlayerNorth
+	goto_if_eq VAR_0x8000, DIR_WEST, Alasiaville_EventScript_TurnPlayerEast
+	goto Alasiaville_EventScript_TurnPlayerWest
+
+Alasiaville_EventScript_TurnPlayerSouth::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	goto Alasiaville_EventScript_FinishBlockedExit
+
+Alasiaville_EventScript_TurnPlayerNorth::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	goto Alasiaville_EventScript_FinishBlockedExit
+
+Alasiaville_EventScript_TurnPlayerEast::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	goto Alasiaville_EventScript_FinishBlockedExit
+
+Alasiaville_EventScript_TurnPlayerWest::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+
+Alasiaville_EventScript_FinishBlockedExit::
+	waitmovement 0
+	releaseall
+	end
+
+Alasiaville_Movement_AprilApproachDoor:
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+Alasiaville_Movement_AprilEnterDoor:
+	walk_up
+	set_invisible
+	step_end
+
+Alasiaville_Movement_AprilApproachPlayerAfterMom:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_in_place_faster_up
+	step_end
+
+Alasiaville_Movement_AprilLeaveAfterMap:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	set_invisible
+	step_end
+
+Alasiaville_Text_AprilSpeakerName:
+	.string "{STR_VAR_1}$"
+
+Alasiaville_Text_DidYouTalkToYourMom:
+	.string "{PLAYER}! Did you talk to your mom?$"
+
+Alasiaville_Text_DadKeptHisCool:
+	.string "My dad kept his cool, surprisingly.$"
+
+Alasiaville_Text_JoinMyAdventure:
+	.string "Listen, {PLAYER}. I want to go on\n"
+	.string "an adventure. I know you do too.\p"
+	.string "I’m going to take on the gym\n"
+	.string "challenge and see how far I can get!\p"
+	.string "Will you join me?$"
+
+Alasiaville_Text_SummerWillBeAwesome:
+	.string "You will? YEAH! I told you this\n"
+	.string "summer was going to be awesome!$"
+
+Alasiaville_Text_GetAHeadStart:
+	.string "Okay, I’m going to get a head start.$"
+
+Alasiaville_Text_GiveYouMap:
+	.string "Oh, first I wanted to give you this.\n"
+	.string "My dad gave me an extra.$"
+
+Alasiaville_Text_RaceToPokemonLeague:
+	.string "Alright, {PLAYER}. I’m going to race\n"
+	.string "you to the Pokémon League! See you!$"
+
+Alasiaville_Text_SchoolYearFlewBy:
+	.string "That school year flew by, huh?\n"
+	.string "Are you excited for summer,\l"
+	.string "{PLAYER}?$"
+
+Alasiaville_Text_KidsGettingPokemon:
+	.string "A lot of kids will be getting\n"
+	.string "Pokémon and won’t be back next\l"
+	.string "year…$"
+
+Alasiaville_Text_WishForPokemon:
+	.string "Sigh…I wish I could have my own\n"
+	.string "Pokémon.$"
+
+Alasiaville_Text_AprilSaysGoodbye:
+	.string "Alright, {PLAYER}! I’m going to say\n"
+	.string "hi to my dad. You should let your\l"
+	.string "mom know you’re home too.\p"
+	.string "I’ll see you later!$"
+
+Alasiaville_Text_ShouldTalkToMom:
+	.string "I should go talk to my mom before\n"
+	.string "going anywhere.$"
+
+Alasiaville_Text_ShouldReturnPackage:
+	.string "I need to return an item to my\n"
+	.string "uncle on Route 1. I shouldn't waste\l"
+	.string "too much time.$"
+
+Alasiaville_Text_NeedToTellMom:
+	.string "I need to tell my mom before I go\n"
+	.string "anywhere.$"
+
+Alasiaville_Text_VacationMan:
+	.string "Hmm? Oh, {PLAYER}, is it summer\n"
+	.string "break already?\p"
+	.string "Boy, I wish I had a vacation.$"
+
+Alasiaville_Text_YoungStudent:
+	.string "Next year I’m going to school just\n"
+	.string "like you, {PLAYER}!\p"
+	.string "I can’t wait to learn lots!$"
+
+Alasiaville_Text_TownSign:
+	.string "Alasiaville\n"
+	.string "Gateway to lake country.$"
+
+Alasiaville_Text_PlayerHouseSign:
+	.string "{PLAYER}’s House$"
+`

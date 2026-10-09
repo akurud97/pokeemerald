@@ -12,6 +12,7 @@
 #include "strings.h"
 #include "load_save.h"
 #include "item_use.h"
+#include "move.h"
 #include "battle_pyramid.h"
 #include "battle_pyramid_bag.h"
 #include "graphics.h"
@@ -28,6 +29,15 @@
     .capacity = PC_ITEMS_COUNT,             \
     .itemSlots = gSaveBlock1Ptr->pcItems,   \
 }
+
+#define DUMMY_FORAGING_POUCH                                      \
+{                                                                 \
+    .id = POCKET_DUMMY,                                           \
+    .capacity = FORAGING_POUCH_ITEMS_COUNT,                       \
+    .itemSlots = gSaveBlock3Ptr->foragingPouchItems,              \
+}
+
+#define FORAGING_POUCH_MAGIC 0x50475246 // "FRGP"
 
 static bool32 CheckPyramidBagHasItem(enum Item itemId, u16 count);
 static bool32 CheckPyramidBagHasSpace(enum Item itemId, u16 count);
@@ -220,6 +230,8 @@ bool32 CheckBagHasItem(enum Item itemId, u16 count)
 {
     if (GetItemPocket(itemId) >= POCKETS_COUNT)
         return FALSE;
+    if (IsForagingPouchItem(itemId))
+        return CheckForagingPouchHasItem(itemId, count);
     if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE || FlagGet(FLAG_STORING_ITEMS_IN_PYRAMID_BAG) == TRUE)
         return CheckPyramidBagHasItem(itemId, count);
 
@@ -251,6 +263,8 @@ bool32 CheckBagHasSpace(enum Item itemId, u16 count)
 {
     if (GetItemPocket(itemId) >= POCKETS_COUNT)
         return FALSE;
+    if (IsForagingPouchItem(itemId))
+        return CheckBagHasItem(ITEM_FORAGING_POUCH, 1) && CheckForagingPouchHasSpace(itemId, count);
 
     if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE || FlagGet(FLAG_STORING_ITEMS_IN_PYRAMID_BAG) == TRUE)
         return CheckPyramidBagHasSpace(itemId, count);
@@ -278,6 +292,16 @@ u32 GetFreeSpaceForItemInBag(enum Item itemId)
 {
     if (GetItemPocket(itemId) >= POCKETS_COUNT)
         return 0;
+    if (IsForagingPouchItem(itemId))
+    {
+        struct BagPocket pouch = DUMMY_FORAGING_POUCH;
+
+        if (!CheckBagHasItem(ITEM_FORAGING_POUCH, 1))
+            return 0;
+        if (gSaveBlock3Ptr->foragingPouchMagic != FORAGING_POUCH_MAGIC)
+            ClearForagingPouch();
+        return BagPocket_GetFreeSpaceForItem(&pouch, itemId);
+    }
 
     return BagPocket_GetFreeSpaceForItem(&gBagPockets[GetItemPocket(itemId)], itemId);
 }
@@ -352,6 +376,12 @@ bool32 AddBagItem(enum Item itemId, u16 count)
     itemId = SanitizeBagItemId(itemId);
     if (itemId == ITEM_NONE)
         return FALSE;
+    if (IsForagingPouchItem(itemId))
+    {
+        if (!CheckBagHasItem(ITEM_FORAGING_POUCH, 1))
+            return FALSE;
+        return AddForagingPouchItem(itemId, count);
+    }
 
     // check Battle Pyramid Bag
     if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE || FlagGet(FLAG_STORING_ITEMS_IN_PYRAMID_BAG) == TRUE)
@@ -409,6 +439,8 @@ bool32 RemoveBagItem(enum Item itemId, u16 count)
     itemId = SanitizeBagItemId(itemId);
     if (itemId == ITEM_NONE)
         return FALSE;
+    if (IsForagingPouchItem(itemId))
+        return RemoveForagingPouchItem(itemId, count);
 
     // check Battle Pyramid Bag
     if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE || FlagGet(FLAG_STORING_ITEMS_IN_PYRAMID_BAG) == TRUE)
@@ -465,6 +497,95 @@ bool32 AddPCItem(enum Item itemId, u16 count)
 {
     struct BagPocket dummyPocket = DUMMY_PC_BAG_POCKET;
     return BagPocket_AddItem(&dummyPocket, itemId, count);
+}
+
+bool32 IsForagingPouchItem(enum Item itemId)
+{
+    switch (itemId)
+    {
+    case ITEM_BEACH_GLASS:
+    case ITEM_DRIFTWOOD:
+    case ITEM_LOST_EARRING:
+    case ITEM_COLDWATER_AGATE:
+    case ITEM_ANTIQUE_BOTTLE:
+        return TRUE;
+    default:
+        return FALSE;
+    }
+}
+
+bool32 CheckForagingPouchHasItem(enum Item itemId, u16 count)
+{
+    struct BagPocket pouch = DUMMY_FORAGING_POUCH;
+
+    if (gSaveBlock3Ptr->foragingPouchMagic != FORAGING_POUCH_MAGIC)
+        ClearForagingPouch();
+    if (itemId <= ITEM_NONE || itemId >= ITEMS_COUNT || count == 0)
+        return FALSE;
+    return BagPocket_CheckHasItem(&pouch, itemId, count);
+}
+
+u16 GetForagingPouchItemCount(enum Item itemId)
+{
+    struct BagPocket pouch = DUMMY_FORAGING_POUCH;
+    u16 count = 0;
+
+    if (gSaveBlock3Ptr->foragingPouchMagic != FORAGING_POUCH_MAGIC)
+        ClearForagingPouch();
+    if (itemId <= ITEM_NONE || itemId >= ITEMS_COUNT)
+        return 0;
+
+    for (u32 i = 0; i < pouch.capacity; i++)
+    {
+        struct ItemSlot slot = BagPocket_GetSlotData(&pouch, i);
+
+        if (slot.itemId == itemId)
+            count += slot.quantity;
+    }
+
+    return count;
+}
+
+bool32 CheckForagingPouchHasSpace(enum Item itemId, u16 count)
+{
+    struct BagPocket pouch = DUMMY_FORAGING_POUCH;
+
+    if (gSaveBlock3Ptr->foragingPouchMagic != FORAGING_POUCH_MAGIC)
+        ClearForagingPouch();
+    if (itemId <= ITEM_NONE || itemId >= ITEMS_COUNT || count == 0)
+        return FALSE;
+    return BagPocket_GetFreeSpaceForItem(&pouch, itemId) >= count;
+}
+
+bool32 AddForagingPouchItem(enum Item itemId, u16 count)
+{
+    struct BagPocket pouch = DUMMY_FORAGING_POUCH;
+
+    if (!CheckForagingPouchHasSpace(itemId, count))
+        return FALSE;
+    return BagPocket_AddItem(&pouch, itemId, count);
+}
+
+bool32 RemoveForagingPouchItem(enum Item itemId, u16 count)
+{
+    struct BagPocket pouch = DUMMY_FORAGING_POUCH;
+
+    if (!CheckForagingPouchHasItem(itemId, count))
+        return FALSE;
+    return BagPocket_RemoveItem(&pouch, itemId, count);
+}
+
+void ClearForagingPouch(void)
+{
+    CpuFill16(0, gSaveBlock3Ptr->foragingPouchItems, sizeof(gSaveBlock3Ptr->foragingPouchItems));
+    gSaveBlock3Ptr->foragingPouchMagic = FORAGING_POUCH_MAGIC;
+}
+
+void SetForagingPouchItemsPointer(void)
+{
+    if (gSaveBlock3Ptr->foragingPouchMagic != FORAGING_POUCH_MAGIC)
+        ClearForagingPouch();
+    gBagPockets[POCKET_ITEMS] = (struct BagPocket)DUMMY_FORAGING_POUCH;
 }
 
 static void NONNULL BagPocket_CompactItems(struct BagPocket *pocket)
@@ -579,6 +700,14 @@ static inline u16 NONNULL BagPocket_CountTotalItemQuantity(struct BagPocket *poc
 
 u16 CountTotalItemQuantityInBag(enum Item itemId)
 {
+    if (IsForagingPouchItem(itemId))
+    {
+        struct BagPocket pouch = DUMMY_FORAGING_POUCH;
+
+        if (gSaveBlock3Ptr->foragingPouchMagic != FORAGING_POUCH_MAGIC)
+            ClearForagingPouch();
+        return BagPocket_CountTotalItemQuantity(&pouch, itemId);
+    }
     return BagPocket_CountTotalItemQuantity(&gBagPockets[GetItemPocket(itemId)], itemId);
 }
 
@@ -856,7 +985,14 @@ u32 GetItemHoldEffectParam(enum Item itemId)
 
 const u8 *GetItemDescription(enum Item itemId)
 {
-    return gItemsInfo[SanitizeItemId(itemId)].description;
+    enum Item sanitizedItem = SanitizeItemId(itemId);
+    enum Move move = GetItemTMHMMoveId(sanitizedItem);
+
+    // Keep machine descriptions synchronized with the configured TM/HM list.
+    if (move != MOVE_NONE)
+        return GetMoveDescription(move);
+
+    return gItemsInfo[sanitizedItem].description;
 }
 
 u8 GetItemImportance(enum Item itemId)

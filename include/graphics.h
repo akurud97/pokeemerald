@@ -1648,6 +1648,8 @@ extern const u32 gItemIcon_BikeVoucher[];
 extern const u16 gItemIconPalette_BikeVoucher[];
 extern const u32 gItemIcon_GoldTeeth[];
 extern const u16 gItemIconPalette_GoldTeeth[];
+extern const u32 gItemIcon_Pickaxe[];
+extern const u16 gItemIconPalette_Pickaxe[];
 extern const u32 gItemIcon_CardKey[];
 extern const u16 gItemIconPalette_CardKey[];
 extern const u32 gItemIcon_LiftKey[];

@@ -934,6 +934,22 @@ static void DexNavDrawIcons(void)
 /////////////////////
 //// SEARCH TASK ////
 /////////////////////
+static enum Species GetRegisteredDexNavSpecies(void)
+{
+    enum Species species = VarGet(DN_VAR_SPECIES) & DEXNAV_MASK_SPECIES;
+
+    // Older saves may contain unrelated data in the variable now used by
+    // DexNav. Treat that as no registered species instead of passing an
+    // invalid id into the Pokémon data accessors.
+    if (species > NUM_SPECIES || (species != SPECIES_NONE && !IsSpeciesEnabled(species)))
+    {
+        VarSet(DN_VAR_SPECIES, SPECIES_NONE);
+        return SPECIES_NONE;
+    }
+
+    return species;
+}
+
 static void RevealHiddenSearch(void)
 {
     PlaySE(SE_DEX_SEARCH);
@@ -948,6 +964,7 @@ static void RevealHiddenSearch(void)
 bool32 TryStartDexNavSearch(void)
 {
     u16 val = VarGet(DN_VAR_SPECIES);
+    enum Species species = GetRegisteredDexNavSpecies();
 
     if (FlagGet(DN_FLAG_SEARCHING) && sDexNavSearchDataPtr->hiddenSearch)
     {
@@ -955,13 +972,13 @@ bool32 TryStartDexNavSearch(void)
         return FALSE;
     }
 
-    if (FlagGet(DN_FLAG_SEARCHING) || (val & DEXNAV_MASK_SPECIES) == SPECIES_NONE)
+    if (FlagGet(DN_FLAG_SEARCHING) || species == SPECIES_NONE)
         return FALSE;
 
     HideMapNamePopUpWindow();
     ChangeBgY_ScreenOff(0, 0, 0);
     PlaySE(SE_DEX_SEARCH);
-    return InitDexNavSearch(val & DEXNAV_MASK_SPECIES, val >> 14);
+    return InitDexNavSearch(species, val >> 14);
 }
 
 void EndDexNavSearch(void)
@@ -2237,7 +2254,7 @@ static bool8 DexNav_DoGfxSetup(void)
         gMain.state++;
         break;
     case 7:
-        PrintSearchableSpecies(VarGet(DN_VAR_SPECIES) & DEXNAV_MASK_SPECIES);
+        PrintSearchableSpecies(GetRegisteredDexNavSpecies());
         DexNavLoadEncounterData();
         gMain.state++;
         break;

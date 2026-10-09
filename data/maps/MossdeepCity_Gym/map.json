@@ -3,7 +3,6 @@
   "name": "MossdeepCity_Gym",
   "layout": "LAYOUT_MOSSDEEP_CITY_GYM",
   "music": "MUS_GYM",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_MOSSDEEP_CITY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -13,7 +12,7 @@
   "allow_running": false,
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_GYM",
-  "connections": 0,
+  "connections": null,
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_TATE",
@@ -684,5 +683,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
       "script": "MossdeepCity_Gym_EventScript_RightGymStatue"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

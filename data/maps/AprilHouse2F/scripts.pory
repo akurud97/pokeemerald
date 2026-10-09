@@ -1,0 +1,40 @@
+raw `
+.set LOCALID_APRIL, LOCALID_APRIL_HOUSE2F_APRIL
+
+AprilHouse2F_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, AprilHouse2F_OnTransition
+	.byte 0
+
+AprilHouse2F_OnTransition:
+	call_if_ge VAR_ALASIA_INTRO_STATE, 6, AprilHouse2F_EventScript_HideApril
+	end
+
+AprilHouse2F_EventScript_HideApril:
+	setflag FLAG_HIDE_APRIL_HOUSE2F_APRIL
+	return
+
+AprilHouse2F_EventScript_April::
+	lock
+	faceplayer
+	special BufferAprilName
+	goto_if_set FLAG_APRIL_NAMED, AprilHouse2F_EventScript_NamedApril
+	setspeaker SP_NAME_NONE
+	goto AprilHouse2F_EventScript_AprilDialogue
+
+AprilHouse2F_EventScript_NamedApril:
+	setspeaker AprilHouse2F_Text_AprilSpeakerName
+
+AprilHouse2F_EventScript_AprilDialogue:
+	msgbox AprilHouse2F_Text_April, MSGBOX_DEFAULT
+	setspeaker SP_NAME_NONE
+	release
+	end
+
+AprilHouse2F_Text_AprilSpeakerName:
+	.string "{STR_VAR_1}$"
+
+AprilHouse2F_Text_April:
+	.string "Hey, {PLAYER}! We're going to have\n"
+	.string "so much fun this summer, I can feel\l"
+	.string "it.$"
+`

@@ -2,3 +2,34 @@ raw `
 MintakaHouse4_MapScripts::
 	.byte 0
 `
+
+script MintakaHouse4_EventScript_Object1 {
+    msgbox(MintakaHouse4_Text_Object1, MSGBOX_NPC)
+    end
+}
+
+script MintakaHouse4_EventScript_Object2 {
+    msgbox(MintakaHouse4_Text_Object2, MSGBOX_NPC)
+    end
+}
+
+script MintakaHouse4_EventScript_Object3 {
+    msgbox(MintakaHouse4_Text_Object3, MSGBOX_NPC)
+    end
+}
+
+text MintakaHouse4_Text_Object1 {
+    "I appreciate my wife wanting to take\n"
+    "care of this Grimer, but it stinks."
+}
+
+text MintakaHouse4_Text_Object2 {
+    "We pulled this Grimer up while fishing\n"
+    "in the harbour. They’re becoming more\l"
+    "common, which isn’t a good sign.\p"
+    "But… It’s kind of cute, isn’t it?"
+}
+
+text MintakaHouse4_Text_Object3 {
+    "Griii-gri-mer!"
+}

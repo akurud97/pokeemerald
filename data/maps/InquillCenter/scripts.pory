@@ -1,0 +1,25 @@
+raw `
+.set LOCALID_NURSE, LOCALID_INQUILL_CENTER_NURSE
+
+InquillCenter_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, InquillCenter_OnTransition
+	.byte 0
+
+InquillCenter_OnTransition:
+	setrespawn HEAL_LOCATION_INQUILL_TOWN
+	end
+
+InquillCenter_EventScript_Nurse::
+	setvar VAR_0x800B, LOCALID_NURSE
+	goto Common_EventScript_CustomPkmnCenterNurse
+`
+
+script InquillCenter_EventScript_Object2 {
+    msgbox(InquillCenter_Text_Object2, MSGBOX_NPC)
+    end
+}
+
+text InquillCenter_Text_Object2 {
+    "The gym here seemed kind of girly,\n"
+    "but I got my butt whooped."
+}

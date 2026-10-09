@@ -1,0 +1,182 @@
+raw `
+.set LOCALID_MOM, LOCALID_PLAYER_HOUSE_MOM
+
+PlayerHouse1F_MapScripts::
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, PlayerHouse1F_OnFrame
+	.byte 0
+
+PlayerHouse1F_OnFrame:
+	map_script_2 VAR_ALASIA_INTRO_STATE, 2, PlayerHouse1F_EventScript_MomIntro
+	map_script_2 VAR_ALASIA_INTRO_STATE, 8, PlayerHouse1F_EventScript_MomAdventurePermission
+	.2byte 0
+
+PlayerHouse1F_EventScript_MomIntro::
+	lockall
+	applymovement LOCALID_MOM, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	setspeaker SP_NAME_MOM
+	msgbox PlayerHouse1F_Text_LastDayOfSchool, MSGBOX_DEFAULT
+	applymovement OBJ_EVENT_ID_PLAYER, PlayerHouse1F_Movement_PlayerApproachMom
+	waitmovement 0
+	msgbox PlayerHouse1F_Text_CookiesAndFriendName, MSGBOX_DEFAULT
+	multichoice 0, 0, MULTI_APRIL_NAME, FALSE
+	goto_if_eq VAR_RESULT, 0, PlayerHouse1F_EventScript_EnterAprilName
+	special SetAprilNameFromChoice
+	goto PlayerHouse1F_EventScript_AprilNameChosen
+
+PlayerHouse1F_EventScript_EnterAprilName::
+	special StartAprilNamingScreen
+
+PlayerHouse1F_EventScript_AprilNameChosen::
+	special BufferAprilName
+	setflag FLAG_APRIL_NAMED
+	setspeaker SP_NAME_MOM
+	msgbox PlayerHouse1F_Text_ThatsRight, MSGBOX_DEFAULT
+	msgbox PlayerHouse1F_Text_UnclesPackage, MSGBOX_DEFAULT
+	setspeaker SP_NAME_NONE
+	giveitem ITEM_PACKAGE
+	goto_if_eq VAR_RESULT, FALSE, PlayerHouse1F_EventScript_ResetMom
+	setflag FLAG_ALASIAVILLE_TALKED_TO_MOM
+	setvar VAR_ALASIA_INTRO_STATE, 3
+
+PlayerHouse1F_EventScript_ResetMom::
+	applymovement LOCALID_MOM, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	releaseall
+	end
+
+PlayerHouse1F_EventScript_Mom::
+	lock
+	faceplayer
+	setspeaker SP_NAME_MOM
+	goto_if_ge VAR_ALASIA_INTRO_STATE, 9, PlayerHouse1F_EventScript_MomAdventureCheckIn
+	msgbox PlayerHouse1F_Text_UnclesHouseReminder, MSGBOX_DEFAULT
+	applymovement LOCALID_MOM, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	release
+	end
+
+PlayerHouse1F_EventScript_MomAdventureCheckIn::
+	msgbox PlayerHouse1F_Text_AdventureCheckIn, MSGBOX_DEFAULT
+	applymovement LOCALID_MOM, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	release
+	end
+
+PlayerHouse1F_EventScript_MomAdventurePermission::
+	lockall
+	applymovement LOCALID_MOM, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	setspeaker SP_NAME_MOM
+	msgbox PlayerHouse1F_Text_BackSoSoon, MSGBOX_DEFAULT
+	applymovement OBJ_EVENT_ID_PLAYER, PlayerHouse1F_Movement_PlayerApproachMom
+	waitmovement 0
+	msgbox PlayerHouse1F_Text_YouHaveAPokemon, MSGBOX_DEFAULT
+	msgbox PlayerHouse1F_Text_GoodToGetOutdoors, MSGBOX_DEFAULT
+	msgbox PlayerHouse1F_Text_UnclesOldEquipment, MSGBOX_DEFAULT
+	msgbox PlayerHouse1F_Text_InquillGym, MSGBOX_DEFAULT
+	msgbox PlayerHouse1F_Text_ExcitedForYou, MSGBOX_DEFAULT
+	msgbox PlayerHouse1F_Text_TakeThese, MSGBOX_DEFAULT
+	setspeaker SP_NAME_NONE
+	playfanfare MUS_OBTAIN_ITEM
+	message PlayerHouse1F_Text_ReceivedRunningShoes
+	waitmessage
+	waitfanfare
+	waitbuttonpress
+	setflag FLAG_RECEIVED_RUNNING_SHOES
+	setflag FLAG_SYS_B_DASH
+	setspeaker SP_NAME_MOM
+	msgbox PlayerHouse1F_Text_DontForgetToVisit, MSGBOX_DEFAULT
+	setvar VAR_ALASIA_INTRO_STATE, 9
+	applymovement LOCALID_MOM, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	releaseall
+	end
+
+PlayerHouse1F_Movement_PlayerApproachMom:
+	walk_up
+	walk_up
+	step_end
+
+PlayerHouse1F_Text_LastDayOfSchool:
+	.string "Oh, honey! How was your last day\n"
+	.string "of school?$"
+
+PlayerHouse1F_Text_CookiesAndFriendName:
+	.string "I made cookies to celebrate. You\n"
+	.string "should tell your friend to come by,\l"
+	.string "oh…what was her name again?$"
+
+PlayerHouse1F_Text_ThatsRight:
+	.string "That’s right, {STR_VAR_1}! I’m too\n"
+	.string "forgetful.$"
+
+PlayerHouse1F_Text_UnclesPackage:
+	.string "By the way, your uncle came by\n"
+	.string "earlier and forgot this here. Do you\l"
+	.string "think you could take it to him when\l"
+	.string "you get a chance?\p"
+	.string "I’m sure he would be excited to\n"
+	.string "hear about your school year too. You\l"
+	.string "remember where he lives, don’t you?\p"
+	.string "Up in his cottage at the end of\n"
+	.string "Route 1, on the north end of the\l"
+	.string "lake.$"
+
+PlayerHouse1F_Text_UnclesHouseReminder:
+	.string "Your uncle’s house is just at the\n"
+	.string "end of Route 1, to the north. It’s\l"
+	.string "a nice lakefront house.\p"
+	.string "It will be a fun start to your\n"
+	.string "summer vacation!$"
+
+PlayerHouse1F_Text_BackSoSoon:
+	.string "Hi honey. Back so soon? I thought\n"
+	.string "you’d spend some time at your\l"
+	.string "uncle’s cottage.$"
+
+PlayerHouse1F_Text_YouHaveAPokemon:
+	.string "What is that? Oh my…a Pokémon?\n"
+	.string "Did Professor Sitka give you that?\l"
+	.string "That woman…$"
+
+PlayerHouse1F_Text_GoodToGetOutdoors:
+	.string "Well, you are of age. And I suppose\n"
+	.string "it would be good for you to get\l"
+	.string "outdoors this summer.$"
+
+PlayerHouse1F_Text_UnclesOldEquipment:
+	.string "I bet your uncle gave you some of\n"
+	.string "his old equipment too. He’s always\l"
+	.string "reminiscing about his old dream to\l"
+	.string "face the gym challenge.$"
+
+PlayerHouse1F_Text_InquillGym:
+	.string "So, are you going to do it? There’s\n"
+	.string "a gym just south of here in Inquill\l"
+	.string "Town, that would be a good place to\l"
+	.string "get some practice battling.$"
+
+PlayerHouse1F_Text_ExcitedForYou:
+	.string "What, why the shocked face? Did you\n"
+	.string "think I wouldn’t let you? I’m\l"
+	.string "excited for you!$"
+
+PlayerHouse1F_Text_TakeThese:
+	.string "Here, before you go, take these.$"
+
+PlayerHouse1F_Text_ReceivedRunningShoes:
+	.string "{PLAYER} received the Running Shoes!$"
+
+PlayerHouse1F_Text_DontForgetToVisit:
+	.string "Oh, and don’t forget to stop in now\n"
+	.string "and then to say hi to me. I’ll miss\l"
+	.string "you.$"
+
+PlayerHouse1F_Text_AdventureCheckIn:
+	.string "{PLAYER}! How is your adventure\n"
+	.string "going, dear?\p"
+	.string "Your bed downstairs will always be\n"
+	.string "made and ready for you if you need\l"
+	.string "a rest.$"
+`

@@ -1,0 +1,79 @@
+raw `
+InquillHouse4_MapScripts::
+	.byte 0
+`
+
+script InquillHouse4_EventScript_Object1 {
+    msgbox(InquillHouse4_Text_Object1, MSGBOX_NPC)
+    end
+}
+
+script InquillHouse4_EventScript_Object2 {
+    msgbox(InquillHouse4_Text_Object2, MSGBOX_NPC)
+    end
+}
+
+script InquillHouse4_EventScript_Object3 {
+    msgbox(InquillHouse4_Text_Object3, MSGBOX_NPC)
+    end
+}
+
+script InquillHouse4_EventScript_Object4 {
+    msgbox(InquillHouse4_Text_Object4, MSGBOX_NPC)
+    end
+}
+
+script InquillHouse4_EventScript_Object5 {
+    msgbox(InquillHouse4_Text_Object5, MSGBOX_NPC)
+    end
+}
+
+script InquillHouse4_EventScript_Object6 {
+    msgbox(InquillHouse4_Text_Object6, MSGBOX_NPC)
+    end
+}
+
+script InquillHouse4_EventScript_Object7 {
+    msgbox(InquillHouse4_Text_Object7, MSGBOX_NPC)
+    end
+}
+
+script InquillHouse4_EventScript_Object8 {
+    msgbox(InquillHouse4_Text_Object8, MSGBOX_NPC)
+    end
+}
+
+text InquillHouse4_Text_Object1 {
+    "Here kitty kitty! Here kitty!\n"
+    "Who’s a good boy!"
+}
+
+text InquillHouse4_Text_Object2 {
+    "When we took our Persians to the\n"
+    "Pokémon breeders outside town, we\l"
+    "never expected a litter this big…"
+}
+
+text InquillHouse4_Text_Object3 {
+    "The Persian is eyeing you carefully."
+}
+
+text InquillHouse4_Text_Object4 {
+    "Me-owth!"
+}
+
+text InquillHouse4_Text_Object5 {
+    "Meow-meow-meowth."
+}
+
+text InquillHouse4_Text_Object6 {
+    "Purrrrsian."
+}
+
+text InquillHouse4_Text_Object7 {
+    "Meoowrr!"
+}
+
+text InquillHouse4_Text_Object8 {
+    "This Meowth looks very contented."
+}

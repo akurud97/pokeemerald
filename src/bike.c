@@ -1290,15 +1290,11 @@ void GetOnOffBike(u8 transitionFlags)
     if (gPlayerAvatar.flags & (PLAYER_AVATAR_FLAG_MACH_BIKE | PLAYER_AVATAR_FLAG_ACRO_BIKE))
     {
         SetPlayerAvatarTransitionFlags(PLAYER_AVATAR_FLAG_ON_FOOT);
-        Overworld_ClearSavedMusic();
-        Overworld_PlaySpecialMapMusic();
     }
     else
     {
         EndORASDowsing();
         SetPlayerAvatarTransitionFlags(transitionFlags);
-        Overworld_SetSavedMusic(IS_FRLG ? MUS_RG_CYCLING : MUS_CYCLING);
-        Overworld_ChangeMusicTo(IS_FRLG ? MUS_RG_CYCLING : MUS_CYCLING);
     }
 }
 
@@ -1348,6 +1344,11 @@ enum PlayerSpeed GetPlayerSpeed(void)
         return PLAYER_SPEED_FAST;
     else
         return PLAYER_SPEED_NORMAL;
+}
+
+bool8 IsPlayerOnStandardBike(void)
+{
+    return (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_BIKE) == PLAYER_AVATAR_FLAG_BIKE;
 }
 
 void Bike_HandleBumpySlopeJump(void)

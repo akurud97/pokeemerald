@@ -1,0 +1,51 @@
+raw `
+InquillTunnelF2_MapScripts::
+	.byte 0
+
+InquillTunnelF2_EventScript_Julian::
+	trainerbattle TRAINER_BATTLE_EARLY_RIVAL, LOCALID_NONE, TRAINER_INQUILL_TUNNEL_JULIAN, InquillTunnelF2_Text_JulianIntro, InquillTunnelF2_Text_JulianDefeat, NULL, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, InquillTunnelF2_Text_JulianVictory, NULL, FALSE, TRUE, FALSE, FALSE
+	msgbox InquillTunnelF2_Text_JulianPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+InquillTunnelF2_EventScript_Charles::
+	trainerbattle TRAINER_BATTLE_EARLY_RIVAL, LOCALID_NONE, TRAINER_INQUILL_TUNNEL_CHARLES, InquillTunnelF2_Text_CharlesIntro, InquillTunnelF2_Text_CharlesDefeat, NULL, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, InquillTunnelF2_Text_CharlesVictory, NULL, FALSE, TRUE, FALSE, FALSE
+	msgbox InquillTunnelF2_Text_CharlesPostBattle, MSGBOX_AUTOCLOSE
+	end
+`
+
+text InquillTunnelF2_Text_JulianIntro {
+    "I came here to catch my favourite\n"
+    "Pokémon! Want to see?"
+}
+
+text InquillTunnelF2_Text_JulianDefeat {
+    "Ah! My Abra!"
+}
+
+text InquillTunnelF2_Text_JulianVictory {
+    "That’s why I love Abra!"
+}
+
+text InquillTunnelF2_Text_JulianPostBattle {
+    "I’m going to catch lots of Abra!"
+}
+
+text InquillTunnelF2_Text_CharlesIntro {
+    "Do you know the secret pathways?\n"
+    "Tell me!"
+}
+
+text InquillTunnelF2_Text_CharlesDefeat {
+    "I’ll never find the way…"
+}
+
+text InquillTunnelF2_Text_CharlesVictory {
+    "You’ve shown me the way!"
+}
+
+text InquillTunnelF2_Text_CharlesPostBattle {
+    "There are rumours that these tunnels\n"
+    "stretch far up into the hills, and\l"
+    "there may be rare Pokémon deeper\l"
+    "within. I’m here to find them."
+}

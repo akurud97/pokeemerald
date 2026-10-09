@@ -25,11 +25,15 @@
 
 // this file's functions
 static u8 CheckTrainer(u8 objectEventId);
+static const u8 *GetObjectTrainerBattleScript(u8 objectEventId);
+static bool8 TryInitPairedDoubleTrainerApproach(u8 objectEventId, const u8 *trainerBattlePtr, u8 range);
 static u8 GetTrainerApproachDistance(struct ObjectEvent *trainerObj);
 static u8 CheckPathBetweenTrainerAndPlayer(struct ObjectEvent *trainerObj, u8 approachDistance, enum Direction direction);
 static void InitTrainerApproachTask(struct ObjectEvent *trainerObj, u8 range);
+static void StartTrainerApproachTask(u8 taskId, TaskFunc followupFunc);
 static void Task_RunTrainerSeeFuncList(u8 taskId);
 static void Task_EndTrainerApproach(u8 taskId);
+static void Task_EndPairedTrainerApproach(u8 taskId);
 static void SetIconSpriteData(struct Sprite *sprite, u16 fldEffId, u8 spriteAnimNum);
 
 static u8 GetTrainerApproachDistanceSouth(struct ObjectEvent *trainerObj, s16 range, s16 x, s16 y);
@@ -62,6 +66,8 @@ COMMON_DATA bool8 gTrainerApproachedPlayer = 0;
 
 // EWRAM
 EWRAM_DATA u8 gApproachingTrainerId = 0;
+EWRAM_DATA static u8 sPairedTrainerObjectEventId = 0;
+EWRAM_DATA static u8 sPairedTrainerApproachTaskId = 0;
 
 // const rom data
 static const u16 sGfx_Emoticons[] = INCGFX_U16("graphics/misc/emoticons.png", ".4bpp", "-mwidth 2 -mheight 2");
@@ -446,6 +452,8 @@ bool8 CheckForTrainersWantingBattle(void)
 
     gNoOfApproachingTrainers = 0;
     gApproachingTrainerId = 0;
+    sPairedTrainerObjectEventId = OBJECT_EVENTS_COUNT;
+    sPairedTrainerApproachTaskId = TASK_NONE;
 
     // Adds trainers wanting to battle to array
     for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
@@ -458,7 +466,7 @@ bool8 CheckForTrainersWantingBattle(void)
     }
 
     // Sorts array by localId
-    for (i = 1; i <= trainerObjectsCount; i++)
+    for (i = 1; i < trainerObjectsCount; i++)
     {
         u8 x = trainerObjects[i];
         u8 j = i;
@@ -470,7 +478,7 @@ bool8 CheckForTrainersWantingBattle(void)
         trainerObjects[j] = x;
     }
 
-    for (i = 0; i <= trainerObjectsCount; i++)
+    for (i = 0; i < trainerObjectsCount; i++)
     {
         u8 numTrainers;
         numTrainers = CheckTrainer(trainerObjects[i]);
@@ -567,19 +575,9 @@ static u8 CheckTrainer(u8 objectEventId)
     }
     else
     {
-        trainerBattlePtr = GetObjectEventScriptPointerByObjectEventId(objectEventId);
-        struct ScriptContext ctx;
-        if (RunScriptImmediatelyUntilEffect(SCREFF_V1 | SCREFF_SAVE | SCREFF_HARDWARE | SCREFF_TRAINERBATTLE, trainerBattlePtr, &ctx))
-        {
-            if (*ctx.scriptPtr == SCR_OP_TRAINERBATTLE)
-                trainerBattlePtr = ctx.scriptPtr;
-            else
-                trainerBattlePtr = NULL;
-        }
-        else
-        {
+        trainerBattlePtr = GetObjectTrainerBattleScript(objectEventId);
+        if (trainerBattlePtr == NULL)
             return 0; // no effect
-        }
     }
 
     if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
@@ -631,9 +629,91 @@ static u8 CheckTrainer(u8 objectEventId)
     gApproachingTrainers[gNoOfApproachingTrainers].trainerScriptPtr = trainerBattlePtr;
     gApproachingTrainers[gNoOfApproachingTrainers].radius = approachDistance;
     InitTrainerApproachTask(&gObjectEvents[objectEventId], approachDistance - 1);
+    if (trainerBattlePtr != NULL)
+    {
+        TrainerBattleParameter *params = (TrainerBattleParameter *)(trainerBattlePtr + 1);
+        if (params->params.isDoubleBattle
+         && TryInitPairedDoubleTrainerApproach(objectEventId, trainerBattlePtr, approachDistance - 1))
+            numTrainers = 2;
+    }
     gNoOfApproachingTrainers++;
 
     return numTrainers;
+}
+
+static const u8 *GetObjectTrainerBattleScript(u8 objectEventId)
+{
+    const u8 *script = GetObjectEventScriptPointerByObjectEventId(objectEventId);
+    struct ScriptContext ctx;
+
+    if (script == NULL)
+        return NULL;
+    if (!RunScriptImmediatelyUntilEffect(SCREFF_V1 | SCREFF_SAVE | SCREFF_HARDWARE | SCREFF_TRAINERBATTLE, script, &ctx))
+        return NULL;
+    if (*ctx.scriptPtr != SCR_OP_TRAINERBATTLE)
+        return NULL;
+    return ctx.scriptPtr;
+}
+
+// Double-battle trainer classes (Twins, Sr. and Jr., etc.) are represented by
+// one trainer entry, even when a map uses two separate object events for the
+// pair. The stock sight code only moves the object aligned with the player.
+// Treat an adjacent object with the same trainer id as a visual partner: it
+// mirrors the approach without being configured as a second opponent.
+static bool8 TryInitPairedDoubleTrainerApproach(u8 objectEventId, const u8 *trainerBattlePtr, u8 range)
+{
+    u8 i;
+    u16 trainerId;
+    struct ObjectEvent *trainerObj = &gObjectEvents[objectEventId];
+    TrainerBattleParameter *params = (TrainerBattleParameter *)(trainerBattlePtr + 1);
+
+    trainerId = params->params.opponentA;
+    for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
+    {
+        const u8 *partnerBattlePtr;
+        TrainerBattleParameter *partnerParams;
+        struct ObjectEvent *partnerObj = &gObjectEvents[i];
+        bool8 isAdjacentPair;
+
+        if (i == objectEventId || !partnerObj->active)
+            continue;
+        if (partnerObj->trainerType != TRAINER_TYPE_NORMAL
+         && partnerObj->trainerType != TRAINER_TYPE_SEE_ALL_DIRECTIONS
+         && partnerObj->trainerType != TRAINER_TYPE_BURIED)
+            continue;
+        if (partnerObj->facingDirection != trainerObj->facingDirection)
+            continue;
+
+        if (trainerObj->facingDirection == DIR_NORTH || trainerObj->facingDirection == DIR_SOUTH)
+        {
+            isAdjacentPair = (partnerObj->currentCoords.y == trainerObj->currentCoords.y
+                           && (partnerObj->currentCoords.x == trainerObj->currentCoords.x - 1
+                            || partnerObj->currentCoords.x == trainerObj->currentCoords.x + 1));
+        }
+        else
+        {
+            isAdjacentPair = (partnerObj->currentCoords.x == trainerObj->currentCoords.x
+                           && (partnerObj->currentCoords.y == trainerObj->currentCoords.y - 1
+                            || partnerObj->currentCoords.y == trainerObj->currentCoords.y + 1));
+        }
+        if (!isAdjacentPair)
+            continue;
+
+        partnerBattlePtr = GetObjectTrainerBattleScript(i);
+        if (partnerBattlePtr == NULL)
+            continue;
+        partnerParams = (TrainerBattleParameter *)(partnerBattlePtr + 1);
+        if (!partnerParams->params.isDoubleBattle || partnerParams->params.opponentA != trainerId)
+            continue;
+
+        sPairedTrainerObjectEventId = i;
+        sPairedTrainerApproachTaskId = CreateTask(Task_RunTrainerSeeFuncList, 0x50);
+        gTasks[sPairedTrainerApproachTaskId].data[3] = range;
+        gTasks[sPairedTrainerApproachTaskId].data[7] = i;
+        return TRUE;
+    }
+
+    return FALSE;
 }
 
 static u8 GetTrainerApproachDistance(struct ObjectEvent *trainerObj)
@@ -763,7 +843,6 @@ static void InitTrainerApproachTask(struct ObjectEvent *trainerObj, u8 range)
 static void StartTrainerApproach(TaskFunc followupFunc)
 {
     u8 taskId;
-    TaskFunc taskFunc;
 
     if (gApproachingTrainerId == 0)
         taskId = gApproachingTrainers[0].taskId;
@@ -773,10 +852,14 @@ static void StartTrainerApproach(TaskFunc followupFunc)
     if (PlayerHasFollowerNPC() && (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_ON_FOOT))
         ObjectEventForceSetHeldMovement(&gObjectEvents[GetFollowerNPCObjectId()], GetFaceDirectionAnimNum(gObjectEvents[GetFollowerNPCObjectId()].facingDirection));
 
-    taskFunc = Task_RunTrainerSeeFuncList;
-    SetTaskFuncWithFollowupFunc(taskId, taskFunc, followupFunc);
+    StartTrainerApproachTask(taskId, followupFunc);
+}
+
+static void StartTrainerApproachTask(u8 taskId, TaskFunc followupFunc)
+{
+    SetTaskFuncWithFollowupFunc(taskId, Task_RunTrainerSeeFuncList, followupFunc);
     gTasks[taskId].tFuncId = TRSEE_EXCLAMATION;
-    taskFunc(taskId);
+    Task_RunTrainerSeeFuncList(taskId);
 }
 
 static void Task_RunTrainerSeeFuncList(u8 taskId)
@@ -1008,12 +1091,27 @@ void SetBuriedTrainerMovement(struct ObjectEvent *objEvent)
 void DoTrainerApproach(void)
 {
     StartTrainerApproach(Task_EndTrainerApproach);
+    if (sPairedTrainerObjectEventId < OBJECT_EVENTS_COUNT
+     && sPairedTrainerApproachTaskId != TASK_NONE
+     && gObjectEvents[sPairedTrainerObjectEventId].active)
+    {
+        UnfreezeObjectEvent(&gObjectEvents[sPairedTrainerObjectEventId]);
+        StartTrainerApproachTask(sPairedTrainerApproachTaskId, Task_EndPairedTrainerApproach);
+    }
 }
 
 static void Task_EndTrainerApproach(u8 taskId)
 {
+    if (sPairedTrainerApproachTaskId != TASK_NONE)
+        return;
     DestroyTask(taskId);
     ScriptContext_Enable();
+}
+
+static void Task_EndPairedTrainerApproach(u8 taskId)
+{
+    DestroyTask(taskId);
+    sPairedTrainerApproachTaskId = TASK_NONE;
 }
 
 void TryPrepareSecondApproachingTrainer(void)

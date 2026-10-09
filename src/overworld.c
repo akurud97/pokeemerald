@@ -219,6 +219,7 @@ s16 gTimeUpdateCounter; // playTimeVBlanks will eventually overflow, so this is 
 
 // EWRAM vars
 EWRAM_DATA static u8 sObjectEventLoadFlag = 0;
+EWRAM_DATA static bool8 sRefreshMintakaObjectsOnContinue = FALSE;
 EWRAM_DATA struct WarpData gLastUsedWarp = {0};
 EWRAM_DATA static struct WarpData sWarpDestination = {0};  // new warp position
 EWRAM_DATA static struct WarpData sFixedDiveWarp = {0};
@@ -1065,6 +1066,12 @@ static enum Direction GetAdjustedInitialDirection(struct InitialPlayerAvatarStat
 {
     if (FlagGet(FLAG_SYS_CRUISE_MODE) && mapType == MAP_TYPE_OCEAN_ROUTE)
         return DIR_EAST;
+    else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_ALASIAVILLE)
+          && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_ALASIAVILLE)
+          && gSaveBlock1Ptr->pos.x == 10
+          && gSaveBlock1Ptr->pos.y == 8
+          && VarGet(VAR_ALASIA_INTRO_STATE) == 0)
+        return DIR_EAST;
     else if (MetatileBehavior_IsDeepSouthWarp(metatileBehavior) == TRUE)
         return DIR_NORTH;
     else if (MetatileBehavior_IsNonAnimDoor(metatileBehavior) == TRUE || MetatileBehavior_IsDoor(metatileBehavior) == TRUE)
@@ -1296,8 +1303,6 @@ void Overworld_PlaySpecialMapMusic(void)
             music = gSaveBlock1Ptr->savedMusic;
         else if (GetCurrentMapType() == MAP_TYPE_UNDERWATER)
             music = MUS_UNDERWATER;
-        else if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING))
-            music = (IS_FRLG ? MUS_RG_SURF : MUS_SURF);
     }
 
     if (music != GetCurrentMapMusic())
@@ -1330,10 +1335,8 @@ static void TransitionMapMusic(void)
         u16 currentMusic = GetCurrentMapMusic();
         if (newMusic != MUS_ABNORMAL_WEATHER && newMusic != MUS_NONE)
         {
-            if (currentMusic == MUS_UNDERWATER || currentMusic == (IS_FRLG ? MUS_RG_SURF : MUS_SURF))
+            if (currentMusic == MUS_UNDERWATER)
                 return;
-            if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING))
-                newMusic = (IS_FRLG ? MUS_RG_SURF : MUS_SURF);
         }
         if (newMusic != currentMusic)
         {
@@ -2116,13 +2119,26 @@ void CB2_ContinueSavedGame(void)
         ResetWinStreaks();
 
     LoadSaveblockMapHeader();
+    // Mintaka's editable NPC roster may have changed since this save was made.
+    // Saved local IDs otherwise refer to deleted/replaced NPCs, and newly added
+    // cutscene actors have no saved template at all. Rebuild only on Continue,
+    // never on the return from the acolyte battle (which must retain actor poses).
+    sRefreshMintakaObjectsOnContinue =
+        gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_MINTAKA_CITY)
+        && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_MINTAKA_CITY);
+    if (sRefreshMintakaObjectsOnContinue)
+    {
+        LoadObjEventTemplatesFromHeader();
+        FlagSet(FLAG_HIDE_MINTAKA_ACOLYTE);
+        FlagSet(FLAG_HIDE_MINTAKA_CARGO_WORKER);
+    }
     ClearDiveAndHoleWarps();
     trainerHillMapId = GetCurrentTrainerHillMapId();
     if (gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_PYRAMID_FLOOR)
         LoadBattlePyramidFloorObjectEventScripts();
     else if (trainerHillMapId != 0 && trainerHillMapId != TRAINER_HILL_ENTRANCE)
         LoadTrainerHillFloorObjectEventScripts();
-    else
+    else if (!sRefreshMintakaObjectsOnContinue)
         LoadSaveblockObjEventScripts();
 
     UnfreezeObjectEvents();
@@ -2610,6 +2626,7 @@ static void InitObjectEventsLocal(void)
     u16 x, y;
     struct InitialPlayerAvatarState *player;
 
+    sRefreshMintakaObjectsOnContinue = FALSE;
     gTotalCameraPixelOffsetX = 0;
     gTotalCameraPixelOffsetY = 0;
     ResetObjectEvents();
@@ -2626,7 +2643,21 @@ static void InitObjectEventsLocal(void)
 
 static void InitObjectEventsReturnToField(void)
 {
+    if (sRefreshMintakaObjectsOnContinue)
+    {
+        for (u32 i = 0; i < OBJECT_EVENTS_COUNT; i++)
+        {
+            if (!gObjectEvents[i].isPlayer
+             && gObjectEvents[i].localId != OBJ_EVENT_ID_FOLLOWER)
+                gObjectEvents[i].active = FALSE;
+        }
+    }
     SpawnObjectEventsOnReturnToField(0, 0);
+    if (sRefreshMintakaObjectsOnContinue)
+    {
+        TrySpawnObjectEvents(0, 0);
+        sRefreshMintakaObjectsOnContinue = FALSE;
+    }
     RotatingGate_InitPuzzleAndGraphics();
     RunOnReturnToFieldMapScript();
 }

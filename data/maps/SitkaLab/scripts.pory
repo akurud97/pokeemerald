@@ -1,0 +1,417 @@
+raw `
+.set LOCALID_SITKA, LOCALID_SITKA_LAB_PROFESSOR
+.set LOCALID_SPHEAL, LOCALID_SITKA_LAB_SPHEAL
+.set LOCALID_SANDILE, LOCALID_SITKA_LAB_SANDILE
+.set LOCALID_MAREEP, LOCALID_SITKA_LAB_MAREEP
+.set LOCALID_APRIL, LOCALID_SITKA_LAB_APRIL
+
+SitkaLab_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, SitkaLab_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, SitkaLab_OnFrame
+	.byte 0
+
+SitkaLab_OnTransition:
+	call_if_eq VAR_ALASIA_INTRO_STATE, 4, SitkaLab_EventScript_PrepareArrival
+	call_if_ge VAR_ALASIA_INTRO_STATE, 7, SitkaLab_EventScript_HideAprilAfterBattle
+	end
+
+SitkaLab_EventScript_PrepareArrival:
+	setflag FLAG_HIDE_SITKA_LAB_APRIL
+	return
+
+SitkaLab_EventScript_HideAprilAfterBattle:
+	setflag FLAG_HIDE_SITKA_LAB_APRIL
+	return
+
+SitkaLab_OnFrame:
+	map_script_2 VAR_ALASIA_INTRO_STATE, 4, SitkaLab_EventScript_Arrival
+	.2byte 0
+
+SitkaLab_EventScript_Arrival::
+	lockall
+	applymovement OBJ_EVENT_ID_PLAYER, SitkaLab_Movement_PlayerApproach
+	waitmovement 0
+	setobjectxyperm LOCALID_APRIL, 5, 10
+	clearflag FLAG_HIDE_SITKA_LAB_APRIL
+	addobject LOCALID_APRIL
+	opendoor 5, 10
+	waitdooranim
+	applymovement LOCALID_APRIL, SitkaLab_Movement_AprilEnter
+	waitmovement 0
+	closedoor 5, 10
+	waitdooranim
+	applymovement LOCALID_APRIL, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_APRIL, SitkaLab_Movement_AprilRunToPokemon
+	waitmovement 0
+	special BufferAprilName
+	setspeaker SitkaLab_Text_AprilSpeakerName
+	msgbox SitkaLab_Text_NoWayAreThese, MSGBOX_DEFAULT
+	setspeaker SP_NAME_PROFESSOR_SITKA
+	msgbox SitkaLab_Text_TheyArePokemon, MSGBOX_DEFAULT
+	special BufferPlayerSubjectPronoun
+	msgbox SitkaLab_Text_GrassWasDangerous, MSGBOX_DEFAULT
+	msgbox SitkaLab_Text_GiveYouPokemon, MSGBOX_DEFAULT
+	special BufferAprilName
+	setspeaker SitkaLab_Text_AprilSpeakerName
+	msgbox SitkaLab_Text_AprilSoCool, MSGBOX_DEFAULT
+	setspeaker SP_NAME_PROFESSOR_SITKA
+	msgbox SitkaLab_Text_ChooseFromTable, MSGBOX_DEFAULT
+	applymovement LOCALID_APRIL, SitkaLab_Movement_AprilWaitByTable
+	waitmovement 0
+	setvar VAR_ALASIA_INTRO_STATE, 5
+	releaseall
+	end
+
+SitkaLab_EventScript_BlockWarp::
+	lockall
+	special BufferAprilName
+	setspeaker SitkaLab_Text_AprilSpeakerName
+	msgbox SitkaLab_Text_PickAPokemonReminder, MSGBOX_DEFAULT
+	releaseall
+	end
+
+SitkaLab_EventScript_Professor::
+	lock
+	faceplayer
+	setspeaker SP_NAME_PROFESSOR_SITKA
+	goto_if_eq VAR_ALASIA_INTRO_STATE, 5, SitkaLab_EventScript_ProfessorChooseReminder
+	goto_if_ge VAR_ALASIA_INTRO_STATE, 7, SitkaLab_EventScript_ProfessorCheckPartyHealth
+	msgbox SitkaLab_Text_ProfessorAfterStarter, MSGBOX_DEFAULT
+	release
+	end
+
+SitkaLab_EventScript_ProfessorCheckPartyHealth::
+	specialvar VAR_RESULT, DoesPlayerPartyNeedHealing
+	goto_if_eq VAR_RESULT, TRUE, SitkaLab_EventScript_ProfessorHealParty
+	msgbox SitkaLab_Text_ProfessorPartyHealthy, MSGBOX_DEFAULT
+	release
+	end
+
+SitkaLab_EventScript_ProfessorHealParty::
+	msgbox SitkaLab_Text_ProfessorPartyTired, MSGBOX_DEFAULT
+	closemessage
+	fadescreen FADE_TO_BLACK
+	special HealPlayerParty
+	playfanfare MUS_HEAL
+	waitfanfare
+	fadescreen FADE_FROM_BLACK
+	release
+	end
+
+SitkaLab_EventScript_ProfessorChooseReminder::
+	msgbox SitkaLab_Text_ChooseFromTable, MSGBOX_DEFAULT
+	release
+	end
+
+SitkaLab_EventScript_April::
+	lock
+	faceplayer
+	special BufferAprilName
+	setspeaker SitkaLab_Text_AprilSpeakerName
+	goto_if_eq VAR_ALASIA_INTRO_STATE, 5, SitkaLab_EventScript_AprilChooseReminder
+	goto_if_eq VAR_STARTER_MON, 0, SitkaLab_EventScript_AprilComplimentsSpheal
+	goto_if_eq VAR_STARTER_MON, 1, SitkaLab_EventScript_AprilComplimentsSandile
+	bufferspeciesname STR_VAR_2, SPECIES_MAREEP
+	goto SitkaLab_EventScript_AprilComplimentsStarter
+
+SitkaLab_EventScript_AprilComplimentsSpheal::
+	bufferspeciesname STR_VAR_2, SPECIES_SPHEAL
+	goto SitkaLab_EventScript_AprilComplimentsStarter
+
+SitkaLab_EventScript_AprilComplimentsSandile::
+	bufferspeciesname STR_VAR_2, SPECIES_SANDILE
+
+SitkaLab_EventScript_AprilComplimentsStarter::
+	msgbox SitkaLab_Text_AprilAfterStarter, MSGBOX_DEFAULT
+	release
+	end
+
+SitkaLab_EventScript_AprilChooseReminder::
+	special BufferAprilName
+	setspeaker SitkaLab_Text_AprilSpeakerName
+	msgbox SitkaLab_Text_PickAPokemonReminder, MSGBOX_DEFAULT
+	release
+	end
+
+SitkaLab_EventScript_ChooseSpheal::
+	lockall
+	goto_if_ne VAR_ALASIA_INTRO_STATE, 5, SitkaLab_EventScript_RemainingPokemon
+	showmonpic SPECIES_SPHEAL, 10, 3
+	msgbox SitkaLab_Text_ChooseSpheal, MSGBOX_YESNO
+	hidemonpic
+	goto_if_eq VAR_RESULT, YES, SitkaLab_EventScript_TakeSpheal
+	releaseall
+	end
+
+SitkaLab_EventScript_TakeSpheal::
+	setvar VAR_STARTER_MON, 0
+	givemon SPECIES_SPHEAL, 5, nature=NATURE_RANDOM, abilityNum=0, gender=MON_GENDER_RANDOM, shinyMode=SHINY_MODE_RANDOM
+	setflag FLAG_SYS_POKEMON_GET
+	setflag FLAG_HIDE_SITKA_LAB_SPHEAL
+	removeobject LOCALID_SPHEAL
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox SitkaLab_Text_ReceivedSpheal, MSGBOX_DEFAULT
+	waitfanfare
+	bufferspeciesname STR_VAR_1, SPECIES_SPHEAL
+	goto SitkaLab_EventScript_OfferStarterNickname
+
+SitkaLab_EventScript_ChooseSandile::
+	lockall
+	goto_if_ne VAR_ALASIA_INTRO_STATE, 5, SitkaLab_EventScript_RemainingPokemon
+	showmonpic SPECIES_SANDILE, 10, 3
+	msgbox SitkaLab_Text_ChooseSandile, MSGBOX_YESNO
+	hidemonpic
+	goto_if_eq VAR_RESULT, YES, SitkaLab_EventScript_TakeSandile
+	releaseall
+	end
+
+SitkaLab_EventScript_TakeSandile::
+	setvar VAR_STARTER_MON, 1
+	givemon SPECIES_SANDILE, 5, nature=NATURE_RANDOM, abilityNum=0, gender=MON_GENDER_RANDOM, shinyMode=SHINY_MODE_RANDOM
+	setflag FLAG_SYS_POKEMON_GET
+	setflag FLAG_HIDE_SITKA_LAB_SANDILE
+	removeobject LOCALID_SANDILE
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox SitkaLab_Text_ReceivedSandile, MSGBOX_DEFAULT
+	waitfanfare
+	bufferspeciesname STR_VAR_1, SPECIES_SANDILE
+	goto SitkaLab_EventScript_OfferStarterNickname
+
+SitkaLab_EventScript_ChooseMareep::
+	lockall
+	goto_if_ne VAR_ALASIA_INTRO_STATE, 5, SitkaLab_EventScript_RemainingPokemon
+	showmonpic SPECIES_MAREEP, 10, 3
+	msgbox SitkaLab_Text_ChooseMareep, MSGBOX_YESNO
+	hidemonpic
+	goto_if_eq VAR_RESULT, YES, SitkaLab_EventScript_TakeMareep
+	releaseall
+	end
+
+SitkaLab_EventScript_TakeMareep::
+	setvar VAR_STARTER_MON, 2
+	givemon SPECIES_MAREEP, 5, nature=NATURE_RANDOM, abilityNum=0, gender=MON_GENDER_RANDOM, shinyMode=SHINY_MODE_RANDOM
+	setflag FLAG_SYS_POKEMON_GET
+	setflag FLAG_HIDE_SITKA_LAB_MAREEP
+	removeobject LOCALID_MAREEP
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox SitkaLab_Text_ReceivedMareep, MSGBOX_DEFAULT
+	waitfanfare
+	bufferspeciesname STR_VAR_1, SPECIES_MAREEP
+
+SitkaLab_EventScript_OfferStarterNickname::
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, SitkaLab_EventScript_AfterPlayerChooses
+	call Common_EventScript_GetGiftMonPartySlot
+	call Common_EventScript_NameReceivedPartyMon
+	goto SitkaLab_EventScript_AfterPlayerChooses
+
+SitkaLab_EventScript_RemainingPokemon::
+	msgbox SitkaLab_Text_RemainingPokemon, MSGBOX_DEFAULT
+	releaseall
+	end
+
+SitkaLab_EventScript_AfterPlayerChooses::
+	special BufferAprilName
+	setspeaker SitkaLab_Text_AprilSpeakerName
+	msgbox SitkaLab_Text_AprilNotFair, MSGBOX_DEFAULT
+	setspeaker SP_NAME_PROFESSOR_SITKA
+	msgbox SitkaLab_Text_ProfessorHmm, MSGBOX_DEFAULT
+	applymovement LOCALID_SITKA, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox SitkaLab_Text_ProfessorWhatTheHeck, MSGBOX_DEFAULT
+	applymovement LOCALID_SITKA, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox SitkaLab_Text_ProfessorOffersApril, MSGBOX_DEFAULT
+	special BufferAprilName
+	setspeaker SitkaLab_Text_AprilSpeakerName
+	msgbox SitkaLab_Text_AprilSerious, MSGBOX_DEFAULT
+	msgbox SitkaLab_Text_AprilChooses, MSGBOX_DEFAULT
+	goto_if_eq VAR_STARTER_MON, 0, SitkaLab_EventScript_AprilTakesMareep
+	goto_if_eq VAR_STARTER_MON, 1, SitkaLab_EventScript_AprilTakesSpheal
+
+SitkaLab_EventScript_AprilTakesSandile::
+	applymovement LOCALID_APRIL, SitkaLab_Movement_AprilChooseSandile
+	waitmovement 0
+	setvar VAR_APRIL_STARTER, SPECIES_SANDILE
+	setflag FLAG_HIDE_SITKA_LAB_SANDILE
+	removeobject LOCALID_SANDILE
+	goto SitkaLab_EventScript_StarterLecture
+
+SitkaLab_EventScript_AprilTakesMareep::
+	applymovement LOCALID_APRIL, SitkaLab_Movement_AprilChooseMareep
+	waitmovement 0
+	setvar VAR_APRIL_STARTER, SPECIES_MAREEP
+	setflag FLAG_HIDE_SITKA_LAB_MAREEP
+	removeobject LOCALID_MAREEP
+	goto SitkaLab_EventScript_StarterLecture
+
+SitkaLab_EventScript_AprilTakesSpheal::
+	applymovement LOCALID_APRIL, SitkaLab_Movement_AprilChooseSpheal
+	waitmovement 0
+	setvar VAR_APRIL_STARTER, SPECIES_SPHEAL
+	setflag FLAG_HIDE_SITKA_LAB_SPHEAL
+	removeobject LOCALID_SPHEAL
+
+SitkaLab_EventScript_StarterLecture::
+	setspeaker SP_NAME_PROFESSOR_SITKA
+	msgbox SitkaLab_Text_ProfessorTrouble, MSGBOX_DEFAULT
+	msgbox SitkaLab_Text_ProfessorResponsibility, MSGBOX_DEFAULT
+	msgbox SitkaLab_Text_ProfessorTallGrass, MSGBOX_DEFAULT
+	msgbox SitkaLab_Text_ProfessorBeCareful, MSGBOX_DEFAULT
+	msgbox SitkaLab_Text_ProfessorGreatSummer, MSGBOX_DEFAULT
+	special BufferAprilName
+	setspeaker SitkaLab_Text_AprilSpeakerName
+	msgbox SitkaLab_Text_AprilWontLetDown, MSGBOX_DEFAULT
+	setvar VAR_ALASIA_INTRO_STATE, 6
+	releaseall
+	end
+
+SitkaLab_Movement_PlayerApproach:
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+SitkaLab_Movement_AprilEnter:
+	walk_up
+	step_end
+
+SitkaLab_Movement_AprilRunToPokemon:
+	walk_fast_left
+	walk_fast_left
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	face_up
+	step_end
+
+SitkaLab_Movement_AprilWaitByTable:
+	walk_left
+	walk_left
+	face_right
+	step_end
+
+SitkaLab_Movement_AprilChooseMareep:
+	walk_right
+	walk_up
+	face_up
+	step_end
+
+SitkaLab_Movement_AprilChooseSandile:
+	walk_right
+	walk_right
+	walk_up
+	face_up
+	step_end
+
+SitkaLab_Movement_AprilChooseSpheal:
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	face_up
+	step_end
+
+SitkaLab_Text_NoWayAreThese:
+	.string "No way…are these…?$"
+SitkaLab_Text_AprilSpeakerName:
+	.string "{STR_VAR_1}$"
+SitkaLab_Text_TheyArePokemon:
+	.string "Yes. They’re Pokémon.$"
+SitkaLab_Text_GrassWasDangerous:
+	.string "Your friend here was trying to\n"
+	.string "enter the tall grass on their own.\l"
+	.string "{STR_VAR_2} would have been defenceless\l"
+	.string "if a wild Pokémon attacked.$"
+SitkaLab_Text_GiveYouPokemon:
+	.string "So…{PLAYER}, I’m going to give you\n"
+	.string "your own Pokémon. You’re old enough\l"
+	.string "now, and with a partner by your side\l"
+	.string "you’ll be able to explore lots this\l"
+	.string "summer.$"
+SitkaLab_Text_AprilSoCool:
+	.string "NO WAY! SO COOL!$"
+SitkaLab_Text_ChooseFromTable:
+	.string "Go ahead, choose a Pokémon from the\n"
+	.string "table.$"
+SitkaLab_Text_PickAPokemonReminder:
+	.string "{PLAYER}! Aren’t you going to pick\n"
+	.string "a Pokémon?!$"
+SitkaLab_Text_ChooseSpheal:
+	.string "Spheal, the Clap Pokémon\n"
+	.string "Ice/Water\p"
+	.string "Would you like to choose this\n"
+	.string "Pokémon?$"
+SitkaLab_Text_ChooseSandile:
+	.string "Sandile, the Desert Croc Pokémon\n"
+	.string "Ground/Dark\p"
+	.string "Would you like to choose this\n"
+	.string "Pokémon?$"
+SitkaLab_Text_ChooseMareep:
+	.string "Mareep, the Wool Pokémon\n"
+	.string "Electric\p"
+	.string "Would you like to choose this\n"
+	.string "Pokémon?$"
+SitkaLab_Text_ReceivedSpheal:
+	.string "{PLAYER} received SPHEAL!$"
+SitkaLab_Text_ReceivedSandile:
+	.string "{PLAYER} received SANDILE!$"
+SitkaLab_Text_ReceivedMareep:
+	.string "{PLAYER} received MAREEP!$"
+SitkaLab_Text_RemainingPokemon:
+	.string "This Pokémon belongs to Professor\n"
+	.string "Sitka.$"
+SitkaLab_Text_AprilNotFair:
+	.string "Man, not fair! I want a Pokémon too.\n"
+	.string "Ugh, but my dad would never let me.$"
+SitkaLab_Text_ProfessorHmm:
+	.string "Hmm…$"
+SitkaLab_Text_ProfessorWhatTheHeck:
+	.string "Should I… Oh, what the heck…$"
+SitkaLab_Text_ProfessorOffersApril:
+	.string "{STR_VAR_1}, you can take a Pokémon\n"
+	.string "too. Tell your father to blame me.\l"
+	.string "I’ll handle him.$"
+SitkaLab_Text_AprilSerious:
+	.string "W-what?! ARE YOU SERIOUS?!\n"
+	.string "THIS IS SO AWESOME!$"
+SitkaLab_Text_AprilChooses:
+	.string "I choose…you!$"
+SitkaLab_Text_ProfessorTrouble:
+	.string "…I’m going to get in trouble for\n"
+	.string "this…$"
+SitkaLab_Text_ProfessorResponsibility:
+	.string "Listen, kids. Having Pokémon is a\n"
+	.string "lot of fun, but it’s a lot of\l"
+	.string "responsibility too.$"
+SitkaLab_Text_ProfessorTallGrass:
+	.string "These are yours to care for now.\n"
+	.string "With these partners by your side,\l"
+	.string "you’ll be able to enter tall grass\l"
+	.string "and face wild Pokémon.$"
+SitkaLab_Text_ProfessorBeCareful:
+	.string "Be careful…or I’ll never hear the\n"
+	.string "end of it from your parents.$"
+SitkaLab_Text_ProfessorGreatSummer:
+	.string "Now, go out there, have a great\n"
+	.string "summer, and prove that I made the\l"
+	.string "right decision by giving you these\l"
+	.string "Pokémon.$"
+SitkaLab_Text_AprilWontLetDown:
+	.string "All right! We won’t let you down,\n"
+	.string "Professor.$"
+SitkaLab_Text_ProfessorAfterStarter:
+	.string "To be a young Trainer again…\p"
+	.string "Have fun on your Pokémon journey!$"
+SitkaLab_Text_ProfessorPartyHealthy:
+	.string "{PLAYER}, how is your Pokémon doing?\p"
+	.string "If they need to be healed, come see\n"
+	.string "me.$"
+SitkaLab_Text_ProfessorPartyTired:
+	.string "{PLAYER}, your Pokémon look a bit\n"
+	.string "tired. Let me patch them up for you.$"
+SitkaLab_Text_AprilAfterStarter:
+	.string "This is so exciting! Your\n"
+	.string "{STR_VAR_2} is so cute!$"
+`

@@ -23,8 +23,8 @@
     {
       "id": "HEAL_LOCATION_PETALBURG_CITY",
       "map": "MAP_PETALBURG_CITY",
-      "x": 7,
-      "y": 6,
+      "x": 21,
+      "y": 21,
       "respawn_map": "MAP_PETALBURG_CITY_POKEMON_CENTER_1F",
       "respawn_npc": "LOCALID_PETALBURG_NURSE"
     },
@@ -193,10 +193,10 @@
       "map": "MAP_PALLET_TOWN",
       "x": 6,
       "y": 8,
-      "respawn_x": 8,
-      "respawn_y": 5,
       "respawn_map": "MAP_PALLET_TOWN_PLAYERS_HOUSE_1F",
-      "respawn_npc": "LOCALID_PLAYERS_HOUSE_1F_MOM"
+      "respawn_npc": "LOCALID_PLAYERS_HOUSE_1F_MOM",
+      "respawn_x": 8,
+      "respawn_y": 5
     },
     {
       "id": "HEAL_LOCATION_VIRIDIAN_CITY",
@@ -355,6 +355,22 @@
       "map": "MAP_LIESMA_CITY",
       "x": 45,
       "y": 37
+    },
+    {
+      "id": "HEAL_LOCATION_INQUILL_TOWN",
+      "map": "MAP_INQUILL_TOWN",
+      "x": 22,
+      "y": 17,
+      "respawn_map": "MAP_INQUILL_CENTER",
+      "respawn_npc": "LOCALID_INQUILL_CENTER_NURSE"
+    },
+    {
+      "id": "HEAL_LOCATION_MINTAKA_CITY",
+      "map": "MAP_MINTAKA_CITY",
+      "x": 14,
+      "y": 15,
+      "respawn_map": "MAP_MINTAKA_CENTER",
+      "respawn_npc": "LOCALID_MINTAKA_CENTER_NURSE"
     }
   ]
 }

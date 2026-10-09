@@ -2,3 +2,14 @@ raw `
 MintakaHouse1_MapScripts::
 	.byte 0
 `
+
+script MintakaHouse1_EventScript_Object1 {
+    msgbox(MintakaHouse1_Text_Object1, MSGBOX_NPC)
+    end
+}
+
+text MintakaHouse1_Text_Object1 {
+    "Oh, have you come to visit a lonely\n"
+    "old man? How kind… Even my children\l"
+    "don’t visit anymore."
+}

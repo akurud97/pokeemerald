@@ -58,11 +58,12 @@
 // number of item slots that could fit in a single pocket, + 1 for Cancel.
 // This constant picks the max of the existing pocket sizes.
 // By default, the largest pocket is BAG_TMHM_COUNT at 64.
-#define MAX_POCKET_ITEMS  ((max(BAG_TMHM_COUNT,              \
-                            max(BAG_BERRIES_COUNT,           \
-                            max(BAG_ITEMS_COUNT,             \
-                            max(BAG_KEYITEMS_COUNT,          \
-                                BAG_POKEBALLS_COUNT))))) + 1)
+#define MAX_POCKET_ITEMS  ((max(BAG_TMHM_COUNT,                 \
+                            max(BAG_BERRIES_COUNT,              \
+                            max(BAG_ITEMS_COUNT,                \
+                            max(BAG_KEYITEMS_COUNT,             \
+                            max(BAG_POKEBALLS_COUNT,            \
+                                FORAGING_POUCH_ITEMS_COUNT)))))) + 1)
 
 // Up to 8 item slots can be visible at a time
 #define MAX_ITEMS_SHOWN 8
@@ -215,12 +216,15 @@ static void CancelToss(u8);
 static void ConfirmSell(u8);
 static void CancelSell(u8);
 static void Task_FadeAndCloseBagMenuIfMulch(u8 taskId);
+static void CB2_ExitForagingPouch(void);
 
 static const u8 sText_Var1CantBeHeldHere[] = _("The {STR_VAR_1} can't be held\nhere.");
 static const u8 sText_DepositHowManyVar1[] = _("Deposit how many\n{STR_VAR_1}?");
 static const u8 sText_DepositedVar2Var1s[] = _("Deposited {STR_VAR_2}\n{STR_VAR_1}.");
 static const u8 sText_NoRoomForItems[] = _("There's no room to\nstore items.");
 static const u8 sText_CantStoreImportantItems[] = _("Important items\ncan't be stored in\nthe PC!");
+static const u8 sText_ForagingPocket[] = _("FORAGING");
+static const u8 sText_ClosePouch[] = _("CLOSE POUCH");
 
 static void Task_LoadBagSortOptions(u8 taskId);
 static void ItemMenu_SortByName(u8 taskId);
@@ -382,6 +386,7 @@ static const TaskFunc sContextMenuFuncs[] = {
     [ITEMMENULOCATION_WALLY] =                  NULL,
     [ITEMMENULOCATION_PCBOX] =                  Task_ItemContext_GiveToPC,
     [ITEMMENULOCATION_BERRY_TREE_MULCH] =       Task_FadeAndCloseBagMenuIfMulch,
+    [ITEMMENULOCATION_FORAGING_POUCH] =         Task_ItemContext_Normal,
 };
 
 static const struct YesNoFuncTable sYesNoTossFunctions = {ConfirmToss, CancelToss};
@@ -580,6 +585,8 @@ static EWRAM_DATA struct ListBuffer1 *sListBuffer1 = 0;
 static EWRAM_DATA struct ListBuffer2 *sListBuffer2 = 0;
 EWRAM_DATA u16 gSpecialVar_ItemId = 0;
 static EWRAM_DATA struct TempWallyBag *sTempWallyBag = 0;
+static EWRAM_DATA struct BagPosition sBagPositionBeforeForagingPouch = {0};
+static EWRAM_DATA MainCallback sForagingPouchExitCallback = NULL;
 
 void ResetBagScrollPositions(void)
 {
@@ -617,6 +624,23 @@ void CB2_ChooseMulch(void)
 void ChooseBerryForMachine(MainCallback exitCallback)
 {
     GoToBagMenu(ITEMMENULOCATION_BERRY_BLENDER_CRUSH, POCKET_BERRIES, exitCallback);
+}
+
+void OpenForagingPouch(MainCallback exitCallback)
+{
+    sBagPositionBeforeForagingPouch = gBagPosition;
+    sForagingPouchExitCallback = exitCallback;
+    SetForagingPouchItemsPointer();
+    gBagPosition.cursorPosition[POCKET_ITEMS] = 0;
+    gBagPosition.scrollPosition[POCKET_ITEMS] = 0;
+    GoToBagMenu(ITEMMENULOCATION_FORAGING_POUCH, POCKET_ITEMS, CB2_ExitForagingPouch);
+}
+
+static void CB2_ExitForagingPouch(void)
+{
+    SetBagItemsPointers();
+    gBagPosition = sBagPositionBeforeForagingPouch;
+    SetMainCallback2(sForagingPouchExitCallback);
 }
 
 void CB2_GoToSellMenu(void)
@@ -666,7 +690,8 @@ void GoToBagMenu(u8 location, u8 pocket, MainCallback exitCallback)
             gBagPosition.pocket = pocket;
         if (gBagPosition.location == ITEMMENULOCATION_BERRY_TREE ||
             gBagPosition.location == ITEMMENULOCATION_BERRY_BLENDER_CRUSH ||
-            gBagPosition.location == ITEMMENULOCATION_BERRY_TREE_MULCH)
+            gBagPosition.location == ITEMMENULOCATION_BERRY_TREE_MULCH ||
+            gBagPosition.location == ITEMMENULOCATION_FORAGING_POUCH)
             gBagMenu->pocketSwitchDisabled = TRUE;
         gBagMenu->newScreenCallback = NULL;
         gBagMenu->toSwapPos = NOT_SWAPPING;
@@ -775,7 +800,10 @@ static bool8 SetupBagMenu(void)
         gMain.state++;
         break;
     case 13:
-        PrintPocketNames(gPocketNamesStringsTable[gBagPosition.pocket], 0);
+        if (gBagPosition.location == ITEMMENULOCATION_FORAGING_POUCH)
+            PrintPocketNames(sText_ForagingPocket, 0);
+        else
+            PrintPocketNames(gPocketNamesStringsTable[gBagPosition.pocket], 0);
         CopyPocketNameToWindow(0);
         DrawPocketIndicatorSquare(gBagPosition.pocket, TRUE);
         gMain.state++;
@@ -909,7 +937,10 @@ static void LoadBagItemListBuffers(u8 pocketId)
             subBuffer[i].name = sListBuffer2->name[i];
             subBuffer[i].id = i;
         }
-        StringCopy(sListBuffer2->name[i], gText_CloseBag);
+        if (gBagPosition.location == ITEMMENULOCATION_FORAGING_POUCH)
+            StringCopy(sListBuffer2->name[i], sText_ClosePouch);
+        else
+            StringCopy(sListBuffer2->name[i], gText_CloseBag);
         subBuffer = sListBuffer1->subBuffers;
         subBuffer[i].name = sListBuffer2->name[i];
         subBuffer[i].id = LIST_CANCEL;
@@ -938,7 +969,12 @@ static void GetItemNameFromPocket(u8 *dest, enum Item itemId)
     case POCKET_TM_HM:
         end = StringCopy(gStringVar2, GetMoveName(ItemIdToBattleMoveId(itemId)));
         PrependFontIdToFit(gStringVar2, end, FONT_NARROW, NUM_TECHNICAL_MACHINES >= 100 ? 60 : 65);
-        if (GetItemTMHMIndex(itemId) > NUM_TECHNICAL_MACHINES)
+        if (GetItemTMHMMoveId(itemId) == MOVE_ROCK_SMASH)
+        {
+        ConvertIntToDecimalStringN(gStringVar1, 93, STR_CONV_MODE_LEADING_ZEROS, 2);
+            StringExpandPlaceholders(dest, gText_NumberItem_TMBerry);
+        }
+        else if (GetItemTMHMIndex(itemId) > NUM_TECHNICAL_MACHINES)
         {
             // Get HM number
             ConvertIntToDecimalStringN(gStringVar1, GetItemTMHMIndex(itemId) - NUM_TECHNICAL_MACHINES, STR_CONV_MODE_LEADING_ZEROS, 1);
@@ -1002,7 +1038,9 @@ static void BagMenu_ItemPrintCallback(u8 windowId, u32 itemIndex, u8 y)
         struct ItemSlot itemSlot = GetBagItemIdAndQuantity(gBagPosition.pocket, itemIndex);
 
         // Draw HM icon
-        if (gBagPosition.pocket == POCKET_TM_HM && GetItemTMHMIndex(itemSlot.itemId) > NUM_TECHNICAL_MACHINES)
+        if (gBagPosition.pocket == POCKET_TM_HM
+         && GetItemTMHMIndex(itemSlot.itemId) > NUM_TECHNICAL_MACHINES
+         && GetItemTMHMMoveId(itemSlot.itemId) != MOVE_ROCK_SMASH)
             BlitBitmapToWindow(windowId, gBagMenuHMIcon_Gfx, 8, y - 1, 16, 16);
 
         if (gBagPosition.pocket != POCKET_KEY_ITEMS && GetItemImportance(itemSlot.itemId) == FALSE)
@@ -1660,6 +1698,10 @@ static void OpenContextMenu(u8 taskId)
             gBagMenu->contextMenuItemsPtr = sContextMenuItems_Cancel;
             gBagMenu->contextMenuNumItems = ARRAY_COUNT(sContextMenuItems_Cancel);
         }
+        break;
+    case ITEMMENULOCATION_FORAGING_POUCH:
+        gBagMenu->contextMenuItemsPtr = sContextMenuItems_Cancel;
+        gBagMenu->contextMenuNumItems = ARRAY_COUNT(sContextMenuItems_Cancel);
         break;
     case ITEMMENULOCATION_PARTY:
     case ITEMMENULOCATION_SHOP:

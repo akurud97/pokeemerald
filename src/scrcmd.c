@@ -1282,7 +1282,7 @@ struct ObjectEvent *ScriptHideFollower(void)
     ClearObjectEventMovement(obj, &gSprites[obj->spriteId]);
     gSprites[obj->spriteId].animCmdIndex = 0; // Reset start frame of animation
     // Note: ScriptMovement_ returns TRUE on error
-    if (ScriptMovement_StartObjectMovementScript(obj->localId, obj->mapGroup, obj->mapNum, EnterPokeballMovement))
+    if (ScriptMovement_StartObjectMovementScript(obj->localId, obj->mapNum, obj->mapGroup, EnterPokeballMovement))
         return NULL;
     return obj;
 }

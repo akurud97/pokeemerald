@@ -1,4 +1,53 @@
 raw `
 MintakaHouse3_MapScripts::
 	.byte 0
+
+MintakaHouse3_EventScript_Object3::
+	lock
+	faceplayer
+	goto_if_set FLAG_RECEIVED_MINTAKA_SEA_INCENSE, MintakaHouse3_EventScript_Object3Repeat
+	msgbox MintakaHouse3_Text_Object3Gift, MSGBOX_DEFAULT
+	giveitem ITEM_SEA_INCENSE
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	setflag FLAG_RECEIVED_MINTAKA_SEA_INCENSE
+	release
+	end
+
+MintakaHouse3_EventScript_Object3Repeat::
+	msgbox MintakaHouse3_Text_Object3Repeat, MSGBOX_DEFAULT
+	release
+	end
 `
+
+script MintakaHouse3_EventScript_Object1 {
+    msgbox(MintakaHouse3_Text_Object1, MSGBOX_NPC)
+    end
+}
+
+script MintakaHouse3_EventScript_Object2 {
+    msgbox(MintakaHouse3_Text_Object2, MSGBOX_NPC)
+    end
+}
+
+text MintakaHouse3_Text_Object1 {
+    "My dad is visiting from Castula City.\n"
+    "I wish he would retire and settle back\l"
+    "down here."
+}
+
+text MintakaHouse3_Text_Object2 {
+    "Make sure you spend some time\n"
+    "relaxing on the beach while you’re in\l"
+    "town."
+}
+
+text MintakaHouse3_Text_Object3Gift {
+    "Ah, the scent of the lake air takes me\n"
+    "back to my youth… Take this, and carry\l"
+    "the memory with you."
+}
+
+text MintakaHouse3_Text_Object3Repeat {
+    "Ah, the scent of the lake air takes me\n"
+    "back to my youth…"
+}

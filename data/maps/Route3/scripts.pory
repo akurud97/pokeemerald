@@ -1,0 +1,152 @@
+raw `
+Route3_MapScripts::
+	.byte 0
+
+Route3_EventScript_Alex::
+	trainerbattle TRAINER_BATTLE_EARLY_RIVAL, LOCALID_NONE, TRAINER_ROUTE3_ALEX, Route3_Text_AlexIntro, Route3_Text_AlexDefeat, NULL, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, Route3_Text_AlexVictory, NULL, FALSE, TRUE, FALSE, FALSE
+	msgbox Route3_Text_AlexPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route3_EventScript_Cherise::
+	trainerbattle TRAINER_BATTLE_EARLY_RIVAL, LOCALID_NONE, TRAINER_ROUTE3_CHERISE, Route3_Text_CheriseIntro, Route3_Text_CheriseDefeat, NULL, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, Route3_Text_CheriseVictory, NULL, FALSE, TRUE, FALSE, FALSE
+	msgbox Route3_Text_CherisePostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route3_EventScript_Zack::
+	trainerbattle TRAINER_BATTLE_EARLY_RIVAL, LOCALID_NONE, TRAINER_ROUTE3_ZACK, Route3_Text_ZackIntro, Route3_Text_ZackDefeat, NULL, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, Route3_Text_ZackVictory, NULL, FALSE, TRUE, FALSE, FALSE
+	msgbox Route3_Text_ZackPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route3_EventScript_DaisyAndSummer::
+	trainerbattle TRAINER_BATTLE_EARLY_RIVAL, LOCALID_NONE, TRAINER_ROUTE3_DAISY_AND_SUMMER, Route3_Text_TwinsIntro, Route3_Text_TwinsDefeat, NULL, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, Route3_Text_TwinsVictory, Route3_Text_TwinsNeedTwoPokemon, TRUE, TRUE, FALSE, FALSE
+	msgbox Route3_Text_TwinsPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route3_EventScript_OldRodFisherman::
+	lock
+	setobjectmovementtype 1, MOVEMENT_TYPE_FACE_DOWN
+	faceplayer
+	goto_if_set FLAG_RECEIVED_OLD_ROD, Route3_EventScript_OldRodRepeat
+	msgbox Route3_Text_OldRodGift, MSGBOX_DEFAULT
+	giveitem ITEM_OLD_ROD
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	setflag FLAG_RECEIVED_OLD_ROD
+	release
+	end
+
+Route3_EventScript_OldRodRepeat::
+	msgbox Route3_Text_OldRodRepeat, MSGBOX_DEFAULT
+	release
+	end
+
+Route3_EventScript_TreeckoOwner::
+	msgbox Route3_Text_TreeckoOwner, MSGBOX_NPC
+	end
+
+Route3_EventScript_Treecko::
+	msgbox Route3_Text_Treecko, MSGBOX_NPC
+	end
+
+Route3_EventScript_Sign::
+	msgbox Route3_Text_Sign, MSGBOX_SIGN
+	end
+`
+
+text Route3_Text_AlexIntro {
+    "Our breeding facility takes care of\n"
+    "rare Pokémon! Check them out!"
+}
+
+text Route3_Text_AlexDefeat {
+    "I guess we need to be more selective\n"
+    "in our breeding."
+}
+
+text Route3_Text_AlexVictory {
+    "We breed for the best!"
+}
+
+text Route3_Text_AlexPostBattle {
+    "Go talk to our owner. Maybe you could\n"
+    "own a rare Pokémon like this yourself."
+}
+
+text Route3_Text_CheriseIntro {
+    "That tunnel was so cramped. Help my\n"
+    "Budew stretch out!"
+}
+
+text Route3_Text_CheriseDefeat {
+    "Are you headed for Mintaka City?\n"
+    "You’ll have to go through these\l"
+    "tunnels."
+}
+
+text Route3_Text_CheriseVictory {
+    "Let’s go, Budew!"
+}
+
+text Route3_Text_CherisePostBattle {
+    "It smelled so damp and musty in that\n"
+    "tunnel. I’m happy to be out in the\l"
+    "open again."
+}
+
+text Route3_Text_ZackIntro {
+    "My Pokémon are the coolest!"
+}
+
+text Route3_Text_ZackDefeat {
+    "Okay…your Pokémon are pretty cool too."
+}
+
+text Route3_Text_ZackVictory {
+    "You’re not very cool."
+}
+
+text Route3_Text_ZackPostBattle {
+    "Do you think I’m cool?"
+}
+
+text Route3_Text_TwinsIntro {
+    "Hi! Will you play with us?"
+}
+
+text Route3_Text_TwinsDefeat {
+    "We lost…"
+}
+
+text Route3_Text_TwinsVictory {
+    "Thanks for playing!"
+}
+
+text Route3_Text_TwinsNeedTwoPokemon {
+    "You need two Pokémon to play with us!"
+}
+
+text Route3_Text_TwinsPostBattle {
+    "We like to play in the tunnel."
+}
+
+text Route3_Text_OldRodGift {
+    "This pond is great for fishing. Want\n"
+    "to try it out? Here, I got an extra."
+}
+
+text Route3_Text_OldRodRepeat {
+    "How’s the fishing going?"
+}
+
+text Route3_Text_TreeckoOwner {
+    "I’m so excited to take my Treecko\n"
+    "home!"
+}
+
+text Route3_Text_Treecko {
+    "Tree-treeck!"
+}
+
+text Route3_Text_Sign {
+    "{UP_ARROW} Pokémon Breeders\n"
+    "{RIGHT_ARROW} Moss Tunnels"
+}

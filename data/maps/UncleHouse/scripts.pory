@@ -1,0 +1,148 @@
+raw `
+.set LOCALID_UNCLE, LOCALID_UNCLE_HOUSE_UNCLE
+
+UncleHouse_MapScripts::
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, UncleHouse_OnFrame
+	.byte 0
+
+UncleHouse_OnFrame:
+	map_script_2 VAR_ALASIA_INTRO_STATE, 7, UncleHouse_EventScript_FirstVisit
+	.2byte 0
+
+UncleHouse_EventScript_FirstVisit::
+	lockall
+	setvar VAR_ALASIA_INTRO_STATE, 8
+	applymovement LOCALID_UNCLE, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	applymovement LOCALID_UNCLE, Common_Movement_ExclamationMark
+	waitmovement 0
+	setspeaker SP_NAME_UNCLE
+	msgbox UncleHouse_Text_GoodToSeeYou, MSGBOX_DEFAULT
+	applymovement OBJ_EVENT_ID_PLAYER, UncleHouse_Movement_PlayerApproach
+	waitmovement 0
+	setspeaker SP_NAME_NONE
+	msgbox UncleHouse_Text_GavePackage, MSGBOX_DEFAULT
+	removeitem ITEM_PACKAGE
+	setspeaker SP_NAME_UNCLE
+	msgbox UncleHouse_Text_ThanksForPackage, MSGBOX_DEFAULT
+	applymovement LOCALID_UNCLE, UncleHouse_Movement_SearchForPokedex
+	waitmovement 0
+	msgbox UncleHouse_Text_FoundPokedex, MSGBOX_DEFAULT
+	applymovement LOCALID_UNCLE, UncleHouse_Movement_ReturnWithPokedex
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	msgbox UncleHouse_Text_ExplainPokedex, MSGBOX_DEFAULT
+	setspeaker SP_NAME_NONE
+	playfanfare MUS_OBTAIN_ITEM
+	message UncleHouse_Text_ReceivedPokedex
+	waitmessage
+	waitfanfare
+	waitbuttonpress
+	setflag FLAG_SYS_POKEDEX_GET
+	special SetUnlockedPokedexFlags
+	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
+	setspeaker SP_NAME_UNCLE
+	msgbox UncleHouse_Text_TakeTheseToo, MSGBOX_DEFAULT
+	setspeaker SP_NAME_NONE
+	giveitem ITEM_POKE_BALL, 5
+	setspeaker SP_NAME_UNCLE
+	msgbox UncleHouse_Text_AdventureAdvice, MSGBOX_DEFAULT
+	releaseall
+	end
+
+UncleHouse_EventScript_Uncle::
+	lock
+	faceplayer
+	setspeaker SP_NAME_UNCLE
+	msgbox UncleHouse_Text_PostEvent, MSGBOX_DEFAULT
+	release
+	end
+
+UncleHouse_Movement_PlayerApproach:
+	walk_up
+	walk_up
+	step_end
+
+UncleHouse_Movement_SearchForPokedex:
+	walk_left
+	walk_left
+	walk_up
+	step_end
+
+UncleHouse_Movement_ReturnWithPokedex:
+	walk_down
+	walk_down
+	walk_right
+	step_end
+
+UncleHouse_Text_GoodToSeeYou:
+	.string "{PLAYER}! It’s good to see you.\p"
+	.string "What brings you here?$"
+
+UncleHouse_Text_GavePackage:
+	.string "You gave your uncle his package.$"
+
+UncleHouse_Text_ThanksForPackage:
+	.string "Hey, thanks a lot! I knew I forgot\n"
+	.string "something at your mom’s place.\p"
+	.string "It’s your summer vacation, right?\n"
+	.string "Why don’t you stay up here for a…\p"
+	.string "Hey… Is that a Poké Ball on your\n"
+	.string "belt?\p"
+	.string "No way! That’s so cool. Does your\n"
+	.string "mom know about this?\p"
+	.string "No? That Professor Sitka… Always so\n"
+	.string "eager to hand out Pokémon…\p"
+	.string "Listen, junior. I used to be a\n"
+	.string "Pokémon Trainer myself.\p"
+	.string "Hey, I wonder if I still have a…\n"
+	.string "Hold on a sec.$"
+
+UncleHouse_Text_FoundPokedex:
+	.string "A-ha! I do still have one. And some\n"
+	.string "of these too…$"
+
+UncleHouse_Text_ExplainPokedex:
+	.string "This is a Pokédex. I’m sure you\n"
+	.string "learned all about these in school.\p"
+	.string "I never got around to filling the\n"
+	.string "thing out…\p"
+	.string "Hey, take this, and do your uncle\n"
+	.string "proud, yeah?\p"
+	.string "Get out into the world and see as\n"
+	.string "many species of Pokémon as you can.$"
+
+UncleHouse_Text_ReceivedPokedex:
+	.string "{PLAYER} received the Pokédex!$"
+
+UncleHouse_Text_TakeTheseToo:
+	.string "Take these too.$"
+
+UncleHouse_Text_AdventureAdvice:
+	.string "You’re lucky I still have this stuff\n"
+	.string "laying around. Go catch yourself\n"
+	.string "some Pokémon.\p"
+	.string "Maybe if you get strong enough, you\n"
+	.string "can take on the Gym challenge.\p"
+	.string "I don’t know if your mom will approve,\n"
+	.string "but you have my blessing.\p"
+	.string "By the way, speaking of, you should\n"
+	.string "probably go tell your mom what’s\n"
+	.string "going on.\p"
+	.string "Let her know you have a Pokémon, and\n"
+	.string "that you’re going to spend this\n"
+	.string "summer off on an adventure.\p"
+	.string "That is what you want to do, isn’t it?\n"
+	.string "I can see it in your eyes.\p"
+	.string "Alright, kid. Get out of here and hit\n"
+	.string "the road.\p"
+	.string "Come back to show me as you fill up\n"
+	.string "that old Pokédex. I ain’t going\n"
+	.string "anywhere.$"
+
+UncleHouse_Text_PostEvent:
+	.string "I’m excited for you, kid. This was my\n"
+	.string "dream when I was your age. Give it\n"
+	.string "all you’ve got.$"
+`

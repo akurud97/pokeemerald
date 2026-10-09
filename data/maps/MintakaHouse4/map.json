@@ -2,29 +2,29 @@
   "id": "MAP_MINTAKA_HOUSE4",
   "name": "MintakaHouse4",
   "layout": "LAYOUT_MINTAKA_HOUSE4",
-  "music": "MUS_DUMMY",
-  "region_map_section": "MAPSEC_SLATEPORT_CITY",
+  "music": "MUS_BW_ANVILLE_TOWN",
+  "region_map_section": "MAPSEC_MINTAKA",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
   "allow_cycling": false,
   "allow_escaping": false,
   "allow_running": true,
-  "show_map_name": true,
+  "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": 0,
+  "connections": null,
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_POKEFAN_M",
       "x": 3,
       "y": 5,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_WANDER_RIGHT_AND_LEFT",
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "MintakaHouse4_EventScript_Object1",
       "flag": "0"
     },
     {
@@ -37,20 +37,20 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "MintakaHouse4_EventScript_Object2",
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MEOWTH)",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(GRIMER_ALOLA)",
       "x": 1,
-      "y": 4,
+      "y": 5,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_type": "MOVEMENT_TYPE_WANDER_DOWN_AND_UP",
       "movement_range_x": 1,
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "MintakaHouse4_EventScript_Object3",
       "flag": "0"
     }
   ],
@@ -59,21 +59,18 @@
       "x": 4,
       "y": 7,
       "elevation": 0,
-      "dest_map": "MAP_SLATEPORT_CITY",
-      "dest_warp_id": "3"
+      "dest_map": "MAP_MINTAKA_CITY",
+      "dest_warp_id": "1"
     },
     {
       "x": 5,
       "y": 7,
       "elevation": 0,
-      "dest_map": "MAP_SLATEPORT_CITY",
-      "dest_warp_id": "3"
+      "dest_map": "MAP_MINTAKA_CITY",
+      "dest_warp_id": "1"
     }
   ],
-  "coord_events": [
-
-  ],
-  "bg_events": [
-
-  ]
+  "coord_events": [],
+  "bg_events": [],
+  "region": "REGION_HOENN"
 }

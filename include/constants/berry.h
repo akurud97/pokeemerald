@@ -66,6 +66,11 @@ enum __attribute__((__packed__)) Flavor
 #define BERRY_TREE_ROUTE_104_ORAN_2   11
 #define BERRY_TREE_ROUTE_104_SOIL_3   12
 #define BERRY_TREE_ROUTE_104_PECHA    13
+
+// Repurposed stock berry slots used by the custom Route 3 map.
+#define BERRY_TREE_ROUTE3_PECHA_1     BERRY_TREE_ROUTE_102_PECHA
+#define BERRY_TREE_ROUTE3_PECHA_2     BERRY_TREE_ROUTE_104_PECHA
+#define BERRY_TREE_ROUTE3_PECHA_3     BERRY_TREE_ROUTE_123_PECHA
 #define BERRY_TREE_ROUTE_123_QUALOT_1 14
 #define BERRY_TREE_ROUTE_123_POMEG_1  15
 #define BERRY_TREE_ROUTE_110_NANAB_1  16

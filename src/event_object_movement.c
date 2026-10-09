@@ -48,6 +48,7 @@
 #include "constants/event_objects.h"
 #include "constants/field_effects.h"
 #include "constants/items.h"
+#include "constants/maps.h"
 #include "constants/mauville_old_man.h"
 #include "constants/metatile_behaviors.h"
 #include "constants/rgb.h"
@@ -156,6 +157,7 @@ static void GetGroundEffectFlags_Ripple(struct ObjectEvent *, u32 *);
 static void GetGroundEffectFlags_Seaweed(struct ObjectEvent *, u32 *);
 static void GetGroundEffectFlags_JumpLanding(struct ObjectEvent *, u32 *);
 static u8 ObjectEventGetNearbyReflectionType(struct ObjectEvent *);
+static u8 GetUnobstructedReflectionTypeAt(s16, s16, s16);
 static u8 GetReflectionTypeByMetatileBehavior(u32);
 static void InitObjectPriorityByElevation(struct Sprite *, u8);
 static void ObjectEventUpdateSubpriority(struct ObjectEvent *, struct Sprite *);
@@ -518,6 +520,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_MovingBox,             OBJ_EVENT_PAL_TAG_MOVING_BOX},
     {gObjectEventPal_CableCar,              OBJ_EVENT_PAL_TAG_CABLE_CAR},
     {gObjectEventPal_SSTidal,               OBJ_EVENT_PAL_TAG_SSTIDAL},
+    {gObjectEventPal_Train,                 OBJ_EVENT_PAL_TAG_TRAIN},
     {gObjectEventPal_Kyogre,                OBJ_EVENT_PAL_TAG_KYOGRE},
     {gObjectEventPal_KyogreReflection,      OBJ_EVENT_PAL_TAG_KYOGRE_REFLECTION},
     {gObjectEventPal_Groudon,               OBJ_EVENT_PAL_TAG_GROUDON},
@@ -540,9 +543,15 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPalette_Worker,            OBJ_EVENT_PAL_WORKER},
     {gObjectEventPalette_Sage,              OBJ_EVENT_PAL_SAGE},
     {gObjectEventPalette_Roughneck,         OBJ_EVENT_PAL_ROUGHNECK},
-    {gObjectEventPalette_Skier_m,           OBJ_EVENT_PAL_SKIER_M},
-    {gObjectEventPalette_Skier_f,           OBJ_EVENT_PAL_SKIER_F},
+    {gObjectEventPalette_Boarder,           OBJ_EVENT_PAL_BOARDER},
+    {gObjectEventPalette_Skier,             OBJ_EVENT_PAL_SKIER},
     {gObjectEventPalette_Guard,             OBJ_EVENT_PAL_GUARD},
+    {gObjectEventPalette_AcolyteF,          OBJ_EVENT_PAL_ACOLYTE_F},
+    {gObjectEventPalette_AcolyteM,          OBJ_EVENT_PAL_ACOLYTE_M},
+#if !IS_FRLG
+    {gObjectEventPal_NpcWhite,              OBJ_EVENT_PAL_TAG_NPC_WHITE},
+    {gObjectEventPal_NpcPink,               OBJ_EVENT_PAL_TAG_NPC_PINK},
+#endif
 #if IS_FRLG
     {gObjectEventPal_PlayerFrlg,            OBJ_EVENT_PAL_TAG_PLAYER_RED},
     {gObjectEventPal_PlayerReflectionFrlg,  OBJ_EVENT_PAL_TAG_PLAYER_RED_REFLECTION},
@@ -3233,6 +3242,8 @@ static void SetBerryTreeGraphics(struct ObjectEvent *objectEvent, struct Sprite 
 
 const struct ObjectEventGraphicsInfo *GetObjectEventGraphicsInfo(u16 graphicsId)
 {
+    const struct ObjectEventGraphicsInfo *graphicsInfo;
+
     if (graphicsId >= OBJ_EVENT_GFX_VARS && graphicsId <= OBJ_EVENT_GFX_VAR_F)
         graphicsId = VarGetObjectEventGraphicsId(graphicsId - OBJ_EVENT_GFX_VARS);
 
@@ -3245,7 +3256,14 @@ const struct ObjectEventGraphicsInfo *GetObjectEventGraphicsInfo(u16 graphicsId)
     if (graphicsId >= NUM_OBJ_EVENT_GFX)
         graphicsId = OBJ_EVENT_GFX_NINJA_BOY;
 
-    return gObjectEventGraphicsInfoPointers[graphicsId];
+    graphicsInfo = gObjectEventGraphicsInfoPointers[graphicsId];
+    if (graphicsInfo == NULL)
+    {
+        DebugPrintf("Unregistered object graphics ID %u; using Ninja Boy", graphicsId);
+        graphicsInfo = gObjectEventGraphicsInfoPointers[OBJ_EVENT_GFX_NINJA_BOY];
+    }
+
+    return graphicsInfo;
 }
 
 static void SetObjectEventDynamicGraphicsId(struct ObjectEvent *objectEvent)
@@ -6472,6 +6490,38 @@ enum Collision GetSidewaysStairsCollision(struct ObjectEvent *objectEvent, enum 
 
 static enum Collision GetVanillaCollision(struct ObjectEvent *objectEvent, s16 x, s16 y, enum Direction direction)
 {
+    const struct MapConnection *connection;
+    u16 introState;
+
+    // The field-input handler starts the Route 1 warning cutscene.  Keep the
+    // protected grass impassable as a side-effect-free fallback so no other
+    // movement mode can place a starterless player into an encounter tile.
+    if (objectEvent->isPlayer
+     && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_HYADES_ROUTE1)
+     && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_HYADES_ROUTE1)
+     && VarGet(VAR_ALASIA_INTRO_STATE) == 3
+     && ((x == 12 + MAP_OFFSET && y == 18 + MAP_OFFSET && (direction == DIR_NORTH || direction == DIR_WEST))
+      || (x == 13 + MAP_OFFSET && y == 17 + MAP_OFFSET && (direction == DIR_NORTH || direction == DIR_WEST))))
+        return COLLISION_IMPASSABLE;
+
+    if (objectEvent->isPlayer
+     && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_ALASIAVILLE)
+     && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_ALASIAVILLE))
+    {
+        introState = VarGet(VAR_ALASIA_INTRO_STATE);
+        connection = GetMapConnectionAtPos(x, y);
+        if (connection != NULL
+         && (introState == 2
+          || (introState >= 3 && introState < 10
+           && (connection->mapGroup != MAP_GROUP(MAP_HYADES_ROUTE1)
+            || connection->mapNum != MAP_NUM(MAP_HYADES_ROUTE1)))))
+        {
+            gSpecialVar_0x8000 = direction;
+            ScriptContext_SetupScript(Alasiaville_EventScript_BlockConnectionExit);
+            return COLLISION_IMPASSABLE;
+        }
+    }
+
     if (IsCoordOutsideObjectEventMovementRange(objectEvent, x, y))
         return COLLISION_OUTSIDE_RANGE;
     else if (MapGridGetCollisionAt(x, y) || GetMapBorderIdAt(x, y) == CONNECTION_INVALID || IsMetatileDirectionallyImpassable(objectEvent, x, y, direction))
@@ -9924,10 +9974,9 @@ static void GetGroundEffectFlags_JumpLanding(struct ObjectEvent *objEvent, u32 *
     }
 }
 
-#define RETURN_REFLECTION_TYPE_AT(x, y)              \
-    b = MapGridGetMetatileBehaviorAt(x, y);          \
-    result = GetReflectionTypeByMetatileBehavior(b); \
-    if (result != REFL_TYPE_NONE)                    \
+#define RETURN_REFLECTION_TYPE_AT(x, y, originY)       \
+    result = GetUnobstructedReflectionTypeAt(x, y, originY); \
+    if (result != REFL_TYPE_NONE)                      \
         return result;
 
 static u8 ObjectEventGetNearbyReflectionType(struct ObjectEvent *objEvent)
@@ -9938,19 +9987,19 @@ static u8 ObjectEventGetNearbyReflectionType(struct ObjectEvent *objEvent)
     s16 width = (info->width + 8) >> 4;
     s16 height = (info->height + 8) >> 4;
     s16 i, j;
-    u8 result, b; // used by RETURN_REFLECTION_TYPE_AT
+    u8 result; // used by RETURN_REFLECTION_TYPE_AT
     s16 one = 1;
 
     for (i = 0; i < height; i++)
     {
-        RETURN_REFLECTION_TYPE_AT(objEvent->currentCoords.x, objEvent->currentCoords.y + one + i)
-        RETURN_REFLECTION_TYPE_AT(objEvent->previousCoords.x, objEvent->previousCoords.y + one + i)
+        RETURN_REFLECTION_TYPE_AT(objEvent->currentCoords.x, objEvent->currentCoords.y + one + i, objEvent->currentCoords.y)
+        RETURN_REFLECTION_TYPE_AT(objEvent->previousCoords.x, objEvent->previousCoords.y + one + i, objEvent->previousCoords.y)
         for (j = 1; j < width; j++)
         {
-            RETURN_REFLECTION_TYPE_AT(objEvent->currentCoords.x + j, objEvent->currentCoords.y + one + i)
-            RETURN_REFLECTION_TYPE_AT(objEvent->currentCoords.x - j, objEvent->currentCoords.y + one + i)
-            RETURN_REFLECTION_TYPE_AT(objEvent->previousCoords.x + j, objEvent->previousCoords.y + one + i)
-            RETURN_REFLECTION_TYPE_AT(objEvent->previousCoords.x - j, objEvent->previousCoords.y + one + i)
+            RETURN_REFLECTION_TYPE_AT(objEvent->currentCoords.x + j, objEvent->currentCoords.y + one + i, objEvent->currentCoords.y)
+            RETURN_REFLECTION_TYPE_AT(objEvent->currentCoords.x - j, objEvent->currentCoords.y + one + i, objEvent->currentCoords.y)
+            RETURN_REFLECTION_TYPE_AT(objEvent->previousCoords.x + j, objEvent->previousCoords.y + one + i, objEvent->previousCoords.y)
+            RETURN_REFLECTION_TYPE_AT(objEvent->previousCoords.x - j, objEvent->previousCoords.y + one + i, objEvent->previousCoords.y)
         }
     }
 
@@ -9958,6 +10007,21 @@ static u8 ObjectEventGetNearbyReflectionType(struct ObjectEvent *objEvent)
 }
 
 #undef RETURN_REFLECTION_TYPE_AT
+
+static u8 GetUnobstructedReflectionTypeAt(s16 x, s16 y, s16 originY)
+{
+    s16 checkY;
+
+    // Large object sprites search more than one tile ahead for reflective
+    // ground. Do not let that search see water through a wall or fence.
+    for (checkY = originY + 1; checkY < y; checkY++)
+    {
+        if (MapGridGetCollisionAt(x, checkY))
+            return REFL_TYPE_NONE;
+    }
+
+    return GetReflectionTypeByMetatileBehavior(MapGridGetMetatileBehaviorAt(x, y));
+}
 
 static u8 GetReflectionTypeByMetatileBehavior(u32 behavior)
 {

@@ -3,7 +3,6 @@
   "name": "SouthernIsland_Exterior",
   "layout": "LAYOUT_SOUTHERN_ISLAND_EXTERIOR",
   "music": "MUS_ABANDONED_SHIP",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_SOUTHERN_ISLAND",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -13,7 +12,7 @@
   "allow_running": true,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": 0,
+  "connections": null,
   "object_events": [
     {
       "local_id": "LOCALID_SOUTHERN_ISLAND_SAILOR",
@@ -60,9 +59,7 @@
       "dest_warp_id": "1"
     }
   ],
-  "coord_events": [
-
-  ],
+  "coord_events": [],
   "bg_events": [
     {
       "type": "sign",
@@ -72,5 +69,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "SouthernIsland_Exterior_EventScript_Sign"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

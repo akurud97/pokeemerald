@@ -3,7 +3,6 @@
   "name": "Route118",
   "layout": "LAYOUT_ROUTE118",
   "music": "MUS_ROUTE118",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_ROUTE_118",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
@@ -22,8 +21,9 @@
   ],
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_SAGE",
-      "x": 22,
+      "local_id": "LOCALID_ROUTE118_GABBY_1",
+      "graphics_id": "OBJ_EVENT_GFX_EXPERT_F",
+      "x": 24,
       "y": 17,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -35,6 +35,7 @@
       "flag": "FLAG_HIDE_ROUTE_118_GABBY_AND_TY_1"
     },
     {
+      "local_id": "LOCALID_ROUTE118_GABBY_3",
       "graphics_id": "OBJ_EVENT_GFX_SAGE",
       "x": 40,
       "y": 7,
@@ -152,7 +153,7 @@
       "flag": "FLAG_ITEM_ROUTE_118_HYPER_POTION"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ARTIST",
+      "graphics_id": "OBJ_EVENT_GFX_HEX_MANIAC",
       "x": 44,
       "y": 27,
       "elevation": 0,
@@ -194,9 +195,7 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [
-
-  ],
+  "coord_events": [],
   "bg_events": [
     {
       "type": "sign",
@@ -206,5 +205,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route118_EventScript_RouteSignMauville"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

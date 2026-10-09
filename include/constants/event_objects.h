@@ -421,9 +421,12 @@ enum
     OBJ_EVENT_GFX_WORKER,
     OBJ_EVENT_GFX_SAGE,
     OBJ_EVENT_GFX_ROUGHNECK,
-    OBJ_EVENT_GFX_SKIER_M,
-    OBJ_EVENT_GFX_SKIER_F,
+    OBJ_EVENT_GFX_BOARDER,
+    OBJ_EVENT_GFX_SKIER,
     OBJ_EVENT_GFX_GUARD,
+    OBJ_EVENT_GFX_ACOLYTE_F,
+    OBJ_EVENT_GFX_ACOLYTE_M,
+    OBJ_EVENT_GFX_TRAIN,
     NUM_OBJ_EVENT_GFX,
 };
 
@@ -588,9 +591,12 @@ enum
 #define OBJ_EVENT_PAL_WORKER                      0x113A
 #define OBJ_EVENT_PAL_SAGE                        0x113B
 #define OBJ_EVENT_PAL_ROUGHNECK                   0x113C
-#define OBJ_EVENT_PAL_SKIER_M                     0x113D
-#define OBJ_EVENT_PAL_SKIER_F                     0x113E
+#define OBJ_EVENT_PAL_BOARDER                     0x113D
+#define OBJ_EVENT_PAL_SKIER                       0x113E
 #define OBJ_EVENT_PAL_GUARD                       0x113F
+#define OBJ_EVENT_PAL_ACOLYTE_F                   0x1140
+#define OBJ_EVENT_PAL_ACOLYTE_M                   0x1141
+#define OBJ_EVENT_PAL_TAG_TRAIN                   0x1142
 
 #if OW_FOLLOWERS_POKEBALLS
 // Vanilla

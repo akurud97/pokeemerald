@@ -1,0 +1,21 @@
+python3 tools/learnset_helpers/make_tutors.py tools/learnset_helpers/build/all_tutors.json
+tools/gbagfx/gbagfx data/tilesets/secondary/castula/tiles.png build/assets/data/tilesets/secondary/castula/tiles.png_num_tiles_498__Wnum_tiles.4bpp -num_tiles 498 -Wnum_tiles
+tools/gbagfx/gbagfx data/tilesets/secondary/fallarbor_rose_tent/tiles.png build/assets/data/tilesets/secondary/fallarbor_rose_tent/tiles.png.4bpp 
+tools/gbagfx/gbagfx data/tilesets/secondary/fallarbor_cedar/tiles.png build/assets/data/tilesets/secondary/fallarbor_cedar/tiles.png.4bpp 
+Ignoring -num_tiles 498 because tile 499 contains non-transparent pixels.
+tools/gbagfx/gbagfx data/tilesets/secondary/liesma/tiles.png build/assets/data/tilesets/secondary/liesma/tiles.png_num_tiles_275__Wnum_tiles.4bpp -num_tiles 275 -Wnum_tiles
+tools/compresSmol/compresSmol -w build/assets/data/tilesets/secondary/castula/tiles.png_num_tiles_498__Wnum_tiles.4bpp build/assets/data/tilesets/secondary/castula/tiles.png_num_tiles_498__Wnum_tiles.4bpp.fastSmol false false false
+tools/compresSmol/compresSmol -w build/assets/data/tilesets/secondary/fallarbor_cedar/tiles.png.4bpp build/assets/data/tilesets/secondary/fallarbor_cedar/tiles.png.4bpp.fastSmol false false false
+tools/compresSmol/compresSmol -w build/assets/data/tilesets/secondary/fallarbor_rose_tent/tiles.png.4bpp build/assets/data/tilesets/secondary/fallarbor_rose_tent/tiles.png.4bpp.fastSmol false false false
+tools/compresSmol/compresSmol -w build/assets/data/tilesets/secondary/liesma/tiles.png_num_tiles_275__Wnum_tiles.4bpp build/assets/data/tilesets/secondary/liesma/tiles.png_num_tiles_275__Wnum_tiles.4bpp.fastSmol false false false
+/opt/devkitpro/devkitARM/bin/../libexec/gcc/arm-none-eabi/13.2.0/cc1 -quiet <flags> -o build/emerald/src/tilesets.o src/tilesets.c
+arm-none-eabi-ld: warning: ../../pokeemerald.elf has a LOAD segment with RWX permissions
+arm-none-eabi-ld: warning: ../../pokeemerald.elf has a LOAD segment with RWX permissions
+Memory region         Used Size  Region Size  %age Used
+           EWRAM:      226756 B       256 KB     86.50%
+           IWRAM:       28376 B        32 KB     86.60%
+             ROM:    28990496 B        32 MB     86.40%
+cd build/emerald && arm-none-eabi-ld -Map ../../pokeemerald.map --print-memory-usage --gc-sections -T ../../ld_script_modern.ld -o ../../pokeemerald.elf <objs> <libs> | cat
+tools/gbafix/gbafix pokeemerald.elf -t"POKEMON EMER" -cBPEE -m01 -r0 --silent
+arm-none-eabi-objcopy -O binary pokeemerald.elf pokeemerald.gba
+tools/gbafix/gbafix pokeemerald.gba -p --silent

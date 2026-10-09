@@ -3,7 +3,6 @@
   "name": "Route114_FossilManiacsTunnel",
   "layout": "LAYOUT_ROUTE114_FOSSIL_MANIACS_TUNNEL",
   "music": "MUS_FALLARBOR",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_ROUTE_114",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -13,7 +12,7 @@
   "allow_running": false,
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": 0,
+  "connections": null,
   "object_events": [
     {
       "local_id": "LOCALID_FOSSIL_MANIAC",
@@ -73,7 +72,6 @@
       "script": "Route114_FossilManiacsTunnel_EventScript_ManiacMentionCaveIn"
     }
   ],
-  "bg_events": [
-
-  ]
+  "bg_events": [],
+  "region": "REGION_HOENN"
 }

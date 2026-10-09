@@ -2,6 +2,11 @@
 #define GUARD_EVENT_SCRIPTS_H
 
 extern const u8 EventScript_Follower[];
+extern const u8 Route4_EventScript_SandPile[];
+extern const u8 Alasiaville_EventScript_BlockConnectionExit[];
+extern const u8 Route1_EventScript_LabDoorLocked[];
+extern const u8 Route1_EventScript_GrassWarning[];
+extern const u8 SitkaLab_EventScript_BlockWarp[];
 extern const u8 EventScript_FollowerEnd[];
 extern const u8 EventScript_FollowerGeneric[];
 extern const u8 EventScript_FollowerLovesYou[];
@@ -405,6 +410,7 @@ extern const u8 EventScript_FailSweetScent[];
 extern const u8 EventScript_UseFlash[];
 extern const u8 EventScript_UseCut[];
 extern const u8 EventScript_UseRockSmash[];
+extern const u8 EventScript_UsePickaxe[];
 extern const u8 EventScript_UseDig[];
 extern const u8 EventScript_UseCutGrass[];
 extern const u8 EventScript_UseDefog[];
