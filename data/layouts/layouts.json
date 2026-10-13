@@ -279,10 +279,10 @@
     {
       "id": "LAYOUT_ROUTE110",
       "name": "Route110_Layout",
-      "width": 40,
-      "height": 100,
+      "width": 80,
+      "height": 45,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Mauville",
+      "secondary_tileset": "gTileset_Fallarbor",
       "border_filepath": "data/layouts/Route110/border.bin",
       "blockdata_filepath": "data/layouts/Route110/map.bin",
       "layout_version": "emerald"
@@ -10009,10 +10009,10 @@
     {
       "id": "LAYOUT_LIESMA_CITY_SOUTH",
       "name": "LiesmaCitySouth_Layout",
-      "width": 67,
+      "width": 70,
       "height": 48,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_BattleFrontierOutsideWest",
+      "secondary_tileset": "gTileset_Liesma",
       "border_filepath": "data/layouts/LiesmaCitySouth/border.bin",
       "blockdata_filepath": "data/layouts/LiesmaCitySouth/map.bin",
       "layout_version": "emerald"
@@ -10021,9 +10021,9 @@
       "id": "LAYOUT_LIESMA_CITY_NORTH",
       "name": "LiesmaCityNorth_Layout",
       "width": 65,
-      "height": 40,
+      "height": 50,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_BattleFrontierOutsideEast",
+      "secondary_tileset": "gTileset_Liesma",
       "border_filepath": "data/layouts/LiesmaCityNorth/border.bin",
       "blockdata_filepath": "data/layouts/LiesmaCityNorth/map.bin",
       "layout_version": "emerald"
@@ -11040,7 +11040,7 @@
     {
       "id": "LAYOUT_LIESMA_CITY_SOUTH2",
       "name": "LiesmaCitySouth2_Layout",
-      "width": 67,
+      "width": 70,
       "height": 48,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Liesma",
@@ -11061,8 +11061,8 @@
     {
       "id": "LAYOUT_CASTULATEST",
       "name": "castulatest_Layout",
-      "width": 8,
-      "height": 10,
+      "width": 1,
+      "height": 3,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Castula",
       "border_filepath": "data/layouts/castulatest/border.bin",

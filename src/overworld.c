@@ -533,12 +533,123 @@ void ApplyNewEncryptionKeyToGameStats(u32 newKey)
         ApplyNewEncryptionKeyToWord(&gSaveBlock1Ptr->gameStats[i], newKey);
 }
 
+// Dynamic In-Connection Clones by tustin2121 (ba40f2a6ce), adapted for expansion.
+static void LoadConnectionObjectEventTemplates(void)
+{
+    u32 n = gMapHeader.events->objectEventCount;
+    u32 c, i;
+
+    if (n > OBJECT_EVENT_TEMPLATES_COUNT)
+        n = OBJECT_EVENT_TEMPLATES_COUNT;
+
+    // Rebuild only the generated tail, preserving current-map positions on Continue.
+    memset(&gSaveBlock1Ptr->objectEventTemplates[n], 0,
+           (OBJECT_EVENT_TEMPLATES_COUNT - n) * sizeof(struct ObjectEventTemplate));
+    if (gMapHeader.connections == NULL)
+        return;
+
+    for (c = 0; c < gMapHeader.connections->count && n < OBJECT_EVENT_TEMPLATES_COUNT; c++)
+    {
+        const struct MapConnection *connection = &gMapHeader.connections->connections[c];
+        const struct MapHeader *map;
+
+        if (connection->direction != CONNECTION_NORTH && connection->direction != CONNECTION_SOUTH
+         && connection->direction != CONNECTION_WEST && connection->direction != CONNECTION_EAST)
+            continue;
+        map = GetMapHeaderFromConnection(connection);
+        if (map == NULL || map->events == NULL)
+            continue;
+
+        for (i = 0; i < map->events->objectEventCount && n < OBJECT_EVENT_TEMPLATES_COUNT; i++)
+        {
+            const struct ObjectEventTemplate *from = &map->events->objectEvents[i];
+            struct ObjectEventTemplate *to;
+            s32 x = from->x;
+            s32 y = from->y;
+            bool32 duplicate = FALSE;
+
+            // Do not recursively clone an existing FRLG clone.
+            if (from->kind != OBJ_KIND_NORMAL)
+                continue;
+            switch (connection->direction)
+            {
+            case CONNECTION_NORTH:
+                x += connection->offset;
+                y -= map->mapLayout->height;
+                break;
+            case CONNECTION_SOUTH:
+                x += connection->offset;
+                y += gMapHeader.mapLayout->height;
+                break;
+            case CONNECTION_WEST:
+                x -= map->mapLayout->width;
+                y += connection->offset;
+                break;
+            case CONNECTION_EAST:
+                x += gMapHeader.mapLayout->width;
+                y += connection->offset;
+                break;
+            }
+            if (x < -MAP_OFFSET - 2 || x > gMapHeader.mapLayout->width + MAP_OFFSET + 2
+             || y < -MAP_OFFSET - 2 || y > gMapHeader.mapLayout->height + MAP_OFFSET + 2)
+                continue;
+
+            for (u32 j = 0; j < n; j++)
+            {
+                const struct ObjectEventTemplate *existing = &gSaveBlock1Ptr->objectEventTemplates[j];
+                if (existing->kind == OBJ_KIND_CLONE && existing->targetLocalId == from->localId
+                 && existing->targetMapNum == connection->mapNum && existing->targetMapGroup == connection->mapGroup)
+                    duplicate = TRUE;
+            }
+            if (duplicate)
+                continue;
+
+            to = &gSaveBlock1Ptr->objectEventTemplates[n];
+            *to = *from;
+            to->kind = OBJ_KIND_CLONE;
+            // Use an unused local ID even when the map's IDs are sparse.
+            for (u32 localId = 1; localId < OBJ_EVENT_ID_CAMERA; localId++)
+            {
+                bool32 used = FALSE;
+                for (u32 j = 0; j < n; j++)
+                    if (gSaveBlock1Ptr->objectEventTemplates[j].localId == localId)
+                        used = TRUE;
+                if (!used)
+                {
+                    to->localId = localId;
+                    break;
+                }
+            }
+            to->x = x;
+            to->y = y;
+            to->targetLocalId = from->localId;
+            to->targetMapNum = connection->mapNum;
+            to->targetMapGroup = connection->mapGroup;
+            n++;
+        }
+    }
+}
+
+u8 GetLoadedObjectEventTemplateCount(void)
+{
+    u32 count = gMapHeader.events->objectEventCount;
+
+    if (count > OBJECT_EVENT_TEMPLATES_COUNT)
+        count = OBJECT_EVENT_TEMPLATES_COUNT;
+
+    while (count < OBJECT_EVENT_TEMPLATES_COUNT
+        && gSaveBlock1Ptr->objectEventTemplates[count].kind == OBJ_KIND_CLONE
+        && gSaveBlock1Ptr->objectEventTemplates[count].localId != LOCALID_NONE)
+        count++;
+    return count;
+}
+
 void LoadObjEventTemplatesFromHeader(void)
 {
     // Clear map object templates
     CpuFill32(0, gSaveBlock1Ptr->objectEventTemplates, sizeof(gSaveBlock1Ptr->objectEventTemplates));
 
-    for (u32 i = 0; i < gMapHeader.events->objectEventCount; i++)
+    for (u32 i = 0; i < gMapHeader.events->objectEventCount && i < OBJECT_EVENT_TEMPLATES_COUNT; i++)
     {
         if (gMapHeader.events->objectEvents[i].kind == OBJ_KIND_CLONE)
         {
@@ -562,6 +673,7 @@ void LoadObjEventTemplatesFromHeader(void)
             gSaveBlock1Ptr->objectEventTemplates[i] = gMapHeader.events->objectEvents[i];
         }
     }
+    LoadConnectionObjectEventTemplates();
 }
 
 void LoadSaveblockObjEventScripts(void)
@@ -570,8 +682,9 @@ void LoadSaveblockObjEventScripts(void)
     struct ObjectEventTemplate *savObjTemplates = gSaveBlock1Ptr->objectEventTemplates;
     s32 i;
 
-    for (i = 0; i < OBJECT_EVENT_TEMPLATES_COUNT; i++)
+    for (i = 0; i < gMapHeader.events->objectEventCount && i < OBJECT_EVENT_TEMPLATES_COUNT; i++)
         savObjTemplates[i].script = mapHeaderObjTemplates[i].script;
+    LoadConnectionObjectEventTemplates();
 }
 
 static struct ObjectEventTemplate *GetObjectEventTemplate(u8 localId)

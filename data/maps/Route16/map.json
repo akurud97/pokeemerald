@@ -15,7 +15,7 @@
   "connections": [
     {
       "map": "MAP_LIESMA_CITY_NORTH",
-      "offset": -30,
+      "offset": -40,
       "direction": "right"
     },
     {

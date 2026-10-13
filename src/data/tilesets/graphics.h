@@ -528,7 +528,7 @@ const u16 gTilesetPalettes_Sootopolis[][16] =
 
 const u32 gTilesetTiles_BattleFrontierOutsideWest[] = INCGFX_U32("data/tilesets/secondary/battle_frontier_outside_west/tiles.png", ".4bpp.fastSmol", "-num_tiles 508 -Wnum_tiles");
 
-const u32 gTilesetTiles_Liesma[] = INCGFX_U32("data/tilesets/secondary/liesma/tiles.png", ".4bpp.fastSmol", "-num_tiles 278 -Wnum_tiles");
+const u32 gTilesetTiles_Liesma[] = INCGFX_U32("data/tilesets/secondary/liesma/tiles.png", ".4bpp.fastSmol", "-num_tiles 290 -Wnum_tiles");
 
 const u16 gTilesetPalettes_Liesma[][16] =
 {

@@ -1,6 +1,9 @@
 #ifndef GUARD_METATILE_LABELS_H
 #define GUARD_METATILE_LABELS_H
 
+// gTileset_Acamar
+#define METATILE_Acamar_Door  0x3AA
+
 // gTileset_BattleArena
 #define METATILE_BattleArena_Door  0x21B
 
@@ -333,24 +336,19 @@
 #define METATILE_Lavaridge_NormalGrass          0x206
 #define METATILE_Lavaridge_RockWall             0x274
 
-// gTileset_Acamar
-#define METATILE_Acamar_Door  0x3AA
-
-// gTileset_Sansuna
-#define METATILE_Sansuna_Door 0x3EC
-
 // gTileset_LavenderTown
 #define METATILE_LavenderTown_Door  0x2A2
+
+// gTileset_Liesma
+#define METATILE_Liesma_Door_BattleDome  0x2CB
+#define METATILE_Liesma_Door_Frontier    0x2B6
+#define METATILE_Liesma_Door_Wooden      0x33E
 
 // gTileset_Lilycove
 #define METATILE_Lilycove_Door             0x246
 #define METATILE_Lilycove_Door_DeptStore   0x30C
 #define METATILE_Lilycove_Door_SafariZone  0x32D
 #define METATILE_Lilycove_Door_Wooden      0x28E
-
-#define METATILE_Liesma_Door_BattleDome 0x2CB
-#define METATILE_Liesma_Door_Frontier 0x2B6
-#define METATILE_Liesma_Door_Wooden 0x33E
 #define METATILE_Lilycove_Wailmer0         0x290
 #define METATILE_Lilycove_Wailmer0_Alt     0x298
 #define METATILE_Lilycove_Wailmer1         0x291
@@ -605,6 +603,9 @@
 // gTileset_SaffronCity
 #define METATILE_SaffronCity_Door         0x284
 #define METATILE_SaffronCity_SilphCoDoor  0x2BC
+
+// gTileset_Sansuna
+#define METATILE_Sansuna_Door  0x3EC
 
 // gTileset_SeaCottage
 #define METATILE_SeaCottage_Teleporter_CableBall_Bottom  0x2BA
@@ -1096,5 +1097,9 @@
 #define METATILE_RSMossdeepGym_RedArrow_Up           0x20D
 #define METATILE_RSMossdeepGym_Switch_Down           0x239
 #define METATILE_RSMossdeepGym_Switch_Up             0x238
+
+// gTileset_Wurren
+#define METATILE_Wurren_ShortGrass_Mauville204  0x253
+#define METATILE_Wurren_ShortGrass_Mauville205  0x254
 
 #endif // GUARD_METATILE_LABELS_H

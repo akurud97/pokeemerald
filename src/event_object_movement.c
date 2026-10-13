@@ -1915,6 +1915,18 @@ static u8 TrySetupObjectEventSprite(const struct ObjectEventTemplate *objectEven
     return objectEventId;
 }
 
+static const struct ObjectEventTemplate *GetCloneSourceTemplate(const struct ObjectEventTemplate *template)
+{
+    const struct MapHeader *mapHeader;
+
+    if (template->kind != OBJ_KIND_CLONE)
+        return template;
+    mapHeader = Overworld_GetMapHeaderByGroupAndId(template->targetMapGroup, template->targetMapNum);
+    if (mapHeader->events == NULL)
+        return NULL;
+    return FindObjectEventTemplateByLocalId(template->targetLocalId, mapHeader->events->objectEvents, mapHeader->events->objectEventCount);
+}
+
 u8 TrySpawnObjectEventTemplate(const struct ObjectEventTemplate *objectEventTemplate, u8 mapNum, u8 mapGroup, s16 cameraX, s16 cameraY)
 {
     u8 objectEventId;
@@ -1922,7 +1934,20 @@ u8 TrySpawnObjectEventTemplate(const struct ObjectEventTemplate *objectEventTemp
     struct SpriteFrameImage spriteFrameImage;
     const struct ObjectEventGraphicsInfo *graphicsInfo;
     const struct SubspriteTable *subspriteTables = NULL;
-    const struct ObjectEventTemplate objectEventTemplateLocal = TryGetObjectEventTemplateForOWE(objectEventTemplate);
+    struct ObjectEventTemplate resolvedTemplate = *objectEventTemplate;
+    if (objectEventTemplate->kind == OBJ_KIND_CLONE)
+    {
+        const struct ObjectEventTemplate *source = GetCloneSourceTemplate(objectEventTemplate);
+        if (source == NULL || source->kind != OBJ_KIND_NORMAL)
+            return OBJECT_EVENTS_COUNT;
+        // Resolve before sprite/OWE setup: clone metadata shares the movement fields.
+        resolvedTemplate = *source;
+        resolvedTemplate.x = objectEventTemplate->x;
+        resolvedTemplate.y = objectEventTemplate->y;
+        mapNum = objectEventTemplate->targetMapNum;
+        mapGroup = objectEventTemplate->targetMapGroup;
+    }
+    const struct ObjectEventTemplate objectEventTemplateLocal = TryGetObjectEventTemplateForOWE(&resolvedTemplate);
     u16 graphicsId = objectEventTemplateLocal.graphicsId;
 
     graphicsInfo = GetObjectEventGraphicsInfo(graphicsId);
@@ -2891,18 +2916,19 @@ void TrySpawnLightSprites(s16 camX, s16 camY)
     else if (InTrainerHill())
         objectCount = 2;
     else
-        objectCount = gMapHeader.events->objectEventCount;
+        objectCount = GetLoadedObjectEventTemplateCount();
 
     for (i = 0; i < objectCount; i++)
     {
         struct ObjectEventTemplate *template = &gSaveBlock1Ptr->objectEventTemplates[i];
+        const struct ObjectEventTemplate *source = GetCloneSourceTemplate(template);
         s16 npcX = template->x + MAP_OFFSET;
         s16 npcY = template->y + MAP_OFFSET;
         if (top <= npcY && bottom >= npcY
          && left <= npcX && right >= npcX
          && !FlagGet(template->flagId)
-         && template->graphicsId == OBJ_EVENT_GFX_LIGHT_SPRITE)  // event is light sprite instead
-            SpawnLightSprite(npcX, npcY, camX, camY, template->trainerRange_berryTreeId);
+         && source != NULL && source->graphicsId == OBJ_EVENT_GFX_LIGHT_SPRITE)  // event is light sprite instead
+            SpawnLightSprite(npcX, npcY, camX, camY, source->trainerRange_berryTreeId);
     }
 }
 
@@ -2923,7 +2949,7 @@ void TrySpawnObjectEvents(s16 cameraX, s16 cameraY)
         else if (InTrainerHill())
             objectCount = HILL_TRAINERS_PER_FLOOR;
         else
-            objectCount = gMapHeader.events->objectEventCount;
+            objectCount = GetLoadedObjectEventTemplateCount();
 
         for (i = 0; i < objectCount; i++)
         {
@@ -2934,7 +2960,11 @@ void TrySpawnObjectEvents(s16 cameraX, s16 cameraY)
             if (top <= npcY && bottom >= npcY && left <= npcX && right >= npcX && !FlagGet(template->flagId))
             {
                 if (template->graphicsId == OBJ_EVENT_GFX_LIGHT_SPRITE)
-                    SpawnLightSprite(npcX, npcY, cameraX, cameraY, template->trainerRange_berryTreeId); // light sprite instead
+                {
+                    const struct ObjectEventTemplate *source = GetCloneSourceTemplate(template);
+                    if (source != NULL)
+                        SpawnLightSprite(npcX, npcY, cameraX, cameraY, source->trainerRange_berryTreeId); // light sprite instead
+                }
                 else
                     TrySpawnObjectEventTemplate(template, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, cameraX, cameraY);
             }

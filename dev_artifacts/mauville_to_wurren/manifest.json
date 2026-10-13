@@ -1,0 +1,17 @@
+{
+  "metatiles": {
+    "0x204": "0x253",
+    "0x205": "0x254"
+  },
+  "tiles": {
+    "0x24d": "0x24b",
+    "0x25d": "0x24c"
+  },
+  "attribute": "0x0007 (MB_SHORT_GRASS, normal layer)",
+  "palette": "General primary palette 2",
+  "animations": "No tileset animation; existing FLDEFF_SHORT_GRASS is selected by behaviour.",
+  "replaced_duplicates": {
+    "0x253": "0x250",
+    "0x254": "0x252"
+  }
+}

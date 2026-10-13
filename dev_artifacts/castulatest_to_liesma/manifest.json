@@ -1,0 +1,23 @@
+{
+  "metatile_mapping": {
+    "37E": "376",
+    "386": "377",
+    "38E": "378"
+  },
+  "allocated_graphic_tiles": [
+    "316",
+    "317",
+    "318",
+    "319",
+    "31A",
+    "31B",
+    "31C",
+    "31D"
+  ],
+  "compiled_tiles": 286,
+  "primary_palettes": [
+    0,
+    2
+  ],
+  "render_identical": true
+}
